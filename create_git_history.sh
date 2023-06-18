@@ -253,7 +253,7 @@ echo '<!DOCTYPE html>
 </head>
 <body>
     <h1>SteamCity IoT Platform</h1>
-    <p>Plateforme éducative pour l\'exploration de données IoT urbaines</p>
+    <p>Plateforme educative pour exploration de donnees IoT urbaines</p>
     <script src="script.js"></script>
 </body>
 </html>' > public/index.html
