@@ -5,6 +5,7 @@ class Storage {
     constructor() {
         this.dataDir = path.join(__dirname, "../..", "data");
         this.sensorsFile = path.join(this.dataDir, "sensors.json");
+        this.experimentsFile = path.join(this.dataDir, "experiments.json");
     }
 
     async ensureDataDir() {
@@ -27,6 +28,20 @@ class Storage {
     async saveSensorData(data) {
         await this.ensureDataDir();
         await fs.writeFile(this.sensorsFile, JSON.stringify(data, null, 2));
+    }
+
+    async loadExperiments() {
+        try {
+            const data = await fs.readFile(this.experimentsFile, "utf8");
+            return JSON.parse(data);
+        } catch {
+            return [];
+        }
+    }
+
+    async saveExperiments(data) {
+        await this.ensureDataDir();
+        await fs.writeFile(this.experimentsFile, JSON.stringify(data, null, 2));
     }
 }
 
