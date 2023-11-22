@@ -8,6 +8,7 @@ app.use(express.static("public"));
 
 // Routes
 app.use("/api/sensors", require("./routes/sensors"));
+app.use("/api/experiments", require("./routes/experiments"));
 
 // Health check
 app.get("/api/health", (req, res) => {

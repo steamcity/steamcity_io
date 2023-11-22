@@ -1,19 +1,8 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
+const { getExperiments, addExperiment } = require("../controllers/experimentController");
 
-const {
-  getExperiments,
-  createExperiment,
-  getExperimentById,
-  getExperimentData
-} = require('../controllers/experimentController');
-
-router.get('/', getExperiments);
-
-router.post('/', createExperiment);
-
-router.get('/:id', getExperimentById);
-
-router.get('/:id/data', getExperimentData);
+router.get("/", getExperiments);
+router.post("/", addExperiment);
 
 module.exports = router;
