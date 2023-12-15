@@ -7,8 +7,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>SteamCity IoT Platform</h1>
-    <p>Plateforme educative pour exploration de donnees IoT urbaines</p>
+    <header>
+        <h1>SteamCity IoT Platform</h1>
+        <nav>
+            <button id="sensors-tab" class="tab-button active">Capteurs</button>
+            <button id="experiments-tab" class="tab-button">Expériences</button>
+        </nav>
+    </header>
+
+    <main>
+        <div id="sensors-view" class="view active">
+            <h2>Données des Capteurs</h2>
+            <div id="sensors-list"></div>
+        </div>
+
+        <div id="experiments-view" class="view">
+            <h2>Expériences IoT</h2>
+            <div id="experiments-list"></div>
+        </div>
+    </main>
+
     <script src="script.js"></script>
 </body>
 </html>
