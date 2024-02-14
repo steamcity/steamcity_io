@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SteamCity IoT Platform</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,6 +13,7 @@
         <nav>
             <button id="sensors-tab" class="tab-button active">Capteurs</button>
             <button id="experiments-tab" class="tab-button">Expériences</button>
+            <button id="map-tab" class="tab-button">Carte</button>
         </nav>
     </header>
 
@@ -25,8 +27,14 @@
             <h2>Expériences IoT</h2>
             <div id="experiments-list"></div>
         </div>
+
+        <div id="map-view" class="view">
+            <h2>Localisation des Expériences</h2>
+            <div id="map" style="height: 500px;"></div>
+        </div>
     </main>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
