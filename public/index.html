@@ -14,6 +14,7 @@
             <button id="sensors-tab" class="tab-button active">Capteurs</button>
             <button id="experiments-tab" class="tab-button">Expériences</button>
             <button id="map-tab" class="tab-button">Carte</button>
+            <button id="charts-tab" class="tab-button">Graphiques</button>
         </nav>
     </header>
 
@@ -32,9 +33,21 @@
             <h2>Localisation des Expériences</h2>
             <div id="map" style="height: 500px;"></div>
         </div>
+
+        <div id="charts-view" class="view">
+            <h2>Analyse des Données</h2>
+            <div class="chart-controls">
+                <select id="chart-type">
+                    <option value="temperature">Température</option>
+                    <option value="humidity">Humidité</option>
+                </select>
+            </div>
+            <canvas id="dataChart" width="400" height="200"></canvas>
+        </div>
     </main>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
