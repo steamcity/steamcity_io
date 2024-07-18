@@ -4,47 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SteamCity IoT Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>SteamCity IoT Platform</h1>
-        <nav>
-            <button id="sensors-tab" class="tab-button active">Capteurs</button>
-            <button id="experiments-tab" class="tab-button">Expériences</button>
-            <button id="map-tab" class="tab-button">Carte</button>
-            <button id="charts-tab" class="tab-button">Graphiques</button>
-        </nav>
-    </header>
-
-    <main>
-        <div id="sensors-view" class="view active">
-            <h2>Données des Capteurs</h2>
-            <div id="sensors-list"></div>
+    <div id="login-page" class="hidden">
+        <div class="login-container">
+            <h1>SteamCity IoT Platform</h1>
+            <p>Plateforme éducative pour l'exploration de données urbaines</p>
+            <form id="login-form">
+                <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+                <input type="password" id="password" placeholder="Mot de passe" required>
+                <button type="submit">Se connecter</button>
+            </form>
         </div>
+    </div>
 
-        <div id="experiments-view" class="view">
-            <h2>Expériences IoT</h2>
-            <div id="experiments-list"></div>
-        </div>
+    <div id="main-app">
+        <header>
+            <h1>SteamCity IoT Platform</h1>
+            <nav>
+                <button id="experiments-tab" class="tab-button active">Expériences</button>
+                <button id="sensors-tab" class="tab-button">Capteurs</button>
+                <button id="map-tab" class="tab-button">Carte</button>
+                <button id="charts-tab" class="tab-button">Graphiques</button>
+            </nav>
+            <button id="logout-btn" class="logout-btn">Déconnexion</button>
+        </header>
 
-        <div id="map-view" class="view">
-            <h2>Localisation des Expériences</h2>
-            <div id="map" style="height: 500px;"></div>
-        </div>
-
-        <div id="charts-view" class="view">
-            <h2>Analyse des Données</h2>
-            <div class="chart-controls">
-                <select id="chart-type">
-                    <option value="temperature">Température</option>
-                    <option value="humidity">Humidité</option>
-                </select>
+        <main>
+            <div id="experiments-view" class="view active">
+                <h2>Expériences SteamCity</h2>
+                <div class="filter-controls">
+                    <select id="protocol-filter">
+                        <option value="">Tous les protocoles</option>
+                        <option value="environmental">Environnement</option>
+                        <option value="energy">Énergie</option>
+                        <option value="mobility">Mobilité</option>
+                        <option value="governance">Gouvernance</option>
+                        <option value="technology">Technologie</option>
+                    </select>
+                </div>
+                <div id="experiments-list" class="content-grid"></div>
             </div>
-            <canvas id="dataChart" width="400" height="200"></canvas>
-        </div>
-    </main>
+
+            <div id="sensors-view" class="view">
+                <h2>Données des Capteurs</h2>
+                <div id="sensors-list" class="content-grid"></div>
+                <button id="load-more-sensors" class="load-more-btn">Charger plus de capteurs</button>
+            </div>
+
+            <div id="map-view" class="view">
+                <h2>Carte des Expériences</h2>
+                <div class="map-controls">
+                    <div id="map-legend" class="legend"></div>
+                </div>
+                <div id="map"></div>
+            </div>
+
+            <div id="charts-view" class="view">
+                <h2>Analyse des Données</h2>
+                <div class="chart-controls">
+                    <select id="experiment-select">
+                        <option value="">Choisir une expérience</option>
+                    </select>
+                    <select id="sensor-type-select">
+                        <option value="">Choisir un type de capteur</option>
+                    </select>
+                </div>
+                <div id="chart-container">
+                    <canvas id="dataChart"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
