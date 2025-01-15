@@ -1,53 +1,176 @@
-body {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+:root {
+    --primary-blue: #0066cc;
+    --primary-light: #4d94ff;
+    --secondary-green: #27ae60;
+    --accent-orange: #f39c12;
+    --accent-purple: #9b59b6;
+    --accent-red: #e74c3c;
+    --text-dark: #2c3e50;
+    --text-light: #7f8c8d;
+    --background-light: #f8f9fa;
+    --white: #ffffff;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --shadow-strong: rgba(0, 0, 0, 0.15);
+
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
+
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+}
+
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa;
-    color: #333;
+}
+
+body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     line-height: 1.6;
+    color: var(--text-dark);
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.95)), url("./steamcity-official.jpg") center/cover fixed;
+    min-height: 100vh;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-xl);
+}
+
+#login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: var(--spacing-xl);
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-2xl);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.login-container h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: var(--spacing-md);
+    text-shadow: 0 2px 4px rgba(0, 102, 204, 0.1);
+}
+
+.login-container p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-xl);
+    font-weight: 400;
+}
+
+#login-form input {
+    width: 100%;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+#login-form input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+#login-form button {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-light));
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 102, 204, 0.3);
+}
+
+#login-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 102, 204, 0.4);
 }
 
 header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 1rem 2rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 header h1 {
-    margin: 0;
     font-size: 2rem;
-    font-weight: 300;
+    font-weight: 600;
+    color: var(--primary-blue);
+    text-shadow: 0 1px 2px rgba(0, 102, 204, 0.1);
 }
 
 nav {
-    margin-top: 1rem;
+    display: flex;
+    gap: var(--spacing-xs);
 }
 
 .tab-button {
-    background: none;
-    border: none;
-    color: white;
-    padding: 0.5rem 1rem;
-    margin-right: 1rem;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--text-dark);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-md);
     cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
 }
 
 .tab-button:hover {
-    background-color: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateY(-1px);
 }
 
 .tab-button.active {
-    background-color: rgba(255,255,255,0.3);
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-light));
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
 }
 
 main {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: var(--spacing-xl);
 }
 
 .view {
@@ -58,45 +181,79 @@ main {
     display: block;
 }
 
-.sensor-card, .experiment-card {
-    background: white;
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin: 1rem 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
 }
 
-.sensor-card:hover, .experiment-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+.experiment-card, .sensor-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
 }
 
-.sensor-card h3, .experiment-card h3 {
-    margin-top: 0;
-    color: #667eea;
-    font-size: 1.25rem;
+.experiment-card:hover, .sensor-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.95);
 }
 
-.sensor-card p, .experiment-card p {
-    margin: 0.5rem 0;
+.protocol-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+#map {
+    height: 70vh;
+    min-height: 600px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.legend {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.hidden {
+    display: none !important;
 }
 
 @media (max-width: 768px) {
     header {
-        padding: 1rem;
-    }
-
-    main {
-        padding: 1rem;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
     }
 
     nav {
-        display: flex;
         flex-wrap: wrap;
+        justify-content: center;
     }
 
-    .tab-button {
-        margin: 0.25rem;
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #map {
+        height: 50vh;
+        min-height: 400px;
     }
 }
