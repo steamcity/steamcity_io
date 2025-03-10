@@ -5,15 +5,81 @@ const fs = require("fs").promises;
 const getSensorData = async (req, res) => {
     try {
         const data = await Storage.loadSensorData();
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 20;
+        const startIndex = (page - 1) * limit;
+        const endIndex = startIndex + limit;
+
+        const paginatedData = data.slice(startIndex, endIndex);
+
         res.json({
             success: true,
-            count: data.length,
-            data: data
+            count: paginatedData.length,
+            total: data.length,
+            page: page,
+            totalPages: Math.ceil(data.length / limit),
+            data: paginatedData
         });
     } catch (error) {
         res.status(500).json({
             success: false,
             error: "Failed to retrieve sensor data"
+        });
+    }
+};
+
+const getUniqueSensors = async (req, res) => {
+    try {
+        const data = await Storage.loadSensorData();
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 20;
+        const experimentId = req.query.experimentId;
+
+        let filteredData = data;
+        if (experimentId) {
+            filteredData = data.filter(sensor => sensor.experimentId === experimentId);
+        }
+
+        // Group by experiment and sensor type to create unique sensors
+        const sensorGroups = {};
+        filteredData.forEach(measurement => {
+            const key = `${measurement.experimentId}_${measurement.sensorType}`;
+            if (!sensorGroups[key]) {
+                sensorGroups[key] = {
+                    experimentId: measurement.experimentId,
+                    sensorType: measurement.sensorType,
+                    measurements: [],
+                    lastValue: null,
+                    lastTimestamp: null,
+                    studentName: measurement.studentName,
+                    location: measurement.location
+                };
+            }
+            sensorGroups[key].measurements.push(measurement);
+            if (!sensorGroups[key].lastTimestamp || new Date(measurement.timestamp) > new Date(sensorGroups[key].lastTimestamp)) {
+                sensorGroups[key].lastValue = measurement.value;
+                sensorGroups[key].lastTimestamp = measurement.timestamp;
+                sensorGroups[key].unit = measurement.unit;
+            }
+        });
+
+        const uniqueSensors = Object.values(sensorGroups);
+        const startIndex = (page - 1) * limit;
+        const endIndex = startIndex + limit;
+        const paginatedSensors = uniqueSensors.slice(startIndex, endIndex);
+
+        res.json({
+            success: true,
+            count: paginatedSensors.length,
+            total: uniqueSensors.length,
+            page: page,
+            totalPages: Math.ceil(uniqueSensors.length / limit),
+            data: paginatedSensors
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: "Failed to retrieve unique sensors"
         });
     }
 };
@@ -72,7 +138,6 @@ const uploadCSV = async (req, res) => {
         const updatedData = [...currentData, ...newData];
         await Storage.saveSensorData(updatedData);
 
-        // Cleanup uploaded file
         await fs.unlink(req.file.path);
 
         res.json({
@@ -91,6 +156,7 @@ const uploadCSV = async (req, res) => {
 
 module.exports = {
     getSensorData,
+    getUniqueSensors,
     addSensorData,
     uploadCSV
 };
