@@ -1,23 +1,30 @@
 const Storage = require("../utils/storage");
 const SensorData = require("../models/SensorData");
 const fs = require("fs").promises;
+const path = require("path");
 
 const getSensorData = async (req, res) => {
     try {
         const data = await Storage.loadSensorData();
         const page = parseInt(req.query.page) || 1;
         const limit = parseInt(req.query.limit) || 20;
+        const experimentId = req.query.experimentId;
+
+        let filteredData = data;
+        if (experimentId) {
+            filteredData = data.filter(sensor => sensor.experimentId === experimentId);
+        }
+
         const startIndex = (page - 1) * limit;
         const endIndex = startIndex + limit;
-
-        const paginatedData = data.slice(startIndex, endIndex);
+        const paginatedData = filteredData.slice(startIndex, endIndex);
 
         res.json({
             success: true,
             count: paginatedData.length,
-            total: data.length,
+            total: filteredData.length,
             page: page,
-            totalPages: Math.ceil(data.length / limit),
+            totalPages: Math.ceil(filteredData.length / limit),
             data: paginatedData
         });
     } catch (error) {
@@ -154,9 +161,170 @@ const uploadCSV = async (req, res) => {
     }
 };
 
+// New functions for the modern sensor data model
+
+const getSensorDevices = async (req, res) => {
+    try {
+        const experimentId = req.query.experimentId;
+        const dataPath = path.join(__dirname, '../../data/sensors-devices.json');
+        const rawData = await fs.readFile(dataPath, 'utf8');
+        const sensors = JSON.parse(rawData);
+
+        let filteredSensors = sensors;
+        if (experimentId) {
+            filteredSensors = sensors.filter(sensor => sensor.experiment_id === experimentId);
+        }
+
+        res.json({
+            success: true,
+            count: filteredSensors.length,
+            data: filteredSensors
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: "Failed to retrieve sensor devices",
+            message: error.message
+        });
+    }
+};
+
+const getSensorTypes = async (req, res) => {
+    try {
+        const dataPath = path.join(__dirname, '../../data/sensor-types.json');
+        const rawData = await fs.readFile(dataPath, 'utf8');
+        const sensorTypes = JSON.parse(rawData);
+
+        res.json({
+            success: true,
+            count: sensorTypes.length,
+            data: sensorTypes
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: "Failed to retrieve sensor types",
+            message: error.message
+        });
+    }
+};
+
+const getSensorMeasurements = async (req, res) => {
+    try {
+        const { sensorId, experimentId, from, to, period, limit = 100 } = req.query;
+
+        // Calculate date range based on period
+        let fromDate = from ? new Date(from) : null;
+        let toDate = to ? new Date(to) : null;
+
+        if (period && !from && !to) {
+            const now = new Date();
+            toDate = now;
+
+            switch (period) {
+                case '24h':
+                    fromDate = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+                    break;
+                case '7d':
+                    fromDate = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+                    break;
+                case '30d':
+                    fromDate = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+                    break;
+                case 'all':
+                    fromDate = null;
+                    toDate = null;
+                    break;
+                default:
+                    fromDate = new Date(now.getTime() - 24 * 60 * 60 * 1000); // Default to 24h
+            }
+
+        }
+
+        // Load measurements
+        const measurementsPath = path.join(__dirname, '../../data/sensor-measurements.json');
+        const historyPath = path.join(__dirname, '../../data/sensor-measurements-history.json');
+
+        let measurements = [];
+
+        try {
+            const rawMeasurements = await fs.readFile(measurementsPath, 'utf8');
+            measurements = JSON.parse(rawMeasurements);
+        } catch (err) {
+            console.warn('No recent measurements file found');
+        }
+
+        try {
+            const rawHistory = await fs.readFile(historyPath, 'utf8');
+            const historyData = JSON.parse(rawHistory);
+
+            // Convert history format to individual measurements
+            historyData.forEach(sensorHistory => {
+                sensorHistory.data.forEach(point => {
+                    measurements.push({
+                        id: `hist-${sensorHistory.sensor_id}-${point.timestamp}`,
+                        sensor_id: sensorHistory.sensor_id,
+                        sensor_type_id: sensorHistory.sensor_type_id,
+                        experiment_id: sensorHistory.experiment_id,
+                        timestamp: point.timestamp,
+                        value: point.value,
+                        quality: {
+                            score: point.quality,
+                            status: point.quality > 0.95 ? 'excellent' : point.quality > 0.9 ? 'good' : 'fair'
+                        }
+                    });
+                });
+            });
+        } catch (err) {
+            console.warn('No history measurements file found');
+        }
+
+        // Filter measurements
+        let filteredMeasurements = measurements;
+
+        if (sensorId) {
+            filteredMeasurements = filteredMeasurements.filter(m => m.sensor_id === sensorId);
+        }
+
+        if (experimentId) {
+            filteredMeasurements = filteredMeasurements.filter(m => m.experiment_id === experimentId);
+        }
+
+        if (fromDate) {
+            filteredMeasurements = filteredMeasurements.filter(m => new Date(m.timestamp) >= fromDate);
+        }
+
+        if (toDate) {
+            filteredMeasurements = filteredMeasurements.filter(m => new Date(m.timestamp) <= toDate);
+        }
+
+        // Sort by timestamp (most recent first)
+        filteredMeasurements.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+        // Limit results
+        const limitedMeasurements = filteredMeasurements.slice(0, parseInt(limit));
+
+        res.json({
+            success: true,
+            count: limitedMeasurements.length,
+            total: filteredMeasurements.length,
+            data: limitedMeasurements
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: "Failed to retrieve sensor measurements",
+            message: error.message
+        });
+    }
+};
+
 module.exports = {
     getSensorData,
     getUniqueSensors,
     addSensorData,
-    uploadCSV
+    uploadCSV,
+    getSensorDevices,
+    getSensorTypes,
+    getSensorMeasurements
 };

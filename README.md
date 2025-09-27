@@ -5,7 +5,7 @@ Une plateforme educative moderne pour exploration de donnees urbaines dans le ca
 ## 🚀 Caracteristiques
 
 - **Interface moderne** avec design glassmorphism
-- **Authentification** securisee (iot/steamcity)
+- **Authentification** securisée
 - **Visualisation interactive** des experiences sur carte
 - **Analyse de donnees** avec graphiques dynamiques
 - **Systeme de routage** avec URLs uniques
@@ -26,11 +26,6 @@ npm start    # Production
 - `#/sensors` - Vue des capteurs agreges
 - `#/map` - Carte interactive
 - `#/charts` - Analyse graphique des donnees
-
-## Authentification
-
-- **Utilisateur**: iot
-- **Mot de passe**: steamcity
 
 ---
 

@@ -14,6 +14,7 @@ app.use(express.static('public'));
 app.use('/api/experiments', require('./routes/experiments'));
 app.use('/api/sensors', require('./routes/sensors'));
 app.use('/api/protocols', require('./routes/protocols'));
+app.use('/api', require('./routes/clusterRoutes'));
 
 // Health check
 app.get('/api/health', (req, res) => {
@@ -25,8 +26,11 @@ app.get('/api/health', (req, res) => {
     });
 });
 
-// Serve index.html for all other routes (SPA support)
-app.get('*', (req, res) => {
+// Serve index.html for all other NON-API routes (SPA support)
+app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api/')) {
+        return next();
+    }
     res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 

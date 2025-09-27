@@ -6,15 +6,108 @@
     <title>SteamCity IoT Platform</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="login-page" class="hidden">
-        <div class="login-container">
-            <h1>SteamCity IoT Platform</h1>
-            <p>Plateforme éducative pour l'exploration de données urbaines</p>
+    <!-- Homepage -->
+    <div id="homepage" class="homepage">
+        <header class="hero-section">
+            <div class="hero-content">
+                <img src="steamcity-official.jpg" alt="SteamCity" class="hero-logo">
+                <h1>SteamCity IoT Platform</h1>
+                <p class="hero-subtitle">Plateforme éducative européenne pour l'exploration de données urbaines connectées</p>
+                <p class="hero-description">Découvrez comment les capteurs IoT transforment nos villes à travers des expériences interactives menées dans toute l'Europe. Une initiative pédagogique pour comprendre la ville intelligente de demain.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Expériences</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50k+</span>
+                        <span class="stat-label">Mesures</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">15</span>
+                        <span class="stat-label">Villes européennes</span>
+                    </div>
+                </div>
+                <button id="explore-btn" class="cta-button">Explorer les données</button>
+            </div>
+        </header>
+
+        <section class="features-section">
+            <div class="container">
+                <h2>Clusters d'expérimentation SteamCity</h2>
+                <div class="protocols-grid">
+                    <div class="protocol-card governance">
+                        <div class="protocol-icon">🏛️</div>
+                        <h3>Gouvernance et citoyenneté</h3>
+                        <p>Exploration des mécanismes de participation citoyenne et de gouvernance numérique pour améliorer l'engagement communautaire et la transparence des processus démocratiques urbains.</p>
+                    </div>
+                    <div class="protocol-card environmental">
+                        <div class="protocol-icon">🌱</div>
+                        <h3>Qualité environnementale, climat et bien-être</h3>
+                        <p>Étude de la qualité de l'air, du bruit urbain, de la biodiversité et des espaces verts pour comprendre l'impact environnemental sur le bien-être des citoyens et développer des solutions durables.</p>
+                    </div>
+                    <div class="protocol-card mobility">
+                        <div class="protocol-icon">🚗</div>
+                        <h3>Mobilité</h3>
+                        <p>Analyse des flux de transport, de l'accessibilité urbaine et des solutions de mobilité intelligente pour optimiser les déplacements et réduire l'empreinte carbone des villes.</p>
+                    </div>
+                    <div class="protocol-card energy">
+                        <div class="protocol-icon">⚡</div>
+                        <h3>Économies d'énergie</h3>
+                        <p>Investigation des stratégies d'efficacité énergétique, des énergies renouvelables et des réseaux intelligents pour créer des villes plus durables et économes en énergie.</p>
+                    </div>
+                    <div class="protocol-card technology">
+                        <div class="protocol-icon">💻</div>
+                        <h3>IA et technologies</h3>
+                        <p>Exploration de l'intelligence artificielle, de l'Internet des objets (IoT) et des technologies émergentes pour développer des solutions innovantes aux défis urbains contemporains.</p>
+                    </div>
+                    <div class="protocol-card cta-card">
+                        <div class="protocol-icon">🔬</div>
+                        <h3>Centre d'expérimentation</h3>
+                        <p>Découvrez nos outils pédagogiques interactifs et ressources éducatives pour explorer les enjeux de la ville intelligente avec vos élèves.</p>
+                        <a href="https://view.genially.com/68627d9b236102fc0d8e9b77" target="_blank" rel="noopener" class="card-cta-button">
+                            Explorez nos outils
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="homepage-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <img src="eu-funded-logo.png" alt="Funded by the European Union" class="eu-logo">
+                        <p>Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Education and Culture Executive Agency (EACEA). Neither the European Union nor EACEA can be held responsible for them.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Partenaires européens</h4>
+                        <div class="partners-list">
+                            <a href="https://www.labaixbidouille.com/" target="_blank" rel="noopener">L.A.B</a>
+                            <a href="https://www.lascientotheque.be/" target="_blank" rel="noopener">La Scientothèque</a>
+                            <a href="https://www.7vents.fr/" target="_blank" rel="noopener">7 Vents</a>
+                            <a href="https://www.zeugma.bg/" target="_blank" rel="noopener">Zeugma</a>
+                            <a href="https://www.edutech.bg/en/home-english/" target="_blank" rel="noopener">EduTech</a>
+                            <a href="https://www.perlatecnica.it/" target="_blank" rel="noopener">Perla Tecnica</a>
+                            <a href="https://fr.vittascience.com/" target="_blank" rel="noopener">Vittascience</a>
+                            <a href="https://ultra-lab.net/" target="_blank" rel="noopener">Ultra Lab</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Connexion à la plateforme</h2>
             <form id="login-form">
                 <input type="text" id="username" placeholder="Nom d'utilisateur" required>
                 <input type="password" id="password" placeholder="Mot de passe" required>
@@ -23,60 +116,373 @@
         </div>
     </div>
 
-    <div id="main-app">
-        <header>
-            <h1>SteamCity IoT Platform</h1>
-            <nav>
-                <button id="experiments-tab" class="tab-button active">Expériences</button>
-                <button id="sensors-tab" class="tab-button">Capteurs</button>
-                <button id="map-tab" class="tab-button">Carte</button>
-                <button id="charts-tab" class="tab-button">Graphiques</button>
+    <!-- Main Application -->
+    <div id="main-app" class="hidden">
+        <header class="app-header">
+            <div class="header-left">
+                <img src="steamcity-official.jpg" alt="SteamCity" class="app-logo">
+                <div class="title-container">
+                    <h1 class="app-title">
+                        <span class="title-main">SteamCity</span>
+                        <span class="title-sub">IoT Platform</span>
+                    </h1>
+                    <div class="title-tagline">Plateforme éducative européenne</div>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <button id="map-tab" class="nav-button active">🗺️ Carte</button>
+                <button id="experiments-tab" class="nav-button">🔬 Expériences</button>
+                <button id="data-tab" class="nav-button">📊 Données</button>
             </nav>
             <button id="logout-btn" class="logout-btn">Déconnexion</button>
         </header>
 
-        <main>
-            <div id="experiments-view" class="view active">
-                <h2>Expériences SteamCity</h2>
-                <div class="filter-controls">
-                    <select id="protocol-filter">
-                        <option value="">Tous les protocoles</option>
-                        <option value="environmental">Environnement</option>
-                        <option value="energy">Énergie</option>
-                        <option value="mobility">Mobilité</option>
-                        <option value="governance">Gouvernance</option>
-                        <option value="technology">Technologie</option>
-                    </select>
+        <main class="app-main">
+            <!-- Loading screen -->
+            <div id="loading-screen" class="view active">
+                <div class="loading-content">
+                    <div class="loading-spinner"></div>
+                    <h2>Chargement en cours...</h2>
+                    <p>Initialisation de la plateforme SteamCity</p>
                 </div>
-                <div id="experiments-list" class="content-grid"></div>
             </div>
 
-            <div id="sensors-view" class="view">
-                <h2>Données des Capteurs</h2>
-                <div id="sensors-list" class="content-grid"></div>
-                <button id="load-more-sensors" class="load-more-btn">Charger plus de capteurs</button>
-            </div>
-
+            <!-- Map View (Default) -->
             <div id="map-view" class="view">
-                <h2>Carte des Expériences</h2>
                 <div class="map-controls">
-                    <div id="map-legend" class="legend"></div>
+                    <div class="filter-panel">
+                        <h3>Filtres</h3>
+                        <select id="protocol-filter">
+                            <option value="">Tous les clusters</option>
+                            <option value="environmental">🌱 Qualité environnementale, climat et bien-être</option>
+                            <option value="energy">⚡ Économies d'énergie</option>
+                            <option value="mobility">🚗 Mobilité</option>
+                            <option value="governance">🏛️ Gouvernance et citoyenneté</option>
+                            <option value="technology">💻 IA et technologies</option>
+                        </select>
+                        <div id="map-legend" class="legend"></div>
+                    </div>
                 </div>
-                <div id="map"></div>
+                <div id="map" class="interactive-map">
+                    <button id="center-map-btn" class="center-map-floating">⌗</button>
+                </div>
             </div>
 
-            <div id="charts-view" class="view">
-                <h2>Analyse des Données</h2>
-                <div class="chart-controls">
-                    <select id="experiment-select">
-                        <option value="">Choisir une expérience</option>
-                    </select>
-                    <select id="sensor-type-select">
-                        <option value="">Choisir un type de capteur</option>
-                    </select>
+            <!-- Experiment Detail View -->
+            <div id="experiment-detail-view" class="view">
+                <div class="detail-content">
+                    <div class="experiment-title-section">
+                        <div class="title-header">
+                            <h2 id="experiment-detail-title">Détail de l'expérience</h2>
+                            <button id="back-to-map" class="back-button">← Retour à la liste</button>
+                        </div>
+                        <div id="experiment-info"></div>
+                    </div>
+
+                    <div class="experiment-details-grid">
+                        <div class="left-column">
+                            <div class="sensors-section">
+                                <h3>Capteurs utilisés</h3>
+                                <div id="experiment-sensors" class="sensors-grid"></div>
+                            </div>
+                            <div class="methodology-section">
+                                <h3>Méthodologie</h3>
+                                <div id="experiment-methodology" class="methodology-content"></div>
+                            </div>
+                        </div>
+
+                        <div class="right-column">
+                            <div class="hypotheses-section">
+                                <h3>Hypothèses</h3>
+                                <div id="experiment-hypotheses" class="hypotheses-content"></div>
+                            </div>
+                            <div class="conclusions-section">
+                                <h3>Conclusions</h3>
+                                <div id="experiment-conclusions" class="conclusions-content"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="charts-section">
+                        <div class="charts-header">
+                            <h3>Données en temps réel</h3>
+                            <div class="charts-controls">
+                                <div class="time-filter-controls">
+                                    <button class="time-filter-btn active" data-period="24h">24h</button>
+                                    <button class="time-filter-btn" data-period="7d">7j</button>
+                                    <button class="time-filter-btn" data-period="30d">30j</button>
+                                    <button class="time-filter-btn" data-period="all">Tout</button>
+                                </div>
+                                <button id="open-in-data-view" class="open-data-btn" title="Ouvrir dans la vue données">
+                                    📈 Vue détaillée
+                                </button>
+                            </div>
+                        </div>
+                        <div id="experiment-charts"></div>
+                    </div>
                 </div>
+            </div>
+
+            <!-- Experiments List View -->
+            <div id="experiments-view" class="view">
+                <div class="experiments-filter-panel">
+                    <h2>Toutes les expériences</h2>
+
+                    <!-- Search-like filter activation button -->
+                    <div class="filter-search-box" id="experiments-filter-search-box">
+                        <div class="search-input-container">
+                            <span class="search-icon">🔍</span>
+                            <input type="text"
+                                   id="experiments-filter-input"
+                                   class="search-input"
+                                   placeholder="Rechercher ou filtrer les expériences..."
+                                   readonly>
+                            <span class="filter-count" id="experiments-filter-count" style="display: none;">0 filtres actifs</span>
+                        </div>
+                    </div>
+
+                    <!-- Basic filters (hidden by default) -->
+                    <div class="filter-section" id="experiments-basic-filters" style="display: none;">
+                        <div id="experiments-legend" class="experiments-legend"></div>
+                        <div class="sensor-filter-section">
+                            <button id="sensor-filter-btn" class="sensor-filter-btn" data-active="false">
+                                📊 Avec capteurs uniquement
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- All other filters (hidden by default) -->
+                    <div id="additional-filters" class="additional-filters" style="display: none;">
+                        <!-- Collapsible: Location filters -->
+                        <div class="filter-section collapsible">
+                            <h4 class="filter-toggle" data-target="location-filters">
+                                <span class="toggle-icon">▶</span> Par localisation
+                            </h4>
+                            <div id="location-filters" class="filter-content" style="display: none;">
+                                <div class="filters-row">
+                                    <div class="filter-group">
+                                        <label for="country-filter">Pays :</label>
+                                        <select id="country-filter">
+                                            <option value="">Tous les pays</option>
+                                        </select>
+                                    </div>
+                                    <div class="filter-group">
+                                        <label for="city-filter">Ville :</label>
+                                        <select id="city-filter">
+                                            <option value="">Toutes les villes</option>
+                                        </select>
+                                    </div>
+                                    <div class="filter-group">
+                                        <label for="school-filter">École :</label>
+                                        <select id="school-filter">
+                                            <option value="">Toutes les écoles</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Collapsible: Project filters -->
+                        <div class="filter-section collapsible">
+                            <h4 class="filter-toggle" data-target="project-filters">
+                                <span class="toggle-icon">▶</span> Par projet
+                            </h4>
+                            <div id="project-filters" class="filter-content" style="display: none;">
+                                <div class="filters-row">
+                                    <div class="filter-group">
+                                        <label for="status-filter">Statut :</label>
+                                        <select id="status-filter">
+                                            <option value="">Tous les statuts</option>
+                                        </select>
+                                    </div>
+                                    <div class="filter-group">
+                                        <label for="experiment-protocol-filter">Protocole :</label>
+                                        <select id="experiment-protocol-filter">
+                                            <option value="">Tous les protocoles</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Collapsible: Date filters -->
+                        <div class="filter-section collapsible">
+                            <h4 class="filter-toggle" data-target="date-filters">
+                                <span class="toggle-icon">▶</span> Par date
+                            </h4>
+                            <div id="date-filters" class="filter-content" style="display: none;">
+                                <div class="filters-row">
+                                    <div class="filter-group">
+                                        <label for="start-date-filter">Date de début :</label>
+                                        <input type="date" id="start-date-filter">
+                                    </div>
+                                    <div class="filter-group">
+                                        <label for="end-date-filter">Date de fin :</label>
+                                        <input type="date" id="end-date-filter">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Clear filters button -->
+                        <div class="filter-actions">
+                            <button id="clear-filters-btn" class="clear-filters-btn">Effacer tous les filtres</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="experiments-list" class="experiments-grid"></div>
+            </div>
+
+            <!-- Data View -->
+            <div id="data-view" class="view">
+                <div class="data-filter-panel">
+                    <h2>Analyse des données</h2>
+
+                    <!-- Search-like filter activation button -->
+                    <div class="filter-search-box" id="data-filter-search-box">
+                        <div class="search-input-container">
+                            <span class="search-icon">🔍</span>
+                            <input type="text"
+                                   id="data-filter-input"
+                                   class="search-input"
+                                   placeholder="Rechercher ou filtrer les données..."
+                                   readonly>
+                            <span class="filter-count" id="data-filter-count" style="display: none;">0 filtres actifs</span>
+                        </div>
+                    </div>
+
+                    <!-- Basic filters (hidden by default) -->
+                    <div class="filter-section" id="data-basic-filters" style="display: none;">
+                        <div class="basic-data-filters">
+                            <div class="filter-group">
+                                <label for="experiment-select">Expérience :</label>
+                                <select id="experiment-select">
+                                    <option value="">Toutes les expériences</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label for="sensor-type-select">Type de capteur :</label>
+                                <select id="sensor-type-select">
+                                    <option value="">Tous les types</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Advanced filters (hidden by default) -->
+                    <div id="data-additional-filters" class="additional-filters" style="display: none;">
+                        <!-- Time period filters -->
+                        <div class="filter-section collapsible">
+                            <h4 class="filter-toggle" data-target="data-time-filters">
+                                <span class="toggle-icon">▶</span> Période temporelle
+                            </h4>
+                            <div id="data-time-filters" class="filter-content" style="display: none;">
+                                <div class="filters-row">
+                                    <div class="filter-group">
+                                        <label for="data-period-select">Période :</label>
+                                        <select id="data-period-select">
+                                            <option value="all">Toutes les données</option>
+                                            <option value="24h">Dernières 24h</option>
+                                            <option value="7d">7 derniers jours</option>
+                                            <option value="30d">30 derniers jours</option>
+                                        </select>
+                                    </div>
+                                    <div class="filter-group">
+                                        <label for="data-start-date">Date début :</label>
+                                        <input type="date" id="data-start-date">
+                                    </div>
+                                    <div class="filter-group">
+                                        <label for="data-end-date">Date fin :</label>
+                                        <input type="date" id="data-end-date">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quality filters -->
+                        <div class="filter-section collapsible">
+                            <h4 class="filter-toggle" data-target="data-quality-filters">
+                                <span class="toggle-icon">▶</span> Qualité des données
+                            </h4>
+                            <div id="data-quality-filters" class="filter-content" style="display: none;">
+                                <div class="filters-row">
+                                    <div class="filter-group">
+                                        <label for="data-min-quality">Qualité minimale :</label>
+                                        <select id="data-min-quality">
+                                            <option value="">Toutes qualités</option>
+                                            <option value="0.9">Excellente (> 90%)</option>
+                                            <option value="0.8">Bonne (> 80%)</option>
+                                            <option value="0.7">Correcte (> 70%)</option>
+                                        </select>
+                                    </div>
+                                    <div class="filter-group">
+                                        <label for="data-limit">Nombre max de points :</label>
+                                        <select id="data-limit">
+                                            <option value="100">100 points</option>
+                                            <option value="500">500 points</option>
+                                            <option value="1000">1000 points</option>
+                                            <option value="5000">5000 points</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action buttons -->
+                        <div class="filter-section">
+                            <div class="filters-row">
+                                <button id="data-clear-filters-btn" class="clear-filters-btn">Effacer les filtres</button>
+                                <button id="data-apply-filters-btn" class="apply-filters-btn">Appliquer les filtres</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div id="chart-container">
                     <canvas id="dataChart"></canvas>
+                </div>
+
+                <!-- Statistical indicators panel -->
+                <div id="data-stats-panel" class="stats-panel" style="display: none;">
+                    <h3>📊 Indicateurs statistiques par capteur</h3>
+                    <div id="stats-by-sensor" class="stats-by-sensor">
+                        <!-- Statistics will be generated dynamically for each sensor type -->
+                    </div>
+
+                    <!-- Global stats -->
+                    <div class="global-stats">
+                        <h4>📈 Statistiques générales</h4>
+                        <div class="stats-grid global-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon">📈</div>
+                                <div class="stat-content">
+                                    <div class="stat-label">Points de données total</div>
+                                    <div class="stat-value" id="stat-total-points">-</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">📅</div>
+                                <div class="stat-content">
+                                    <div class="stat-label">Période couverte</div>
+                                    <div class="stat-value" id="stat-time-range">-</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">⭐</div>
+                                <div class="stat-content">
+                                    <div class="stat-label">Qualité moyenne</div>
+                                    <div class="stat-value" id="stat-avg-quality">-</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">🎯</div>
+                                <div class="stat-content">
+                                    <div class="stat-label">Types de capteurs</div>
+                                    <div class="stat-value" id="stat-sensor-types">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -84,6 +490,7 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
