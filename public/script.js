@@ -93,8 +93,7 @@ class SteamCityPlatform {
         // Back to experiments list
         document.getElementById('back-to-map')?.addEventListener('click', () => this.showView('experiments'));
 
-        // Chart controls
-        document.getElementById('experiment-select')?.addEventListener('change', (e) => this.loadExperimentChart(e.target.value));
+        // Chart controls (sensor type only, experiment selection is handled in bindDataFilterEvents)
         document.getElementById('sensor-type-select')?.addEventListener('change', (e) => this.updateChartSensorType(e.target.value));
     }
 
@@ -947,6 +946,35 @@ class SteamCityPlatform {
         if (preselectedExperimentId) {
             experimentSelect.value = preselectedExperimentId;
             await this.loadExperimentChart(preselectedExperimentId);
+        } else {
+            // Clear any existing chart and statistics when no experiment is selected
+            this.clearDataDisplay();
+        }
+    }
+
+    clearDataDisplay() {
+        // Clear the chart
+        const chartContainer = document.getElementById('main-chart');
+        if (chartContainer) {
+            chartContainer.innerHTML = '<p style="text-align: center; margin-top: 2rem; color: #666;">Sélectionnez une expérience pour voir les données</p>';
+        }
+
+        // Clear the statistics panel
+        const statsPanel = document.getElementById('data-stats-panel');
+        if (statsPanel) {
+            statsPanel.style.display = 'none';
+        }
+
+        // Clear sensor type options
+        const sensorTypeSelect = document.getElementById('sensor-type-select');
+        if (sensorTypeSelect) {
+            sensorTypeSelect.innerHTML = '<option value="">Choisir un type de capteur</option>';
+        }
+
+        // Destroy existing chart if it exists
+        if (this.chart) {
+            this.chart.destroy();
+            this.chart = null;
         }
     }
 
@@ -1609,8 +1637,9 @@ class SteamCityPlatform {
         // Store the experiment ID for when we switch to data view
         this.selectedExperimentForData = experimentId;
 
-        // Switch to data view
-        this.showView('data');
+        // Switch to data view with URL update disabled, then update URL manually with experiment ID
+        this.showView('data', false);
+        this.updateUrl('data', experimentId);
     }
 
     // Data Filter Methods
@@ -1689,6 +1718,15 @@ class SteamCityPlatform {
         const endDate = document.getElementById('data-end-date')?.value;
         const minQuality = document.getElementById('data-min-quality')?.value;
         const limit = document.getElementById('data-limit')?.value || '1000';
+
+        // Update selectedExperimentForData and URL when experiment changes
+        if (experimentId && experimentId !== this.selectedExperimentForData) {
+            this.selectedExperimentForData = experimentId;
+            this.updateUrl('data', experimentId);
+        } else if (!experimentId && this.selectedExperimentForData) {
+            this.selectedExperimentForData = null;
+            this.updateUrl('data');
+        }
 
         // Update search box appearance
         this.updateFilterSearchBox();
@@ -2155,7 +2193,16 @@ class SteamCityPlatform {
                 this.showView('experiments', updateUrl);
             }
         } else if (parts[0] === 'data') {
-            this.showView('data', updateUrl);
+            if (parts.length > 1) {
+                // Data view with experiment route: #/data/experiment-id
+                const experimentId = parts[1];
+                this.selectedExperimentForData = experimentId;
+                this.showView('data', updateUrl);
+            } else {
+                // Data view route: #/data
+                this.selectedExperimentForData = null;
+                this.showView('data', updateUrl);
+            }
         } else {
             // Invalid route, redirect to map
             this.showView('map', updateUrl);
