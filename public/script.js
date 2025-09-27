@@ -849,6 +849,10 @@ class SteamCityPlatform {
         this.bindFilterEvents();
         this.bindToggleEvents();
         this.bindExperimentsFilterSearch();
+
+        // Apply URL parameters to filters if they exist
+        this.applyUrlParamsToExperimentsFilters();
+
         container.innerHTML = '';
 
         // Check which experiments have sensor data
@@ -942,14 +946,56 @@ class SteamCityPlatform {
             experimentSelect.appendChild(option);
         });
 
+        // Apply URL parameters to filters if they exist
+        this.applyUrlParamsToFilters();
+
         // If a specific experiment is preselected, select it and load its chart
         if (preselectedExperimentId) {
             experimentSelect.value = preselectedExperimentId;
             await this.loadExperimentChart(preselectedExperimentId);
+
+            // If there were URL params with filters, apply them now
+            const hasFilters = document.getElementById('data-start-date')?.value ||
+                              document.getElementById('data-end-date')?.value ||
+                              document.getElementById('sensor-type-select')?.value ||
+                              document.getElementById('data-period-select')?.value !== 'all' ||
+                              document.getElementById('data-min-quality')?.value ||
+                              (document.getElementById('data-limit')?.value && document.getElementById('data-limit')?.value !== '1000');
+
+            if (hasFilters) {
+                this.applyDataFilters();
+            }
         } else {
             // Clear any existing chart and statistics when no experiment is selected
             this.clearDataDisplay();
         }
+    }
+
+    applyUrlParamsToFilters() {
+        if (!this.urlParams || Object.keys(this.urlParams).length === 0) return;
+
+        // Map URL parameters to filter elements
+        const paramMap = {
+            'from': 'data-start-date',
+            'to': 'data-end-date',
+            'limit': 'data-limit',
+            'period': 'data-period-select',
+            'sensor': 'sensor-type-select',
+            'quality': 'data-min-quality'
+        };
+
+        // Apply each parameter to the corresponding filter
+        Object.entries(paramMap).forEach(([urlParam, elementId]) => {
+            const value = this.urlParams[urlParam];
+            const element = document.getElementById(elementId);
+
+            if (value && element) {
+                element.value = value;
+            }
+        });
+
+        // Clear URL params after applying them
+        this.urlParams = null;
     }
 
     clearDataDisplay() {
@@ -1524,6 +1570,20 @@ class SteamCityPlatform {
 
         // Update search box display
         this.updateExperimentsFilterSearchBox();
+
+        // Build query parameters object for URL
+        const queryParams = {};
+        if (selectedCountry) queryParams.country = selectedCountry;
+        if (selectedCity) queryParams.city = selectedCity;
+        if (selectedSchool) queryParams.school = selectedSchool;
+        if (selectedStatus) queryParams.status = selectedStatus;
+        if (selectedProtocolName) queryParams.protocol = selectedProtocolName;
+        if (selectedStartDate) queryParams.start = selectedStartDate;
+        if (selectedEndDate) queryParams.end = selectedEndDate;
+        if (sensorFilterActive) queryParams.sensors = 'true';
+
+        // Update URL with current filters
+        this.updateUrl('experiments', null, queryParams);
     }
 
     async displayFilteredExperiments(experiments, sensorFilterActive = false) {
@@ -1639,7 +1699,49 @@ class SteamCityPlatform {
 
         // Switch to data view with URL update disabled, then update URL manually with experiment ID
         this.showView('data', false);
-        this.updateUrl('data', experimentId);
+        this.updateUrl('data', experimentId, {}); // Empty query params when coming from experiment detail
+    }
+
+    applyUrlParamsToExperimentsFilters() {
+        if (!this.urlParams || Object.keys(this.urlParams).length === 0) return;
+
+        // Map URL parameters to filter elements
+        const paramMap = {
+            'country': 'country-filter',
+            'city': 'city-filter',
+            'school': 'school-filter',
+            'status': 'status-filter',
+            'protocol': 'experiment-protocol-filter',
+            'sensors': 'sensor-filter-btn'
+        };
+
+        // Apply each parameter to the corresponding filter
+        Object.entries(paramMap).forEach(([urlParam, elementId]) => {
+            const value = this.urlParams[urlParam];
+            const element = document.getElementById(elementId);
+
+            if (value && element) {
+                if (elementId === 'sensor-filter-btn') {
+                    // Handle sensor filter button (boolean)
+                    if (value === 'true') {
+                        element.setAttribute('data-active', 'true');
+                        element.classList.add('active');
+                        element.textContent = '📊 Avec capteurs uniquement ✓';
+                    }
+                } else {
+                    // Handle dropdown filters
+                    element.value = value;
+                }
+            }
+        });
+
+        // Apply filters after setting values
+        setTimeout(() => {
+            this.applyFilters();
+        }, 100);
+
+        // Clear URL params after applying them
+        this.urlParams = null;
     }
 
     // Data Filter Methods
@@ -1722,11 +1824,21 @@ class SteamCityPlatform {
         // Update selectedExperimentForData and URL when experiment changes
         if (experimentId && experimentId !== this.selectedExperimentForData) {
             this.selectedExperimentForData = experimentId;
-            this.updateUrl('data', experimentId);
         } else if (!experimentId && this.selectedExperimentForData) {
             this.selectedExperimentForData = null;
-            this.updateUrl('data');
         }
+
+        // Build query parameters object for URL
+        const queryParams = {};
+        if (sensorTypeId) queryParams.sensor = sensorTypeId;
+        if (period && period !== 'all') queryParams.period = period;
+        if (startDate) queryParams.from = startDate;
+        if (endDate) queryParams.to = endDate;
+        if (minQuality) queryParams.quality = minQuality;
+        if (limit && limit !== '1000') queryParams.limit = limit;
+
+        // Update URL with current filters
+        this.updateUrl('data', this.selectedExperimentForData, queryParams);
 
         // Update search box appearance
         this.updateFilterSearchBox();
@@ -2166,17 +2278,43 @@ class SteamCityPlatform {
         }
     }
 
-    updateUrl(view, experimentId = null) {
+    updateUrl(view, experimentId = null, queryParams = null) {
         let url = '#/' + view;
         if (experimentId) {
             url += '/' + experimentId;
         }
-        history.pushState({ view, experimentId }, '', url);
+        if (queryParams && Object.keys(queryParams).length > 0) {
+            const params = new URLSearchParams();
+            Object.entries(queryParams).forEach(([key, value]) => {
+                if (value !== null && value !== undefined && value !== '') {
+                    params.set(key, value);
+                }
+            });
+            if (params.toString()) {
+                url += '?' + params.toString();
+            }
+        }
+        history.pushState({ view, experimentId, queryParams }, '', url);
+    }
+
+    parseUrlParams(hash) {
+        const [path, queryString] = hash.split('?');
+        const parts = path.split('/').filter(p => p);
+        const params = {};
+
+        if (queryString) {
+            const urlParams = new URLSearchParams(queryString);
+            for (const [key, value] of urlParams) {
+                params[key] = value;
+            }
+        }
+
+        return { parts, params };
     }
 
     handleRoute(updateUrl = true) {
         const hash = window.location.hash.slice(1); // Remove #
-        const parts = hash.split('/').filter(p => p); // Split and remove empty parts
+        const { parts, params } = this.parseUrlParams(hash);
 
         if (parts.length === 0) {
             // Default route
@@ -2190,6 +2328,7 @@ class SteamCityPlatform {
                 this.showExperimentDetail(experimentId, updateUrl);
             } else {
                 // Experiments list route: #/experiments
+                this.urlParams = params; // Store URL params for later use
                 this.showView('experiments', updateUrl);
             }
         } else if (parts[0] === 'data') {
@@ -2197,10 +2336,12 @@ class SteamCityPlatform {
                 // Data view with experiment route: #/data/experiment-id
                 const experimentId = parts[1];
                 this.selectedExperimentForData = experimentId;
+                this.urlParams = params; // Store URL params for later use
                 this.showView('data', updateUrl);
             } else {
                 // Data view route: #/data
                 this.selectedExperimentForData = null;
+                this.urlParams = params; // Store URL params for later use
                 this.showView('data', updateUrl);
             }
         } else {
