@@ -955,6 +955,7 @@ class SteamCityPlatform {
             await this.loadExperimentChart(preselectedExperimentId);
 
             // If there were URL params with filters, apply them now
+            // But skip if we have a pending sensor value that will trigger applyDataFilters() later
             const hasFilters = document.getElementById('data-start-date')?.value ||
                               document.getElementById('data-end-date')?.value ||
                               document.getElementById('sensor-type-select')?.value ||
@@ -962,7 +963,7 @@ class SteamCityPlatform {
                               document.getElementById('data-min-quality')?.value ||
                               (document.getElementById('data-limit')?.value && document.getElementById('data-limit')?.value !== '1000');
 
-            if (hasFilters) {
+            if (hasFilters && !this.pendingSensorTypeValue) {
                 this.applyDataFilters();
             }
         } else {
@@ -990,12 +991,22 @@ class SteamCityPlatform {
             const element = document.getElementById(elementId);
 
             if (value && element) {
-                element.value = value;
+                // For sensor selector, store the value to apply later if it has no options yet
+                if (elementId === 'sensor-type-select' && element.options.length <= 1) {
+                    this.pendingSensorTypeValue = value;
+                } else {
+                    element.value = value;
+                }
             }
         });
 
-        // Clear URL params after applying them
-        this.urlParams = null;
+        // Only clear URL params for non-sensor parameters
+        // Sensor parameter will be cleared after being applied in loadExperimentChart
+        const newUrlParams = {};
+        if (this.urlParams.sensor && this.pendingSensorTypeValue) {
+            newUrlParams.sensor = this.urlParams.sensor;
+        }
+        this.urlParams = Object.keys(newUrlParams).length > 0 ? newUrlParams : null;
     }
 
     clearDataDisplay() {
@@ -1062,6 +1073,18 @@ class SteamCityPlatform {
                     sensorTypeSelect.appendChild(option);
                 }
             });
+
+            // Apply pending sensor type value if it exists
+            if (this.pendingSensorTypeValue) {
+                sensorTypeSelect.value = this.pendingSensorTypeValue;
+                this.pendingSensorTypeValue = null;
+                this.urlParams = null; // Clear URL params after applying the sensor filter
+
+                // Apply filters to update data and URL after sensor value is set
+                setTimeout(() => {
+                    this.applyDataFiltersPreservingUrl();
+                }, 50);
+            }
 
             // Create chart with all measurements
             this.createMainChart(measurementsData.data, sensorTypes);
@@ -1830,12 +1853,60 @@ class SteamCityPlatform {
 
         // Build query parameters object for URL
         const queryParams = {};
-        if (sensorTypeId) queryParams.sensor = sensorTypeId;
+        if (sensorTypeId && sensorTypeId.trim() !== '') queryParams.sensor = sensorTypeId;
         if (period && period !== 'all') queryParams.period = period;
         if (startDate) queryParams.from = startDate;
         if (endDate) queryParams.to = endDate;
-        if (minQuality) queryParams.quality = minQuality;
+        if (minQuality && minQuality.trim() !== '') queryParams.quality = minQuality;
         if (limit && limit !== '1000') queryParams.limit = limit;
+
+        // Update URL with current filters
+        this.updateUrl('data', this.selectedExperimentForData, queryParams);
+
+        // Update search box appearance
+        this.updateFilterSearchBox();
+
+        this.loadFilteredChartData(experimentId, sensorTypeId, period, startDate, endDate, minQuality, limit);
+    }
+
+    applyDataFiltersPreservingUrl() {
+        // Get current URL parameters to preserve them from hash
+        const hash = window.location.hash;
+        const [, queryString] = hash.split('?');
+        const currentParams = new URLSearchParams(queryString || '');
+
+        const experimentId = document.getElementById('experiment-select')?.value;
+        const sensorTypeId = document.getElementById('sensor-type-select')?.value;
+        const period = document.getElementById('data-period-select')?.value || 'all';
+        const startDate = document.getElementById('data-start-date')?.value;
+        const endDate = document.getElementById('data-end-date')?.value;
+        const minQuality = document.getElementById('data-min-quality')?.value;
+
+        // For limit, use the current URL value if it exists, otherwise use DOM value
+        const limit = currentParams.get('limit') ||
+                     document.getElementById('data-limit')?.value || '1000';
+
+        // Update selectedExperimentForData when experiment changes
+        if (experimentId && experimentId !== this.selectedExperimentForData) {
+            this.selectedExperimentForData = experimentId;
+        } else if (!experimentId && this.selectedExperimentForData) {
+            this.selectedExperimentForData = null;
+        }
+
+        // Build query parameters object for URL, preserving existing values where appropriate
+        const queryParams = {};
+        if (sensorTypeId && sensorTypeId.trim() !== '') queryParams.sensor = sensorTypeId;
+        if (period && period !== 'all') queryParams.period = period;
+        if (startDate) queryParams.from = startDate;
+        if (endDate) queryParams.to = endDate;
+        if (minQuality && minQuality.trim() !== '') queryParams.quality = minQuality;
+
+        // Preserve the limit from URL if it existed, otherwise only add if not default
+        if (currentParams.get('limit')) {
+            queryParams.limit = currentParams.get('limit');
+        } else if (limit && limit !== '1000') {
+            queryParams.limit = limit;
+        }
 
         // Update URL with current filters
         this.updateUrl('data', this.selectedExperimentForData, queryParams);
@@ -1890,11 +1961,11 @@ class SteamCityPlatform {
         const endDateInput = document.getElementById('data-end-date');
         const minQualitySelect = document.getElementById('data-min-quality');
 
-        if (experimentSelect?.value) {
+        if (experimentSelect?.value && experimentSelect.value.trim() !== '') {
             activeFilters++;
             filterDescriptions.push(experimentSelect.options[experimentSelect.selectedIndex].text);
         }
-        if (sensorTypeSelect?.value) {
+        if (sensorTypeSelect?.value && sensorTypeSelect.value.trim() !== '') {
             activeFilters++;
             filterDescriptions.push(sensorTypeSelect.options[sensorTypeSelect.selectedIndex].text);
         }
@@ -1910,7 +1981,7 @@ class SteamCityPlatform {
             activeFilters++;
             filterDescriptions.push(`Jusqu'à ${endDateInput.value}`);
         }
-        if (minQualitySelect?.value) {
+        if (minQualitySelect?.value && minQualitySelect.value.trim() !== '') {
             activeFilters++;
             filterDescriptions.push(minQualitySelect.options[minQualitySelect.selectedIndex].text);
         }
