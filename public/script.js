@@ -1461,18 +1461,28 @@ class SteamCityPlatform {
         const countryFilter = document.getElementById('country-filter');
         const cityFilter = document.getElementById('city-filter');
         const schoolFilter = document.getElementById('school-filter');
+        const statusFilter = document.getElementById('status-filter');
+        const protocolFilter = document.getElementById('experiment-protocol-filter');
 
-        if (countryFilter?.value) {
+        if (countryFilter?.value && countryFilter.value.trim() !== '') {
             activeFilters++;
             filterDescriptions.push(countryFilter.options[countryFilter.selectedIndex].text);
         }
-        if (cityFilter?.value) {
+        if (cityFilter?.value && cityFilter.value.trim() !== '') {
             activeFilters++;
             filterDescriptions.push(cityFilter.options[cityFilter.selectedIndex].text);
         }
-        if (schoolFilter?.value) {
+        if (schoolFilter?.value && schoolFilter.value.trim() !== '') {
             activeFilters++;
             filterDescriptions.push(schoolFilter.options[schoolFilter.selectedIndex].text);
+        }
+        if (statusFilter?.value && statusFilter.value.trim() !== '') {
+            activeFilters++;
+            filterDescriptions.push(statusFilter.options[statusFilter.selectedIndex].text);
+        }
+        if (protocolFilter?.value && protocolFilter.value.trim() !== '') {
+            activeFilters++;
+            filterDescriptions.push(protocolFilter.options[protocolFilter.selectedIndex].text);
         }
 
         // Check date filters
@@ -1596,13 +1606,14 @@ class SteamCityPlatform {
 
         // Build query parameters object for URL
         const queryParams = {};
-        if (selectedCountry) queryParams.country = selectedCountry;
-        if (selectedCity) queryParams.city = selectedCity;
-        if (selectedSchool) queryParams.school = selectedSchool;
-        if (selectedStatus) queryParams.status = selectedStatus;
-        if (selectedProtocolName) queryParams.protocol = selectedProtocolName;
+        if (selectedCountry && selectedCountry.trim() !== '') queryParams.country = selectedCountry;
+        if (selectedCity && selectedCity.trim() !== '') queryParams.city = selectedCity;
+        if (selectedSchool && selectedSchool.trim() !== '') queryParams.school = selectedSchool;
+        if (selectedStatus && selectedStatus.trim() !== '') queryParams.status = selectedStatus;
+        if (selectedProtocolName && selectedProtocolName.trim() !== '') queryParams.protocol = selectedProtocolName;
         if (selectedStartDate) queryParams.start = selectedStartDate;
         if (selectedEndDate) queryParams.end = selectedEndDate;
+        if (selectedProtocolCategory && selectedProtocolCategory.trim() !== '') queryParams.cluster = selectedProtocolCategory;
         if (sensorFilterActive) queryParams.sensors = 'true';
 
         // Update URL with current filters
@@ -1758,9 +1769,17 @@ class SteamCityPlatform {
             }
         });
 
+        // Handle cluster filter (special case using activeExperimentFilter)
+        const clusterValue = this.urlParams['cluster'];
+        if (clusterValue && clusterValue.trim() !== '') {
+            this.activeExperimentFilter = clusterValue;
+        }
+
         // Apply filters after setting values
         setTimeout(() => {
             this.applyFilters();
+            // Update legend visual state for cluster filter
+            this.updateExperimentsLegendState();
         }, 100);
 
         // Clear URL params after applying them
