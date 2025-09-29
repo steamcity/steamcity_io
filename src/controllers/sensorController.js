@@ -7,7 +7,7 @@ const getSensorData = async (req, res) => {
     try {
         const data = await Storage.loadSensorData();
         const page = parseInt(req.query.page) || 1;
-        const limit = parseInt(req.query.limit) || 20;
+        const limit = parseInt(req.query.limit) || null;
         const experimentId = req.query.experimentId;
 
         let filteredData = data;
@@ -15,16 +15,20 @@ const getSensorData = async (req, res) => {
             filteredData = data.filter(sensor => sensor.experimentId === experimentId);
         }
 
-        const startIndex = (page - 1) * limit;
-        const endIndex = startIndex + limit;
-        const paginatedData = filteredData.slice(startIndex, endIndex);
+        let paginatedData = filteredData;
+
+        if (limit) {
+            const startIndex = (page - 1) * limit;
+            const endIndex = startIndex + limit;
+            paginatedData = filteredData.slice(startIndex, endIndex);
+        }
 
         res.json({
             success: true,
             count: paginatedData.length,
             total: filteredData.length,
             page: page,
-            totalPages: Math.ceil(filteredData.length / limit),
+            totalPages: limit ? Math.ceil(filteredData.length / limit) : 1,
             data: paginatedData
         });
     } catch (error) {
@@ -39,7 +43,7 @@ const getUniqueSensors = async (req, res) => {
     try {
         const data = await Storage.loadSensorData();
         const page = parseInt(req.query.page) || 1;
-        const limit = parseInt(req.query.limit) || 20;
+        const limit = parseInt(req.query.limit) || null;
         const experimentId = req.query.experimentId;
 
         let filteredData = data;
@@ -71,16 +75,20 @@ const getUniqueSensors = async (req, res) => {
         });
 
         const uniqueSensors = Object.values(sensorGroups);
-        const startIndex = (page - 1) * limit;
-        const endIndex = startIndex + limit;
-        const paginatedSensors = uniqueSensors.slice(startIndex, endIndex);
+        let paginatedSensors = uniqueSensors;
+
+        if (limit) {
+            const startIndex = (page - 1) * limit;
+            const endIndex = startIndex + limit;
+            paginatedSensors = uniqueSensors.slice(startIndex, endIndex);
+        }
 
         res.json({
             success: true,
             count: paginatedSensors.length,
             total: uniqueSensors.length,
             page: page,
-            totalPages: Math.ceil(uniqueSensors.length / limit),
+            totalPages: limit ? Math.ceil(uniqueSensors.length / limit) : 1,
             data: paginatedSensors
         });
     } catch (error) {
@@ -240,7 +248,7 @@ const getSensorTypes = async (req, res) => {
 
 const getSensorMeasurements = async (req, res) => {
     try {
-        const { sensorId, experimentId, from, to, period, limit = 100 } = req.query;
+        const { sensorId, experimentId, from, to, period, limit = null } = req.query;
 
         // Calculate date range based on period
         let fromDate = from ? new Date(from) : null;
@@ -331,7 +339,7 @@ const getSensorMeasurements = async (req, res) => {
         filteredMeasurements.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
         // Limit results
-        const limitedMeasurements = filteredMeasurements.slice(0, parseInt(limit));
+        const limitedMeasurements = limit ? filteredMeasurements.slice(0, parseInt(limit)) : filteredMeasurements;
 
         res.json({
             success: true,

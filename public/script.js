@@ -493,9 +493,13 @@ class SteamCityPlatform {
         document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
         document.getElementById('experiments-tab').classList.add('active');
 
-        // Update URL if requested
+        // Update URL if requested, preserving existing period parameter
         if (updateUrl) {
-            this.updateUrl('experiments', experimentId);
+            const queryParams = {};
+            if (this.urlParams?.period && this.urlParams.period !== '24h') {
+                queryParams.period = this.urlParams.period;
+            }
+            this.updateUrl('experiments', experimentId, queryParams);
         }
 
         this.loadExperimentDetails(experiment);
@@ -665,6 +669,9 @@ class SteamCityPlatform {
             const timeFilterButtons = document.querySelectorAll('.time-filter-btn');
             console.log('Setting up time filter controls, found buttons:', timeFilterButtons.length);
 
+            // Get period from URL or use default
+            const urlPeriod = this.urlParams?.period || '24h';
+
             timeFilterButtons.forEach(button => {
                 // Remove existing listeners to avoid duplicates
                 button.removeEventListener('click', button.timeFilterHandler);
@@ -682,12 +689,38 @@ class SteamCityPlatform {
                     // Get selected period
                     const period = e.target.dataset.period;
 
+                    // Update URL with period parameter
+                    const queryParams = {};
+                    if (period !== '24h') { // Only add period if it's not default
+                        queryParams.period = period;
+                    }
+                    this.updateUrl('experiments', experimentId, queryParams);
+
                     // Update chart with new period
                     await this.createExperimentChart(experimentId, chartsContainer, period);
                 };
 
                 button.addEventListener('click', button.timeFilterHandler);
             });
+
+            // Set active button based on URL parameter
+            const activeButton = document.querySelector(`.time-filter-btn[data-period="${urlPeriod}"]`);
+            if (activeButton) {
+                timeFilterButtons.forEach(btn => btn.classList.remove('active'));
+                activeButton.classList.add('active');
+            } else {
+                // Fallback to default if URL period is invalid
+                const defaultButton = document.querySelector('.time-filter-btn[data-period="24h"]');
+                if (defaultButton) {
+                    timeFilterButtons.forEach(btn => btn.classList.remove('active'));
+                    defaultButton.classList.add('active');
+                }
+            }
+
+            // Update chart with period from URL if it's not the default
+            if (urlPeriod !== '24h') {
+                this.createExperimentChart(experimentId, chartsContainer, urlPeriod);
+            }
 
             // Setup "Vue détaillée" button
             const openDataBtn = document.getElementById('open-in-data-view');
@@ -1101,7 +1134,7 @@ class SteamCityPlatform {
                               document.getElementById('sensor-type-select')?.value ||
                               document.getElementById('data-period-select')?.value !== 'all' ||
                               document.getElementById('data-min-quality')?.value ||
-                              (document.getElementById('data-limit')?.value && document.getElementById('data-limit')?.value !== '1000');
+                              (document.getElementById('data-limit')?.value && document.getElementById('data-limit')?.value.trim() !== '');
 
             if (hasFilters && !this.pendingSensorTypeValue) {
                 this.applyDataFilters();
@@ -2040,7 +2073,7 @@ class SteamCityPlatform {
         const startDate = document.getElementById('data-start-date')?.value;
         const endDate = document.getElementById('data-end-date')?.value;
         const minQuality = document.getElementById('data-min-quality')?.value;
-        const limit = document.getElementById('data-limit')?.value || '1000';
+        const limit = document.getElementById('data-limit')?.value || '';
 
         // Update selectedExperimentForData and URL when experiment changes
         if (experimentId && experimentId !== this.selectedExperimentForData) {
@@ -2056,7 +2089,7 @@ class SteamCityPlatform {
         if (startDate) queryParams.from = startDate;
         if (endDate) queryParams.to = endDate;
         if (minQuality && minQuality.trim() !== '') queryParams.quality = minQuality;
-        if (limit && limit !== '1000') queryParams.limit = limit;
+        if (limit && limit.trim() !== '') queryParams.limit = limit;
 
         // Update URL with current filters
         this.updateUrl('data', this.selectedExperimentForData, queryParams);
@@ -2082,7 +2115,7 @@ class SteamCityPlatform {
 
         // For limit, use the current URL value if it exists, otherwise use DOM value
         const limit = currentParams.get('limit') ||
-                     document.getElementById('data-limit')?.value || '1000';
+                     document.getElementById('data-limit')?.value || '';
 
         // Update selectedExperimentForData when experiment changes
         if (experimentId && experimentId !== this.selectedExperimentForData) {
@@ -2099,10 +2132,10 @@ class SteamCityPlatform {
         if (endDate) queryParams.to = endDate;
         if (minQuality && minQuality.trim() !== '') queryParams.quality = minQuality;
 
-        // Preserve the limit from URL if it existed, otherwise only add if not default
+        // Preserve the limit from URL if it existed, otherwise only add if specified
         if (currentParams.get('limit')) {
             queryParams.limit = currentParams.get('limit');
-        } else if (limit && limit !== '1000') {
+        } else if (limit && limit.trim() !== '') {
             queryParams.limit = limit;
         }
 
@@ -2129,10 +2162,10 @@ class SteamCityPlatform {
             }
         });
 
-        // Reset limit to default
+        // Reset limit to default (no limit)
         const limitSelect = document.getElementById('data-limit');
         if (limitSelect) {
-            limitSelect.value = '1000';
+            limitSelect.value = '';
         }
 
         // Update search box appearance
@@ -2249,7 +2282,7 @@ class SteamCityPlatform {
             if (period && period !== 'all') params.append('period', period);
             if (startDate) params.append('from', startDate);
             if (endDate) params.append('to', endDate);
-            params.append('limit', limit);
+            if (limit && limit.trim() !== '') params.append('limit', limit);
 
             apiUrl += params.toString();
             console.log('Loading filtered data from:', apiUrl);
@@ -2636,6 +2669,7 @@ class SteamCityPlatform {
             if (parts.length > 1) {
                 // Experiment detail route: #/experiments/experiment-id
                 const experimentId = parts[1];
+                this.urlParams = params; // Store URL params for later use
                 this.showExperimentDetail(experimentId, updateUrl);
             } else {
                 // Experiments list route: #/experiments
@@ -2646,6 +2680,7 @@ class SteamCityPlatform {
             if (parts.length > 1) {
                 // Sensor detail route: #/sensors/sensor-id
                 const sensorId = parts[1];
+                this.urlParams = params; // Store URL params for later use
                 this.showSensorDetails(sensorId, updateUrl);
             } else {
                 // Sensors view route: #/sensors
@@ -3183,9 +3218,13 @@ class SteamCityPlatform {
             document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
             document.getElementById('sensors-tab').classList.add('active');
 
-            // Update URL if requested
+            // Update URL if requested, preserving existing period parameter
             if (updateUrl) {
-                this.updateUrl('sensors', sensorId);
+                const queryParams = {};
+                if (this.urlParams?.period && this.urlParams.period !== '24h') {
+                    queryParams.period = this.urlParams.period;
+                }
+                this.updateUrl('sensors', sensorId, queryParams);
             }
 
             // Update title
@@ -3204,14 +3243,52 @@ class SteamCityPlatform {
                 };
             }
 
-            // Setup period selector for chart
-            const periodSelect = document.getElementById('sensor-period-select');
-            if (periodSelect) {
-                periodSelect.onchange = () => {
-                    this.loadSensorChart(sensorId, periodSelect.value);
+            // Setup time filter buttons for chart
+            const timeFilterButtons = document.querySelectorAll('#sensor-detail-view .time-filter-btn');
+            timeFilterButtons.forEach(button => {
+                // Remove existing listeners to avoid duplicates
+                if (button.sensorTimeFilterHandler) {
+                    button.removeEventListener('click', button.sensorTimeFilterHandler);
+                }
+
+                // Create new handler for sensor detail view
+                button.sensorTimeFilterHandler = async (e) => {
+                    const period = e.target.dataset.period;
+
+                    // Update active button
+                    timeFilterButtons.forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+
+                    // Update URL with period parameter
+                    const queryParams = {};
+                    if (period !== '24h') { // Only add period if it's not default
+                        queryParams.period = period;
+                    }
+                    this.updateUrl('sensors', sensorId, queryParams);
+
+                    // Load chart with new period
+                    await this.loadSensorChart(sensorId, period);
                 };
-                // Reset to default value
-                periodSelect.value = '24h';
+
+                // Add event listener
+                button.addEventListener('click', button.sensorTimeFilterHandler);
+            });
+
+            // Get period from URL or use default
+            const urlPeriod = this.urlParams?.period || '24h';
+
+            // Set active button based on URL parameter
+            const activeButton = document.querySelector(`#sensor-detail-view .time-filter-btn[data-period="${urlPeriod}"]`);
+            if (activeButton) {
+                timeFilterButtons.forEach(btn => btn.classList.remove('active'));
+                activeButton.classList.add('active');
+            } else {
+                // Fallback to default if URL period is invalid
+                const defaultButton = document.querySelector('#sensor-detail-view .time-filter-btn[data-period="24h"]');
+                if (defaultButton) {
+                    timeFilterButtons.forEach(btn => btn.classList.remove('active'));
+                    defaultButton.classList.add('active');
+                }
             }
 
             // Get the last measurement for this sensor
@@ -3221,9 +3298,8 @@ class SteamCityPlatform {
             await this.populateSensorInfo(sensor);
             await this.populateSensorDetails(sensor, lastMeasurement);
 
-            // Load chart with default period
-            const defaultPeriod = periodSelect ? periodSelect.value : '24h';
-            await this.loadSensorChart(sensorId, defaultPeriod);
+            // Load chart with period from URL or default
+            await this.loadSensorChart(sensorId, urlPeriod);
 
         } catch (error) {
             console.error('Error showing sensor details:', error);
@@ -3408,6 +3484,7 @@ class SteamCityPlatform {
             let limit = 50;
             if (period === '7d') limit = 168; // ~24 points per day for a week
             if (period === '30d') limit = 360; // ~12 points per day for a month
+            if (period === 'all') limit = 1000; // For all data
 
             const response = await fetch(`/api/sensors/measurements?sensorId=${sensorId}&period=${period}&limit=${limit}`);
             const data = await response.json();

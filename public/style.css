@@ -907,30 +907,97 @@ body {
     font-weight: 600;
 }
 
-.charts-section .charts-header {
+/* Experiment charts section - uniform styling with sensor charts */
+.charts-section {
+    margin-top: 2rem;
+}
+
+.charts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     border: 1px solid rgba(0, 0, 0, 0.1);
-    border-top: none;
-    padding: 0.75rem 1.5rem;
-    margin-bottom: 0;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    color: #333;
 }
 
-#sensor-chart-container {
+.charts-header h3 {
+    color: #2c3e50;
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+#experiment-charts {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-top: none;
     border-radius: 0 0 10px 10px;
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
-    height: 400px;
+    min-height: 400px;
+    position: relative;
 }
+
+/* Charts controls styling */
+.charts-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.time-filter-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.time-filter-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(79, 172, 254, 0.3);
+    background: transparent;
+    color: #4facfe;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.time-filter-btn:hover {
+    background: rgba(79, 172, 254, 0.1);
+    border-color: rgba(79, 172, 254, 0.5);
+}
+
+.time-filter-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.open-data-btn {
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.open-data-btn:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
 
 .detail-item {
     display: flex;
@@ -1134,70 +1201,7 @@ body {
 }
 
 /* Charts section spans full width */
-.charts-section {
-    margin-bottom: 2rem;
-}
 
-.charts-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-.charts-controls {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.time-filter-controls {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.open-data-btn {
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--accent-color);
-    background: var(--accent-color);
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    font-family: inherit;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.open-data-btn:hover {
-    background: #45b368;
-    border-color: #45b368;
-    transform: translateY(-1px);
-}
-
-.time-filter-btn {
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--primary-color);
-    background: white;
-    color: var(--primary-color);
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    font-family: inherit;
-}
-
-.time-filter-btn:hover {
-    background: var(--primary-color);
-    color: white;
-}
-
-.time-filter-btn.active {
-    background: var(--primary-color);
-    color: white;
-}
 
 .sensors-section h3, .charts-section h3, .methodology-section h3, .hypotheses-section h3, .conclusions-section h3 {
     margin-bottom: 1rem;
@@ -2785,16 +2789,15 @@ body {
     background: var(--primary-color);
     color: white;
     border: none;
-    border-radius: var(--border-radius);
+    border-radius: 6px;
     cursor: pointer;
-    font-weight: 500;
+    transition: all 0.2s ease;
     font-size: 0.9rem;
-    transition: var(--transition);
     white-space: nowrap;
 }
 
 .view-details-btn:hover:not(:disabled) {
-    background: var(--secondary-color);
+    background: var(--primary-hover);
     transform: translateY(-1px);
 }
 
