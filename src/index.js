@@ -3,12 +3,33 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
+
+// Production security and performance middleware
+if (process.env.NODE_ENV === 'production') {
+    // Trust proxy for load balancer
+    app.set('trust proxy', 1);
+
+    // Security headers
+    app.use((req, res, next) => {
+        res.setHeader('X-Content-Type-Options', 'nosniff');
+        res.setHeader('X-Frame-Options', 'DENY');
+        res.setHeader('X-XSS-Protection', '1; mode=block');
+        next();
+    });
+}
 
 // Middleware
-app.use(cors());
-app.use(express.json());
-app.use(express.static('public'));
+app.use(cors({
+    origin: process.env.NODE_ENV === 'production'
+        ? ['https://*.ondigitalocean.app', 'https://steamcity.io']
+        : true,
+    credentials: true
+}));
+app.use(express.json({ limit: '10mb' }));
+app.use(express.static('public', {
+    maxAge: process.env.NODE_ENV === 'production' ? '1d' : 0
+}));
 
 // Routes
 app.use('/api/experiments', require('./routes/experiments'));

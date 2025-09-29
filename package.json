@@ -1,11 +1,17 @@
 {
-  "name": "steamcity-sensor-data-api",
+  "name": "steamcity-iot-platform",
   "version": "3.0.0",
   "description": "SteamCity IoT Platform for educational experiments",
   "main": "src/index.js",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
+    "build": "npm install --production",
+    "postinstall": "npm run build",
     "test": "jest",
     "lint": "eslint src/",
     "format": "prettier --write src/"
