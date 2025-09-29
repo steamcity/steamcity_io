@@ -1131,6 +1131,13 @@ class SteamCityPlatform {
         // If a specific experiment is preselected, select it and load its chart
         if (preselectedExperimentId) {
             experimentSelect.value = preselectedExperimentId;
+
+            // Update experiment details button state immediately
+            const viewDetailsBtn = document.getElementById('view-experiment-details');
+            if (viewDetailsBtn) {
+                viewDetailsBtn.disabled = !experimentSelect.value;
+            }
+
             await this.updateDataSensorTypes(); // Update sensor types for selected experiment
             await this.loadExperimentChart(preselectedExperimentId);
 
@@ -1993,6 +2000,11 @@ class SteamCityPlatform {
         const endDateInput = document.getElementById('data-end-date');
         const minQualitySelect = document.getElementById('data-min-quality');
         const limitSelect = document.getElementById('data-limit');
+
+        // Synchronize experiment selector with selectedExperimentForData
+        if (experimentSelect && this.selectedExperimentForData) {
+            experimentSelect.value = this.selectedExperimentForData;
+        }
 
         // Buttons
         const applyFiltersBtn = document.getElementById('data-apply-filters-btn');
@@ -3332,6 +3344,15 @@ class SteamCityPlatform {
             statusText = 'Hors ligne';
         }
 
+        // Get experiment information
+        const experiment = this.experiments.find(exp => exp.id === sensor.experiment_id);
+        const experimentLink = experiment ?
+            `<div class="experiment-link-container">
+                <button class="experiment-link-btn" onclick="steamcity.showExperimentDetail('${experiment.id}')">
+                    🧪 Voir l'expérience: ${experiment.title}
+                </button>
+            </div>` : '';
+
         sensorInfo.innerHTML = `
             <div class="sensor-header-info">
                 <div class="sensor-type">
@@ -3344,6 +3365,7 @@ class SteamCityPlatform {
             <div class="sensor-description">
                 ${sensor.description || 'Aucune description disponible'}
             </div>
+            ${experimentLink}
         `;
     }
 
