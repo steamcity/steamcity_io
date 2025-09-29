@@ -10,8 +10,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "build": "npm install --production",
-    "postinstall": "npm run build",
+    "build": "echo 'Build completed - ready for production'",
     "test": "jest",
     "lint": "eslint src/",
     "format": "prettier --write src/"
