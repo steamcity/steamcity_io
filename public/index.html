@@ -361,7 +361,7 @@
 
                     <!-- Additional filters container (initially hidden) -->
                     <div id="data-additional-filters" class="additional-filters" style="display: none;">
-                        <div class="filters-row">
+                        <div id="data-basic-filters" class="filters-row">
                             <div class="filter-group">
                                 <label for="experiment-select">🔬 Expérience</label>
                                 <select id="experiment-select" class="form-select">
@@ -383,7 +383,8 @@
                                     <option value="30d">30 derniers jours</option>
                                 </select>
                             </div>
-                            <button id="data-clear-filters" class="clear-filters-btn">🗑️ Effacer les filtres</button>
+                            <button id="data-clear-filters-btn" class="clear-filters-btn">🗑️ Effacer les filtres</button>
+                            <button id="data-apply-filters-btn" class="apply-filters-btn">🔍 Appliquer les filtres</button>
                         </div>
 
                         <!-- Advanced time filters (can be expanded later) -->

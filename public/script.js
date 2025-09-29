@@ -79,6 +79,7 @@ class SteamCityPlatform {
         // Navigation events
         document.getElementById('map-tab')?.addEventListener('click', () => this.showView('map'));
         document.getElementById('experiments-tab')?.addEventListener('click', () => this.showView('experiments'));
+        document.getElementById('sensors-tab')?.addEventListener('click', () => this.showView('sensors'));
         document.getElementById('data-tab')?.addEventListener('click', () => this.showView('data'));
 
         // Logout
@@ -162,10 +163,13 @@ class SteamCityPlatform {
                 setTimeout(() => {
                     this.map.invalidateSize();
                     this.centerMapOnVisibleMarkers();
-                }, 100);
+                }, 50);
             }
         } else if (viewName === 'experiments') {
             this.loadExperimentsList();
+        } else if (viewName === 'sensors') {
+            // Load sensors view immediately
+            this.loadSensorsView();
         } else if (viewName === 'data') {
             this.loadChartData(this.selectedExperimentForData);
             this.bindDataFilterEvents();
@@ -802,11 +806,13 @@ class SteamCityPlatform {
                                 // Toggle visibility
                                 meta.hidden = meta.hidden === null ? !chart.data.datasets[index].hidden : !meta.hidden;
 
-                                // Update chart and legend
+                                // Update chart
                                 chart.update();
                             },
                             labels: {
-                                usePointStyle: false,
+                                usePointStyle: true,
+                                pointStyle: 'circle',
+                                padding: 15,
                                 generateLabels: (chart) => {
                                     return chart.data.datasets.map((dataset, index) => {
                                         const meta = chart.getDatasetMeta(index);
@@ -814,10 +820,11 @@ class SteamCityPlatform {
 
                                         return {
                                             text: dataset.label,
-                                            fillStyle: isHidden ? dataset.borderColor + '4D' : dataset.borderColor,
-                                            strokeStyle: isHidden ? dataset.borderColor + '4D' : dataset.borderColor,
-                                            fontColor: isHidden ? '#00000040' : '#000000',
-                                            lineWidth: 0,
+                                            fillStyle: isHidden ? dataset.borderColor + '40' : dataset.borderColor,
+                                            strokeStyle: isHidden ? dataset.borderColor + '40' : dataset.borderColor,
+                                            fontColor: isHidden ? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0.8)',
+                                            lineWidth: isHidden ? 1 : 2,
+                                            pointStyle: 'circle',
                                             hidden: false,
                                             datasetIndex: index
                                         };
@@ -833,6 +840,130 @@ class SteamCityPlatform {
             console.error('Error creating experiment chart:', error);
             container.innerHTML = '<p>Erreur lors du chargement des graphiques</p>';
         }
+    }
+
+    createCustomLegend(chart, containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) {
+            console.error('Container not found:', containerId);
+            return;
+        }
+
+        // Remove existing legend
+        const existingLegend = container.querySelector('.custom-chart-legend');
+        if (existingLegend) {
+            existingLegend.remove();
+        }
+
+        // Create legend container
+        const legendContainer = document.createElement('div');
+        legendContainer.className = 'custom-chart-legend';
+        legendContainer.style.cssText = `
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            margin-top: 0.5rem;
+        `;
+
+        // Create legend items
+        chart.data.datasets.forEach((dataset, index) => {
+            const legendItem = document.createElement('div');
+            legendItem.className = 'custom-legend-item';
+            legendItem.style.cssText = `
+                display: flex;
+                align-items: center;
+                padding: 0.5rem 1rem;
+                border-radius: calc(var(--border-radius) / 2);
+                background: rgba(255, 255, 255, 0.9);
+                backdrop-filter: var(--glass-blur);
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                cursor: pointer;
+                transition: var(--transition);
+                font-size: 0.9rem;
+                font-weight: 500;
+                margin: 0.25rem;
+                user-select: none;
+            `;
+
+            // Color indicator
+            const colorBox = document.createElement('span');
+            colorBox.style.cssText = `
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                background-color: ${dataset.borderColor};
+                margin-right: 0.5rem;
+                flex-shrink: 0;
+            `;
+
+            // Label text
+            const labelText = document.createElement('span');
+            labelText.textContent = dataset.label;
+
+            legendItem.appendChild(colorBox);
+            legendItem.appendChild(labelText);
+
+            // Click handler
+            legendItem.addEventListener('click', () => {
+                const meta = chart.getDatasetMeta(index);
+                meta.hidden = meta.hidden === null ? !chart.data.datasets[index].hidden : !meta.hidden;
+                chart.update();
+                this.updateCustomLegendStyles(chart, legendContainer);
+            });
+
+            // Hover effects
+            legendItem.addEventListener('mouseenter', () => {
+                if (!chart.getDatasetMeta(index).hidden) {
+                    legendItem.style.background = '#f8f9fa';
+                    legendItem.style.transform = 'translateY(-1px)';
+                    legendItem.style.border = '1px solid rgba(102, 126, 234, 0.3)';
+                    legendItem.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+                }
+            });
+
+            legendItem.addEventListener('mouseleave', () => {
+                if (!chart.getDatasetMeta(index).hidden) {
+                    legendItem.style.background = 'rgba(255, 255, 255, 0.9)';
+                    legendItem.style.transform = 'none';
+                    legendItem.style.border = '1px solid rgba(0, 0, 0, 0.1)';
+                    legendItem.style.boxShadow = 'none';
+                }
+            });
+
+            legendContainer.appendChild(legendItem);
+        });
+
+        // Insert legend before the canvas
+        const canvas = container.querySelector('canvas');
+        if (canvas) {
+            container.insertBefore(legendContainer, canvas);
+        } else {
+            container.appendChild(legendContainer);
+        }
+
+        // Initial update of legend styles
+        this.updateCustomLegendStyles(chart, legendContainer);
+    }
+
+    updateCustomLegendStyles(chart, legendContainer) {
+        const legendItems = legendContainer.querySelectorAll('.custom-legend-item');
+        legendItems.forEach((item, index) => {
+            const meta = chart.getDatasetMeta(index);
+            const isHidden = meta && meta.hidden;
+
+            if (isHidden) {
+                item.style.opacity = '0.4';
+                item.style.background = 'rgba(255, 255, 255, 0.5)';
+                item.style.transform = 'none';
+                item.style.boxShadow = 'none';
+            } else {
+                item.style.opacity = '1';
+                item.style.background = 'rgba(255, 255, 255, 0.9)';
+            }
+        });
     }
 
     async loadExperimentsList() {
@@ -937,9 +1068,17 @@ class SteamCityPlatform {
             await this.loadInitialData();
         }
 
-        // Populate experiment select
+        // Get experiments that have sensor data
+        const experimentsWithSensors = await this.getExperimentsWithSensors();
+
+        // Filter experiments to only show those with sensors
+        const filteredExperiments = this.experiments.filter(exp =>
+            experimentsWithSensors.includes(exp.id)
+        );
+
+        // Populate experiment select with only experiments that have sensors
         experimentSelect.innerHTML = '<option value="">Choisir une expérience</option>';
-        this.experiments.forEach(exp => {
+        filteredExperiments.forEach(exp => {
             const option = document.createElement('option');
             option.value = exp.id;
             option.textContent = exp.title;
@@ -952,6 +1091,7 @@ class SteamCityPlatform {
         // If a specific experiment is preselected, select it and load its chart
         if (preselectedExperimentId) {
             experimentSelect.value = preselectedExperimentId;
+            await this.updateDataSensorTypes(); // Update sensor types for selected experiment
             await this.loadExperimentChart(preselectedExperimentId);
 
             // If there were URL params with filters, apply them now
@@ -1182,12 +1322,18 @@ class SteamCityPlatform {
                         text: 'Évolution des données de capteurs'
                     },
                     legend: {
-                        display: true,
-                        position: 'top'
+                        display: false
                     }
                 }
             }
         });
+
+        // Create custom legend for data view
+        setTimeout(() => {
+            if (this.chart && this.chart.data.datasets.length > 0) {
+                this.createCustomLegend(this.chart, 'chart-container');
+            }
+        }, 100);
     }
 
     createExperimentsLegend() {
@@ -1760,7 +1906,7 @@ class SteamCityPlatform {
                     if (value === 'true') {
                         element.setAttribute('data-active', 'true');
                         element.classList.add('active');
-                        element.textContent = '📊 Avec capteurs uniquement ✓';
+                        element.textContent = '📊 Avec capteurs uniquement';
                     }
                 } else {
                     // Handle dropdown filters
@@ -1805,11 +1951,37 @@ class SteamCityPlatform {
         const filterSearchBox = document.getElementById('data-filter-search-box');
 
         // Auto-apply basic filters
-        [experimentSelect, sensorTypeSelect].forEach(filter => {
-            if (filter) {
-                filter.addEventListener('change', () => this.applyDataFilters());
-            }
-        });
+        if (sensorTypeSelect) {
+            sensorTypeSelect.addEventListener('change', () => this.applyDataFilters());
+        }
+
+        // Special handling for experiment select to update sensor types
+        if (experimentSelect) {
+            experimentSelect.addEventListener('change', () => {
+                this.updateDataSensorTypes();
+                this.applyDataFilters();
+            });
+        }
+
+        // View experiment details button
+        const viewDetailsBtn = document.getElementById('view-experiment-details');
+        if (viewDetailsBtn && experimentSelect) {
+            // Enable/disable button based on experiment selection
+            const updateDetailsButton = () => {
+                viewDetailsBtn.disabled = !experimentSelect.value;
+            };
+
+            experimentSelect.addEventListener('change', updateDetailsButton);
+            updateDetailsButton(); // Initial state
+
+            // Handle button click
+            viewDetailsBtn.addEventListener('click', () => {
+                const experimentId = experimentSelect.value;
+                if (experimentId) {
+                    this.showExperimentDetail(experimentId);
+                }
+            });
+        }
 
         // Manual apply for advanced filters
         if (applyFiltersBtn) {
@@ -1823,12 +1995,10 @@ class SteamCityPlatform {
         // Filter search box toggle
         if (filterSearchBox) {
             filterSearchBox.addEventListener('click', () => {
-                const basicFilters = document.getElementById('data-basic-filters');
                 const additionalFilters = document.getElementById('data-additional-filters');
 
-                if (basicFilters && additionalFilters) {
+                if (additionalFilters) {
                     const isVisible = additionalFilters.style.display !== 'none';
-                    basicFilters.style.display = isVisible ? 'none' : 'block';
                     additionalFilters.style.display = isVisible ? 'none' : 'block';
 
                     // Update search box appearance
@@ -1961,6 +2131,48 @@ class SteamCityPlatform {
 
         // Apply filters (will show all data)
         this.applyDataFilters();
+    }
+
+    async updateDataSensorTypes() {
+        const experimentSelect = document.getElementById('experiment-select');
+        const sensorTypeSelect = document.getElementById('sensor-type-select');
+
+        if (!experimentSelect || !sensorTypeSelect) return;
+
+        const selectedExperiment = experimentSelect.value;
+
+        // Clear existing sensor type options except the first one (default option)
+        while (sensorTypeSelect.children.length > 1) {
+            sensorTypeSelect.removeChild(sensorTypeSelect.lastChild);
+        }
+
+        if (!selectedExperiment) return;
+
+        try {
+            // Fetch sensor data for this experiment to get available sensor types
+            const response = await fetch(`/api/sensors?experimentId=${selectedExperiment}&limit=1000`);
+            const data = await response.json();
+
+            if (data.success && data.data) {
+                // Get unique sensor types from measurements
+                const uniqueTypes = [...new Set(data.data.map(measurement => {
+                    // Try to get sensor type from measurement data
+                    return measurement.sensorType || measurement.sensor_type_id;
+                }).filter(Boolean))];
+
+                // If we have sensor types, populate the select
+                if (uniqueTypes.length > 0) {
+                    uniqueTypes.sort().forEach(type => {
+                        const option = document.createElement('option');
+                        option.value = type;
+                        option.textContent = type;
+                        sensorTypeSelect.appendChild(option);
+                    });
+                }
+            }
+        } catch (error) {
+            console.error('Error updating sensor types:', error);
+        }
     }
 
     updateFilterSearchBox() {
@@ -2421,6 +2633,10 @@ class SteamCityPlatform {
                 this.urlParams = params; // Store URL params for later use
                 this.showView('experiments', updateUrl);
             }
+        } else if (parts[0] === 'sensors') {
+            // Sensors view route: #/sensors
+            this.urlParams = params; // Store URL params for later use
+            this.showView('sensors', updateUrl);
         } else if (parts[0] === 'data') {
             if (parts.length > 1) {
                 // Data view with experiment route: #/data/experiment-id
@@ -2437,6 +2653,548 @@ class SteamCityPlatform {
         } else {
             // Invalid route, redirect to map
             this.showView('map', updateUrl);
+        }
+    }
+
+    // Sensors View Methods
+    async loadSensorsView() {
+        await this.populateSensorsFilters();
+        this.bindSensorsFilterEvents();
+        this.applySensorsUrlParams(); // Apply URL parameters if any
+        await this.applySensorsFilters(); // Load sensors with applied filters
+    }
+
+    applySensorsUrlParams() {
+        if (!this.urlParams || Object.keys(this.urlParams).length === 0) return;
+
+        // Map URL parameters to filter elements
+        const paramMap = {
+            'experiment': 'sensors-experiment-filter',
+            'status': 'sensors-status-filter',
+            'type': 'sensors-type-filter'
+        };
+
+        // Apply each URL parameter to corresponding filter
+        Object.entries(this.urlParams).forEach(([key, value]) => {
+            const elementId = paramMap[key];
+            if (elementId) {
+                const element = document.getElementById(elementId);
+                if (element && value) {
+                    element.value = decodeURIComponent(value);
+                }
+            }
+        });
+
+        // Update filter count and show advanced filters if needed
+        this.updateSensorsFilterCount();
+        const hasActiveFilters = Object.keys(this.urlParams).some(key => paramMap[key] && this.urlParams[key]);
+        if (hasActiveFilters) {
+            const additionalFilters = document.getElementById('sensors-additional-filters');
+            const filterInput = document.getElementById('sensors-filter-input');
+            if (additionalFilters && filterInput) {
+                additionalFilters.style.display = 'block';
+                filterInput.placeholder = 'Filtres avancés activés - ajustez les options ci-dessous';
+            }
+        }
+    }
+
+    async populateSensorsFilters() {
+        // Populate experiments filter
+        const experimentSelect = document.getElementById('sensors-experiment-filter');
+        if (experimentSelect) {
+            // Clear existing options except the first one
+            while (experimentSelect.children.length > 1) {
+                experimentSelect.removeChild(experimentSelect.lastChild);
+            }
+
+            // Populate with experiments
+            this.experiments.forEach(experiment => {
+                const option = document.createElement('option');
+                option.value = experiment.id;
+                option.textContent = experiment.title;
+                experimentSelect.appendChild(option);
+            });
+        }
+
+        // Populate sensor types filter
+        await this.populateSensorTypesFilter();
+    }
+
+    async populateSensorTypesFilter() {
+        try {
+            const response = await fetch('/api/sensors/devices');
+            const data = await response.json();
+
+            if (data.success) {
+                const typeSelect = document.getElementById('sensors-type-filter');
+                if (typeSelect) {
+                    // Clear existing options except the first one
+                    while (typeSelect.children.length > 1) {
+                        typeSelect.removeChild(typeSelect.lastChild);
+                    }
+
+                    // Get unique sensor types
+                    const uniqueTypes = [...new Set(data.data.map(sensor => sensor.type))];
+
+                    uniqueTypes.forEach(type => {
+                        const option = document.createElement('option');
+                        option.value = type;
+                        option.textContent = type;
+                        typeSelect.appendChild(option);
+                    });
+                }
+            }
+        } catch (error) {
+            console.error('Error populating sensor types filter:', error);
+        }
+    }
+
+    bindSensorsFilterEvents() {
+        // Filter elements
+        const experimentFilter = document.getElementById('sensors-experiment-filter');
+        const statusFilter = document.getElementById('sensors-status-filter');
+        const typeFilter = document.getElementById('sensors-type-filter');
+
+        // Filter controls
+        const clearFiltersBtn = document.getElementById('sensors-clear-filters');
+        const filterSearchBox = document.getElementById('sensors-filter-search-box');
+
+        // Modal controls
+        const modalClose = document.querySelector('.sensor-modal-close');
+        const modal = document.getElementById('sensor-detail-modal');
+
+        // Auto-apply filters when changed
+        [experimentFilter, statusFilter, typeFilter].forEach(filter => {
+            if (filter) {
+                filter.addEventListener('change', () => this.applySensorsFilters());
+            }
+        });
+
+        // Clear filters button
+        if (clearFiltersBtn) {
+            clearFiltersBtn.addEventListener('click', () => this.clearSensorsFilters());
+        }
+
+        // Filter search box click to show/hide advanced filters
+        if (filterSearchBox) {
+            filterSearchBox.addEventListener('click', () => this.toggleSensorsAdvancedFilters());
+        }
+
+        // Modal close events
+        if (modalClose) {
+            modalClose.addEventListener('click', () => {
+                this.closeSensorModal();
+            });
+        }
+
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    this.closeSensorModal();
+                }
+            });
+        }
+    }
+
+    toggleSensorsAdvancedFilters() {
+        const additionalFilters = document.getElementById('sensors-additional-filters');
+        const filterInput = document.getElementById('sensors-filter-input');
+
+        if (additionalFilters && filterInput) {
+            const isHidden = additionalFilters.style.display === 'none';
+            additionalFilters.style.display = isHidden ? 'block' : 'none';
+            filterInput.placeholder = isHidden
+                ? 'Filtres avancés activés - ajustez les options ci-dessous'
+                : 'Rechercher ou filtrer les capteurs...';
+
+            this.updateSensorsFilterCount();
+        }
+    }
+
+    updateSensorsFilterCount() {
+        const filterCount = document.getElementById('sensors-filter-count');
+        const experimentFilter = document.getElementById('sensors-experiment-filter');
+        const statusFilter = document.getElementById('sensors-status-filter');
+        const typeFilter = document.getElementById('sensors-type-filter');
+
+        let activeFilters = 0;
+        if (experimentFilter?.value) activeFilters++;
+        if (statusFilter?.value) activeFilters++;
+        if (typeFilter?.value) activeFilters++;
+
+        if (filterCount) {
+            if (activeFilters > 0) {
+                filterCount.textContent = `${activeFilters} filtre${activeFilters > 1 ? 's' : ''} actif${activeFilters > 1 ? 's' : ''}`;
+                filterCount.style.display = 'inline-block';
+            } else {
+                filterCount.style.display = 'none';
+            }
+        }
+    }
+
+    clearSensorsFilters() {
+        const experimentFilter = document.getElementById('sensors-experiment-filter');
+        const statusFilter = document.getElementById('sensors-status-filter');
+        const typeFilter = document.getElementById('sensors-type-filter');
+
+        if (experimentFilter) experimentFilter.value = '';
+        if (statusFilter) statusFilter.value = '';
+        if (typeFilter) typeFilter.value = '';
+
+        this.updateSensorsFilterCount();
+        this.applySensorsFilters();
+    }
+
+    async applySensorsFilters() {
+        const container = document.getElementById('sensors-container');
+
+        if (!container) return;
+
+        try {
+            // Show loading
+            container.innerHTML = '<div class="loading-message">Chargement des capteurs...</div>';
+
+            // Get filter values
+            const experimentFilter = document.getElementById('sensors-experiment-filter');
+            const statusFilter = document.getElementById('sensors-status-filter');
+            const typeFilter = document.getElementById('sensors-type-filter');
+
+            const experimentId = experimentFilter?.value || '';
+            const statusValue = statusFilter?.value || '';
+            const typeValue = typeFilter?.value || '';
+
+            // Build query parameters for API
+            const params = new URLSearchParams();
+            if (experimentId) params.append('experimentId', experimentId);
+
+            // Get sensors from API
+            const response = await fetch(`/api/sensors/devices?${params}`);
+            const sensorsData = await response.json();
+
+            if (!sensorsData.success || !sensorsData.data) {
+                this.showNoSensorsMessage('Erreur lors du chargement des capteurs.');
+                return;
+            }
+
+            // Apply client-side filters
+            let filteredSensors = sensorsData.data;
+
+            // Filter by status
+            if (statusValue) {
+                filteredSensors = filteredSensors.filter(sensor => sensor.status === statusValue);
+            }
+
+            // Filter by type
+            if (typeValue) {
+                filteredSensors = filteredSensors.filter(sensor => sensor.type === typeValue);
+            }
+
+            // Update filter count
+            this.updateSensorsFilterCount();
+
+            // Display results
+            if (filteredSensors.length === 0) {
+                this.showNoSensorsMessage('Aucun capteur ne correspond aux critères de filtrage.');
+                return;
+            }
+
+            // Display sensors
+            this.displaySensors(filteredSensors);
+
+        } catch (error) {
+            console.error('Error loading sensors:', error);
+            this.showNoSensorsMessage('Impossible de charger les capteurs. Veuillez réessayer.');
+        }
+    }
+
+    showNoSensorsMessage(message) {
+        const container = document.getElementById('sensors-container');
+        if (container) {
+            container.innerHTML = `
+                <div class="no-sensors-message">
+                    <div class="icon">📡</div>
+                    <h3>Aucun capteur trouvé</h3>
+                    <p>${message}</p>
+                </div>
+            `;
+        }
+    }
+
+    displaySensors(sensors) {
+        const container = document.getElementById('sensors-container');
+        if (!container) return;
+
+        container.innerHTML = '';
+
+        sensors.forEach(sensor => {
+            const sensorCard = this.createSensorDeviceCard(sensor);
+            container.appendChild(sensorCard);
+        });
+    }
+
+    createSensorDeviceCard(sensor) {
+        const card = document.createElement('div');
+
+        // Determine status classes based on sensor status
+        let statusClass = 'active';
+        let statusText = 'Actif';
+        let cardStatusClass = 'active';
+
+        if (sensor.status === 'maintenance') {
+            statusClass = 'maintenance';
+            statusText = 'Maintenance';
+            cardStatusClass = 'maintenance';
+        } else if (sensor.status === 'offline') {
+            statusClass = 'offline';
+            statusText = 'Hors ligne';
+            cardStatusClass = 'offline';
+        }
+
+        card.className = `sensor-device-card ${cardStatusClass}`;
+        card.dataset.sensorId = sensor.id;
+
+        // Get current value if available
+        const currentValue = sensor.current_value || 'N/A';
+        const unit = sensor.unit || '';
+
+        card.innerHTML = `
+            <div class="sensor-card-header">
+                <div>
+                    <h4 class="sensor-card-title">${sensor.name || 'Capteur ' + sensor.id}</h4>
+                    <p class="sensor-card-type">${sensor.type || 'Type inconnu'}</p>
+                </div>
+                <span class="sensor-card-status ${statusClass}">${statusText}</span>
+            </div>
+            <div class="sensor-card-body">
+                <div class="sensor-card-info">
+                    <strong>Valeur actuelle:</strong>
+                </div>
+                <div class="sensor-current-value">
+                    ${currentValue} ${unit}
+                </div>
+                <div class="sensor-card-location">
+                    📍 ${sensor.location || 'Emplacement non spécifié'}
+                </div>
+            </div>
+            <div class="sensor-card-actions">
+                <button class="sensor-action-btn" onclick="steamcity.showSensorDetails('${sensor.id}')">
+                    🔍 Détails
+                </button>
+                <button class="sensor-action-btn secondary" onclick="steamcity.openDataView('${sensor.experiment_id}')">
+                    📊 Données
+                </button>
+            </div>
+        `;
+
+        return card;
+    }
+
+    openDataView(experimentId) {
+        if (experimentId) {
+            this.selectedExperimentForData = experimentId;
+            this.showView('data');
+        }
+    }
+
+    getSensorIcon(typeId) {
+        const iconMap = {
+            'temperature': '🌡️',
+            'humidity': '💧',
+            'co2': '💨',
+            'noise': '🔊',
+            'pressure': '🔘',
+            'light': '💡',
+            'motion': '🚶',
+            'default': '📡'
+        };
+        return iconMap[typeId] || iconMap.default;
+    }
+
+    getSensorTypeName(typeId) {
+        const nameMap = {
+            'temperature': 'Température',
+            'humidity': 'Humidité',
+            'co2': 'CO2',
+            'noise': 'Niveau sonore',
+            'pressure': 'Pression',
+            'light': 'Luminosité',
+            'motion': 'Mouvement'
+        };
+        return nameMap[typeId] || typeId;
+    }
+
+    formatLastMeasurement(timestamp) {
+        if (!timestamp) return 'Jamais';
+
+        const date = new Date(timestamp);
+        const now = new Date();
+        const diffMs = now - date;
+        const diffMinutes = Math.floor(diffMs / 60000);
+
+        if (diffMinutes < 1) return 'Maintenant';
+        if (diffMinutes < 60) return `Il y a ${diffMinutes} min`;
+
+        const diffHours = Math.floor(diffMinutes / 60);
+        if (diffHours < 24) return `Il y a ${diffHours} h`;
+
+        const diffDays = Math.floor(diffHours / 24);
+        return `Il y a ${diffDays} jour${diffDays > 1 ? 's' : ''}`;
+    }
+
+    async viewSensorData(sensorId) {
+        // Navigate to data view with this sensor's experiment
+        const sensor = await this.getSensorById(sensorId);
+        if (sensor && sensor.experiment_id) {
+            this.selectedExperimentForData = sensor.experiment_id;
+            this.showView('data');
+        }
+    }
+
+    async showSensorDetails(sensorId) {
+        try {
+            const sensor = await this.getSensorById(sensorId);
+            if (!sensor) return;
+
+            const modal = document.getElementById('sensor-detail-modal');
+            const title = document.getElementById('sensor-modal-title');
+            const content = document.getElementById('sensor-details-content');
+
+            title.textContent = `${this.getSensorIcon(sensor.type_id)} ${sensor.name}`;
+
+            content.innerHTML = `
+                <div class="sensor-detail-grid">
+                    <div class="detail-group">
+                        <h4>Informations générales</h4>
+                        <div class="detail-item">
+                            <span class="detail-label">Type:</span>
+                            <span class="detail-value">${this.getSensorTypeName(sensor.type_id)}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Statut:</span>
+                            <span class="detail-value ${sensor.status === 'active' ? 'status-active' : 'status-inactive'}">
+                                ${sensor.status === 'active' ? '🟢 Actif' : '🔴 Inactif'}
+                            </span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Emplacement:</span>
+                            <span class="detail-value">${sensor.location?.name || 'Non spécifié'}</span>
+                        </div>
+                    </div>
+                    <div class="detail-group">
+                        <h4>État technique</h4>
+                        <div class="detail-item">
+                            <span class="detail-label">Batterie:</span>
+                            <span class="detail-value">${sensor.battery_level || 'N/A'}%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Signal:</span>
+                            <span class="detail-value">${sensor.signal_strength || 'N/A'} dBm</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Dernière mesure:</span>
+                            <span class="detail-value">${this.formatLastMeasurement(sensor.last_measurement_time)}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            modal.style.display = 'block';
+
+            // Load recent measurements chart
+            this.loadSensorChart(sensorId);
+
+        } catch (error) {
+            console.error('Error showing sensor details:', error);
+        }
+    }
+
+    async getSensorById(sensorId) {
+        try {
+            // This would need to be implemented in your API
+            const response = await fetch(`/api/sensors/devices/${sensorId}`);
+            if (response.ok) {
+                const data = await response.json();
+                return data.success ? data.data : null;
+            }
+        } catch (error) {
+            console.error('Error fetching sensor:', error);
+        }
+        return null;
+    }
+
+    async loadSensorChart(sensorId) {
+        try {
+            const response = await fetch(`/api/sensors/measurements?sensorId=${sensorId}&period=24h&limit=50`);
+            const data = await response.json();
+
+            if (data.success && data.data.length > 0) {
+                this.createSensorDetailChart(data.data);
+            }
+        } catch (error) {
+            console.error('Error loading sensor chart:', error);
+        }
+    }
+
+    createSensorDetailChart(measurements) {
+        const canvas = document.getElementById('sensor-detail-chart');
+        if (!canvas) return;
+
+        // Destroy existing chart
+        if (this.sensorDetailChart) {
+            this.sensorDetailChart.destroy();
+        }
+
+        const ctx = canvas.getContext('2d');
+        const chartData = measurements.map(m => ({
+            x: new Date(m.timestamp),
+            y: m.value
+        })).sort((a, b) => a.x - b.x);
+
+        this.sensorDetailChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: 'Valeurs',
+                    data: chartData,
+                    borderColor: '#4a90e2',
+                    backgroundColor: 'rgba(74, 144, 226, 0.1)',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            displayFormats: {
+                                hour: 'HH:mm'
+                            }
+                        }
+                    },
+                    y: {
+                        beginAtZero: false
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    }
+
+    closeSensorModal() {
+        const modal = document.getElementById('sensor-detail-modal');
+        if (modal) {
+            modal.style.display = 'none';
+        }
+
+        // Destroy chart when closing modal
+        if (this.sensorDetailChart) {
+            this.sensorDetailChart.destroy();
+            this.sensorDetailChart = null;
         }
     }
 }
