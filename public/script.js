@@ -2961,7 +2961,7 @@ class SteamCityPlatform {
             <div class="sensor-card-header">
                 <div>
                     <h4 class="sensor-card-title">${sensor.name || 'Capteur ' + sensor.id}</h4>
-                    <p class="sensor-card-type">${sensor.type || 'Type inconnu'}</p>
+                    <p class="sensor-card-type">${this.formatSensorType(sensor.sensor_type_id) || 'Type inconnu'}</p>
                 </div>
                 <span class="sensor-card-status ${statusClass}">${statusText}</span>
             </div>
@@ -2973,7 +2973,7 @@ class SteamCityPlatform {
                     ${currentValue} ${unit}
                 </div>
                 <div class="sensor-card-location">
-                    📍 ${sensor.location || 'Emplacement non spécifié'}
+                    📍 ${this.formatSensorLocation(sensor.location) || 'Emplacement non spécifié'}
                 </div>
             </div>
             <div class="sensor-card-actions">
@@ -3039,6 +3039,52 @@ class SteamCityPlatform {
 
         const diffDays = Math.floor(diffHours / 24);
         return `Il y a ${diffDays} jour${diffDays > 1 ? 's' : ''}`;
+    }
+
+    formatSensorType(sensorTypeId) {
+        if (!sensorTypeId) return 'Type inconnu';
+
+        const typeMap = {
+            'temperature': 'Capteur de température',
+            'humidity': 'Capteur d\'humidité',
+            'co2': 'Capteur CO2',
+            'noise': 'Sonomètre',
+            'pm25': 'Capteur PM2.5',
+            'pm10': 'Capteur PM10',
+            'light': 'Capteur de luminosité',
+            'pressure': 'Capteur de pression atmosphérique',
+            'uv': 'Capteur UV',
+            'motion': 'Détecteur de mouvement',
+            'door': 'Capteur d\'ouverture'
+        };
+
+        return typeMap[sensorTypeId] || `Capteur ${sensorTypeId}`;
+    }
+
+    formatSensorLocation(location) {
+        if (!location) return 'Emplacement non spécifié';
+
+        if (typeof location === 'string') return location;
+
+        if (typeof location === 'object') {
+            if (location.building && location.room) {
+                return `${location.building}, ${location.room}`;
+            }
+
+            if (location.building) {
+                return location.building;
+            }
+
+            if (location.description) {
+                return location.description;
+            }
+
+            if (location.latitude && location.longitude) {
+                return `${location.latitude.toFixed(4)}, ${location.longitude.toFixed(4)}`;
+            }
+        }
+
+        return 'Emplacement non spécifié';
     }
 
     async viewSensorData(sensorId) {
