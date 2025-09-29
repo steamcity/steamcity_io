@@ -589,7 +589,7 @@ class SteamCityPlatform {
                         const latestMeasurement = measurementData.data && measurementData.data.length > 0 ? measurementData.data[0] : null;
 
                         const sensorCard = document.createElement('div');
-                        sensorCard.className = 'sensor-card';
+                        sensorCard.className = 'sensor-card clickable';
 
                         const status = device.status === 'online' ? 'en ligne' : device.status === 'offline' ? 'hors ligne' : device.status;
                         const statusClass = device.status === 'online' ? 'status-online' : device.status === 'offline' ? 'status-offline' : 'status-warning';
@@ -610,7 +610,14 @@ class SteamCityPlatform {
                                     'N/A'
                                 }</small>
                             </div>
+                            <div class="click-hint">🔍 Cliquez pour voir les détails</div>
                         `;
+
+                        // Add click handler to navigate to sensor details
+                        sensorCard.addEventListener('click', () => {
+                            this.showSensorDetails(device.id);
+                        });
+
                         sensorsContainer.appendChild(sensorCard);
                     } catch (error) {
                         console.warn('Error loading measurements for sensor:', device.id, error);

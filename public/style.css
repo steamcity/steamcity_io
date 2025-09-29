@@ -1273,6 +1273,35 @@ body {
     padding: 1rem;
     border-radius: 8px;
     border-left: 4px solid #667eea;
+    position: relative;
+}
+
+.sensor-card.clickable {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.sensor-card.clickable:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    border-color: rgba(102, 126, 234, 0.4);
+}
+
+.sensor-card .click-hint {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    font-size: 0.7rem;
+    color: #667eea;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.sensor-card.clickable:hover .click-hint {
+    opacity: 1;
 }
 
 .sensor-card h4 {
