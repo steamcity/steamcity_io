@@ -189,6 +189,35 @@ const getSensorDevices = async (req, res) => {
     }
 };
 
+const getSensorDevice = async (req, res) => {
+    try {
+        const sensorId = req.params.id;
+        const dataPath = path.join(__dirname, '../../data/sensors-devices.json');
+        const rawData = await fs.readFile(dataPath, 'utf8');
+        const sensors = JSON.parse(rawData);
+
+        const sensor = sensors.find(s => s.id === sensorId);
+
+        if (!sensor) {
+            return res.status(404).json({
+                success: false,
+                error: "Sensor device not found"
+            });
+        }
+
+        res.json({
+            success: true,
+            data: sensor
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: "Failed to retrieve sensor device",
+            message: error.message
+        });
+    }
+};
+
 const getSensorTypes = async (req, res) => {
     try {
         const dataPath = path.join(__dirname, '../../data/sensor-types.json');
@@ -325,6 +354,7 @@ module.exports = {
     addSensorData,
     uploadCSV,
     getSensorDevices,
+    getSensorDevice,
     getSensorTypes,
     getSensorMeasurements
 };

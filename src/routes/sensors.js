@@ -6,6 +6,7 @@ const {
     addSensorData,
     uploadCSV,
     getSensorDevices,
+    getSensorDevice,
     getSensorTypes,
     getSensorMeasurements
 } = require("../controllers/sensorController");
@@ -19,6 +20,7 @@ router.post("/upload-csv", upload.single("csvFile"), uploadCSV);
 
 // New modern sensor API routes
 router.get("/devices", getSensorDevices);
+router.get("/devices/:id", getSensorDevice);
 router.get("/types", getSensorTypes);
 router.get("/measurements", getSensorMeasurements);
 

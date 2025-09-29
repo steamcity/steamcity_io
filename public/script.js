@@ -1882,6 +1882,15 @@ class SteamCityPlatform {
         this.updateUrl('data', experimentId, {}); // Empty query params when coming from experiment detail
     }
 
+    openSensorInDataView(experimentId) {
+        // Store the experiment ID for when we switch to data view
+        this.selectedExperimentForData = experimentId;
+
+        // Switch to data view with URL update disabled, then update URL manually with experiment ID
+        this.showView('data', false);
+        this.updateUrl('data', experimentId, {}); // Empty query params when coming from sensor detail
+    }
+
     applyUrlParamsToExperimentsFilters() {
         if (!this.urlParams || Object.keys(this.urlParams).length === 0) return;
 
@@ -2634,9 +2643,15 @@ class SteamCityPlatform {
                 this.showView('experiments', updateUrl);
             }
         } else if (parts[0] === 'sensors') {
-            // Sensors view route: #/sensors
-            this.urlParams = params; // Store URL params for later use
-            this.showView('sensors', updateUrl);
+            if (parts.length > 1) {
+                // Sensor detail route: #/sensors/sensor-id
+                const sensorId = parts[1];
+                this.showSensorDetails(sensorId, updateUrl);
+            } else {
+                // Sensors view route: #/sensors
+                this.urlParams = params; // Store URL params for later use
+                this.showView('sensors', updateUrl);
+            }
         } else if (parts[0] === 'data') {
             if (parts.length > 1) {
                 // Data view with experiment route: #/data/experiment-id
@@ -2920,13 +2935,24 @@ class SteamCityPlatform {
         }
     }
 
-    displaySensors(sensors) {
+    async displaySensors(sensors) {
         const container = document.getElementById('sensors-container');
         if (!container) return;
 
         container.innerHTML = '';
 
-        sensors.forEach(sensor => {
+        // Enrich sensors with their latest measurements
+        const sensorsWithMeasurements = await Promise.all(
+            sensors.map(async sensor => {
+                const lastMeasurement = await this.getLastSensorMeasurement(sensor.id);
+                return {
+                    ...sensor,
+                    lastMeasurement
+                };
+            })
+        );
+
+        sensorsWithMeasurements.forEach(sensor => {
             const sensorCard = this.createSensorDeviceCard(sensor);
             container.appendChild(sensorCard);
         });
@@ -2953,9 +2979,16 @@ class SteamCityPlatform {
         card.className = `sensor-device-card ${cardStatusClass}`;
         card.dataset.sensorId = sensor.id;
 
-        // Get current value if available
-        const currentValue = sensor.current_value || 'N/A';
-        const unit = sensor.unit || '';
+        // Get current value and unit from last measurement
+        let currentValue = 'N/A';
+        let unit = '';
+        let lastUpdate = '';
+
+        if (sensor.lastMeasurement) {
+            currentValue = sensor.lastMeasurement.value;
+            unit = this.getSensorUnit(sensor.sensor_type_id);
+            lastUpdate = this.formatLastMeasurement(sensor.lastMeasurement.timestamp);
+        }
 
         card.innerHTML = `
             <div class="sensor-card-header">
@@ -2972,6 +3005,7 @@ class SteamCityPlatform {
                 <div class="sensor-current-value">
                     ${currentValue} ${unit}
                 </div>
+                ${lastUpdate ? `<div class="sensor-last-update">🕒 ${lastUpdate}</div>` : ''}
                 <div class="sensor-card-location">
                     📍 ${this.formatSensorLocation(sensor.location) || 'Emplacement non spécifié'}
                 </div>
@@ -3061,6 +3095,26 @@ class SteamCityPlatform {
         return typeMap[sensorTypeId] || `Capteur ${sensorTypeId}`;
     }
 
+    getSensorUnit(sensorTypeId) {
+        if (!sensorTypeId) return '';
+
+        const unitMap = {
+            'temperature': '°C',
+            'humidity': '%',
+            'co2': 'ppm',
+            'noise': 'dB',
+            'pm25': 'μg/m³',
+            'pm10': 'μg/m³',
+            'light': 'lx',
+            'pressure': 'hPa',
+            'uv': 'UV',
+            'motion': '',
+            'door': ''
+        };
+
+        return unitMap[sensorTypeId] || '';
+    }
+
     formatSensorLocation(location) {
         if (!location) return 'Emplacement non spécifié';
 
@@ -3087,6 +3141,20 @@ class SteamCityPlatform {
         return 'Emplacement non spécifié';
     }
 
+    async getLastSensorMeasurement(sensorId) {
+        try {
+            const response = await fetch(`/api/sensors/measurements?sensorId=${sensorId}&limit=1`);
+            const data = await response.json();
+
+            if (data.success && data.data && data.data.length > 0) {
+                return data.data[0];
+            }
+        } catch (error) {
+            console.error('Error fetching last measurement for sensor', sensorId, error);
+        }
+        return null;
+    }
+
     async viewSensorData(sensorId) {
         // Navigate to data view with this sensor's experiment
         const sensor = await this.getSensorById(sensorId);
@@ -3096,61 +3164,227 @@ class SteamCityPlatform {
         }
     }
 
-    async showSensorDetails(sensorId) {
+    async showSensorDetails(sensorId, updateUrl = true) {
         try {
             const sensor = await this.getSensorById(sensorId);
-            if (!sensor) return;
+            if (!sensor) {
+                console.error('Sensor not found:', sensorId);
+                return;
+            }
 
-            const modal = document.getElementById('sensor-detail-modal');
-            const title = document.getElementById('sensor-modal-title');
-            const content = document.getElementById('sensor-details-content');
+            // Set current sensor
+            this.currentSensor = sensor;
 
-            title.textContent = `${this.getSensorIcon(sensor.type_id)} ${sensor.name}`;
+            // Switch to sensor detail view
+            document.querySelectorAll('.view').forEach(view => view.classList.remove('active'));
+            document.getElementById('sensor-detail-view').classList.add('active');
 
-            content.innerHTML = `
-                <div class="sensor-detail-grid">
-                    <div class="detail-group">
-                        <h4>Informations générales</h4>
-                        <div class="detail-item">
-                            <span class="detail-label">Type:</span>
-                            <span class="detail-value">${this.getSensorTypeName(sensor.type_id)}</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Statut:</span>
-                            <span class="detail-value ${sensor.status === 'active' ? 'status-active' : 'status-inactive'}">
-                                ${sensor.status === 'active' ? '🟢 Actif' : '🔴 Inactif'}
-                            </span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Emplacement:</span>
-                            <span class="detail-value">${sensor.location?.name || 'Non spécifié'}</span>
-                        </div>
-                    </div>
-                    <div class="detail-group">
-                        <h4>État technique</h4>
-                        <div class="detail-item">
-                            <span class="detail-label">Batterie:</span>
-                            <span class="detail-value">${sensor.battery_level || 'N/A'}%</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Signal:</span>
-                            <span class="detail-value">${sensor.signal_strength || 'N/A'} dBm</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Dernière mesure:</span>
-                            <span class="detail-value">${this.formatLastMeasurement(sensor.last_measurement_time)}</span>
-                        </div>
-                    </div>
-                </div>
-            `;
+            // Keep sensors tab active (since this is still part of sensors section)
+            document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('sensors-tab').classList.add('active');
 
-            modal.style.display = 'block';
+            // Update URL if requested
+            if (updateUrl) {
+                this.updateUrl('sensors', sensorId);
+            }
 
-            // Load recent measurements chart
-            this.loadSensorChart(sensorId);
+            // Update title
+            const title = document.getElementById('sensor-detail-title');
+            title.textContent = `${this.getSensorIcon(sensor.sensor_type_id)} ${sensor.name}`;
+
+            // Setup back button
+            const backButton = document.getElementById('back-to-sensors');
+            backButton.onclick = () => this.showView('sensors');
+
+            // Setup "Analyse détaillée" button
+            const openDataBtnHeader = document.getElementById('open-sensor-in-data-view-header');
+            if (openDataBtnHeader) {
+                openDataBtnHeader.onclick = () => {
+                    this.openSensorInDataView(sensor.experiment_id);
+                };
+            }
+
+            // Setup period selector for chart
+            const periodSelect = document.getElementById('sensor-period-select');
+            if (periodSelect) {
+                periodSelect.onchange = () => {
+                    this.loadSensorChart(sensorId, periodSelect.value);
+                };
+                // Reset to default value
+                periodSelect.value = '24h';
+            }
+
+            // Get the last measurement for this sensor
+            const lastMeasurement = await this.getLastSensorMeasurement(sensorId);
+
+            // Populate sensor information
+            await this.populateSensorInfo(sensor);
+            await this.populateSensorDetails(sensor, lastMeasurement);
+
+            // Load chart with default period
+            const defaultPeriod = periodSelect ? periodSelect.value : '24h';
+            await this.loadSensorChart(sensorId, defaultPeriod);
 
         } catch (error) {
             console.error('Error showing sensor details:', error);
+        }
+    }
+
+    async populateSensorInfo(sensor) {
+        const sensorInfo = document.getElementById('sensor-info');
+        if (!sensorInfo) return;
+
+        // Get status info
+        let statusClass = 'status-active';
+        let statusIcon = '🟢';
+        let statusText = 'En ligne';
+
+        if (sensor.status === 'maintenance') {
+            statusClass = 'status-maintenance';
+            statusIcon = '🟡';
+            statusText = 'Maintenance';
+        } else if (sensor.status === 'offline') {
+            statusClass = 'status-offline';
+            statusIcon = '🔴';
+            statusText = 'Hors ligne';
+        }
+
+        sensorInfo.innerHTML = `
+            <div class="sensor-header-info">
+                <div class="sensor-type">
+                    ${this.formatSensorType(sensor.sensor_type_id)}
+                </div>
+                <div class="sensor-status ${statusClass}">
+                    ${statusIcon} ${statusText}
+                </div>
+            </div>
+            <div class="sensor-description">
+                ${sensor.description || 'Aucune description disponible'}
+            </div>
+        `;
+    }
+
+    async populateSensorDetails(sensor, lastMeasurement = null) {
+        // Populate specifications
+        const specifications = document.getElementById('sensor-specifications');
+        if (specifications && sensor.metadata) {
+            specifications.innerHTML = `
+                <div class="detail-item">
+                    <span class="detail-label">Fabricant:</span>
+                    <span class="detail-value">${sensor.metadata.manufacturer || 'N/A'}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Modèle:</span>
+                    <span class="detail-value">${sensor.metadata.model || 'N/A'}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Version firmware:</span>
+                    <span class="detail-value">${sensor.metadata.firmware_version || 'N/A'}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Numéro de série:</span>
+                    <span class="detail-value">${sensor.metadata.serial_number || 'N/A'}</span>
+                </div>
+            `;
+        }
+
+        // Populate status
+        const statusInfo = document.getElementById('sensor-status-info');
+        if (statusInfo) {
+            let statusHtml = '';
+
+            // Add last measurement if available
+            if (lastMeasurement) {
+                const unit = this.getSensorUnit(sensor.sensor_type_id);
+                statusHtml += `
+                    <div class="detail-item">
+                        <span class="detail-label">Dernière valeur:</span>
+                        <span class="detail-value measurement-value">${lastMeasurement.value} ${unit}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Dernière mesure:</span>
+                        <span class="detail-value">${this.formatLastMeasurement(lastMeasurement.timestamp)}</span>
+                    </div>
+                `;
+            } else {
+                statusHtml += `
+                    <div class="detail-item">
+                        <span class="detail-label">Dernière valeur:</span>
+                        <span class="detail-value">Aucune mesure disponible</span>
+                    </div>
+                `;
+            }
+
+            // Add other status info if metadata exists
+            if (sensor.metadata) {
+                statusHtml += `
+                    <div class="detail-item">
+                        <span class="detail-label">Niveau de batterie:</span>
+                        <span class="detail-value">${sensor.metadata.battery_level || 'N/A'}%</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Force du signal:</span>
+                        <span class="detail-value">${sensor.metadata.signal_strength || 'N/A'} dBm</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Qualité du signal:</span>
+                        <span class="detail-value">${sensor.metadata.signal_quality || 'N/A'}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Dernière connexion:</span>
+                        <span class="detail-value">${lastMeasurement ? this.formatLastMeasurement(lastMeasurement.timestamp) : this.formatLastMeasurement(sensor.last_seen)}</span>
+                    </div>
+                `;
+            }
+
+            statusInfo.innerHTML = statusHtml;
+        }
+
+        // Populate location
+        const locationInfo = document.getElementById('sensor-location-info');
+        if (locationInfo && sensor.location) {
+            const coordinates = `${sensor.location.latitude?.toFixed(4)}, ${sensor.location.longitude?.toFixed(4)}`;
+            locationInfo.innerHTML = `
+                <div class="detail-item">
+                    <span class="detail-label">Bâtiment:</span>
+                    <span class="detail-value">${sensor.location.building || 'N/A'}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Salle:</span>
+                    <span class="detail-value">${sensor.location.room || 'N/A'}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Étage:</span>
+                    <span class="detail-value">${sensor.location.floor || 'N/A'}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Coordonnées:</span>
+                    <span class="detail-value">${coordinates}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Intérieur:</span>
+                    <span class="detail-value">${sensor.location.indoor ? 'Oui' : 'Non'}</span>
+                </div>
+            `;
+        }
+
+        // Populate calibration
+        const calibrationInfo = document.getElementById('sensor-calibration-info');
+        if (calibrationInfo && sensor.calibration) {
+            calibrationInfo.innerHTML = `
+                <div class="detail-item">
+                    <span class="detail-label">Dernière calibration:</span>
+                    <span class="detail-value">${this.formatLastMeasurement(sensor.calibration.last_calibration)}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Offset de calibration:</span>
+                    <span class="detail-value">${sensor.calibration.calibration_offset || 'N/A'}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Facteur de calibration:</span>
+                    <span class="detail-value">${sensor.calibration.calibration_factor || 'N/A'}</span>
+                </div>
+            `;
         }
     }
 
@@ -3168,27 +3402,46 @@ class SteamCityPlatform {
         return null;
     }
 
-    async loadSensorChart(sensorId) {
+    async loadSensorChart(sensorId, period = '24h') {
         try {
-            const response = await fetch(`/api/sensors/measurements?sensorId=${sensorId}&period=24h&limit=50`);
+            // Adjust limit based on period to get appropriate data density
+            let limit = 50;
+            if (period === '7d') limit = 168; // ~24 points per day for a week
+            if (period === '30d') limit = 360; // ~12 points per day for a month
+
+            const response = await fetch(`/api/sensors/measurements?sensorId=${sensorId}&period=${period}&limit=${limit}`);
             const data = await response.json();
 
             if (data.success && data.data.length > 0) {
-                this.createSensorDetailChart(data.data);
+                this.createSensorDetailChart(data.data, period, sensorId, data.total || data.data.length);
+            } else {
+                // Clear chart if no data
+                const canvas = document.getElementById('sensorChart');
+                if (canvas) {
+                    if (this.sensorDetailChart) {
+                        this.sensorDetailChart.destroy();
+                        this.sensorDetailChart = null;
+                    }
+                    Chart.getChart(canvas)?.destroy();
+                }
             }
         } catch (error) {
             console.error('Error loading sensor chart:', error);
         }
     }
 
-    createSensorDetailChart(measurements) {
-        const canvas = document.getElementById('sensor-detail-chart');
+    createSensorDetailChart(measurements, period = '24h', sensorId = null, totalPoints = null) {
+        const canvas = document.getElementById('sensorChart');
         if (!canvas) return;
 
         // Destroy existing chart
         if (this.sensorDetailChart) {
             this.sensorDetailChart.destroy();
+            this.sensorDetailChart = null;
         }
+
+        // Also check for existing charts on this canvas and destroy them
+        Chart.getChart(canvas)?.destroy();
 
         const ctx = canvas.getContext('2d');
         const chartData = measurements.map(m => ({
@@ -3196,35 +3449,102 @@ class SteamCityPlatform {
             y: m.value
         })).sort((a, b) => a.x - b.x);
 
+        // Configure time display format based on period
+        let timeDisplayFormats = {};
+        let timeUnit = 'hour';
+
+        switch (period) {
+            case '24h':
+                timeDisplayFormats = { hour: 'HH:mm' };
+                timeUnit = 'hour';
+                break;
+            case '7d':
+                timeDisplayFormats = {
+                    day: 'dd/MM',
+                    hour: 'dd/MM HH:mm'
+                };
+                timeUnit = 'day';
+                break;
+            case '30d':
+                timeDisplayFormats = {
+                    day: 'dd/MM',
+                    week: 'dd/MM'
+                };
+                timeUnit = 'day';
+                break;
+        }
+
+        // Get sensor info for title and label
+        const sensor = this.currentSensor;
+        const sensorName = sensor ? sensor.name : sensorId;
+        const sensorUnit = sensor ? this.getSensorUnit(sensor.sensor_type_id) : '';
+
         this.sensorDetailChart = new Chart(ctx, {
             type: 'line',
             data: {
                 datasets: [{
-                    label: 'Valeurs',
+                    label: `${sensorName} (${sensorUnit})`,
                     data: chartData,
                     borderColor: '#4a90e2',
-                    backgroundColor: 'rgba(74, 144, 226, 0.1)',
-                    tension: 0.4
+                    backgroundColor: 'rgba(74, 144, 226, 0.2)',
+                    fill: true,
+                    tension: 0.4,
+                    pointStyle: 'circle',
+                    pointRadius: 3,
+                    pointHoverRadius: 6
                 }]
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                },
                 scales: {
                     x: {
                         type: 'time',
                         time: {
-                            displayFormats: {
-                                hour: 'HH:mm'
-                            }
+                            unit: timeUnit,
+                            displayFormats: timeDisplayFormats
+                        },
+                        title: {
+                            display: true,
+                            text: 'Temps'
                         }
                     },
                     y: {
-                        beginAtZero: false
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: `Valeur${sensorUnit ? ' (' + sensorUnit + ')' : ''}`
+                        }
                     }
                 },
                 plugins: {
+                    title: {
+                        display: true,
+                        text: `${sensorName} - ${this.getPeriodLabel(period)}${totalPoints ? ' (' + totalPoints + ' points)' : ''}`
+                    },
                     legend: {
-                        display: false
+                        display: true,
+                        position: 'top',
+                        onClick: (e, legendItem, legend) => {
+                            const index = legendItem.datasetIndex;
+                            const chart = legend.chart;
+                            const meta = chart.getDatasetMeta(index);
+
+                            // Toggle visibility
+                            meta.hidden = meta.hidden === null ? !chart.data.datasets[index].hidden : !meta.hidden;
+
+                            // Update chart
+                            chart.update();
+                        },
+                        labels: {
+                            usePointStyle: true,
+                            pointStyle: 'circle',
+                            padding: 15
+                        }
                     }
                 }
             }
@@ -3250,3 +3570,4 @@ const platform = new SteamCityPlatform();
 
 // Make it globally available for inline event handlers
 window.platform = platform;
+window.steamcity = platform;
