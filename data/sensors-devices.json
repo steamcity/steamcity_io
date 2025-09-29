@@ -1,0 +1,323 @@
+[
+  {
+    "id": "sens-001-temp-bruxelles-creuz",
+    "name": "Capteur Température Salle B204",
+    "experiment_id": "exp-005-bruxelles-co2-sensors",
+    "sensor_type_id": "temperature",
+    "location": {
+      "latitude": 50.8503,
+      "longitude": 4.3517,
+      "altitude": 102,
+      "indoor": true,
+      "building": "Athénée Royal Serge Creuz",
+      "room": "Salle B204",
+      "floor": 2,
+      "description": "Salle de classe au 2ème étage, côté sud"
+    },
+    "status": "online",
+    "last_seen": "2025-09-26T16:22:42Z",
+    "installation_date": "2024-11-01T09:00:00Z",
+    "metadata": {
+      "battery_level": 87,
+      "signal_strength": -45,
+      "signal_quality": "excellent",
+      "firmware_version": "2.1.3",
+      "hardware_version": "v1.2",
+      "manufacturer": "SteamSens",
+      "model": "SS-TEMP-01",
+      "serial_number": "SST20241001087"
+    },
+    "calibration": {
+      "last_calibration": "2024-11-01T09:00:00Z",
+      "calibration_offset": 0.2,
+      "calibration_factor": 1.0
+    },
+    "settings": {
+      "measurement_interval": 300,
+      "transmission_interval": 1800,
+      "low_power_mode": false
+    }
+  },
+  {
+    "id": "sens-002-hum-bruxelles-creuz",
+    "name": "Capteur Humidité Salle B204",
+    "experiment_id": "exp-005-bruxelles-co2-sensors",
+    "sensor_type_id": "humidity",
+    "location": {
+      "latitude": 50.8503,
+      "longitude": 4.3517,
+      "altitude": 102,
+      "indoor": true,
+      "building": "Athénée Royal Serge Creuz",
+      "room": "Salle B204",
+      "floor": 2,
+      "description": "Salle de classe au 2ème étage, côté sud"
+    },
+    "status": "online",
+    "last_seen": "2025-09-26T16:22:42Z",
+    "installation_date": "2024-11-01T09:00:00Z",
+    "metadata": {
+      "battery_level": 85,
+      "signal_strength": -47,
+      "signal_quality": "excellent",
+      "firmware_version": "2.1.3",
+      "hardware_version": "v1.2",
+      "manufacturer": "SteamSens",
+      "model": "SS-HUM-01",
+      "serial_number": "SSH20241001088"
+    },
+    "calibration": {
+      "last_calibration": "2024-11-01T09:00:00Z",
+      "calibration_offset": -1.5,
+      "calibration_factor": 1.02
+    },
+    "settings": {
+      "measurement_interval": 300,
+      "transmission_interval": 1800,
+      "low_power_mode": false
+    }
+  },
+  {
+    "id": "sens-003-co2-bruxelles-creuz",
+    "name": "Capteur CO2 Principal",
+    "experiment_id": "exp-005-bruxelles-co2-sensors",
+    "sensor_type_id": "co2",
+    "location": {
+      "latitude": 50.8503,
+      "longitude": 4.3517,
+      "altitude": 102,
+      "indoor": true,
+      "building": "Athénée Royal Serge Creuz",
+      "room": "Salle B204",
+      "floor": 2,
+      "description": "Capteur principal CO2, monté au mur à 1.5m de hauteur"
+    },
+    "status": "online",
+    "last_seen": "2025-09-26T16:22:42Z",
+    "installation_date": "2024-11-01T09:00:00Z",
+    "metadata": {
+      "battery_level": 92,
+      "signal_strength": -42,
+      "signal_quality": "excellent",
+      "firmware_version": "3.0.1",
+      "hardware_version": "v2.1",
+      "manufacturer": "AirSense Pro",
+      "model": "ASP-CO2-200",
+      "serial_number": "ASP20241001089"
+    },
+    "calibration": {
+      "last_calibration": "2024-11-01T09:00:00Z",
+      "calibration_offset": 0,
+      "calibration_factor": 1.0
+    },
+    "settings": {
+      "measurement_interval": 60,
+      "transmission_interval": 300,
+      "low_power_mode": false,
+      "auto_calibration": true
+    }
+  },
+  {
+    "id": "sens-004-noise-larochelle-maritime",
+    "name": "Sonomètre Extérieur",
+    "experiment_id": "exp-004-larochelle-whisper-walls",
+    "sensor_type_id": "noise",
+    "location": {
+      "latitude": 46.1591,
+      "longitude": -1.152,
+      "altitude": 8,
+      "indoor": false,
+      "building": "Lycée Maritime",
+      "room": "Cour d'honneur",
+      "floor": 0,
+      "description": "Capteur extérieur protégé, cour principale du lycée"
+    },
+    "status": "online",
+    "last_seen": "2025-09-26T16:22:42Z",
+    "installation_date": "2024-10-15T08:00:00Z",
+    "metadata": {
+      "battery_level": 76,
+      "signal_strength": -52,
+      "signal_quality": "good",
+      "firmware_version": "1.8.2",
+      "hardware_version": "v1.0",
+      "manufacturer": "NoiseGuard",
+      "model": "NG-SOUND-150",
+      "serial_number": "NGS20241015090",
+      "weatherproof": true
+    },
+    "calibration": {
+      "last_calibration": "2024-10-15T08:00:00Z",
+      "calibration_offset": 0.5,
+      "calibration_factor": 1.0
+    },
+    "settings": {
+      "measurement_interval": 30,
+      "transmission_interval": 600,
+      "low_power_mode": false,
+      "windscreen": true
+    }
+  },
+  {
+    "id": "sens-005-pm25-marseille-thiers",
+    "name": "Capteur PM2.5 Toiture",
+    "experiment_id": "exp-010-marseille-air-quality",
+    "sensor_type_id": "pm25",
+    "location": {
+      "latitude": 43.2951,
+      "longitude": 5.3692,
+      "altitude": 55,
+      "indoor": false,
+      "building": "Lycée Thiers",
+      "room": "Toiture",
+      "floor": 4,
+      "description": "Station météo sur le toit, exposition sud-est"
+    },
+    "status": "online",
+    "last_seen": "2025-09-26T16:22:42Z",
+    "installation_date": "2024-09-05T07:30:00Z",
+    "metadata": {
+      "battery_level": 68,
+      "signal_strength": -38,
+      "signal_quality": "excellent",
+      "firmware_version": "4.2.1",
+      "hardware_version": "v3.0",
+      "manufacturer": "AirWatch",
+      "model": "AW-PM25-PRO",
+      "serial_number": "AWP20240905091",
+      "weatherproof": true,
+      "solar_powered": true
+    },
+    "calibration": {
+      "last_calibration": "2024-09-05T07:30:00Z",
+      "calibration_offset": 0,
+      "calibration_factor": 1.0
+    },
+    "settings": {
+      "measurement_interval": 120,
+      "transmission_interval": 900,
+      "low_power_mode": true,
+      "heating_enabled": true
+    }
+  },
+  {
+    "id": "sens-006-pm10-marseille-thiers",
+    "name": "Capteur PM10 Toiture",
+    "experiment_id": "exp-010-marseille-air-quality",
+    "sensor_type_id": "pm10",
+    "location": {
+      "latitude": 43.2951,
+      "longitude": 5.3692,
+      "altitude": 55,
+      "indoor": false,
+      "building": "Lycée Thiers",
+      "room": "Toiture",
+      "floor": 4,
+      "description": "Station météo sur le toit, exposition sud-est"
+    },
+    "status": "maintenance",
+    "last_seen": "2024-12-24T09:15:00Z",
+    "installation_date": "2024-09-05T07:30:00Z",
+    "metadata": {
+      "battery_level": 72,
+      "signal_strength": -41,
+      "signal_quality": "good",
+      "firmware_version": "4.2.1",
+      "hardware_version": "v3.0",
+      "manufacturer": "AirWatch",
+      "model": "AW-PM10-PRO",
+      "serial_number": "AWP20240905092",
+      "weatherproof": true,
+      "solar_powered": true
+    },
+    "calibration": {
+      "last_calibration": "2024-09-05T07:30:00Z",
+      "calibration_offset": 1.2,
+      "calibration_factor": 0.98
+    },
+    "settings": {
+      "measurement_interval": 120,
+      "transmission_interval": 900,
+      "low_power_mode": true,
+      "heating_enabled": true
+    }
+  },
+  {
+    "id": "sens-007-light-madrid-cervantes",
+    "name": "Luxmètre Classe 3A",
+    "experiment_id": "exp-007-madrid-sleep-battle",
+    "sensor_type_id": "light",
+    "location": {
+      "latitude": 40.4168,
+      "longitude": -3.7038,
+      "altitude": 650,
+      "indoor": true,
+      "building": "IES Miguel de Cervantes",
+      "room": "Classe 3A",
+      "floor": 3,
+      "description": "Classe avec exposition ouest, près de la fenêtre"
+    },
+    "status": "online",
+    "last_seen": "2025-09-26T16:22:42Z",
+    "installation_date": "2024-10-01T10:00:00Z",
+    "metadata": {
+      "battery_level": 94,
+      "signal_strength": -35,
+      "signal_quality": "excellent",
+      "firmware_version": "2.5.0",
+      "hardware_version": "v1.5",
+      "manufacturer": "LightSense",
+      "model": "LS-LUX-100",
+      "serial_number": "LSL20241001093"
+    },
+    "calibration": {
+      "last_calibration": "2024-10-01T10:00:00Z",
+      "calibration_offset": 0,
+      "calibration_factor": 1.0
+    },
+    "settings": {
+      "measurement_interval": 60,
+      "transmission_interval": 300,
+      "low_power_mode": false
+    }
+  },
+  {
+    "id": "sens-008-motion-sofia-hanchev",
+    "name": "Détecteur PIR Couloir",
+    "experiment_id": "exp-008-sofia-decibel-detectives",
+    "sensor_type_id": "motion",
+    "location": {
+      "latitude": 42.6977,
+      "longitude": 23.3219,
+      "altitude": 550,
+      "indoor": true,
+      "building": "139 СУ \"Веселин Ханчев\"",
+      "room": "Couloir principal",
+      "floor": 2,
+      "description": "Couloir principal, hauteur 2.8m, détection 6m de portée"
+    },
+    "status": "online",
+    "last_seen": "2025-09-26T16:22:42Z",
+    "installation_date": "2024-09-10T11:30:00Z",
+    "metadata": {
+      "battery_level": 89,
+      "signal_strength": -48,
+      "signal_quality": "good",
+      "firmware_version": "1.3.2",
+      "hardware_version": "v1.0",
+      "manufacturer": "MotionTech",
+      "model": "MT-PIR-360",
+      "serial_number": "MTP20240910094"
+    },
+    "calibration": {
+      "last_calibration": "2024-09-10T11:30:00Z"
+    },
+    "settings": {
+      "measurement_interval": 1,
+      "transmission_interval": 60,
+      "low_power_mode": true,
+      "sensitivity": "medium",
+      "detection_range": 6
+    }
+  }
+]

@@ -1,0 +1,175 @@
+[
+  {
+    "id": "temperature",
+    "name": "Capteur de température",
+    "description": "Mesure la température ambiante",
+    "unit": "°C",
+    "unit_symbol": "°C",
+    "measurement_type": "numeric",
+    "min_value": -40,
+    "max_value": 85,
+    "precision": 0.1,
+    "typical_range": {
+      "min": -10,
+      "max": 50
+    },
+    "icon": "🌡️",
+    "color": "#ff6b6b"
+  },
+  {
+    "id": "humidity",
+    "name": "Capteur d'humidité",
+    "description": "Mesure l'humidité relative de l'air",
+    "unit": "percent",
+    "unit_symbol": "%",
+    "measurement_type": "numeric",
+    "min_value": 0,
+    "max_value": 100,
+    "precision": 0.5,
+    "typical_range": {
+      "min": 20,
+      "max": 80
+    },
+    "icon": "💧",
+    "color": "#4ecdc4"
+  },
+  {
+    "id": "co2",
+    "name": "Capteur CO2",
+    "description": "Mesure la concentration de dioxyde de carbone",
+    "unit": "ppm",
+    "unit_symbol": "ppm",
+    "measurement_type": "numeric",
+    "min_value": 0,
+    "max_value": 10000,
+    "precision": 1,
+    "typical_range": {
+      "min": 400,
+      "max": 2000
+    },
+    "icon": "🌬️",
+    "color": "#45b7d1"
+  },
+  {
+    "id": "noise",
+    "name": "Sonomètre",
+    "description": "Mesure le niveau sonore ambiant",
+    "unit": "decibel",
+    "unit_symbol": "dB",
+    "measurement_type": "numeric",
+    "min_value": 0,
+    "max_value": 140,
+    "precision": 0.1,
+    "typical_range": {
+      "min": 30,
+      "max": 100
+    },
+    "icon": "🔊",
+    "color": "#f7b731"
+  },
+  {
+    "id": "pm25",
+    "name": "Capteur PM2.5",
+    "description": "Mesure les particules fines de 2.5 micromètres",
+    "unit": "microgram_per_cubic_meter",
+    "unit_symbol": "μg/m³",
+    "measurement_type": "numeric",
+    "min_value": 0,
+    "max_value": 500,
+    "precision": 0.1,
+    "typical_range": {
+      "min": 0,
+      "max": 50
+    },
+    "icon": "🫁",
+    "color": "#a55eea"
+  },
+  {
+    "id": "pm10",
+    "name": "Capteur PM10",
+    "description": "Mesure les particules fines de 10 micromètres",
+    "unit": "microgram_per_cubic_meter",
+    "unit_symbol": "μg/m³",
+    "measurement_type": "numeric",
+    "min_value": 0,
+    "max_value": 1000,
+    "precision": 0.1,
+    "typical_range": {
+      "min": 0,
+      "max": 100
+    },
+    "icon": "🌫️",
+    "color": "#778ca3"
+  },
+  {
+    "id": "light",
+    "name": "Capteur de luminosité",
+    "description": "Mesure l'intensité lumineuse",
+    "unit": "lux",
+    "unit_symbol": "lx",
+    "measurement_type": "numeric",
+    "min_value": 0,
+    "max_value": 100000,
+    "precision": 1,
+    "typical_range": {
+      "min": 0,
+      "max": 1000
+    },
+    "icon": "💡",
+    "color": "#feca57"
+  },
+  {
+    "id": "pressure",
+    "name": "Capteur de pression atmosphérique",
+    "description": "Mesure la pression atmosphérique",
+    "unit": "hectopascal",
+    "unit_symbol": "hPa",
+    "measurement_type": "numeric",
+    "min_value": 800,
+    "max_value": 1200,
+    "precision": 0.1,
+    "typical_range": {
+      "min": 980,
+      "max": 1050
+    },
+    "icon": "🌤️",
+    "color": "#26de81"
+  },
+  {
+    "id": "uv",
+    "name": "Capteur UV",
+    "description": "Mesure l'indice UV",
+    "unit": "uv_index",
+    "unit_symbol": "UV",
+    "measurement_type": "numeric",
+    "min_value": 0,
+    "max_value": 15,
+    "precision": 0.1,
+    "typical_range": {
+      "min": 0,
+      "max": 10
+    },
+    "icon": "☀️",
+    "color": "#fd9644"
+  },
+  {
+    "id": "motion",
+    "name": "Détecteur de mouvement",
+    "description": "Détecte la présence de mouvement",
+    "unit": "boolean",
+    "unit_symbol": "",
+    "measurement_type": "boolean",
+    "icon": "🏃",
+    "color": "#ff3838"
+  },
+  {
+    "id": "door",
+    "name": "Capteur d'ouverture",
+    "description": "Détecte l'ouverture/fermeture d'une porte ou fenêtre",
+    "unit": "boolean",
+    "unit_symbol": "",
+    "measurement_type": "boolean",
+    "icon": "🚪",
+    "color": "#2f3542"
+  }
+]

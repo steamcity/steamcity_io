@@ -1,0 +1,4190 @@
+[
+  {
+    "sensor_id": "sens-003-co2-bruxelles-creuz",
+    "sensor_type_id": "co2",
+    "experiment_id": "exp-005-bruxelles-co2-sensors",
+    "data": [
+      {
+        "timestamp": "2025-09-25T16:36:56.644Z",
+        "value": 830,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T16:22:42.599Z",
+        "value": 420,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T15:22:42.599Z",
+        "value": 580,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-25T14:36:56.644Z",
+        "value": 757,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T14:22:42.599Z",
+        "value": 750,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-25T13:22:42.599Z",
+        "value": 890,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-25T12:36:56.644Z",
+        "value": 631,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T12:22:42.599Z",
+        "value": 450,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T11:22:42.599Z",
+        "value": 920,
+        "quality": 0.94
+      },
+      {
+        "timestamp": "2025-09-25T10:36:56.644Z",
+        "value": 966,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T10:22:42.599Z",
+        "value": 1150,
+        "quality": 0.93
+      },
+      {
+        "timestamp": "2025-09-25T09:22:42.599Z",
+        "value": 1320,
+        "quality": 0.92
+      },
+      {
+        "timestamp": "2025-09-25T08:36:56.644Z",
+        "value": 601,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T08:22:42.599Z",
+        "value": 1080,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-25T07:22:42.599Z",
+        "value": 480,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T06:36:56.644Z",
+        "value": 891,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T06:22:42.599Z",
+        "value": 410,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T05:22:42.599Z",
+        "value": 620,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-25T04:36:56.644Z",
+        "value": 802,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T04:22:42.599Z",
+        "value": 780,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-25T03:22:42.599Z",
+        "value": 950,
+        "quality": 0.94
+      },
+      {
+        "timestamp": "2025-09-25T02:36:56.644Z",
+        "value": 526,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T02:22:42.599Z",
+        "value": 440,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T01:22:42.599Z",
+        "value": 850,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-25T00:36:56.644Z",
+        "value": 531,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T00:22:42.599Z",
+        "value": 1100,
+        "quality": 0.93
+      },
+      {
+        "timestamp": "2025-09-24T23:22:42.599Z",
+        "value": 1280,
+        "quality": 0.92
+      },
+      {
+        "timestamp": "2025-09-24T22:36:56.644Z",
+        "value": 528,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T22:22:42.599Z",
+        "value": 950,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-24T21:22:42.599Z",
+        "value": 470,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T20:36:56.644Z",
+        "value": 490,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T20:22:42.599Z",
+        "value": 425,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T19:22:42.599Z",
+        "value": 590,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-24T18:36:56.644Z",
+        "value": 850,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T18:22:42.599Z",
+        "value": 720,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-24T17:22:42.599Z",
+        "value": 880,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-24T16:36:56.644Z",
+        "value": 682,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T16:22:42.599Z",
+        "value": 460,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T15:22:42.599Z",
+        "value": 780,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-24T14:36:56.644Z",
+        "value": 586,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T14:22:42.599Z",
+        "value": 920,
+        "quality": 0.94
+      },
+      {
+        "timestamp": "2025-09-24T13:22:42.599Z",
+        "value": 652,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-24T12:36:56.644Z",
+        "value": 647,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T10:36:56.644Z",
+        "value": 840,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T08:36:56.644Z",
+        "value": 923,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T06:36:56.644Z",
+        "value": 762,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T04:36:56.644Z",
+        "value": 858,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T02:36:56.644Z",
+        "value": 552,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T00:36:56.644Z",
+        "value": 546,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T22:36:56.644Z",
+        "value": 441,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T20:36:56.644Z",
+        "value": 417,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T18:36:56.644Z",
+        "value": 647,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T16:36:56.644Z",
+        "value": 643,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T14:36:56.644Z",
+        "value": 923,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T12:36:56.644Z",
+        "value": 785,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T10:36:56.644Z",
+        "value": 655,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T08:36:56.644Z",
+        "value": 636,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T06:36:56.644Z",
+        "value": 999,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T04:36:56.644Z",
+        "value": 817,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T02:36:56.644Z",
+        "value": 476,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T00:36:56.644Z",
+        "value": 476,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T22:36:56.644Z",
+        "value": 486,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T20:36:56.644Z",
+        "value": 465,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T18:36:56.644Z",
+        "value": 822,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T16:36:56.644Z",
+        "value": 745,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T14:36:56.644Z",
+        "value": 882,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T12:36:56.644Z",
+        "value": 868,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T10:36:56.644Z",
+        "value": 937,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T08:36:56.644Z",
+        "value": 838,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T06:36:56.644Z",
+        "value": 762,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T04:36:56.644Z",
+        "value": 749,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T02:36:56.644Z",
+        "value": 540,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T00:36:56.644Z",
+        "value": 565,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-21T22:36:56.644Z",
+        "value": 591,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-21T20:36:56.644Z",
+        "value": 504,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-21T18:36:56.644Z",
+        "value": 831,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-21T16:36:56.644Z",
+        "value": 819,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-21T14:36:56.644Z",
+        "value": 653,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-21T12:36:56.644Z",
+        "value": 650,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-21T10:36:56.644Z",
+        "value": 795,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-21T08:36:56.644Z",
+        "value": 887,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-21T06:36:56.644Z",
+        "value": 822,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-21T04:36:56.644Z",
+        "value": 748,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-21T02:36:56.644Z",
+        "value": 439,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-21T00:36:56.644Z",
+        "value": 551,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T22:36:56.644Z",
+        "value": 456,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T20:36:56.644Z",
+        "value": 505,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T18:36:56.644Z",
+        "value": 833,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T16:36:56.644Z",
+        "value": 883,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T14:36:56.644Z",
+        "value": 644,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T12:36:56.644Z",
+        "value": 847,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T10:36:56.644Z",
+        "value": 875,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T08:36:56.644Z",
+        "value": 719,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T06:36:56.644Z",
+        "value": 641,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T04:36:56.644Z",
+        "value": 933,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T02:36:56.644Z",
+        "value": 542,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T00:36:56.644Z",
+        "value": 448,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T22:36:56.644Z",
+        "value": 462,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T20:36:56.644Z",
+        "value": 503,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T18:36:56.644Z",
+        "value": 838,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T16:36:56.644Z",
+        "value": 963,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T14:36:56.644Z",
+        "value": 687,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T12:36:56.644Z",
+        "value": 756,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T10:36:56.644Z",
+        "value": 618,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T08:36:56.644Z",
+        "value": 789,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T06:36:56.644Z",
+        "value": 658,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T04:36:56.644Z",
+        "value": 697,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T02:36:56.644Z",
+        "value": 459,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T00:36:56.644Z",
+        "value": 520,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T22:36:56.644Z",
+        "value": 479,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T20:36:56.644Z",
+        "value": 463,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T18:36:56.644Z",
+        "value": 633,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T16:36:56.644Z",
+        "value": 944,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T14:36:56.644Z",
+        "value": 936,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T12:36:56.644Z",
+        "value": 645,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T10:36:56.644Z",
+        "value": 652,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T08:36:56.644Z",
+        "value": 956,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T06:36:56.644Z",
+        "value": 663,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T04:36:56.644Z",
+        "value": 630,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T02:36:56.644Z",
+        "value": 520,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T00:36:56.644Z",
+        "value": 508,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T22:36:56.644Z",
+        "value": 577,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T20:36:56.644Z",
+        "value": 485,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T18:36:56.644Z",
+        "value": 723,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T16:36:56.644Z",
+        "value": 818,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T14:36:56.644Z",
+        "value": 932,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T12:36:56.644Z",
+        "value": 672,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T10:36:56.644Z",
+        "value": 937,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T08:36:56.644Z",
+        "value": 861,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T06:36:56.644Z",
+        "value": 816,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T04:36:56.644Z",
+        "value": 806,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T02:36:56.644Z",
+        "value": 569,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T00:36:56.644Z",
+        "value": 536,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T22:36:56.644Z",
+        "value": 565,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T20:36:56.644Z",
+        "value": 534,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T18:36:56.644Z",
+        "value": 816,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T16:36:56.644Z",
+        "value": 673,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T14:36:56.644Z",
+        "value": 676,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T12:36:56.644Z",
+        "value": 950,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T10:36:56.644Z",
+        "value": 927,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T08:36:56.644Z",
+        "value": 951,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T06:36:56.644Z",
+        "value": 1017,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T04:36:56.644Z",
+        "value": 612,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T02:36:56.644Z",
+        "value": 584,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T00:36:56.644Z",
+        "value": 486,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T22:36:56.644Z",
+        "value": 544,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T20:36:56.644Z",
+        "value": 479,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T18:36:56.644Z",
+        "value": 938,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T16:36:56.644Z",
+        "value": 840,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T14:36:56.644Z",
+        "value": 905,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T12:36:56.644Z",
+        "value": 915,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T10:36:56.644Z",
+        "value": 762,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T08:36:56.644Z",
+        "value": 732,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T06:36:56.644Z",
+        "value": 1022,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T04:36:56.644Z",
+        "value": 688,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T02:36:56.644Z",
+        "value": 515,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T00:36:56.644Z",
+        "value": 492,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T22:36:56.644Z",
+        "value": 521,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T20:36:56.644Z",
+        "value": 569,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T18:36:56.644Z",
+        "value": 734,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T16:36:56.644Z",
+        "value": 904,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T14:36:56.644Z",
+        "value": 777,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T12:36:56.644Z",
+        "value": 631,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T10:36:56.644Z",
+        "value": 580,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T08:36:56.644Z",
+        "value": 890,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T06:36:56.644Z",
+        "value": 609,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T04:36:56.644Z",
+        "value": 835,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T02:36:56.644Z",
+        "value": 528,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T00:36:56.644Z",
+        "value": 558,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-13T22:36:56.644Z",
+        "value": 540,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-13T20:36:56.644Z",
+        "value": 480,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-13T18:36:56.644Z",
+        "value": 647,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-13T16:36:56.644Z",
+        "value": 780,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-13T14:36:56.644Z",
+        "value": 642,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-13T12:36:56.644Z",
+        "value": 850,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-13T10:36:56.644Z",
+        "value": 882,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-13T08:36:56.644Z",
+        "value": 635,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-13T06:36:56.644Z",
+        "value": 848,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-13T04:36:56.644Z",
+        "value": 664,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-13T02:36:56.644Z",
+        "value": 518,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-13T00:36:56.644Z",
+        "value": 503,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T22:36:56.644Z",
+        "value": 511,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T20:36:56.644Z",
+        "value": 587,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T18:36:56.644Z",
+        "value": 720,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T16:36:56.644Z",
+        "value": 884,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T14:36:56.644Z",
+        "value": 975,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T12:36:56.644Z",
+        "value": 891,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T10:36:56.644Z",
+        "value": 741,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T08:36:56.644Z",
+        "value": 975,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T06:36:56.644Z",
+        "value": 944,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T04:36:56.644Z",
+        "value": 644,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T02:36:56.644Z",
+        "value": 541,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T00:36:56.644Z",
+        "value": 485,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T22:36:56.644Z",
+        "value": 508,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T20:36:56.644Z",
+        "value": 497,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T18:36:56.644Z",
+        "value": 712,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T16:36:56.644Z",
+        "value": 927,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T14:36:56.644Z",
+        "value": 939,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T12:36:56.644Z",
+        "value": 805,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T10:36:56.644Z",
+        "value": 978,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T08:36:56.644Z",
+        "value": 609,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T06:36:56.644Z",
+        "value": 826,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T04:36:56.644Z",
+        "value": 748,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T02:36:56.644Z",
+        "value": 427,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T00:36:56.644Z",
+        "value": 548,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T22:36:56.644Z",
+        "value": 411,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T20:36:56.644Z",
+        "value": 481,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T18:36:56.644Z",
+        "value": 877,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T16:36:56.644Z",
+        "value": 734,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T14:36:56.644Z",
+        "value": 697,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T12:36:56.644Z",
+        "value": 923,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T10:36:56.644Z",
+        "value": 862,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T08:36:56.644Z",
+        "value": 933,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T06:36:56.644Z",
+        "value": 804,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T04:36:56.644Z",
+        "value": 677,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T02:36:56.644Z",
+        "value": 439,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T00:36:56.644Z",
+        "value": 498,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T22:36:56.644Z",
+        "value": 507,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T20:36:56.644Z",
+        "value": 483,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T18:36:56.644Z",
+        "value": 962,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T16:36:56.644Z",
+        "value": 924,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T14:36:56.644Z",
+        "value": 881,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T12:36:56.644Z",
+        "value": 826,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T10:36:56.644Z",
+        "value": 841,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T08:36:56.644Z",
+        "value": 746,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T06:36:56.644Z",
+        "value": 612,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T04:36:56.644Z",
+        "value": 902,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T02:36:56.644Z",
+        "value": 491,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T00:36:56.644Z",
+        "value": 515,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T22:36:56.644Z",
+        "value": 456,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T20:36:56.644Z",
+        "value": 521,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T18:36:56.644Z",
+        "value": 691,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T16:36:56.644Z",
+        "value": 658,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T14:36:56.644Z",
+        "value": 620,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T12:36:56.644Z",
+        "value": 930,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T10:36:56.644Z",
+        "value": 603,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T08:36:56.644Z",
+        "value": 648,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T06:36:56.644Z",
+        "value": 686,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T04:36:56.644Z",
+        "value": 953,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T02:36:56.644Z",
+        "value": 473,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T00:36:56.644Z",
+        "value": 435,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T22:36:56.644Z",
+        "value": 472,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T20:36:56.644Z",
+        "value": 581,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T18:36:56.644Z",
+        "value": 855,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T16:36:56.644Z",
+        "value": 948,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T14:36:56.644Z",
+        "value": 714,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T12:36:56.644Z",
+        "value": 776,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T10:36:56.644Z",
+        "value": 916,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T08:36:56.644Z",
+        "value": 632,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T06:36:56.644Z",
+        "value": 607,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T04:36:56.644Z",
+        "value": 935,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T02:36:56.644Z",
+        "value": 427,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T00:36:56.644Z",
+        "value": 562,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T22:36:56.644Z",
+        "value": 510,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T20:36:56.644Z",
+        "value": 432,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T18:36:56.644Z",
+        "value": 656,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T16:36:56.644Z",
+        "value": 696,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T14:36:56.644Z",
+        "value": 679,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T12:36:56.644Z",
+        "value": 634,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T10:36:56.644Z",
+        "value": 799,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T08:36:56.644Z",
+        "value": 816,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T06:36:56.644Z",
+        "value": 802,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T04:36:56.644Z",
+        "value": 650,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T02:36:56.644Z",
+        "value": 515,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T00:36:56.644Z",
+        "value": 459,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T22:36:56.644Z",
+        "value": 487,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T20:36:56.644Z",
+        "value": 525,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T18:36:56.644Z",
+        "value": 902,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T16:36:56.644Z",
+        "value": 675,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T14:36:56.644Z",
+        "value": 841,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T12:36:56.644Z",
+        "value": 608,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T10:36:56.644Z",
+        "value": 927,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T08:36:56.644Z",
+        "value": 928,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T06:36:56.644Z",
+        "value": 639,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T04:36:56.644Z",
+        "value": 791,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T02:36:56.644Z",
+        "value": 519,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T00:36:56.644Z",
+        "value": 424,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-04T22:36:56.644Z",
+        "value": 489,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-04T20:36:56.644Z",
+        "value": 436,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-04T18:36:56.644Z",
+        "value": 737,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-04T16:36:56.644Z",
+        "value": 786,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-04T14:36:56.644Z",
+        "value": 888,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-04T12:36:56.644Z",
+        "value": 779,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-04T10:36:56.644Z",
+        "value": 901,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-04T08:36:56.644Z",
+        "value": 988,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-04T06:36:56.644Z",
+        "value": 729,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-04T04:36:56.644Z",
+        "value": 699,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-04T02:36:56.644Z",
+        "value": 520,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-04T00:36:56.644Z",
+        "value": 471,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T22:36:56.644Z",
+        "value": 458,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T20:36:56.644Z",
+        "value": 521,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T18:36:56.644Z",
+        "value": 712,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T16:36:56.644Z",
+        "value": 693,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T14:36:56.644Z",
+        "value": 905,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T12:36:56.644Z",
+        "value": 628,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T10:36:56.644Z",
+        "value": 676,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T08:36:56.644Z",
+        "value": 646,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T06:36:56.644Z",
+        "value": 852,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T04:36:56.644Z",
+        "value": 619,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T02:36:56.644Z",
+        "value": 577,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T00:36:56.644Z",
+        "value": 494,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T22:36:56.644Z",
+        "value": 467,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T20:36:56.644Z",
+        "value": 439,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T18:36:56.644Z",
+        "value": 907,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T16:36:56.644Z",
+        "value": 663,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T14:36:56.644Z",
+        "value": 656,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T12:36:56.644Z",
+        "value": 673,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T10:36:56.644Z",
+        "value": 846,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T08:36:56.644Z",
+        "value": 627,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T06:36:56.644Z",
+        "value": 658,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T04:36:56.644Z",
+        "value": 971,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T02:36:56.644Z",
+        "value": 503,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T00:36:56.644Z",
+        "value": 556,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T22:36:56.644Z",
+        "value": 496,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T20:36:56.644Z",
+        "value": 493,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T18:36:56.644Z",
+        "value": 802,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T16:36:56.644Z",
+        "value": 697,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T14:36:56.644Z",
+        "value": 971,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T12:36:56.644Z",
+        "value": 928,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T10:36:56.644Z",
+        "value": 944,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T08:36:56.644Z",
+        "value": 816,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T06:36:56.644Z",
+        "value": 750,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T04:36:56.644Z",
+        "value": 939,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T02:36:56.644Z",
+        "value": 527,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T00:36:56.644Z",
+        "value": 474,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T22:36:56.644Z",
+        "value": 486,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T20:36:56.644Z",
+        "value": 550,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T18:36:56.644Z",
+        "value": 790,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T16:36:56.644Z",
+        "value": 976,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T14:36:56.644Z",
+        "value": 961,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T12:36:56.644Z",
+        "value": 841,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T10:36:56.644Z",
+        "value": 1016,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T08:36:56.644Z",
+        "value": 774,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T06:36:56.644Z",
+        "value": 698,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T04:36:56.644Z",
+        "value": 933,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T02:36:56.644Z",
+        "value": 534,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T00:36:56.644Z",
+        "value": 488,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T22:36:56.644Z",
+        "value": 502,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T20:36:56.644Z",
+        "value": 452,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T18:36:56.644Z",
+        "value": 659,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T16:36:56.644Z",
+        "value": 766,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T14:36:56.644Z",
+        "value": 707,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T12:36:56.644Z",
+        "value": 645,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T10:36:56.644Z",
+        "value": 841,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T08:36:56.644Z",
+        "value": 677,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T06:36:56.644Z",
+        "value": 726,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T04:36:56.644Z",
+        "value": 1001,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T02:36:56.644Z",
+        "value": 475,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T00:36:56.644Z",
+        "value": 540,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T22:36:56.644Z",
+        "value": 458,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T20:36:56.644Z",
+        "value": 503,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T18:36:56.644Z",
+        "value": 979,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T16:36:56.644Z",
+        "value": 897,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T14:36:56.644Z",
+        "value": 728,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T12:36:56.644Z",
+        "value": 606,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T10:36:56.644Z",
+        "value": 905,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T08:36:56.644Z",
+        "value": 878,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T06:36:56.644Z",
+        "value": 681,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T04:36:56.644Z",
+        "value": 782,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T02:36:56.644Z",
+        "value": 450,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T00:36:56.644Z",
+        "value": 517,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T22:36:56.644Z",
+        "value": 459,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T20:36:56.644Z",
+        "value": 472,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T18:36:56.644Z",
+        "value": 640,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T16:36:56.644Z",
+        "value": 833,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T14:36:56.644Z",
+        "value": 676,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T12:36:56.644Z",
+        "value": 650,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T10:36:56.644Z",
+        "value": 634,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T08:36:56.644Z",
+        "value": 902,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T06:36:56.644Z",
+        "value": 853,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T04:36:56.644Z",
+        "value": 641,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T02:36:56.644Z",
+        "value": 490,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T00:36:56.644Z",
+        "value": 510,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-27T22:36:56.644Z",
+        "value": 441,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-27T20:36:56.644Z",
+        "value": 457,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-27T18:36:56.644Z",
+        "value": 904,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-27T16:36:56.644Z",
+        "value": 732,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-27T14:36:56.644Z",
+        "value": 680,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-27T12:36:56.644Z",
+        "value": 692,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-27T10:36:56.644Z",
+        "value": 886,
+        "quality": 0.94
+      },
+      {
+        "timestamp": "2025-08-27T08:36:56.644Z",
+        "value": 890,
+        "quality": 0.94
+      },
+      {
+        "timestamp": "2025-08-27T06:36:56.644Z",
+        "value": 637,
+        "quality": 0.94
+      },
+      {
+        "timestamp": "2025-08-27T04:36:56.644Z",
+        "value": 853,
+        "quality": 0.94
+      },
+      {
+        "timestamp": "2025-08-27T02:36:56.644Z",
+        "value": 487,
+        "quality": 0.94
+      },
+      {
+        "timestamp": "2025-08-27T00:36:56.644Z",
+        "value": 569,
+        "quality": 0.94
+      },
+      {
+        "timestamp": "2025-08-26T22:36:56.644Z",
+        "value": 498,
+        "quality": 0.94
+      },
+      {
+        "timestamp": "2025-08-26T20:36:56.644Z",
+        "value": 429,
+        "quality": 0.94
+      },
+      {
+        "timestamp": "2025-08-26T18:36:56.644Z",
+        "value": 705,
+        "quality": 0.94
+      }
+    ]
+  },
+  {
+    "sensor_id": "sens-001-temp-bruxelles-creuz",
+    "sensor_type_id": "temperature",
+    "experiment_id": "exp-005-bruxelles-co2-sensors",
+    "data": [
+      {
+        "timestamp": "2025-09-25T16:36:56.644Z",
+        "value": 14.9,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T16:22:42.599Z",
+        "value": 19.2,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T15:22:42.599Z",
+        "value": 19.8,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T14:36:56.644Z",
+        "value": 16.4,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T14:22:42.599Z",
+        "value": 20.5,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-25T13:22:42.599Z",
+        "value": 21.2,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-25T12:36:56.644Z",
+        "value": 17.6,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T12:22:42.599Z",
+        "value": 21.8,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-25T11:22:42.599Z",
+        "value": 22.1,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-25T10:36:56.644Z",
+        "value": 17.8,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T10:22:42.599Z",
+        "value": 22.5,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-25T09:22:42.599Z",
+        "value": 22.3,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-25T08:36:56.644Z",
+        "value": 17.4,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T08:22:42.599Z",
+        "value": 21.9,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-25T07:22:42.599Z",
+        "value": 21.4,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T06:36:56.644Z",
+        "value": 16,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T06:22:42.599Z",
+        "value": 18.9,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T05:22:42.599Z",
+        "value": 19.5,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T04:36:56.644Z",
+        "value": 14.5,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T04:22:42.599Z",
+        "value": 20.2,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-25T03:22:42.599Z",
+        "value": 20.9,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-25T02:36:56.644Z",
+        "value": 13.2,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T02:22:42.599Z",
+        "value": 21.5,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-25T01:22:42.599Z",
+        "value": 21.8,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-25T00:36:56.644Z",
+        "value": 10.9,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T00:22:42.599Z",
+        "value": 22.2,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-24T23:22:42.599Z",
+        "value": 22,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-24T22:36:56.644Z",
+        "value": 11.5,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T22:22:42.599Z",
+        "value": 21.6,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-24T21:22:42.599Z",
+        "value": 21.1,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T20:36:56.644Z",
+        "value": 10.7,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T20:22:42.599Z",
+        "value": 19.4,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T19:22:42.599Z",
+        "value": 20.1,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T18:36:56.644Z",
+        "value": 13.7,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T18:22:42.599Z",
+        "value": 20.7,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-24T17:22:42.599Z",
+        "value": 21.3,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-24T16:36:56.644Z",
+        "value": 15.2,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T16:22:42.599Z",
+        "value": 21.7,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-24T15:22:42.599Z",
+        "value": 21.9,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-24T14:36:56.644Z",
+        "value": 15.5,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T14:22:42.599Z",
+        "value": 21.5,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-24T13:22:42.599Z",
+        "value": 21.4,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T12:36:56.644Z",
+        "value": 15.9,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T10:36:56.644Z",
+        "value": 18.2,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T08:36:56.644Z",
+        "value": 17.5,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T06:36:56.644Z",
+        "value": 15.3,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T04:36:56.644Z",
+        "value": 14.1,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T02:36:56.644Z",
+        "value": 12,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T00:36:56.644Z",
+        "value": 11.6,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T22:36:56.644Z",
+        "value": 12.4,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T20:36:56.644Z",
+        "value": 11.2,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T18:36:56.644Z",
+        "value": 13.1,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T16:36:56.644Z",
+        "value": 13.7,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T14:36:56.644Z",
+        "value": 16.2,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T12:36:56.644Z",
+        "value": 17,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T10:36:56.644Z",
+        "value": 18.2,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T08:36:56.644Z",
+        "value": 17.4,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T06:36:56.644Z",
+        "value": 14.9,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T04:36:56.644Z",
+        "value": 14.7,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T02:36:56.644Z",
+        "value": 12.5,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-23T00:36:56.644Z",
+        "value": 11.3,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T22:36:56.644Z",
+        "value": 12.5,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T20:36:56.644Z",
+        "value": 11.1,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T18:36:56.644Z",
+        "value": 13,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T16:36:56.644Z",
+        "value": 14.4,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T14:36:56.644Z",
+        "value": 15.7,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T12:36:56.644Z",
+        "value": 16.4,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T10:36:56.644Z",
+        "value": 17.3,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T08:36:56.644Z",
+        "value": 17,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T06:36:56.644Z",
+        "value": 17,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T04:36:56.644Z",
+        "value": 13.7,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T02:36:56.644Z",
+        "value": 12.1,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-22T00:36:56.644Z",
+        "value": 11.9,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-21T22:36:56.644Z",
+        "value": 11.4,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-21T20:36:56.644Z",
+        "value": 11.4,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-21T18:36:56.644Z",
+        "value": 13.3,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-21T16:36:56.644Z",
+        "value": 14.5,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-21T14:36:56.644Z",
+        "value": 15.6,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-21T12:36:56.644Z",
+        "value": 17.3,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-21T10:36:56.644Z",
+        "value": 17.8,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-21T08:36:56.644Z",
+        "value": 16.9,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-21T06:36:56.644Z",
+        "value": 16.7,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-21T04:36:56.644Z",
+        "value": 14.7,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-21T02:36:56.644Z",
+        "value": 12.6,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-21T00:36:56.644Z",
+        "value": 12.9,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T22:36:56.644Z",
+        "value": 12.2,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T20:36:56.644Z",
+        "value": 11.6,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T18:36:56.644Z",
+        "value": 13.6,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T16:36:56.644Z",
+        "value": 15.8,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T14:36:56.644Z",
+        "value": 16.9,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T12:36:56.644Z",
+        "value": 18.4,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T10:36:56.644Z",
+        "value": 18.6,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T08:36:56.644Z",
+        "value": 18,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T06:36:56.644Z",
+        "value": 16.1,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T04:36:56.644Z",
+        "value": 13.9,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T02:36:56.644Z",
+        "value": 14,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-20T00:36:56.644Z",
+        "value": 12.2,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T22:36:56.644Z",
+        "value": 11.9,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T20:36:56.644Z",
+        "value": 12.5,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T18:36:56.644Z",
+        "value": 13.1,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T16:36:56.644Z",
+        "value": 14.4,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T14:36:56.644Z",
+        "value": 16.6,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T12:36:56.644Z",
+        "value": 17.3,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T10:36:56.644Z",
+        "value": 17.1,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T08:36:56.644Z",
+        "value": 18.3,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T06:36:56.644Z",
+        "value": 17.5,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T04:36:56.644Z",
+        "value": 15.8,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T02:36:56.644Z",
+        "value": 14.1,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-19T00:36:56.644Z",
+        "value": 12,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T22:36:56.644Z",
+        "value": 13,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T20:36:56.644Z",
+        "value": 12,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T18:36:56.644Z",
+        "value": 13,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T16:36:56.644Z",
+        "value": 16.3,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T14:36:56.644Z",
+        "value": 16,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T12:36:56.644Z",
+        "value": 18.3,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T10:36:56.644Z",
+        "value": 17.6,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T08:36:56.644Z",
+        "value": 16.9,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T06:36:56.644Z",
+        "value": 17,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T04:36:56.644Z",
+        "value": 14.4,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T02:36:56.644Z",
+        "value": 14.5,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-18T00:36:56.644Z",
+        "value": 12.2,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T22:36:56.644Z",
+        "value": 12.4,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T20:36:56.644Z",
+        "value": 12.5,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T18:36:56.644Z",
+        "value": 13,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T16:36:56.644Z",
+        "value": 16.1,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T14:36:56.644Z",
+        "value": 17.6,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T12:36:56.644Z",
+        "value": 19,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T10:36:56.644Z",
+        "value": 19.4,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T08:36:56.644Z",
+        "value": 18.5,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T06:36:56.644Z",
+        "value": 17.9,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T04:36:56.644Z",
+        "value": 14.7,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T02:36:56.644Z",
+        "value": 14,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-17T00:36:56.644Z",
+        "value": 12.3,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T22:36:56.644Z",
+        "value": 12,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T20:36:56.644Z",
+        "value": 13.4,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T18:36:56.644Z",
+        "value": 14.1,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T16:36:56.644Z",
+        "value": 15.2,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T14:36:56.644Z",
+        "value": 17.2,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T12:36:56.644Z",
+        "value": 18.9,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T10:36:56.644Z",
+        "value": 18.7,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T08:36:56.644Z",
+        "value": 18.3,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T06:36:56.644Z",
+        "value": 16.7,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T04:36:56.644Z",
+        "value": 14.9,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T02:36:56.644Z",
+        "value": 13.2,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-16T00:36:56.644Z",
+        "value": 12.3,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T22:36:56.644Z",
+        "value": 12.5,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T20:36:56.644Z",
+        "value": 13,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T18:36:56.644Z",
+        "value": 13.9,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T16:36:56.644Z",
+        "value": 16.3,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T14:36:56.644Z",
+        "value": 18.2,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T12:36:56.644Z",
+        "value": 19.2,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T10:36:56.644Z",
+        "value": 19,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T08:36:56.644Z",
+        "value": 18.4,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T06:36:56.644Z",
+        "value": 16.4,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T04:36:56.644Z",
+        "value": 15.1,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T02:36:56.644Z",
+        "value": 14.3,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-15T00:36:56.644Z",
+        "value": 12.6,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T22:36:56.644Z",
+        "value": 12.5,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T20:36:56.644Z",
+        "value": 13.4,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T18:36:56.644Z",
+        "value": 13.7,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T16:36:56.644Z",
+        "value": 15.8,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T14:36:56.644Z",
+        "value": 17.2,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T12:36:56.644Z",
+        "value": 18.8,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T10:36:56.644Z",
+        "value": 19.6,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T08:36:56.644Z",
+        "value": 18,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T06:36:56.644Z",
+        "value": 17.3,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T04:36:56.644Z",
+        "value": 15.9,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T02:36:56.644Z",
+        "value": 13.7,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-14T00:36:56.644Z",
+        "value": 14.1,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-13T22:36:56.644Z",
+        "value": 13.6,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-13T20:36:56.644Z",
+        "value": 13.8,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-13T18:36:56.644Z",
+        "value": 15.3,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-13T16:36:56.644Z",
+        "value": 16.1,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-13T14:36:56.644Z",
+        "value": 16.7,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-13T12:36:56.644Z",
+        "value": 18,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-13T10:36:56.644Z",
+        "value": 18.9,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-13T08:36:56.644Z",
+        "value": 18.4,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-13T06:36:56.644Z",
+        "value": 18.2,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-13T04:36:56.644Z",
+        "value": 16.9,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-13T02:36:56.644Z",
+        "value": 14.1,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-13T00:36:56.644Z",
+        "value": 14.1,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T22:36:56.644Z",
+        "value": 14.1,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T20:36:56.644Z",
+        "value": 12.8,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T18:36:56.644Z",
+        "value": 14.2,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T16:36:56.644Z",
+        "value": 16.8,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T14:36:56.644Z",
+        "value": 17.6,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T12:36:56.644Z",
+        "value": 18.3,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T10:36:56.644Z",
+        "value": 18.8,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T08:36:56.644Z",
+        "value": 18.9,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T06:36:56.644Z",
+        "value": 18,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T04:36:56.644Z",
+        "value": 17.3,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T02:36:56.644Z",
+        "value": 14.6,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-12T00:36:56.644Z",
+        "value": 12.8,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T22:36:56.644Z",
+        "value": 13.5,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T20:36:56.644Z",
+        "value": 13.6,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T18:36:56.644Z",
+        "value": 15.5,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T16:36:56.644Z",
+        "value": 15.7,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T14:36:56.644Z",
+        "value": 17.6,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T12:36:56.644Z",
+        "value": 18.1,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T10:36:56.644Z",
+        "value": 18.8,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T08:36:56.644Z",
+        "value": 18.8,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T06:36:56.644Z",
+        "value": 17.5,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T04:36:56.644Z",
+        "value": 15.7,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T02:36:56.644Z",
+        "value": 14.7,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-11T00:36:56.644Z",
+        "value": 13.1,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T22:36:56.644Z",
+        "value": 14.6,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T20:36:56.644Z",
+        "value": 14.8,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T18:36:56.644Z",
+        "value": 15.6,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T16:36:56.644Z",
+        "value": 17.3,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T14:36:56.644Z",
+        "value": 17.7,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T12:36:56.644Z",
+        "value": 19.8,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T10:36:56.644Z",
+        "value": 19.8,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T08:36:56.644Z",
+        "value": 18.6,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T06:36:56.644Z",
+        "value": 18.7,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T04:36:56.644Z",
+        "value": 16,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T02:36:56.644Z",
+        "value": 15.6,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-10T00:36:56.644Z",
+        "value": 14.9,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T22:36:56.644Z",
+        "value": 13.1,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T20:36:56.644Z",
+        "value": 13.9,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T18:36:56.644Z",
+        "value": 14.9,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T16:36:56.644Z",
+        "value": 17.8,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T14:36:56.644Z",
+        "value": 17.7,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T12:36:56.644Z",
+        "value": 20.2,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T10:36:56.644Z",
+        "value": 19.1,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T08:36:56.644Z",
+        "value": 19.5,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T06:36:56.644Z",
+        "value": 17.3,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T04:36:56.644Z",
+        "value": 16,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T02:36:56.644Z",
+        "value": 14.4,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-09T00:36:56.644Z",
+        "value": 13.9,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T22:36:56.644Z",
+        "value": 14.3,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T20:36:56.644Z",
+        "value": 13.7,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T18:36:56.644Z",
+        "value": 16.3,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T16:36:56.644Z",
+        "value": 16.3,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T14:36:56.644Z",
+        "value": 19.2,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T12:36:56.644Z",
+        "value": 20.3,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T10:36:56.644Z",
+        "value": 19.8,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T08:36:56.644Z",
+        "value": 18.8,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T06:36:56.644Z",
+        "value": 17.8,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T04:36:56.644Z",
+        "value": 16.5,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T02:36:56.644Z",
+        "value": 16.4,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-08T00:36:56.644Z",
+        "value": 14.9,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T22:36:56.644Z",
+        "value": 13.4,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T20:36:56.644Z",
+        "value": 14.3,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T18:36:56.644Z",
+        "value": 15.3,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T16:36:56.644Z",
+        "value": 18.1,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T14:36:56.644Z",
+        "value": 18.6,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T12:36:56.644Z",
+        "value": 19.4,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T10:36:56.644Z",
+        "value": 20.3,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T08:36:56.644Z",
+        "value": 19.8,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T06:36:56.644Z",
+        "value": 19.3,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T04:36:56.644Z",
+        "value": 17,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T02:36:56.644Z",
+        "value": 15,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-07T00:36:56.644Z",
+        "value": 13.8,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T22:36:56.644Z",
+        "value": 15.2,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T20:36:56.644Z",
+        "value": 14.7,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T18:36:56.644Z",
+        "value": 15.3,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T16:36:56.644Z",
+        "value": 16.9,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T14:36:56.644Z",
+        "value": 19.6,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T12:36:56.644Z",
+        "value": 20.8,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T10:36:56.644Z",
+        "value": 20.7,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T08:36:56.644Z",
+        "value": 20.7,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T06:36:56.644Z",
+        "value": 19.3,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T04:36:56.644Z",
+        "value": 16.5,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T02:36:56.644Z",
+        "value": 16.1,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-06T00:36:56.644Z",
+        "value": 14.6,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T22:36:56.644Z",
+        "value": 13.6,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T20:36:56.644Z",
+        "value": 13.9,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T18:36:56.644Z",
+        "value": 16.4,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T16:36:56.644Z",
+        "value": 17.2,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T14:36:56.644Z",
+        "value": 19.2,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T12:36:56.644Z",
+        "value": 20.3,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T10:36:56.644Z",
+        "value": 20.6,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T08:36:56.644Z",
+        "value": 20,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T06:36:56.644Z",
+        "value": 19.1,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T04:36:56.644Z",
+        "value": 17,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T02:36:56.644Z",
+        "value": 15.5,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-05T00:36:56.644Z",
+        "value": 14.8,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-04T22:36:56.644Z",
+        "value": 15.5,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-04T20:36:56.644Z",
+        "value": 16,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-04T18:36:56.644Z",
+        "value": 16.8,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-04T16:36:56.644Z",
+        "value": 17.6,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-04T14:36:56.644Z",
+        "value": 19.3,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-04T12:36:56.644Z",
+        "value": 19.8,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-04T10:36:56.644Z",
+        "value": 20.7,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-04T08:36:56.644Z",
+        "value": 20.8,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-04T06:36:56.644Z",
+        "value": 18.8,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-04T04:36:56.644Z",
+        "value": 16.8,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-04T02:36:56.644Z",
+        "value": 16.5,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-04T00:36:56.644Z",
+        "value": 15.7,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T22:36:56.644Z",
+        "value": 15.5,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T20:36:56.644Z",
+        "value": 16,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T18:36:56.644Z",
+        "value": 16.8,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T16:36:56.644Z",
+        "value": 18.4,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T14:36:56.644Z",
+        "value": 18.9,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T12:36:56.644Z",
+        "value": 20.2,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T10:36:56.644Z",
+        "value": 20.4,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T08:36:56.644Z",
+        "value": 20.9,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T06:36:56.644Z",
+        "value": 19.4,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T04:36:56.644Z",
+        "value": 17,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T02:36:56.644Z",
+        "value": 16.8,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-03T00:36:56.644Z",
+        "value": 16.1,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T22:36:56.644Z",
+        "value": 15.1,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T20:36:56.644Z",
+        "value": 15.5,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T18:36:56.644Z",
+        "value": 15.9,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T16:36:56.644Z",
+        "value": 17.2,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T14:36:56.644Z",
+        "value": 18.9,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T12:36:56.644Z",
+        "value": 20.7,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T10:36:56.644Z",
+        "value": 21.7,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T08:36:56.644Z",
+        "value": 21.2,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T06:36:56.644Z",
+        "value": 19.3,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T04:36:56.644Z",
+        "value": 17.7,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T02:36:56.644Z",
+        "value": 17.1,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-02T00:36:56.644Z",
+        "value": 16.1,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T22:36:56.644Z",
+        "value": 15.1,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T20:36:56.644Z",
+        "value": 15.5,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T18:36:56.644Z",
+        "value": 17.5,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T16:36:56.644Z",
+        "value": 19.1,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T14:36:56.644Z",
+        "value": 19.4,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T12:36:56.644Z",
+        "value": 19.9,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T10:36:56.644Z",
+        "value": 21.7,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T08:36:56.644Z",
+        "value": 21.3,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T06:36:56.644Z",
+        "value": 18.9,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T04:36:56.644Z",
+        "value": 17.5,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T02:36:56.644Z",
+        "value": 16.2,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-01T00:36:56.644Z",
+        "value": 15.9,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T22:36:56.644Z",
+        "value": 15.5,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T20:36:56.644Z",
+        "value": 14.9,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T18:36:56.644Z",
+        "value": 16.5,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T16:36:56.644Z",
+        "value": 18.3,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T14:36:56.644Z",
+        "value": 20.4,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T12:36:56.644Z",
+        "value": 20.9,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T10:36:56.644Z",
+        "value": 22.2,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T08:36:56.644Z",
+        "value": 20,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T06:36:56.644Z",
+        "value": 20.3,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T04:36:56.644Z",
+        "value": 18.8,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T02:36:56.644Z",
+        "value": 17,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-31T00:36:56.644Z",
+        "value": 14.9,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T22:36:56.644Z",
+        "value": 15.7,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T20:36:56.644Z",
+        "value": 16.2,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T18:36:56.644Z",
+        "value": 17.8,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T16:36:56.644Z",
+        "value": 18.4,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T14:36:56.644Z",
+        "value": 19.7,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T12:36:56.644Z",
+        "value": 20.2,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T10:36:56.644Z",
+        "value": 20.7,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T08:36:56.644Z",
+        "value": 20.4,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T06:36:56.644Z",
+        "value": 20.5,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T04:36:56.644Z",
+        "value": 18.5,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T02:36:56.644Z",
+        "value": 16.9,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-30T00:36:56.644Z",
+        "value": 15.7,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T22:36:56.644Z",
+        "value": 15.8,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T20:36:56.644Z",
+        "value": 16.5,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T18:36:56.644Z",
+        "value": 16.6,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T16:36:56.644Z",
+        "value": 19.3,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T14:36:56.644Z",
+        "value": 19.6,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T12:36:56.644Z",
+        "value": 21.5,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T10:36:56.644Z",
+        "value": 22.5,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T08:36:56.644Z",
+        "value": 20.6,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T06:36:56.644Z",
+        "value": 19.4,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T04:36:56.644Z",
+        "value": 18.1,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T02:36:56.644Z",
+        "value": 16.6,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-29T00:36:56.644Z",
+        "value": 15.5,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T22:36:56.644Z",
+        "value": 16.2,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T20:36:56.644Z",
+        "value": 15.5,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T18:36:56.644Z",
+        "value": 17.6,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T16:36:56.644Z",
+        "value": 18.6,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T14:36:56.644Z",
+        "value": 21.1,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T12:36:56.644Z",
+        "value": 21.1,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T10:36:56.644Z",
+        "value": 21.7,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T08:36:56.644Z",
+        "value": 22,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T06:36:56.644Z",
+        "value": 20.2,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T04:36:56.644Z",
+        "value": 19.4,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T02:36:56.644Z",
+        "value": 16.8,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-28T00:36:56.644Z",
+        "value": 15.4,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-27T22:36:56.644Z",
+        "value": 15.4,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-27T20:36:56.644Z",
+        "value": 16.3,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-27T18:36:56.644Z",
+        "value": 18.1,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-27T16:36:56.644Z",
+        "value": 18.7,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-27T14:36:56.644Z",
+        "value": 21.4,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-27T12:36:56.644Z",
+        "value": 21.3,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-08-27T10:36:56.644Z",
+        "value": 22,
+        "quality": 0.94
+      },
+      {
+        "timestamp": "2025-08-27T08:36:56.644Z",
+        "value": 20.9,
+        "quality": 0.94
+      },
+      {
+        "timestamp": "2025-08-27T06:36:56.644Z",
+        "value": 20.4,
+        "quality": 0.94
+      },
+      {
+        "timestamp": "2025-08-27T04:36:56.644Z",
+        "value": 18.3,
+        "quality": 0.94
+      },
+      {
+        "timestamp": "2025-08-27T02:36:56.644Z",
+        "value": 17.3,
+        "quality": 0.94
+      },
+      {
+        "timestamp": "2025-08-27T00:36:56.644Z",
+        "value": 15.6,
+        "quality": 0.94
+      },
+      {
+        "timestamp": "2025-08-26T22:36:56.644Z",
+        "value": 15.3,
+        "quality": 0.94
+      },
+      {
+        "timestamp": "2025-08-26T20:36:56.644Z",
+        "value": 17,
+        "quality": 0.94
+      },
+      {
+        "timestamp": "2025-08-26T18:36:56.644Z",
+        "value": 17.3,
+        "quality": 0.94
+      }
+    ]
+  },
+  {
+    "sensor_id": "sens-004-noise-larochelle-maritime",
+    "sensor_type_id": "noise",
+    "experiment_id": "exp-004-larochelle-whisper-walls",
+    "data": [
+      {
+        "timestamp": "2025-09-25T16:22:42.599Z",
+        "value": 48.2,
+        "quality": 0.92
+      },
+      {
+        "timestamp": "2025-09-25T15:22:42.599Z",
+        "value": 52.1,
+        "quality": 0.91
+      },
+      {
+        "timestamp": "2025-09-25T14:22:42.599Z",
+        "value": 55.8,
+        "quality": 0.89
+      },
+      {
+        "timestamp": "2025-09-25T13:22:42.599Z",
+        "value": 58.3,
+        "quality": 0.88
+      },
+      {
+        "timestamp": "2025-09-25T12:22:42.599Z",
+        "value": 50.1,
+        "quality": 0.93
+      },
+      {
+        "timestamp": "2025-09-25T11:22:42.599Z",
+        "value": 61.2,
+        "quality": 0.86
+      },
+      {
+        "timestamp": "2025-09-25T10:22:42.599Z",
+        "value": 64.5,
+        "quality": 0.84
+      },
+      {
+        "timestamp": "2025-09-25T09:22:42.599Z",
+        "value": 62.8,
+        "quality": 0.85
+      },
+      {
+        "timestamp": "2025-09-25T08:22:42.599Z",
+        "value": 59.1,
+        "quality": 0.87
+      },
+      {
+        "timestamp": "2025-09-25T07:22:42.599Z",
+        "value": 53.4,
+        "quality": 0.9
+      },
+      {
+        "timestamp": "2025-09-25T06:22:42.599Z",
+        "value": 46.8,
+        "quality": 0.94
+      },
+      {
+        "timestamp": "2025-09-25T05:22:42.599Z",
+        "value": 50.5,
+        "quality": 0.92
+      },
+      {
+        "timestamp": "2025-09-25T04:22:42.599Z",
+        "value": 54.2,
+        "quality": 0.9
+      },
+      {
+        "timestamp": "2025-09-25T03:22:42.599Z",
+        "value": 57.1,
+        "quality": 0.88
+      },
+      {
+        "timestamp": "2025-09-25T02:22:42.599Z",
+        "value": 49.3,
+        "quality": 0.93
+      },
+      {
+        "timestamp": "2025-09-25T01:22:42.599Z",
+        "value": 59.8,
+        "quality": 0.87
+      },
+      {
+        "timestamp": "2025-09-25T00:22:42.599Z",
+        "value": 63.2,
+        "quality": 0.85
+      },
+      {
+        "timestamp": "2025-09-24T23:22:42.599Z",
+        "value": 61.5,
+        "quality": 0.86
+      },
+      {
+        "timestamp": "2025-09-24T22:22:42.599Z",
+        "value": 57.8,
+        "quality": 0.88
+      },
+      {
+        "timestamp": "2025-09-24T21:22:42.599Z",
+        "value": 52.1,
+        "quality": 0.91
+      },
+      {
+        "timestamp": "2025-09-24T20:22:42.599Z",
+        "value": 47.5,
+        "quality": 0.93
+      },
+      {
+        "timestamp": "2025-09-24T19:22:42.599Z",
+        "value": 51.3,
+        "quality": 0.92
+      },
+      {
+        "timestamp": "2025-09-24T18:22:42.599Z",
+        "value": 55.1,
+        "quality": 0.9
+      },
+      {
+        "timestamp": "2025-09-24T17:22:42.599Z",
+        "value": 58.7,
+        "quality": 0.88
+      },
+      {
+        "timestamp": "2025-09-24T16:22:42.599Z",
+        "value": 50.8,
+        "quality": 0.92
+      },
+      {
+        "timestamp": "2025-09-24T15:22:42.599Z",
+        "value": 56.4,
+        "quality": 0.89
+      },
+      {
+        "timestamp": "2025-09-24T14:22:42.599Z",
+        "value": 54.7,
+        "quality": 0.9
+      },
+      {
+        "timestamp": "2025-09-24T13:22:42.599Z",
+        "value": 52.3,
+        "quality": 0.92
+      }
+    ]
+  },
+  {
+    "sensor_id": "sens-005-pm25-marseille-thiers",
+    "sensor_type_id": "pm25",
+    "experiment_id": "exp-010-marseille-air-quality",
+    "data": [
+      {
+        "timestamp": "2025-09-25T16:22:42.599Z",
+        "value": 8.2,
+        "quality": 0.99
+      },
+      {
+        "timestamp": "2025-09-25T15:22:42.599Z",
+        "value": 12.1,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T14:22:42.599Z",
+        "value": 15.8,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-25T13:22:42.599Z",
+        "value": 18.3,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-25T12:22:42.599Z",
+        "value": 20.1,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-25T11:22:42.599Z",
+        "value": 22.5,
+        "quality": 0.94
+      },
+      {
+        "timestamp": "2025-09-25T10:22:42.599Z",
+        "value": 25.2,
+        "quality": 0.93
+      },
+      {
+        "timestamp": "2025-09-25T09:22:42.599Z",
+        "value": 23.8,
+        "quality": 0.94
+      },
+      {
+        "timestamp": "2025-09-25T08:22:42.599Z",
+        "value": 19.1,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-25T07:22:42.599Z",
+        "value": 14.4,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T06:22:42.599Z",
+        "value": 9.1,
+        "quality": 0.99
+      },
+      {
+        "timestamp": "2025-09-25T05:22:42.599Z",
+        "value": 13.5,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-25T04:22:42.599Z",
+        "value": 17.2,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-25T03:22:42.599Z",
+        "value": 20.1,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-25T02:22:42.599Z",
+        "value": 22.5,
+        "quality": 0.94
+      },
+      {
+        "timestamp": "2025-09-25T01:22:42.599Z",
+        "value": 24.8,
+        "quality": 0.93
+      },
+      {
+        "timestamp": "2025-09-25T00:22:42.599Z",
+        "value": 27.2,
+        "quality": 0.92
+      },
+      {
+        "timestamp": "2025-09-24T23:22:42.599Z",
+        "value": 25.5,
+        "quality": 0.93
+      },
+      {
+        "timestamp": "2025-09-24T22:22:42.599Z",
+        "value": 21.8,
+        "quality": 0.95
+      },
+      {
+        "timestamp": "2025-09-24T21:22:42.599Z",
+        "value": 16.1,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-24T20:22:42.599Z",
+        "value": 10.5,
+        "quality": 0.99
+      },
+      {
+        "timestamp": "2025-09-24T19:22:42.599Z",
+        "value": 14.2,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T18:22:42.599Z",
+        "value": 16.8,
+        "quality": 0.97
+      },
+      {
+        "timestamp": "2025-09-24T17:22:42.599Z",
+        "value": 19.3,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-24T16:22:42.599Z",
+        "value": 18.1,
+        "quality": 0.96
+      },
+      {
+        "timestamp": "2025-09-24T15:22:42.599Z",
+        "value": 15.4,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T14:22:42.599Z",
+        "value": 13.9,
+        "quality": 0.98
+      },
+      {
+        "timestamp": "2025-09-24T13:22:42.599Z",
+        "value": 12.7,
+        "quality": 0.99
+      }
+    ]
+  }
+]

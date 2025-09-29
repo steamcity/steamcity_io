@@ -1,0 +1,205 @@
+[
+  {
+    "id": "meas-20241226-143000-001",
+    "sensor_id": "sens-001-temp-bruxelles-creuz",
+    "sensor_type_id": "temperature",
+    "experiment_id": "exp-005-bruxelles-co2-sensors",
+    "timestamp": "2025-09-26T16:22:42.599Z",
+    "value": 21.4,
+    "raw_value": 21.2,
+    "unit": "°C",
+    "quality": {
+      "score": 0.98,
+      "status": "good",
+      "flags": []
+    },
+    "metadata": {
+      "battery_level": 87,
+      "signal_strength": -45,
+      "transmission_time": "2025-09-26T16:22:44.599Z",
+      "calibration_applied": true
+    }
+  },
+  {
+    "id": "meas-20241226-143000-002",
+    "sensor_id": "sens-002-hum-bruxelles-creuz",
+    "sensor_type_id": "humidity",
+    "experiment_id": "exp-005-bruxelles-co2-sensors",
+    "timestamp": "2025-09-26T15:52:42.599Z",
+    "value": 58.2,
+    "raw_value": 59.7,
+    "unit": "%",
+    "quality": {
+      "score": 0.95,
+      "status": "good",
+      "flags": []
+    },
+    "metadata": {
+      "battery_level": 85,
+      "signal_strength": -47,
+      "transmission_time": "2025-09-26T15:52:44.599Z",
+      "calibration_applied": true
+    }
+  },
+  {
+    "id": "meas-20241226-143000-003",
+    "sensor_id": "sens-003-co2-bruxelles-creuz",
+    "sensor_type_id": "co2",
+    "experiment_id": "exp-005-bruxelles-co2-sensors",
+    "timestamp": "2025-09-26T15:22:42.599Z",
+    "value": 652,
+    "raw_value": 652,
+    "unit": "ppm",
+    "quality": {
+      "score": 0.97,
+      "status": "good",
+      "flags": []
+    },
+    "metadata": {
+      "battery_level": 92,
+      "signal_strength": -42,
+      "transmission_time": "2025-09-26T15:22:44.599Z",
+      "calibration_applied": false,
+      "auto_calibration_active": true
+    }
+  },
+  {
+    "id": "meas-20241226-142900-001",
+    "sensor_id": "sens-001-temp-bruxelles-creuz",
+    "sensor_type_id": "temperature",
+    "experiment_id": "exp-005-bruxelles-co2-sensors",
+    "timestamp": "2025-09-26T14:52:42.599Z",
+    "value": 21.3,
+    "raw_value": 21.1,
+    "unit": "°C",
+    "quality": {
+      "score": 0.97,
+      "status": "good",
+      "flags": []
+    },
+    "metadata": {
+      "battery_level": 87,
+      "signal_strength": -46,
+      "transmission_time": "2025-09-26T14:52:44.599Z",
+      "calibration_applied": true
+    }
+  },
+  {
+    "id": "meas-20241226-143000-004",
+    "sensor_id": "sens-004-noise-larochelle-maritime",
+    "sensor_type_id": "noise",
+    "experiment_id": "exp-004-larochelle-whisper-walls",
+    "timestamp": "2025-09-26T14:22:42.599Z",
+    "value": 52.3,
+    "raw_value": 51.8,
+    "unit": "dB",
+    "quality": {
+      "score": 0.92,
+      "status": "good",
+      "flags": [
+        "wind_detected"
+      ]
+    },
+    "metadata": {
+      "battery_level": 76,
+      "signal_strength": -52,
+      "transmission_time": "2025-09-26T14:22:44.599Z",
+      "calibration_applied": true,
+      "windscreen_active": true,
+      "weather_conditions": "light_wind"
+    }
+  },
+  {
+    "id": "meas-20241226-143000-005",
+    "sensor_id": "sens-005-pm25-marseille-thiers",
+    "sensor_type_id": "pm25",
+    "experiment_id": "exp-010-marseille-air-quality",
+    "timestamp": "2025-09-26T13:52:42.599Z",
+    "value": 12.7,
+    "raw_value": 12.7,
+    "unit": "μg/m³",
+    "quality": {
+      "score": 0.99,
+      "status": "excellent",
+      "flags": []
+    },
+    "metadata": {
+      "battery_level": 68,
+      "signal_strength": -38,
+      "transmission_time": "2025-09-26T13:52:44.599Z",
+      "calibration_applied": false,
+      "heating_active": false,
+      "solar_charging": true
+    }
+  },
+  {
+    "id": "meas-20241226-143000-006",
+    "sensor_id": "sens-006-pm10-marseille-thiers",
+    "sensor_type_id": "pm10",
+    "experiment_id": "exp-010-marseille-air-quality",
+    "timestamp": "2025-09-26T13:22:42.599Z",
+    "value": null,
+    "raw_value": null,
+    "unit": "μg/m³",
+    "quality": {
+      "score": 0,
+      "status": "error",
+      "flags": [
+        "sensor_offline",
+        "maintenance_mode"
+      ]
+    },
+    "metadata": {
+      "battery_level": 72,
+      "signal_strength": -41,
+      "transmission_time": null,
+      "calibration_applied": false,
+      "error_code": "MAINT_001",
+      "error_message": "Sensor in maintenance mode"
+    }
+  },
+  {
+    "id": "meas-20241226-143000-007",
+    "sensor_id": "sens-007-light-madrid-cervantes",
+    "sensor_type_id": "light",
+    "experiment_id": "exp-007-madrid-sleep-battle",
+    "timestamp": "2025-09-26T12:52:42.599Z",
+    "value": 847.2,
+    "raw_value": 847.2,
+    "unit": "lx",
+    "quality": {
+      "score": 0.98,
+      "status": "good",
+      "flags": []
+    },
+    "metadata": {
+      "battery_level": 94,
+      "signal_strength": -35,
+      "transmission_time": "2025-09-26T12:52:44.599Z",
+      "calibration_applied": false
+    }
+  },
+  {
+    "id": "meas-20241226-143000-008",
+    "sensor_id": "sens-008-motion-sofia-hanchev",
+    "sensor_type_id": "motion",
+    "experiment_id": "exp-008-sofia-decibel-detectives",
+    "timestamp": "2025-09-26T12:22:42.599Z",
+    "value": true,
+    "raw_value": true,
+    "unit": "",
+    "quality": {
+      "score": 1,
+      "status": "excellent",
+      "flags": []
+    },
+    "metadata": {
+      "battery_level": 89,
+      "signal_strength": -48,
+      "transmission_time": "2025-09-26T12:22:44.599Z",
+      "calibration_applied": false,
+      "detection_count": 1,
+      "detection_duration": 2.3
+    }
+  }
+]

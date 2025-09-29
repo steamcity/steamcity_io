@@ -1,0 +1,121 @@
+[
+  {
+    "id": 1,
+    "name": "Cluster 1",
+    "title": "Governance and citizenship",
+    "description": "Promote active citizenship and inclusive decision-making among young people, through an agile approach that encourages critical thinking and engagement with various aspects of a learning city. Overcome fixed mindsets, countering memorization-focused education towards more creativity, overcoming the limited exposure to diverse ideas and experiences and addressing the fear of failure when experimenting. Question data governance and usages, to avoid living the experiments as simply data-driven projects because of experimenting with sensors. Encourage students to understand data limitations sharpens their critical thinking abilities and prepares them for real-world decision-making",
+    "challenges": "• Understand complex decision-making processes\n• Understand ethical issues related to data\n• Actively participate in local decisions\n• Promote diversity and inclusion in decisions",
+    "forStudents": "• Learn to actively engage Develop ethical behavior\n• Understand and defend democratic values\n• Make decisions based on data and facts",
+    "inSociety": "• Use data to make informed decisions\n• Develop critical thinking and reasoning\n• Encourage active and responsible citizenship\n• Strengthen democratic values and digital participation",
+    "roleOfSchools": "The school is a structured setting for interdisciplinary learning. It offers hands-on projects to apply knowledge. It is a microcosm where students learn to become active citizens",
+    "icon": "/icons/city_blue.svg",
+    "color": "blue",
+    "leaders": ["Les 7 vents", "L.A.B", "ZeUGMA"],
+    "protocols": [
+      "bb6f947ad79b4c7ea5769d0e580d403c",
+      "2cb12f3a92d6432fbbd891211d3148e4",
+      "76ca4434da674c45b8aa408dbf332030",
+      "17712d814e214af9b635886e8ce26480",
+      "1f517f48d94a44fbb6f9eadd869d4504",
+      "8976844a0838421daa7c90cb18fe5022"
+    ],
+    "url": "https://www.notion.so/7fa81d769404492b8f287008e6a61356"
+  },
+  {
+    "id": 2,
+    "name": "Cluster 2",
+    "title": "Environmental quality, climate and well-being",
+    "description": "Integrate environmental considerations and health principles into learning cities. Promote green spaces, clean air, and eco-friendly practices for sustainable urban environments. Create learning environments where students become active citizens addressing urgent environmental issues. Align with global efforts to combat climate change and promote sustainable urban development. Encourage students to balance environmental conservation with urban growth. Emphasize global responsibility and community engagement for diverse socio-economic groups.",
+    "challenges": "• Sustainable development of cities while preserving the environment\n• Equal access to green spaces and clean air for all\n• Teaching about environmental challenges at school\n• Involving students in local and global initiatives",
+    "forStudents": "• Protect ecosystems through concrete actions\n• Defend equitable access to resources for all\n• Adopt eco-responsible behaviors\n• Understand well-being issues in society",
+    "inSociety": "• Interconnection of the fields of health and environment\n• Promotion of healthy and happy communities\n• Contribution to efforts against climate change\n• Active participation in the construction of sustainable cities",
+    "roleOfSchools": "The school makes students responsible for the environment through sustainability actions. The well-being of students at school must be a priority. The school trains students to act on well-being and environmental issues. Education prepares to sustainable practices",
+    "icon": "/icons/leaf_green.svg",
+    "color": "green",
+    "leaders": ["Vittascience", "L.A.B"],
+    "protocols": [
+      "67f57ce646c84a359cec5dbe9f2f4460",
+      "b57e3a4a5ab04e78a7ba42d844f2dc34",
+      "a0dc9c59e6314e0c9147f4188f3fdeff",
+      "89f00635b05a476598855d45620eeadf",
+      "e6fe0a10e20642528d330db13d3f34a7",
+      "4de9d1f03f374a9aa4bc0cc922d94da7",
+      "6066b6d453014e2e843c36736388e17d",
+      "1d5391dc4a6d412093291d46dbe21f8b",
+      "65183cdaec22485ca6ee7592d5316bc4",
+      "c0549c892f294f6eac83550a2d11a24f",
+      "dd3dffefb3f7426da1be623c4e287e2a",
+      "1870db1f63c648869faec40f45acf9b7",
+      "17a229db4fb68115990ff6fb37fd1d35"
+    ],
+    "url": "https://www.notion.so/a598126673714445b22c911a8e6ba7f7"
+  },
+  {
+    "id": 3,
+    "name": "Cluster 3",
+    "title": "Mobility",
+    "description": "Efficient transportation systems are essential for urban connectivity and the development of learning and smart cities. Well-regulated mobility reduces traffic congestion and emissions, leading to cleaner, healthier urban environments. Smart mobility regulation ensures safety and accessibility, allowing individuals of all abilities to access services. Efficient transportation networks boost economic opportunities by attracting businesses and fostering innovation. Easy access to educational institutions facilitates knowledge exchange, collaboration, and social cohesion. Tackle challenges through innovative transportation solutions, like electric and autonomous vehicles, and regulations that reduce congestion and emissions. Ensure accessibility and affordability for all citizens through thoughtful mobility policies.",
+    "challenges": "• Develop innovative transport solutions to reduce emissions and improve efficiency\n• Create effective regulatory frameworks\n• Ensure equitable access to transport for all communities\n• Promote sustainable mobility infrastructure",
+    "forStudents": "• Easily access educational establishments\n• Discover new environments thanks to mobility\n• Discover the new technologies behind sustainable and autonomous mobility",
+    "inSociety": "• Strengthen urban connectivity\n• Reduce emissions and pollution\n• Stimulate economic development by facilitating the transport of goods and people\n• Improve access to services and opportunities",
+    "roleOfSchools": "The school teaches the importance of sustainable mobility. The school can make it possible to experiment with new projects in mobility. The school raises students' awareness of accessibility and equity. The school trains future actors of change in mobility",
+    "icon": "/icons/bus-metro_red.svg",
+    "color": "red",
+    "leaders": ["Perlatecnica"],
+    "protocols": [
+      "1d5391dc4a6d412093291d46dbe21f8b",
+      "b73e3ab876944527a58217a5f63ca533",
+      "6e8165cc654a44f980b014f9f2c6a2af",
+      "c0549c892f294f6eac83550a2d11a24f"
+    ],
+    "url": "https://www.notion.so/c92e60c663f44431aa2f1da41a39bbb6"
+  },
+  {
+    "id": 4,
+    "name": "Cluster 4",
+    "title": "Energy savings",
+    "description": "Focus on energy efficiency, consumption, and renewable sources in smart and learning cities. Reliable energy supply is essential to power institutions, facilities, and digital infrastructure, ensuring uninterrupted access to services. Energy efficiency reduces operational costs and minimizes the environmental footprint, contributing to sustainable urban environments. Integration of renewable energy sources, such as solar and wind, promotes energy resilience and lowers greenhouse gas emissions. Set an example for sustainable practices by aligning with global climate goals. Smart energy management and regulation optimize energy usage and distribution, enhancing sustainability and resilience in cities.",
+    "challenges": "• Integrate renewable energy through advanced technologies\n• Navigate complex legal frameworks to promote sustainable energy\n• Find infrastructure investments\n• Foster behavioral change",
+    "forStudents": "• Understand the complex concepts behind energy and energy efficiency\n• Explore global energy issues\n• Discover careers in sustainable energy and green technologies",
+    "inSociety": "• Reduce costs and emissions\n• Promote a sustainable energy mix\n• Optimize energy consumption\n• Stimulate citizen participation in decisions and adopt responsible behavior",
+    "roleOfSchools": "The school teaches the importance of energy efficiency and renewable energy. The school allows experimentation around complex energy concepts. The school trains future changemakers in the energy sector",
+    "icon": "/icons/battery-charging_yellow.svg",
+    "color": "yellow",
+    "leaders": ["Les 7 vents", "La Scientothèque", "Vittascience"],
+    "protocols": [
+      "46c599b356aa4546be813ccd35c120cc",
+      "73c18c4ba890428d9ca1e601774984f4",
+      "ef5264efeb55432fa0a992f21e9db75a",
+      "17a229db4fb68115990ff6fb37fd1d35",
+      "20f229db4fb6800b89d1f4b09f946241"
+    ],
+    "url": "https://www.notion.so/404ff734fa7e46b3b3d1f66a289ca5d6"
+  },
+  {
+    "id": 5,
+    "name": "Cluster 5",
+    "title": "AI and technologies",
+    "description": "Focus on Artificial Intelligence (AI) and the integration of new technologies in the evolution of learning and smart cities. Students develop a forward-looking mindset and practical skills to embrace opportunities and challenges of the digital age. AI encourages innovation in research by providing advanced data analysis tools and automation. Cities use AI to extract data-driven insights, optimize resource allocation, and improve quality of life for residents. AI-driven smart cities manage infrastructure, transportation, energy consumption, and public services through data analysis and automation. AI promotes innovation, education, and sustainability by enabling cities to adapt and evolve in real time. AI fosters inclusivity, resilience, and a sustainable future, making cities safer, more efficient, and responsive to citizen needs. Address ethical and responsible use of AI to ensure its benefits are achieved without unintended consequences.",
+    "challenges": "• Develop ethical and transparent AI to avoid bias and respect privacy\n• Create appropriate regulatory frameworks\n• Ensure equitable access to AI technologies to avoid the digital divide\n• Promote sustainable technological infrastructure",
+    "forStudents": "• Access personalized learning tools through AI\n• Strengthen critical thinking and problem-solving skills\n• Develop digital independence\n• Explore careers in AI-related fields",
+    "inSociety": "• Improve data analysis\n• Automate complex processes\n• Stimulate scientific and technological innovation\n• Make cities smarter and more resilient",
+    "roleOfSchools": "Schools can prepare students to use technology responsibly. Schools builds digital literacy skills. Schools fosters creativity School develops critical thinking and problem-solving skills",
+    "icon": "/icons/robot_purple.svg",
+    "color": "purple",
+    "leaders": ["La Scientothèque", "L.A.B", "Perlatecnica"],
+    "protocols": [
+      "1f517f48d94a44fbb6f9eadd869d4504",
+      "8976844a0838421daa7c90cb18fe5022",
+      "1870db1f63c648869faec40f45acf9b7",
+      "08062e68ed5b4b5bbd576aed1fa94b25",
+      "65183cdaec22485ca6ee7592d5316bc4",
+      "dd3dffefb3f7426da1be623c4e287e2a",
+      "b01900a22e3748a4ace6d3a289a0153f",
+      "a34b2e9fe8fc43a78aa20d310a917de8",
+      "c0549c892f294f6eac83550a2d11a24f",
+      "1c6d75a453c943f3915354b51d0627e0",
+      "6e8165cc654a44f980b014f9f2c6a2af"
+    ],
+    "url": "https://www.notion.so/243c2dc1116b45ac8286d789e20f492e"
+  }
+]

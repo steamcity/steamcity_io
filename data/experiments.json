@@ -1,0 +1,2092 @@
+[
+  {
+    "id": "exp-001-aix-city-detective",
+    "title": "Enquête sur les défis urbains d'Aix",
+    "protocol_id": "76ca4434da674c45b8aa408dbf332030",
+    "protocol_name": "City Detective Challenge",
+    "school": "Lycée Paul Cézanne",
+    "city": "Aix-en-Provence",
+    "location": {
+      "latitude": 43.5263,
+      "longitude": 5.4454
+    },
+    "description": "Les étudiants enquêtent sur les problématiques urbaines d'Aix-en-Provence en utilisant l'analyse de données et l'engagement citoyen",
+    "methodology": "Recherche participative avec collecte de données par questionnaires citoyens, entretiens avec les autorités locales et analyse des statistiques municipales. Utilisation d'outils numériques collaboratifs pour synthétiser les résultats.",
+    "hypotheses": "La participation citoyenne active améliore la qualité des décisions municipales. Les données ouvertes permettent une meilleure compréhension des enjeux urbains par les citoyens.",
+    "conclusions": "Les premiers résultats montrent un engagement croissant des citoyens dans les processus de décision lorsque les données sont accessibles et bien présentées.",
+    "participants": [
+      {
+        "name": "Lucas Martín",
+        "age": 16
+      },
+      {
+        "name": "Amina Benali",
+        "age": 17
+      },
+      {
+        "name": "Sophie Dupont",
+        "age": 16
+      },
+      {
+        "name": "Karim El Amrani",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-09-15",
+    "end_date": "2024-12-20",
+    "status": "active",
+    "protocol_category": "governance"
+  },
+  {
+    "id": "exp-002-marseille-data-context",
+    "title": "Données vs Contexte : Le défi citoyen",
+    "protocol_id": "bb6f947ad79b4c7ea5769d0e580d403c",
+    "protocol_name": "Data vs. Context: The Citizen Challenge",
+    "school": "Collège Vieux-Port",
+    "city": "Marseille",
+    "location": {
+      "latitude": 43.2965,
+      "longitude": 5.3698
+    },
+    "description": "Apprendre à analyser les données tout en comprenant leur contexte dans les processus de prise de décision",
+    "methodology": "Analyse comparative de jeux de données urbaines avec et sans informations contextuelles. Simulation de prises de décision basées sur différents niveaux d'information disponible.",
+    "hypotheses": "Le contexte socio-économique influence significativement l'interprétation des données urbaines. Les décisions prises sans contexte sont moins efficaces et peuvent créer des biais.",
+    "conclusions": "L'expérience démontre l'importance cruciale du contexte dans l'analyse de données pour éviter les conclusions erronées et améliorer l'efficacité des politiques publiques.",
+    "participants": [
+      {
+        "name": "Yasmine Bouafia",
+        "age": 15
+      },
+      {
+        "name": "Antoine Rossi",
+        "age": 14
+      },
+      {
+        "name": "Fatima Zidane",
+        "age": 15
+      },
+      {
+        "name": "Pierre-Luc Bernard",
+        "age": 14
+      }
+    ],
+    "start_date": "2024-10-01",
+    "end_date": "2025-01-15",
+    "status": "active",
+    "protocol_category": "governance"
+  },
+  {
+    "id": "exp-003-paris-factbusters",
+    "title": "Chasseurs de fake news",
+    "protocol_id": "17712d814e214af9b635886e8ce26480",
+    "protocol_name": "FactBusters",
+    "school": "Lycée Voltaire",
+    "city": "Paris",
+    "location": {
+      "latitude": 48.8566,
+      "longitude": 2.3522
+    },
+    "description": "Enquête et vérification des faits dans l'information numérique pour lutter contre la désinformation",
+    "methodology": "Application de techniques de fact-checking sur les réseaux sociaux, vérification croisée des sources, utilisation d'outils de détection automatique de fausses informations et création d'un guide de bonnes pratiques.",
+    "hypotheses": "Les jeunes peuvent devenir des acteurs efficaces de la lutte contre la désinformation s'ils sont formés aux techniques de vérification. L'éducation aux médias réduit la propagation de fausses nouvelles.",
+    "conclusions": "Les participants ont développé un esprit critique renforcé et créé des outils de sensibilisation efficaces pour leur établissement scolaire.",
+    "participants": [
+      {
+        "name": "Léa Chen",
+        "age": 17
+      },
+      {
+        "name": "Mohamed Traoré",
+        "age": 16
+      },
+      {
+        "name": "Emma Johansson",
+        "age": 17
+      },
+      {
+        "name": "Ahmed Kassem",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-09-01",
+    "end_date": "2024-11-30",
+    "status": "active",
+    "protocol_category": "governance"
+  },
+  {
+    "id": "exp-004-larochelle-whisper-walls",
+    "title": "Murs qui murmurent : enquête sur le silence",
+    "protocol_id": "2cb12f3a92d6432fbbd891211d3148e4",
+    "protocol_name": "Whisper Walls: Investigating the Sound of Silence",
+    "school": "Lycée Maritime",
+    "city": "La Rochelle",
+    "location": {
+      "latitude": 46.1591,
+      "longitude": -1.152
+    },
+    "description": "Explorer l'environnement acoustique et son impact sur la vie urbaine et le bien-être",
+    "methodology": "Cartographie sonore de différents quartiers de La Rochelle avec des sonomètres, enquêtes sur le ressenti des habitants, corrélation entre niveaux sonores et indicateurs de bien-être urbain.",
+    "hypotheses": "Il existe des zones de silence urbain qui contribuent positivement au bien-être des citoyens. La pollution sonore affecte différemment les populations selon leur âge et leur contexte socio-économique.",
+    "conclusions": "Identification de corridors de tranquillité urbaine et proposition d'aménagements pour réduire la pollution sonore dans les zones sensibles.",
+    "participants": [
+      {
+        "name": "Océane Moreau",
+        "age": 16
+      },
+      {
+        "name": "Baptiste Lemoine",
+        "age": 17
+      },
+      {
+        "name": "Sarah N'Diaye",
+        "age": 16
+      },
+      {
+        "name": "Julien Rousseau",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-10-15",
+    "end_date": "2025-02-28",
+    "status": "active",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-005-bruxelles-co2-sensors",
+    "title": "Capteurs CO2 pour la qualité de l'air intérieur",
+    "protocol_id": "67f57ce646c84a359cec5dbe9f2f4460",
+    "protocol_name": "CO2 sensors for indoor air quality",
+    "school": "Athénée Royal Serge Creuz",
+    "city": "Bruxelles",
+    "location": {
+      "latitude": 50.8503,
+      "longitude": 4.3517
+    },
+    "description": "Surveillance et analyse de la qualité de l'air intérieur à l'aide de capteurs CO2 dans les environnements éducatifs",
+    "methodology": "Installation de capteurs CO2 dans différentes salles de classe et espaces communs, mesures continues pendant plusieurs semaines, corrélation avec les performances scolaires et le bien-être des élèves.",
+    "hypotheses": "La concentration de CO2 dans les salles de classe influence directement la capacité de concentration des élèves. Un renouvellement d'air optimal améliore les résultats scolaires.",
+    "conclusions": "Expérience en cours de planification. Objectif : établir des recommandations pour optimiser la ventilation des établissements scolaires.",
+    "participants": [
+      {
+        "name": "Marie Van Den Berg",
+        "age": 15
+      },
+      {
+        "name": "Hassan El Gharbi",
+        "age": 16
+      },
+      {
+        "name": "Lucie Vandenberghe",
+        "age": 15
+      },
+      {
+        "name": "Amadou Diallo",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-11-01",
+    "end_date": "2025-03-15",
+    "status": "planned",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-006-naples-pollinators",
+    "title": "Mappatura degli impollinatori urbani",
+    "protocol_id": "b57e3a4a5ab04e78a7ba42d844f2dc34",
+    "protocol_name": "Mapping of pollinators through counting",
+    "school": "Liceo Scientifico Galileo Galilei",
+    "city": "Naples",
+    "location": {
+      "latitude": 40.8518,
+      "longitude": 14.2681
+    },
+    "description": "Studio della biodiversità urbana mappando e contando gli impollinatori negli ambienti cittadini",
+    "methodology": "Protocole di osservazione standardizzato per il conteggio degli impollinatori in diversi microhabitat urbani, utilizzo di app mobili per la geolocalizzazione e l'identificazione delle specie, analisi statistica della distribuzione spaziale.",
+    "hypotheses": "La densità di impollinatori varia significativamente tra diversi tipi di spazi verdi urbani. I corridoi verdi favoriscono la circolazione degli impollinatori tra i parchi cittadini.",
+    "conclusions": "Risultati preliminari mostrano una maggiore diversità di impollinatori nei parchi con gestione ecologica rispetto agli spazi verdi tradizionali.",
+    "participants": [
+      {
+        "name": "Giulia Romano",
+        "age": 17
+      },
+      {
+        "name": "Ahmed Ben Salem",
+        "age": 16
+      },
+      {
+        "name": "Francesca Esposito",
+        "age": 17
+      },
+      {
+        "name": "Marco Volpe",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-09-20",
+    "end_date": "2024-12-15",
+    "status": "active",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-007-madrid-sleep-battle",
+    "title": "Luz vs. Sueño - La Gran Batalla del Descanso",
+    "protocol_id": "a0dc9c59e6314e0c9147f4188f3fdeff",
+    "protocol_name": "Light vs. Zzz - The Great Sleep Battle",
+    "school": "IES Miguel de Cervantes",
+    "city": "Madrid",
+    "location": {
+      "latitude": 40.4168,
+      "longitude": -3.7038
+    },
+    "description": "Investigar el impacto de la iluminación urbana en la calidad del sueño y los ritmos circadianos",
+    "methodology": "Medición de la exposición a la luz artificial nocturna mediante luxómetros portátiles, diarios de sueño de los participantes, análisis de la temperatura de color de la iluminación urbana en diferentes zonas de Madrid.",
+    "hypotheses": "La exposición a luz azul por la noche disrumpe los ritmos circadianos y reduce la calidad del sueño. Las zonas con iluminación LED blanca afectan más el sueño que las zonas con iluminación cálida.",
+    "conclusions": "Se observa una correlación negativa entre la intensidad de iluminación nocturna y la calidad del sueño reportada por los participantes.",
+    "participants": [
+      {
+        "name": "Carlos Fernández",
+        "age": 16
+      },
+      {
+        "name": "Aisha El Mansouri",
+        "age": 17
+      },
+      {
+        "name": "Elena García",
+        "age": 16
+      },
+      {
+        "name": "Omar Boukhris",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-10-01",
+    "end_date": "2025-01-31",
+    "status": "active",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-008-sofia-decibel-detectives",
+    "title": "Детективи на децибелите",
+    "protocol_id": "89f00635b05a476598855d45620eeadf",
+    "protocol_name": "Decibel Detectives - Correlation between noise and learning abilities",
+    "school": "139 СУ \"Веселин Ханчев\"",
+    "city": "Sofia",
+    "location": {
+      "latitude": 42.6977,
+      "longitude": 23.3219
+    },
+    "description": "Изследване как шумовото замърсяване в градската среда влияе на ученето и когнитивните способности",
+    "methodology": "Измерване на нивата на шум в различни учебни пространства, провеждане на когнитивни тестове при различни акустични условия, анкетно проучване на субективното възприятие за шума сред учениците.",
+    "hypotheses": "Високите нива на шум в учебните помещения намаляват способността за концентрация и паметта. Съществуват критични прагове на шум, над които ученето се влошава значително.",
+    "conclusions": "Установена е ясна връзка между нивата на шум над 55 dB и влошените резултати в тестовете за концентрация.",
+    "participants": [
+      {
+        "name": "Мария Петрова",
+        "age": 16
+      },
+      {
+        "name": "Димитър Иванов",
+        "age": 17
+      },
+      {
+        "name": "Айшe Мехмед",
+        "age": 16
+      },
+      {
+        "name": "Стефан Георгиев",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-09-10",
+    "end_date": "2024-12-20",
+    "status": "active",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-009-aix-soundsquad",
+    "title": "Brigade du Son - Cartographie sensible des bruits",
+    "protocol_id": "e6fe0a10e20642528d330db13d3f34a7",
+    "protocol_name": "SoundSquad - Sensitive mapping of noises across the city",
+    "school": "Collège Sophie Germain",
+    "city": "Aix-en-Provence",
+    "location": {
+      "latitude": 43.5297,
+      "longitude": 5.4474
+    },
+    "description": "Créer des cartes détaillées du bruit urbain en utilisant la mesure collaborative du son",
+    "methodology": "Crowdsourcing de mesures acoustiques via une application mobile, géolocalisation automatique des mesures, création de cartes de bruit en temps réel, validation des données par recoupement avec des stations de mesure fixes.",
+    "hypotheses": "La participation citoyenne permet de créer des cartes de bruit plus détaillées que les méthodes traditionnelles. Les variations temporelles du bruit urbain révèlent des patterns d'activité urbaine.",
+    "conclusions": "Projet en phase de planification. Objectif : développer une méthodologie reproductible de cartographie participative du bruit urbain.",
+    "participants": [
+      {
+        "name": "Inès Belkacem",
+        "age": 14
+      },
+      {
+        "name": "Nathan Roussel",
+        "age": 15
+      },
+      {
+        "name": "Leyla Özdemir",
+        "age": 14
+      },
+      {
+        "name": "Hugo Martinez",
+        "age": 15
+      }
+    ],
+    "start_date": "2024-11-15",
+    "end_date": "2025-04-30",
+    "status": "planned",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-010-marseille-air-quality",
+    "title": "Surveillance qualité de l'air extérieur",
+    "protocol_id": "4de9d1f03f374a9aa4bc0cc922d94da7",
+    "protocol_name": "Outdoor air quality monitoring, particles and impact of weather",
+    "school": "Lycée Thiers",
+    "city": "Marseille",
+    "location": {
+      "latitude": 43.2951,
+      "longitude": 5.3692
+    },
+    "description": "Surveillance de la qualité de l'air extérieur et analyse de l'impact des conditions météorologiques sur la pollution",
+    "methodology": "Déploiement de capteurs de particules fines (PM2.5, PM10) et de gaz polluants dans différents points de Marseille, corrélation avec les données météorologiques en temps réel, modélisation prédictive de la qualité de l'air.",
+    "hypotheses": "Les épisodes de pollution sont fortement corrélés aux conditions météorologiques (vent, température, humidité). Le trafic routier est le principal contributeur aux pics de pollution urbaine.",
+    "conclusions": "Les données collectées confirment l'influence majeure du mistral sur la dispersion des polluants et l'importance des heures de pointe dans les niveaux de pollution.",
+    "participants": [
+      {
+        "name": "Salim Berkani",
+        "age": 17
+      },
+      {
+        "name": "Camille Dubois",
+        "age": 16
+      },
+      {
+        "name": "Rachid Amrani",
+        "age": 17
+      },
+      {
+        "name": "Clara Fontaine",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-09-05",
+    "end_date": "2025-06-30",
+    "status": "active",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-011-paris-smart-objects",
+    "title": "Safari d'Objets Intelligents",
+    "protocol_id": "6066b6d453014e2e843c36736388e17d",
+    "protocol_name": "Smart Objects Safari - Involve learners in the design of smart objects",
+    "school": "Lycée Sophie Germain",
+    "city": "Paris",
+    "location": {
+      "latitude": 48.8734,
+      "longitude": 2.32
+    },
+    "description": "Engager les étudiants dans la conception et création d'objets intelligents pour applications urbaines",
+    "methodology": "Approche design thinking pour identifier les besoins urbains, prototypage rapide avec Arduino et capteurs IoT, tests utilisateurs avec les habitants du quartier, itérations basées sur les retours d'expérience.",
+    "hypotheses": "L'implication des citoyens dans la conception d'objets intelligents améliore leur acceptabilité et leur efficacité. Les solutions développées localement sont plus adaptées aux besoins réels.",
+    "conclusions": "Développement réussi de trois prototypes : un capteur de stationnement intelligent, un système d'alerte pollution et un dispositif de mesure de fréquentation des espaces verts.",
+    "participants": [
+      {
+        "name": "Rayan Benabdallah",
+        "age": 16
+      },
+      {
+        "name": "Chloé Lemercier",
+        "age": 17
+      },
+      {
+        "name": "Sami Kadri",
+        "age": 16
+      },
+      {
+        "name": "Anaïs Dubois",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-10-20",
+    "end_date": "2025-05-15",
+    "status": "active",
+    "protocol_category": "technology"
+  },
+  {
+    "id": "exp-012-larochelle-mobility-regulation",
+    "title": "Impact écologique de la régulation de la mobilité",
+    "protocol_id": "1d5391dc4a6d412093291d46dbe21f8b",
+    "protocol_name": "Ecological impact of the regulation of mobility",
+    "school": "Lycée Jean Dautet",
+    "city": "La Rochelle",
+    "location": {
+      "latitude": 46.1603,
+      "longitude": -1.1511
+    },
+    "description": "Analyser comment les régulations de mobilité affectent l'écologie urbaine et la durabilité environnementale",
+    "methodology": "Analyse comparative avant/après la mise en place de zones à faibles émissions, mesures de pollution atmosphérique, comptages de trafic et évaluation de l'impact sur la biodiversité urbaine.",
+    "hypotheses": "Les restrictions de circulation réduisent significativement les émissions polluantes et favorisent la biodiversité urbaine. Les modes de transport alternatifs se développent naturellement suite aux régulations.",
+    "conclusions": "Réduction de 30% des émissions de NOx dans les zones réglementées et augmentation de 15% de la diversité d'espèces d'oiseaux urbains observées.",
+    "participants": [
+      {
+        "name": "Thomas Girard",
+        "age": 17
+      },
+      {
+        "name": "Khadija Alaoui",
+        "age": 16
+      },
+      {
+        "name": "Marine Perrin",
+        "age": 17
+      },
+      {
+        "name": "Youssef Benali",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-09-25",
+    "end_date": "2025-02-20",
+    "status": "active",
+    "protocol_category": "mobility"
+  },
+  {
+    "id": "exp-013-bruxelles-road-signs",
+    "title": "Panneaux routiers de demain",
+    "protocol_id": "65183cdaec22485ca6ee7592d5316bc4",
+    "protocol_name": "Road signs of tomorrow",
+    "school": "Institut Saint-Louis",
+    "city": "Bruxelles",
+    "location": {
+      "latitude": 50.8465,
+      "longitude": 4.3525
+    },
+    "description": "Concevoir et prototyper des panneaux routiers de nouvelle génération pour les systèmes de mobilité intelligente",
+    "methodology": "Recherche utilisateur sur les besoins en signalisation, conception de panneaux adaptatifs avec écrans LED et connectivité IoT, tests de lisibilité et d'efficacité en conditions réelles.",
+    "hypotheses": "Les panneaux adaptatifs améliorent la fluidité du trafic en temps réel. L'information contextuelle réduit les erreurs de navigation et les embouteillages.",
+    "conclusions": "Projet en phase de planification. Objectif : développer des prototypes testables en situation réelle avec la collaboration des services municipaux.",
+    "participants": [
+      {
+        "name": "Jean-Baptiste Delacroix",
+        "age": 16
+      },
+      {
+        "name": "Fatou Diop",
+        "age": 17
+      },
+      {
+        "name": "Maxime Janssens",
+        "age": 16
+      },
+      {
+        "name": "Layla Moussaoui",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-11-10",
+    "end_date": "2025-04-15",
+    "status": "planned",
+    "protocol_category": "mobility"
+  },
+  {
+    "id": "exp-014-naples-negawatt",
+    "title": "Energia e Vita Quotidiana - Scenario Negawatt",
+    "protocol_id": "c0549c892f294f6eac83550a2d11a24f",
+    "protocol_name": "Energy and Everyday Life - Negawatt Scenario",
+    "school": "Istituto Tecnico Giordani",
+    "city": "Naples",
+    "location": {
+      "latitude": 40.8359,
+      "longitude": 14.2488
+    },
+    "description": "Esplorare l'efficienza energetica e la conservazione attraverso scenari negawatt nella vita quotidiana",
+    "methodology": "Monitoraggio dei consumi energetici domestici tramite smart meters, simulazione di scenari di riduzione dei consumi, analisi comportamentale delle abitudini energetiche delle famiglie partecipanti.",
+    "hypotheses": "I comportamenti quotidiani hanno un impatto maggiore sull'efficienza energetica rispetto alle sole tecnologie. La sensibilizzazione porta a riduzioni significative dei consumi senza perdita di comfort.",
+    "conclusions": "Riduzione media del 25% dei consumi energetici domestici attraverso semplici cambiamenti comportamentali e ottimizzazione degli elettrodomestici.",
+    "participants": [
+      {
+        "name": "Luca Marino",
+        "age": 17
+      },
+      {
+        "name": "Fatima Ricci",
+        "age": 16
+      },
+      {
+        "name": "Giuseppe Santoro",
+        "age": 17
+      },
+      {
+        "name": "Amira Ben Ali",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-10-05",
+    "end_date": "2025-01-25",
+    "status": "active",
+    "protocol_category": "energy"
+  },
+  {
+    "id": "exp-015-madrid-energy-mix",
+    "title": "Experimentando con la Mezcla Energética",
+    "protocol_id": "dd3dffefb3f7426da1be623c4e287e2a",
+    "protocol_name": "Experimenting with Energy Mix",
+    "school": "Colegio San Agustín",
+    "city": "Madrid",
+    "location": {
+      "latitude": 40.408,
+      "longitude": -3.6936
+    },
+    "description": "Experimentar con diferentes fuentes de energía para entender los escenarios óptimos de mezcla energética",
+    "methodology": "Simulación con modelos físicos de diferentes fuentes renovables (solar, eólica, hidráulica), análisis de intermitencia y almacenamiento, optimización de la mezcla energética mediante algoritmos de programación lineal.",
+    "hypotheses": "La complementariedad de las fuentes renovables permite reducir la dependencia de combustibles fósiles. Los sistemas de almacenamiento son esenciales para la estabilidad del suministro.",
+    "conclusions": "Identificación de la combinación óptima 60% solar, 30% eólica, 10% hidráulica para el contexto de Madrid, con necesidad de 20% de capacidad de almacenamiento.",
+    "participants": [
+      {
+        "name": "Alejandro López",
+        "age": 16
+      },
+      {
+        "name": "Nour Hadad",
+        "age": 17
+      },
+      {
+        "name": "Pablo Sánchez",
+        "age": 16
+      },
+      {
+        "name": "Salma Benjelloun",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-09-30",
+    "end_date": "2025-03-10",
+    "status": "active",
+    "protocol_category": "energy"
+  },
+  {
+    "id": "exp-016-sofia-smart-lighting",
+    "title": "Умно осветление за града",
+    "protocol_id": "1870db1f63c648869faec40f45acf9b7",
+    "protocol_name": "Shine Smart, Shine Bright - Understanding Urban Lighting",
+    "school": "Първа английска езикова гимназия",
+    "city": "Sofia",
+    "location": {
+      "latitude": 42.695,
+      "longitude": 23.3253
+    },
+    "description": "Оптимизиране на градските осветителни системи за енергийна ефективност и благосъстояние на гражданите",
+    "methodology": "Анализ на съществуващите осветителни системи в София, тестване на смарт LED осветление с адаптивна яркост, измерване на енергийния консум и анкетиране за чувството за сигурност.",
+    "hypotheses": "Умното осветление може да намали значително енергийния консум без да компрометира сигурността. Адаптивното осветление подобрява комфорта на гражданите.",
+    "conclusions": "Системите за умно осветление показаха икономия от 40% енергия с подобрено чувство за сигурност в 95% от случаите.",
+    "participants": [
+      {
+        "name": "Александра Николова",
+        "age": 17
+      },
+      {
+        "name": "Мустафа Ахмед",
+        "age": 16
+      },
+      {
+        "name": "Виктория Стоянова",
+        "age": 17
+      },
+      {
+        "name": "Емил Ангелов",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-10-12",
+    "end_date": "2025-02-15",
+    "status": "active",
+    "protocol_category": "energy"
+  },
+  {
+    "id": "exp-017-aix-energy-perspective",
+    "title": "L'énergie en perspective - Comprendre l'énergie",
+    "protocol_id": "17a229db4fb68115990ff6fb37fd1d35",
+    "protocol_name": "Energy in perspective - Understanding energy",
+    "school": "Lycée Militaire",
+    "city": "Aix-en-Provence",
+    "location": {
+      "latitude": 43.5155,
+      "longitude": 5.4425
+    },
+    "description": "Développer une compréhension globale des concepts énergétiques et leurs applications urbaines",
+    "methodology": "Approche multidisciplinaire combinant physique, économie et sociologie de l'énergie, expérimentations avec différentes sources d'énergie, étude de cas de villes énergétiquement efficaces en Europe.",
+    "hypotheses": "Une approche holistique de l'énergie permet une meilleure compréhension des enjeux urbains. La sensibilisation aux concepts énergétiques modifie les comportements de consommation.",
+    "conclusions": "Projet en phase de planification. Objectif : créer un curriculum interdisciplinaire sur l'énergie urbaine adapté aux élèves du secondaire.",
+    "participants": [
+      {
+        "name": "Alexandre Bonnet",
+        "age": 16
+      },
+      {
+        "name": "Nadia Zemmouri",
+        "age": 17
+      },
+      {
+        "name": "Clément Roux",
+        "age": 16
+      },
+      {
+        "name": "Malika Ouali",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-11-05",
+    "end_date": "2025-04-20",
+    "status": "planned",
+    "protocol_category": "energy"
+  },
+  {
+    "id": "exp-018-marseille-insulation",
+    "title": "Des Murs Chauds aux Villes Fraîches",
+    "protocol_id": "20f229db4fb6800b89d1f4b09f946241",
+    "protocol_name": "From Warm Walls to Cool Cities: Investigating Insulation and Urban Heat Loss",
+    "school": "Lycée Saint-Charles",
+    "city": "Marseille",
+    "location": {
+      "latitude": 43.3047,
+      "longitude": 5.3805
+    },
+    "description": "Étudier l'isolation des bâtiments et la perte de chaleur urbaine pour améliorer l'efficacité énergétique des villes",
+    "methodology": "Thermographie infrarouge de bâtiments représentatifs, mesures de température intérieure/extérieure, analyse des ponts thermiques, modélisation des îlots de chaleur urbains avec des capteurs distribués.",
+    "hypotheses": "Les déperditions thermiques des bâtiments contribuent significativement aux îlots de chaleur urbains. Une meilleure isolation réduit à la fois les consommations énergétiques et la température urbaine.",
+    "conclusions": "Identification de 15% de réduction potentielle de l'îlot de chaleur urbain par l'amélioration de l'isolation des bâtiments les plus énergivores.",
+    "participants": [
+      {
+        "name": "Yanis Boudjema",
+        "age": 17
+      },
+      {
+        "name": "Manon Castellane",
+        "age": 16
+      },
+      {
+        "name": "Sofiane Dridi",
+        "age": 17
+      },
+      {
+        "name": "Julie Moreau",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-09-15",
+    "end_date": "2025-01-30",
+    "status": "active",
+    "protocol_category": "energy"
+  },
+  {
+    "id": "exp-019-paris-bio-inspired",
+    "title": "Découvrir les processus d'apprentissage bio-inspirés",
+    "protocol_id": "46c599b356aa4546be813ccd35c120cc",
+    "protocol_name": "Discover bio-inspired learning processes",
+    "school": "Lycée Louis-le-Grand",
+    "city": "Paris",
+    "location": {
+      "latitude": 48.8497,
+      "longitude": 2.3426
+    },
+    "description": "Explorer les algorithmes et processus d'apprentissage inspirés par les systèmes biologiques",
+    "methodology": "Étude comparative entre réseaux de neurones artificiels et biologiques, développement d'algorithmes génétiques pour l'optimisation de systèmes urbains, expérimentation avec des essaims d'agents pour modéliser les flux urbains.",
+    "hypotheses": "Les algorithmes bio-inspirés sont plus adaptés aux problèmes complexes de gestion urbaine que les méthodes classiques. L'apprentissage par renforcement peut optimiser les systèmes urbains en temps réel.",
+    "conclusions": "Développement réussi d'un système d'optimisation du trafic basé sur les colonies de fourmis, montrant 20% d'amélioration des temps de trajet en simulation.",
+    "participants": [
+      {
+        "name": "Théo Nakamura",
+        "age": 17
+      },
+      {
+        "name": "Lina Ben Ahmed",
+        "age": 16
+      },
+      {
+        "name": "Victor Kowalski",
+        "age": 17
+      },
+      {
+        "name": "Amina Touré",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-10-25",
+    "end_date": "2025-05-30",
+    "status": "active",
+    "protocol_category": "technology"
+  },
+  {
+    "id": "exp-020-larochelle-chatbot",
+    "title": "Aventure Bot Buddy - Concevoir un Chatbot Urbain",
+    "protocol_id": "73c18c4ba890428d9ca1e601774984f4",
+    "protocol_name": "Bot Buddy Adventure - Designing a Chatbot for Urban Fun",
+    "school": "Lycée Fénelon Notre-Dame",
+    "city": "La Rochelle",
+    "location": {
+      "latitude": 46.1574,
+      "longitude": -1.1506
+    },
+    "description": "Concevoir et développer des chatbots pour l'exploration urbaine engageante et l'éducation",
+    "methodology": "Développement agile d'interfaces conversationnelles avec intelligence artificielle, intégration de données géolocalisées sur les points d'intérêt urbains, tests utilisateurs avec des groupes scolaires pour valider l'ergonomie.",
+    "hypotheses": "Les chatbots rendent l'exploration urbaine plus accessible et engageante pour les jeunes. L'interaction conversationnelle facilite l'apprentissage de l'histoire et de la géographie urbaine.",
+    "conclusions": "Projet en phase de planification. Objectif : créer un assistant virtuel pour découvrir le patrimoine de La Rochelle de manière ludique et interactive.",
+    "participants": [
+      {
+        "name": "Louis Blanchard",
+        "age": 16
+      },
+      {
+        "name": "Zineb El Khattabi",
+        "age": 17
+      },
+      {
+        "name": "Camille Tessier",
+        "age": 16
+      },
+      {
+        "name": "Amine Boukhari",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-11-20",
+    "end_date": "2025-06-15",
+    "status": "planned",
+    "protocol_category": "technology"
+  },
+  {
+    "id": "exp-021-bruxelles-ai-datawalk",
+    "title": "Odyssée IA - Promenade de données dans la ville",
+    "protocol_id": "8976844a0838421daa7c90cb18fe5022",
+    "protocol_name": "AI Odyssey - Datawalk in the city",
+    "school": "École Européenne Bruxelles I",
+    "city": "Bruxelles",
+    "location": {
+      "latitude": 50.8798,
+      "longitude": 4.4142
+    },
+    "description": "Explorer comment l'IA peut analyser les données urbaines pour améliorer les services de la ville et la vie citoyenne",
+    "methodology": "Collecte et analyse de big data urbaines (trafic, énergie, déchets), développement d'algorithmes de machine learning pour la prédiction de tendances urbaines, création de tableaux de bord interactifs pour les décideurs.",
+    "hypotheses": "L'IA peut identifier des patterns invisibles dans les données urbaines et proposer des optimisations de services. Les algorithmes prédictifs améliorent la planification urbaine et réduisent les coûts.",
+    "conclusions": "Développement réussi d'un modèle prédictif de consommation énergétique urbaine avec 85% de précision et création d'un prototype de plateforme d'aide à la décision pour la ville.",
+    "participants": [
+      {
+        "name": "Emma De Wilde",
+        "age": 17
+      },
+      {
+        "name": "Karim Benali",
+        "age": 16
+      },
+      {
+        "name": "Sophie Peeters",
+        "age": 17
+      },
+      {
+        "name": "Ismail Nazir",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-09-12",
+    "end_date": "2024-12-22",
+    "status": "active",
+    "protocol_category": "technology"
+  },
+  {
+    "id": "exp-022-naples-waste-sorting",
+    "title": "Smistamento Rifiuti Ottimizzato con IA",
+    "protocol_id": "ef5264efeb55432fa0a992f21e9db75a",
+    "protocol_name": "Optimised waste sorting thanks to AI image classification",
+    "school": "Liceo Sannazaro",
+    "city": "Naples",
+    "location": {
+      "latitude": 40.8467,
+      "longitude": 14.2577
+    },
+    "description": "Utilizzare la classificazione delle immagini AI per ottimizzare lo smistamento dei rifiuti e migliorare l'efficienza del riciclaggio",
+    "methodology": "Addestramento di reti neurali convoluzionali per il riconoscimento di diversi tipi di rifiuti, sviluppo di un'app mobile per la classificazione in tempo reale, test di accuratezza su database di immagini di rifiuti urbani napoletani.",
+    "hypotheses": "L'AI può migliorare significativamente l'accuratezza della raccolta differenziata rispetto ai metodi tradizionali. L'automazione del sorting riduce i costi operativi e aumenta l'efficienza del riciclaggio.",
+    "conclusions": "Il sistema AI raggiunge un'accuratezza del 92% nel riconoscimento di 12 categorie di rifiuti, superando del 35% le prestazioni del sorting manuale.",
+    "participants": [
+      {
+        "name": "Valentina De Luca",
+        "age": 16
+      },
+      {
+        "name": "Hassan El Fassi",
+        "age": 17
+      },
+      {
+        "name": "Matteo Gallo",
+        "age": 16
+      },
+      {
+        "name": "Sara Ben Youssef",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-10-08",
+    "end_date": "2025-03-30",
+    "status": "active",
+    "protocol_category": "technology"
+  },
+  {
+    "id": "exp-023-madrid-birdsong-ai",
+    "title": "Explorador de Cantos de Aves con IA",
+    "protocol_id": "1f517f48d94a44fbb6f9eadd869d4504",
+    "protocol_name": "Birdsong AI Explorer",
+    "school": "IES Ramiro de Maeztu",
+    "city": "Madrid",
+    "location": {
+      "latitude": 40.4378,
+      "longitude": -3.6795
+    },
+    "description": "Usar IA para analizar e identificar sonidos de aves en entornos urbanos para monitoreo de biodiversidad",
+    "methodology": "Grabación sistemática de sonidos urbanos en diferentes zonas de Madrid, entrenamiento de redes neuronales para el reconocimiento automático de cantos de aves, correlación con variables ambientales (contaminación, ruido, vegetación).",
+    "hypotheses": "La diversidad de aves urbanas es un indicador fiable de la calidad ambiental de la ciudad. Los algoritmos de IA pueden automatizar el monitoreo de biodiversidad urbana de manera eficiente.",
+    "conclusions": "Identificación de 34 especies de aves en el entorno urbano madrileño con correlación negativa entre diversidad avíar y niveles de contaminación atmosférica.",
+    "participants": [
+      {
+        "name": "Lucía Herrera",
+        "age": 17
+      },
+      {
+        "name": "Youssef Lakhdar",
+        "age": 16
+      },
+      {
+        "name": "Diego Morales",
+        "age": 17
+      },
+      {
+        "name": "Aicha Benkirane",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-09-18",
+    "end_date": "2025-01-20",
+    "status": "active",
+    "protocol_category": "technology"
+  },
+  {
+    "id": "exp-024-sofia-plants-city",
+    "title": "Растения и градът",
+    "protocol_id": "08062e68ed5b4b5bbd576aed1fa94b25",
+    "protocol_name": "Plants and the city",
+    "school": "91 ОУ \"Проф. Д-р Асен Златаров\"",
+    "city": "Sofia",
+    "location": {
+      "latitude": 42.7105,
+      "longitude": 23.3238
+    },
+    "description": "Изучаване на ролята на растенията в градската среда и тяхното въздействие върху устойчивостта на града",
+    "methodology": "Картиране на зелените пространства в София, измерване на качеството на въздуха и температурата в различни зони, анализ на въглеродния отпечатък на различни видове растения.",
+    "hypotheses": "Градската вегетация има значителен ефект върху микроклимата и качеството на въздуха. Местните видове растения са по-устойчиви и ефективни в градската среда.",
+    "conclusions": "Установяване на корелация между плътността на зелените пространства и 3°C намаляване на летната температура.",
+    "participants": [
+      {
+        "name": "Георги Василев",
+        "age": 15
+      },
+      {
+        "name": "Фатме Османли",
+        "age": 16
+      },
+      {
+        "name": "Анна Димитрова",
+        "age": 15
+      },
+      {
+        "name": "Ахмед Мустафа",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-10-15",
+    "end_date": "2025-05-10",
+    "status": "active",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-025-aix-trees-vs-cars",
+    "title": "Arbres VS Voitures - Arbres de décision pour identifier les véhicules polluants",
+    "protocol_id": "b01900a22e3748a4ace6d3a289a0153f",
+    "protocol_name": "Trees VS Cars - Use decision trees to identify polluting vehicles",
+    "school": "Lycée Vauvenargues",
+    "city": "Aix-en-Provence",
+    "location": {
+      "latitude": 43.532,
+      "longitude": 5.4421
+    },
+    "description": "Appliquer les arbres de décision d'apprentissage automatique pour identifier et analyser les modèles de pollution des véhicules",
+    "methodology": "Collecte de données sur les émissions de véhicules (type, âge, carburant, utilisation), développement d'algorithmes d'arbres de décision pour classifier les véhicules polluants, validation par comparaison avec des mesures d'émissions réelles.",
+    "hypotheses": "Les arbres de décision peuvent identifier efficacement les véhicules les plus polluants à partir de caractéristiques facilement accessibles. L'apprentissage automatique améliore la précision par rapport aux méthodes de classification traditionnelles.",
+    "conclusions": "Projet en phase de planification. Objectif : développer un outil d'aide à la décision pour les politiques de restriction de circulation basées sur l'impact environnemental réel des véhicules.",
+    "participants": [
+      {
+        "name": "Arthur Lemaire",
+        "age": 17
+      },
+      {
+        "name": "Samira Hadj",
+        "age": 16
+      },
+      {
+        "name": "Gabriel Faure",
+        "age": 17
+      },
+      {
+        "name": "Leïla Benkirane",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-11-01",
+    "end_date": "2025-04-25",
+    "status": "planned",
+    "protocol_category": "technology"
+  },
+  {
+    "id": "exp-026-lyon-temp-sensors",
+    "title": "Îlots de chaleur urbains - Cartographie thermique",
+    "protocol_id": "a8f4b9c2d5e7f1a3b6c8d0e2f4a7b9c1",
+    "protocol_name": "Urban heat islands mapping with temperature sensors",
+    "school": "Lycée Jean Perrin",
+    "city": "Lyon",
+    "location": {
+      "latitude": 45.7640,
+      "longitude": 4.8357
+    },
+    "description": "Cartographier les îlots de chaleur urbains à Lyon en utilisant un réseau de capteurs de température distribués",
+    "methodology": "Déploiement de 30 capteurs de température autonomes dans différents quartiers de Lyon, mesures continues pendant 6 mois, corrélation avec la densité urbaine, la végétation et les matériaux de surface.",
+    "hypotheses": "Les différences de température entre quartiers peuvent atteindre 5-8°C selon l'urbanisation. Les espaces verts réduisent significativement l'effet d'îlot de chaleur urbain.",
+    "conclusions": "Identification de variations thermiques importantes entre le centre-ville (+4.2°C) et les zones périurbaines, avec effet rafraîchissant des parcs de -2.1°C en moyenne.",
+    "participants": [
+      {
+        "name": "Mathilde Girard",
+        "age": 16
+      },
+      {
+        "name": "Mehdi Cherif",
+        "age": 17
+      },
+      {
+        "name": "Emma Dubois",
+        "age": 16
+      },
+      {
+        "name": "Yanis Benali",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-03-15",
+    "end_date": "2024-06-20",
+    "status": "completed",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-027-toulouse-humidity-monitoring",
+    "title": "Surveillance de l'humidité et qualité de l'air intérieur",
+    "protocol_id": "b9c5d8e1f4a6b2c7d9e3f5a8b1c4d7e0",
+    "protocol_name": "Indoor air quality with humidity and particulate sensors",
+    "school": "Collège Bellefontaine",
+    "city": "Toulouse",
+    "location": {
+      "latitude": 43.6047,
+      "longitude": 1.4442
+    },
+    "description": "Surveiller la qualité de l'air intérieur dans les salles de classe en mesurant l'humidité, les particules et les COV",
+    "methodology": "Installation de capteurs combinés (humidité, particules PM2.5, COV) dans 12 salles de classe, monitoring continu sur 4 mois, corrélation avec ventilation, effectifs et activités pédagogiques.",
+    "hypotheses": "L'humidité excessive favorise la prolifération de polluants intérieurs. La qualité de l'air se dégrade rapidement dans les salles mal ventilées avec forte occupation.",
+    "conclusions": "Relation directe établie entre taux d'humidité >60% et augmentation des particules fines de +40%. Recommandations d'aération systématique adoptées par l'établissement.",
+    "participants": [
+      {
+        "name": "Lucas Bernard",
+        "age": 15
+      },
+      {
+        "name": "Nour El Amri",
+        "age": 14
+      },
+      {
+        "name": "Chloé Morel",
+        "age": 15
+      },
+      {
+        "name": "Karim Hadji",
+        "age": 14
+      }
+    ],
+    "start_date": "2024-01-20",
+    "end_date": "2024-05-15",
+    "status": "completed",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-028-bordeaux-water-sensors",
+    "title": "Capteurs de qualité de l'eau - Surveillance des cours d'eau urbains",
+    "protocol_id": "c0d6e9f2a5b8c1d4e7f0a3b6c9d2e5f8",
+    "protocol_name": "Urban water quality monitoring with IoT sensors",
+    "school": "Lycée Camille Jullian",
+    "city": "Bordeaux",
+    "location": {
+      "latitude": 44.8378,
+      "longitude": -0.5792
+    },
+    "description": "Surveillance de la qualité de l'eau des cours d'eau urbains bordelais avec des capteurs IoT connectés",
+    "methodology": "Déploiement de capteurs pH, turbidité, oxygène dissous et conductivité sur la Garonne et ses affluents urbains, transmission des données en temps réel, alertes automatisées en cas de pollution.",
+    "hypotheses": "Les évènements pluvieux dégradent temporairement la qualité de l'eau urbaine par ruissellement. Les activités industrielles et portuaires impactent les paramètres physico-chimiques de l'eau.",
+    "conclusions": "Détection de 8 épisodes de pollution corrélés aux orages urbains, avec amélioration de la réactivité des services municipaux grâce aux alertes automatiques.",
+    "participants": [
+      {
+        "name": "Marine Lafont",
+        "age": 17
+      },
+      {
+        "name": "Amine Bouzid",
+        "age": 16
+      },
+      {
+        "name": "Sarah Dupont",
+        "age": 17
+      },
+      {
+        "name": "Maxime Caron",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-02-01",
+    "end_date": "2024-06-10",
+    "status": "completed",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-029-nice-seismic-network",
+    "title": "Réseau de détection sismique urbaine",
+    "protocol_id": "d1e7f0a3b6c9d2e5f8a1b4c7d0e3f6a9",
+    "protocol_name": "Urban seismic detection network with accelerometer sensors",
+    "school": "Lycée Masséna",
+    "city": "Nice",
+    "location": {
+      "latitude": 43.7102,
+      "longitude": 7.2620
+    },
+    "description": "Créer un réseau de surveillance sismique urbain avec des accéléromètres pour détecter les micro-séismes et vibrations urbaines",
+    "methodology": "Installation de 20 capteurs accélérométriques tri-axes dans différents types de bâtiments niçois, enregistrement continu des vibrations, distinction entre séismes naturels et vibrations anthropiques.",
+    "hypotheses": "Les vibrations urbaines (trafic, travaux) peuvent masquer les signaux sismiques faibles. Un réseau dense permet une localisation précise des sources de vibrations.",
+    "conclusions": "Détection de 45 micro-séismes locaux et caractérisation précise de l'impact des tramways et chantiers sur l'environnement vibratoire urbain.",
+    "participants": [
+      {
+        "name": "Alexandre Rossi",
+        "age": 17
+      },
+      {
+        "name": "Fatima Bouali",
+        "age": 16
+      },
+      {
+        "name": "Pierre Moreau",
+        "age": 17
+      },
+      {
+        "name": "Lina Kassemi",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-01-15",
+    "end_date": "2024-05-30",
+    "status": "completed",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-030-strasbourg-motion-sensors",
+    "title": "Analyse des flux piétonniers avec capteurs de mouvement",
+    "protocol_id": "e2f8a1b4c7d0e3f6a9b2c5d8e1f4a7b0",
+    "protocol_name": "Pedestrian flow analysis with motion sensors",
+    "school": "Lycée Kléber",
+    "city": "Strasbourg",
+    "location": {
+      "latitude": 48.5734,
+      "longitude": 7.7521
+    },
+    "description": "Analyser les flux de piétons dans le centre historique de Strasbourg avec des capteurs de mouvement et de comptage",
+    "methodology": "Déploiement de capteurs infrarouge passifs et de compteurs laser dans 15 points stratégiques du centre-ville, analyse des patterns de mobilité douce, optimisation des feux piétons.",
+    "hypotheses": "Les flux piétonniers suivent des patterns prédictibles selon les heures et les jours. L'optimisation des feux basée sur les données réelles améliore la fluidité urbaine.",
+    "conclusions": "Identification de 3 corridors principaux concentrant 65% du trafic piéton, avec optimisation réussie des temps de feux (+15% de fluidité).",
+    "participants": [
+      {
+        "name": "Julie Weber",
+        "age": 16
+      },
+      {
+        "name": "Omar Tchakir",
+        "age": 17
+      },
+      {
+        "name": "Léa Zimmermann",
+        "age": 16
+      },
+      {
+        "name": "Youssef Alaoui",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-03-01",
+    "end_date": "2024-06-25",
+    "status": "completed",
+    "protocol_category": "mobility"
+  },
+  {
+    "id": "exp-031-lille-pressure-sensors",
+    "title": "Surveillance de la pression atmosphérique urbaine",
+    "protocol_id": "f3a9b2c5d8e1f4a7b0c3d6e9f2a5b8c1",
+    "protocol_name": "Urban atmospheric pressure monitoring network",
+    "school": "Lycée Pasteur",
+    "city": "Lille",
+    "location": {
+      "latitude": 50.6292,
+      "longitude": 3.0573
+    },
+    "description": "Surveillance des variations de pression atmosphérique en milieu urbain pour comprendre les microclimats et prédire la météo locale",
+    "methodology": "Réseau de 25 baromètres haute précision répartis dans l'agglomération lilloise, corrélation avec les données météorologiques officielles, modélisation prédictive locale.",
+    "hypotheses": "Les variations de pression urbaine diffèrent de celles des stations météo rurales. Un réseau dense améliore la précision des prévisions météorologiques locales.",
+    "conclusions": "Amélioration de 23% de la précision des prévisions météo locales grâce aux données urbaines, avec identification de micro-effets liés à la topographie urbaine.",
+    "participants": [
+      {
+        "name": "Antoine Delcroix",
+        "age": 17
+      },
+      {
+        "name": "Aicha Zemmouri",
+        "age": 16
+      },
+      {
+        "name": "Mathieu Dufour",
+        "age": 17
+      },
+      {
+        "name": "Salma Benkirane",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-02-10",
+    "end_date": "2024-06-15",
+    "status": "completed",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-032-montpellier-light-sensors",
+    "title": "Mesure de l'intensité lumineuse urbaine",
+    "protocol_id": "a4b0c3d6e9f2a5b8c1d4e7f0a3b6c9d2",
+    "protocol_name": "Urban light intensity measurement with lux sensors",
+    "school": "Lycée Joffre",
+    "city": "Montpellier",
+    "location": {
+      "latitude": 43.6110,
+      "longitude": 3.8767
+    },
+    "description": "Mesurer les variations d'intensité lumineuse dans différents quartiers de Montpellier pour optimiser l'éclairage public",
+    "methodology": "Installation de luxmètres dans 18 zones urbaines différentes, mesures 24h/24 pendant 5 mois, analyse des besoins d'éclairage selon l'usage et la saison.",
+    "hypotheses": "L'éclairage urbain est souvent surdimensionné dans certaines zones et insuffisant dans d'autres. L'optimisation basée sur les données réelles réduit la consommation énergétique.",
+    "conclusions": "Identification de 40% de sur-éclairage dans les zones commerciales et de sous-éclairage dans les passages piétons, permettant une optimisation ciblée.",
+    "participants": [
+      {
+        "name": "Camille Fabre",
+        "age": 16
+      },
+      {
+        "name": "Rayan Mansouri",
+        "age": 17
+      },
+      {
+        "name": "Élise Bertrand",
+        "age": 16
+      },
+      {
+        "name": "Hakim Benaissa",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-01-08",
+    "end_date": "2024-06-05",
+    "status": "completed",
+    "protocol_category": "energy"
+  },
+  {
+    "id": "exp-033-nantes-soil-moisture",
+    "title": "Capteurs d'humidité du sol pour espaces verts urbains",
+    "protocol_id": "b5c1d4e7f0a3b6c9d2e5f8a1b4c7d0e3",
+    "protocol_name": "Smart irrigation with soil moisture sensors",
+    "school": "Lycée Nelson Mandela",
+    "city": "Nantes",
+    "location": {
+      "latitude": 47.2184,
+      "longitude": -1.5536
+    },
+    "description": "Optimiser l'irrigation des espaces verts urbains nantais avec des capteurs d'humidité du sol connectés",
+    "methodology": "Déploiement de 40 capteurs d'humidité capacitifs dans différents parcs et jardins, système d'irrigation automatisé basé sur les données temps réel, comparaison avec irrigation traditionnelle.",
+    "hypotheses": "L'irrigation intelligente basée sur capteurs réduit la consommation d'eau tout en maintenant la qualité des espaces verts. Les besoins varient significativement selon les types de sols et de végétation.",
+    "conclusions": "Réduction de 35% de la consommation d'eau d'irrigation avec amélioration de 20% de la santé végétale, système adopté par la ville pour tous les espaces verts.",
+    "participants": [
+      {
+        "name": "Océane Le Gall",
+        "age": 16
+      },
+      {
+        "name": "Sami El Ouafi",
+        "age": 17
+      },
+      {
+        "name": "Manon Leblanc",
+        "age": 16
+      },
+      {
+        "name": "Adrien Morvan",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-03-20",
+    "end_date": "2024-06-30",
+    "status": "completed",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-034-rennes-magnetic-sensors",
+    "title": "Détection de véhicules par capteurs magnétiques",
+    "protocol_id": "c6d2e5f8a1b4c7d0e3f6a9b2c5d8e1f4",
+    "protocol_name": "Vehicle detection with magnetic field sensors",
+    "school": "Lycée Chateaubriand",
+    "city": "Rennes",
+    "location": {
+      "latitude": 48.1173,
+      "longitude": -1.6778
+    },
+    "description": "Analyser le trafic urbain rennais en utilisant des capteurs magnétiques enterrés pour détecter et compter les véhicules",
+    "methodology": "Installation de magnétomètres sous la chaussée dans 8 axes principaux de Rennes, classification automatique des véhicules par signature magnétique, analyse des patterns de trafic.",
+    "hypotheses": "Chaque type de véhicule a une signature magnétique distinctive. Les données de trafic en temps réel permettent une meilleure gestion des feux et de la congestion.",
+    "conclusions": "Réussite de la classification automatique de 4 types de véhicules avec 89% de précision, optimisation des cycles de feux avec réduction de 18% des temps d'attente.",
+    "participants": [
+      {
+        "name": "Bastien Guillou",
+        "age": 17
+      },
+      {
+        "name": "Leila Cheradi",
+        "age": 16
+      },
+      {
+        "name": "Thomas Le Bihan",
+        "age": 17
+      },
+      {
+        "name": "Nadia Benchikh",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-02-15",
+    "end_date": "2024-06-08",
+    "status": "completed",
+    "protocol_category": "mobility"
+  },
+  {
+    "id": "exp-035-clermont-uv-sensors",
+    "title": "Surveillance des rayonnements UV en altitude urbaine",
+    "protocol_id": "d7e3f6a9b2c5d8e1f4a7b0c3d6e9f2a5",
+    "protocol_name": "Urban UV radiation monitoring at altitude",
+    "school": "Lycée Blaise Pascal",
+    "city": "Clermont-Ferrand",
+    "location": {
+      "latitude": 45.7772,
+      "longitude": 3.0870
+    },
+    "description": "Surveiller l'exposition aux rayonnements UV dans l'agglomération clermontoise en tenant compte de l'altitude et de la topographie",
+    "methodology": "Réseau de 15 capteurs UV calibrés répartis selon l'altitude (400-1400m), corrélation avec météo, pollution et couverture nuageuse, cartographie des risques d'exposition.",
+    "hypotheses": "L'altitude augmente significativement l'exposition UV urbaine. La pollution atmosphérique peut atténuer les UV mais crée un faux sentiment de sécurité.",
+    "conclusions": "Augmentation moyenne de 12% des UV par 100m d'altitude, avec variations saisonnières marquées et effet protecteur limité de la pollution urbaine.",
+    "participants": [
+      {
+        "name": "Pauline Mazet",
+        "age": 16
+      },
+      {
+        "name": "Karim Belhaj",
+        "age": 17
+      },
+      {
+        "name": "Élise Chabrier",
+        "age": 16
+      },
+      {
+        "name": "Mehdi Lahlou",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-03-10",
+    "end_date": "2024-06-20",
+    "status": "completed",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-036-liege-vibration-sensors",
+    "title": "Surveillance des vibrations urbaines",
+    "protocol_id": "e8f4a7b0c3d6e9f2a5b8c1d4e7f0a3b6",
+    "protocol_name": "Urban vibration monitoring with accelerometer network",
+    "school": "Athénée Royal Prince Baudouin",
+    "city": "Liège",
+    "location": {
+      "latitude": 50.6326,
+      "longitude": 5.5797
+    },
+    "description": "Surveiller les vibrations urbaines liégeoise pour évaluer l'impact du trafic et des activités industrielles sur les bâtiments",
+    "methodology": "Installation d'accéléromètres tri-axes sur 20 bâtiments représentatifs, monitoring continu des vibrations, corrélation avec trafic routier, ferroviaire et activités industrielles.",
+    "hypotheses": "Les vibrations urbaines peuvent endommager progressivement les structures historiques. L'identification des sources permet de proposer des mesures de protection.",
+    "conclusions": "Cartographie précise des zones à risque vibratoire élevé, recommandations adoptées pour limiter le trafic lourd près des bâtiments patrimoniaux.",
+    "participants": [
+      {
+        "name": "Marie Lefebvre",
+        "age": 16
+      },
+      {
+        "name": "Ahmed Benali",
+        "age": 17
+      },
+      {
+        "name": "Charlotte Dubois",
+        "age": 16
+      },
+      {
+        "name": "Youssef Azzouzi",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-01-25",
+    "end_date": "2024-05-20",
+    "status": "completed",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-037-antwerp-air-sensors",
+    "title": "Netwerk voor luchtkwaliteitsmonitoring",
+    "protocol_id": "f9a5b8c1d4e7f0a3b6c9d2e5f8a1b4c7",
+    "protocol_name": "Air quality monitoring network with multi-sensor stations",
+    "school": "Koninklijk Atheneum Antwerpen",
+    "city": "Antwerp",
+    "location": {
+      "latitude": 51.2194,
+      "longitude": 4.4025
+    },
+    "description": "Opzetten van een netwerk voor luchtkwaliteitsmonitoring in Antwerpen met multi-sensor stations voor NO2, PM2.5, en ozon",
+    "methodology": "Plaatsing van 22 compacte luchtkwaliteitsstations in verschillende wijken van Antwerpen, real-time monitoring van NO2, PM2.5, ozon en temperatuur, vergelijking met officiële meetstations.",
+    "hypotheses": "Luchtkwaliteit varieert significant binnen de stad afhankelijk van verkeer en industrie. Burgermonitoring vult officiële metingen aan en verbetert ruimtelijke resolutie.",
+    "conclusions": "Identificatie van hotspots rond de haven (+45% NO2) en verkeersveronoruiling, met succesvolle validatie van low-cost sensoren tegen referentiemetingen.",
+    "participants": [
+      {
+        "name": "Lisa Van Der Berg",
+        "age": 16
+      },
+      {
+        "name": "Hassan El Mansouri",
+        "age": 17
+      },
+      {
+        "name": "Thomas Peeters",
+        "age": 16
+      },
+      {
+        "name": "Fatima Benali",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-02-05",
+    "end_date": "2024-06-12",
+    "status": "completed",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-038-ghent-noise-sensors",
+    "title": "Geluidsmapping met IoT sensoren",
+    "protocol_id": "a0b6c9d2e5f8a1b4c7d0e3f6a9b2c5d8",
+    "protocol_name": "Sound mapping with distributed IoT noise sensors",
+    "school": "Sint-Baafsinstituut",
+    "city": "Ghent",
+    "location": {
+      "latitude": 51.0543,
+      "longitude": 3.7174
+    },
+    "description": "Creëren van gedetailleerde geluidsmappen van Gent met een netwerk van gedistribueerde geluidssensoren",
+    "methodology": "Uitrol van 35 draadloze geluidssensoren in het stadscentrum van Gent, continue meting van geluidsniveaus, automatische classificatie van geluidsbronnen, real-time kaarten.",
+    "hypotheses": "Geluidsoverlast varieert sterk binnen de stad en volgt voorspelbare patronen. Participatieve monitoring verhoogt bewustzijn en draagvlak voor geluidsbeleid.",
+    "conclusions": "Succesvolle creatie van dynamische geluidskaarten met identificatie van 6 hotspots, leidend tot gerichte maatregelen voor geluidsreductie.",
+    "participants": [
+      {
+        "name": "Emma De Clercq",
+        "age": 17
+      },
+      {
+        "name": "Omar Hadji",
+        "age": 16
+      },
+      {
+        "name": "Sarah Janssens",
+        "age": 17
+      },
+      {
+        "name": "Amine Bouziane",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-01-30",
+    "end_date": "2024-05-25",
+    "status": "completed",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-039-roma-dust-sensors",
+    "title": "Monitoraggio polveri sottili urbane",
+    "protocol_id": "b1c7d0e3f6a9b2c5d8e1f4a7b0c3d6e9",
+    "protocol_name": "Urban fine dust monitoring with particle sensors",
+    "school": "Liceo Classico Giulio Cesare",
+    "city": "Roma",
+    "location": {
+      "latitude": 41.9028,
+      "longitude": 12.4964
+    },
+    "description": "Monitoraggio delle polveri sottili (PM2.5, PM10) nell'area metropolitana romana con sensori distribuiti",
+    "methodology": "Installazione di 28 sensori di particolato in diverse zone di Roma, misurazione continua per 5 mesi, correlazione con traffico, meteorologia e eventi sahariani.",
+    "hypotheses": "Le concentrazioni di particolato variano significativamente tra i diversi quartieri romani. Gli eventi di polvere sahariana influenzano le misurazioni locali.",
+    "conclusions": "Identificazione di forti variazioni spaziali (centro storico +60% vs periferia) e succesisva distinzione tra inquinamento locale e episodi sahariani.",
+    "participants": [
+      {
+        "name": "Giulia Benedetti",
+        "age": 16
+      },
+      {
+        "name": "Ahmed Ben Salem",
+        "age": 17
+      },
+      {
+        "name": "Lorenzo Conti",
+        "age": 16
+      },
+      {
+        "name": "Amira El Fassi",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-02-20",
+    "end_date": "2024-06-25",
+    "status": "completed",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-040-milano-energy-sensors",
+    "title": "Smart metering dell'energia negli edifici scolastici",
+    "protocol_id": "c2d8e1f4a7b0c3d6e9f2a5b8c1d4e7f0",
+    "protocol_name": "Smart energy metering in educational buildings",
+    "school": "Liceo Scientifico Leonardo da Vinci",
+    "city": "Milano",
+    "location": {
+      "latitude": 45.4642,
+      "longitude": 9.1900
+    },
+    "description": "Implementazione di smart meters per monitorare e ottimizzare i consumi energetici negli edifici scolastici milanesi",
+    "methodology": "Installazione di contatori intelligenti su 15 edifici scolastici, monitoraggio disaggregato dei consumi (riscaldamento, illuminazione, elettrodomestici), algoritmi di ottimizzazione automatica.",
+    "hypotheses": "Il monitoraggio dettagliato dei consumi permette identificare sprechi energetici nascosti. L'automazione intelligente riduce i consumi senza compromettere il comfort.",
+    "conclusions": "Riduzione media del 28% dei consumi energetici attraverso ottimizzazione automatica e sensibilizzazione, con ROI positivo in 2.3 anni.",
+    "participants": [
+      {
+        "name": "Marco Visconti",
+        "age": 17
+      },
+      {
+        "name": "Fatma Ouali",
+        "age": 16
+      },
+      {
+        "name": "Alessandro Colombo",
+        "age": 17
+      },
+      {
+        "name": "Yasmine Benkirane",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-01-10",
+    "end_date": "2024-05-30",
+    "status": "completed",
+    "protocol_category": "energy"
+  },
+  {
+    "id": "exp-041-firenze-traffic-sensors",
+    "title": "Sensori di traffico per la mobilità sostenibile",
+    "protocol_id": "d3e9f2a5b8c1d4e7f0a3b6c9d2e5f8a1",
+    "protocol_name": "Traffic sensors for sustainable mobility analysis",
+    "school": "Liceo Artistico di Porta Romana",
+    "city": "Firenze",
+    "location": {
+      "latitude": 43.7696,
+      "longitude": 11.2558
+    },
+    "description": "Analisi della mobilità urbana fiorentina con sensori di traffico per promuovere trasporti sostenibili",
+    "methodology": "Deployment di sensori ultrasonici e telemetri laser per conteggio veicoli, classificazione automatica per tipo di veicolo, analisi dei flussi verso la ZTL del centro storico.",
+    "hypotheses": "I patterns di traffico mostrano opportunità per incentivare mobilità sostenibile. Il monitoraggio continuo aiuta a valutare l'efficacia delle politiche di mobilità.",
+    "conclusions": "Identificazione di 3 corridoi principali per promuovere ciclabilità urbana, con proposta di nuove piste ciclabili basata sui dati di flusso.",
+    "participants": [
+      {
+        "name": "Chiara Rossini",
+        "age": 16
+      },
+      {
+        "name": "Youssef Alami",
+        "age": 17
+      },
+      {
+        "name": "Matteo Bianchi",
+        "age": 16
+      },
+      {
+        "name": "Leila Mokhtar",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-03-05",
+    "end_date": "2024-06-18",
+    "status": "completed",
+    "protocol_category": "mobility"
+  },
+  {
+    "id": "exp-042-barcelona-wind-sensors",
+    "title": "Red de sensores de viento urbano",
+    "protocol_id": "e4f0a3b6c9d2e5f8a1b4c7d0e3f6a9b2",
+    "protocol_name": "Urban wind sensor network for microclimate analysis",
+    "school": "Institut Jaume Balmes",
+    "city": "Barcelona",
+    "location": {
+      "latitude": 41.3851,
+      "longitude": 2.1734
+    },
+    "description": "Análisis del microclima urbano barcelonés mediante una red de sensores de viento y corrientes de aire",
+    "methodology": "Instalación de 20 anemómetros digitales en diferentes alturas y ubicaciones de Barcelona, medición de velocidad y dirección del viento, modelización de corredores de viento urbano.",
+    "hypotheses": "La configuración urbana crea microclimas específicos que afectan el confort térmico. Los corredores de viento natural pueden aprovecharse para refrigeración pasiva.",
+    "conclusions": "Identificación de 4 corredores de viento principales con potencial para refrigeración urbana natural, integrados en el nuevo plan de adaptación climática de la ciudad.",
+    "participants": [
+      {
+        "name": "Alba García",
+        "age": 17
+      },
+      {
+        "name": "Hamza Benjelloun",
+        "age": 16
+      },
+      {
+        "name": "Martí Soler",
+        "age": 17
+      },
+      {
+        "name": "Nour El Idrissi",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-02-12",
+    "end_date": "2024-06-03",
+    "status": "completed",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-043-valencia-solar-sensors",
+    "title": "Optimización de paneles solares con sensores IoT",
+    "protocol_id": "f5a1b4c7d0e3f6a9b2c5d8e1f4a7b0c3",
+    "protocol_name": "Solar panel optimization with IoT irradiance sensors",
+    "school": "IES Luis Vives",
+    "city": "Valencia",
+    "location": {
+      "latitude": 39.4699,
+      "longitude": -0.3763
+    },
+    "description": "Optimización del rendimiento de paneles solares urbanos mediante sensores de irradiancia y inclinación conectados",
+    "methodology": "Instrumentación de 12 instalaciones solares valencianas con sensores de irradiancia, temperatura, inclinación y producción, optimización automática de la orientación, análisis de rendimiento.",
+    "hypotheses": "El seguimiento solar automático mejora significativamente el rendimiento energético. Los sensores permiten mantenimiento predictivo y detección temprana de fallos.",
+    "conclusions": "Incremento del 24% en la producción energética con seguimiento automático y reducción del 40% en costes de mantenimiento gracias al diagnóstico predictivo.",
+    "participants": [
+      {
+        "name": "Carmen Ruiz",
+        "age": 16
+      },
+      {
+        "name": "Anas Bouali",
+        "age": 17
+      },
+      {
+        "name": "Adrián López",
+        "age": 16
+      },
+      {
+        "name": "Malika Tazi",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-01-18",
+    "end_date": "2024-05-15",
+    "status": "completed",
+    "protocol_category": "energy"
+  },
+  {
+    "id": "exp-044-sevilla-irrigation-sensors",
+    "title": "Riego inteligente de espacios verdes urbanos",
+    "protocol_id": "a6b2c5d8e1f4a7b0c3d6e9f2a5b8c1d4",
+    "protocol_name": "Smart irrigation for urban green spaces",
+    "school": "IES Martínez Montañés",
+    "city": "Sevilla",
+    "location": {
+      "latitude": 37.3886,
+      "longitude": -5.9823
+    },
+    "description": "Sistema de riego inteligente para parques sevillanos basado en sensores de humedad del suelo y meteorológicos",
+    "methodology": "Despliegue de sensores de humedad capacitivos, temperatura del suelo y pluviómetros en 8 parques de Sevilla, sistema de riego automatizado con válvulas IoT, optimización según especies vegetales.",
+    "hypotheses": "El riego inteligente adapta el consumo de agua a las necesidades reales de las plantas. Los sensores meteorológicos permiten anticipar las necesidades hídricas.",
+    "conclusions": "Ahorro del 42% en consumo de agua con mejora del 18% en la salud vegetal, sistema replicado en todos los parques municipales.",
+    "participants": [
+      {
+        "name": "Rocío Fernández",
+        "age": 17
+      },
+      {
+        "name": "Youssef Lamrani",
+        "age": 16
+      },
+      {
+        "name": "Manuel Herrera",
+        "age": 17
+      },
+      {
+        "name": "Aicha Bennani",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-03-25",
+    "end_date": "2024-06-28",
+    "status": "completed",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-045-varna-beach-sensors",
+    "title": "Мониторинг на плажовете с IoT сензори",
+    "protocol_id": "b7c3d6e9f2a5b8c1d4e7f0a3b6c9d2e5",
+    "protocol_name": "Beach monitoring with IoT environmental sensors",
+    "school": "СОУ \"Христо Ботев\"",
+    "city": "Varna",
+    "location": {
+      "latitude": 43.2141,
+      "longitude": 27.9147
+    },
+    "description": "Мониторинг на морските плажове във Варна със сензори за качество на водата, метеорологични условия и посещаемост",
+    "methodology": "Инсталиране на водоустойчиви сензори за pH, температура на водата, мътност и UV радиация на 5 варненски плажа, системи за броене на посетители, real-time мониторинг.",
+    "hypotheses": "Качеството на плажовете варира значително в зависимост от морските течения и туристическия натиск. Мониторингът в реално време подобрява безопасността и управлението.",
+    "conclusions": "Създаване на система за ранно предупреждение при влошаване на качеството на водата, с 95% точност в прогнозирането на плажови условия.",
+    "participants": [
+      {
+        "name": "Никол Петрова",
+        "age": 16
+      },
+      {
+        "name": "Мехмед Али",
+        "age": 17
+      },
+      {
+        "name": "Мария Иванова",
+        "age": 16
+      },
+      {
+        "name": "Димитър Стоянов",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-04-15",
+    "end_date": "2024-06-30",
+    "status": "completed",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-046-plovdiv-cultural-sensors",
+    "title": "Умно наследство - сензори в културни паметници",
+    "protocol_id": "c8d4e7f0a3b6c9d2e5f8a1b4c7d0e3f6",
+    "protocol_name": "Smart heritage - sensors in cultural monuments",
+    "school": "ПГХТ \"Св. Св. Кирил и Методий\"",
+    "city": "Plovdiv",
+    "location": {
+      "latitude": 42.1354,
+      "longitude": 24.7453
+    },
+    "description": "Опазване на културното наследство в Пловдив чрез IoT сензори за мониторинг на климатичните условия в исторически сгради",
+    "methodology": "Инсталиране на сензори за температура, влажност, вибрации и качество на въздуха в 10 исторически сгради в Стария град, система за ранно предупреждение при неблагоприятни условия.",
+    "hypotheses": "Климатичните изменения и замърсяването заплашват културното наследство. Превантивният мониторинг позволява навременна защита на историческите структури.",
+    "conclusions": "Успешна защита на 3 исторически сгради от влагоповреди благодарение на ранните предупреждения, система внедрена в цялата историческа част.",
+    "participants": [
+      {
+        "name": "Стефан Георгиев",
+        "age": 17
+      },
+      {
+        "name": "Айше Карадаг",
+        "age": 16
+      },
+      {
+        "name": "Мартин Николов",
+        "age": 17
+      },
+      {
+        "name": "Зейнеп Юсеин",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-02-28",
+    "end_date": "2024-06-15",
+    "status": "completed",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-047-athens-urban-heat",
+    "title": "Αστικές νησίδες θερμότητας - Δίκτυο θερμοκρασίας",
+    "protocol_id": "d9e5f8a1b4c7d0e3f6a9b2c5d8e1f4a7",
+    "protocol_name": "Urban heat islands - Temperature sensor network",
+    "school": "4ο Γυμνάσιο Αθηνών",
+    "city": "Athens",
+    "location": {
+      "latitude": 37.9838,
+      "longitude": 23.7275
+    },
+    "description": "Μελέτη των αστικών νησίδων θερμότητας στην Αθήνα με δίκτυο αισθητήρων θερμοκρασίας και υγρασίας",
+    "methodology": "Εγκατάσταση 30 σταθμών μέτρησης θερμοκρασίας/υγρασίας σε διαφορετικές αθηναϊκές περιοχές, συσχέτιση με αστική πυκνότητα, βλάστηση και υλικά επιφανειών.",
+    "hypotheses": "Οι αστικές νησίδες θερμότητας της Αθήνας εντείνονται από την κλιματική αλλαγή. Η αύξηση της βλάστησης μπορεί να μετριάσει το φαινόμενο.",
+    "conclusions": "Καταγραφή διαφορών θερμοκρασίας έως 7.2°C μεταξύ κέντρου και περιφέρειας, με προτάσεις για πράσινες στέγες και παρκαρίσματα σκίασης.",
+    "participants": [
+      {
+        "name": "Μαρία Παπαδοπούλου",
+        "age": 15
+      },
+      {
+        "name": "Ahmed Al-Rashid",
+        "age": 16
+      },
+      {
+        "name": "Κωνσταντίνος Μαρκόπουλος",
+        "age": 15
+      },
+      {
+        "name": "Fatima Sabbah",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-04-10",
+    "end_date": "2024-06-25",
+    "status": "completed",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-048-thessaloniki-air-quality",
+    "title": "Ποιότητα αέρα - Δίκτυο παρακολούθησης",
+    "protocol_id": "e0f6a9b2c5d8e1f4a7b0c3d6e9f2a5b8",
+    "protocol_name": "Air quality monitoring network in urban environment",
+    "school": "1ο Λύκειο Θεσσαλονίκης",
+    "city": "Thessaloniki",
+    "location": {
+      "latitude": 40.6401,
+      "longitude": 22.9444
+    },
+    "description": "Παρακολούθηση της ποιότητας του αέρα στη Θεσσαλονίκη με δίκτυο αισθητήρων PM2.5, NO2 και οζόντος",
+    "methodology": "Εγκατάσταση 18 compact air quality stations σε σχολεία και δημόσιους χώρους, μετρήσεις σε πραγματικό χρόνο, συσχέτιση με κυκλοφοριακά δεδομένα.",
+    "hypotheses": "Η ποιότητα του αέρα παρουσιάζει σημαντικές χωρικές και χρονικές διακυμάνσεις. Οι πολίτες έχουν δικαίωμα σε ακριβείς πληροφορίες ποιότητας αέρα.",
+    "conclusions": "Ανάπτυξη εφαρμογής πραγματικού χρόνου για ενημέρωση πολιτών, με αποτέλεσμα 25% μείωση της έκθεσης σε υψηλές συγκεντρώσεις ρύπων.",
+    "participants": [
+      {
+        "name": "Ελένη Κωνσταντινίδου",
+        "age": 17
+      },
+      {
+        "name": "Youssef Darwish",
+        "age": 16
+      },
+      {
+        "name": "Δημήτριος Βλάχος",
+        "age": 17
+      },
+      {
+        "name": "Amira Hassan",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-03-12",
+    "end_date": "2024-06-20",
+    "status": "completed",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-049-porto-energy-sensors",
+    "title": "Monitorização energética inteligente",
+    "protocol_id": "f1a7b0c3d6e9f2a5b8c1d4e7f0a3b6c9",
+    "protocol_name": "Smart energy monitoring for urban buildings",
+    "school": "Escola Secundária Rodrigues de Freitas",
+    "city": "Porto",
+    "location": {
+      "latitude": 41.1579,
+      "longitude": -8.6291
+    },
+    "description": "Sistema de monitorização inteligente do consumo energético em edifícios urbanos do Porto com sensores IoT",
+    "methodology": "Instalação de smart meters e sensores ambientais em 20 edifícios residenciais e comerciais, análise de padrões de consumo, otimização automática de sistemas HVAC.",
+    "hypotheses": "A monitorização detalhada permite identificar desperdícios energéticos ocultos. A automação baseada em sensores reduz consumos mantendo o conforto.",
+    "conclusions": "Redução média de 31% no consumo energético através de otimização automática, com payback dos sensores em 1.8 anos.",
+    "participants": [
+      {
+        "name": "Ana Rodrigues",
+        "age": 16
+      },
+      {
+        "name": "Hassan Bencherki",
+        "age": 17
+      },
+      {
+        "name": "Miguel Santos",
+        "age": 16
+      },
+      {
+        "name": "Leila Ouazzani",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-01-15",
+    "end_date": "2024-05-30",
+    "status": "completed",
+    "protocol_category": "energy"
+  },
+  {
+    "id": "exp-050-lisbon-waste-sensors",
+    "title": "Gestão inteligente de resíduos urbanos",
+    "protocol_id": "a2b8c1d4e7f0a3b6c9d2e5f8a1b4c7d0",
+    "protocol_name": "Smart urban waste management with IoT sensors",
+    "school": "Escola Secundária D. Pedro V",
+    "city": "Lisboa",
+    "location": {
+      "latitude": 38.7223,
+      "longitude": -9.1393
+    },
+    "description": "Otimização da recolha de resíduos urbanos em Lisboa através de sensores IoT de nível de enchimento dos contentores",
+    "methodology": "Instalação de sensores ultrassónicos em 150 contentores de lixo lisboetas, sistema de alertas em tempo real, otimização de rotas de recolha baseada em dados.",
+    "hypotheses": "Os padrões de enchimento de contentores são previsíveis e permitem otimizar rotas. A recolha baseada em dados reduz custos e emissões.",
+    "conclusions": "Redução de 35% nas viagens de recolha desnecessárias e 22% nas emissões de CO2 dos camiões, com ROI positivo em 14 meses.",
+    "participants": [
+      {
+        "name": "Sofia Pereira",
+        "age": 17
+      },
+      {
+        "name": "Amine El Idrissi",
+        "age": 16
+      },
+      {
+        "name": "João Ferreira",
+        "age": 17
+      },
+      {
+        "name": "Fatima Benali",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-02-08",
+    "end_date": "2024-06-12",
+    "status": "completed",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-051-geneva-water-quality",
+    "title": "Qualité de l'eau du Léman - Capteurs intelligents",
+    "protocol_id": "b3c9d2e5f8a1b4c7d0e3f6a9b2c5d8e1",
+    "protocol_name": "Lake Geneva water quality monitoring with smart sensors",
+    "school": "Collège de Saussure",
+    "city": "Genève",
+    "location": {
+      "latitude": 46.2044,
+      "longitude": 6.1432
+    },
+    "description": "Surveillance de la qualité de l'eau du lac Léman avec des capteurs IoT multiparamètres pour protéger cet écosystème alpin unique",
+    "methodology": "Déploiement de sondes flottantes équipées de capteurs pH, turbidité, oxygène dissous, température et conductivité, transmission par LoRaWAN, corrélation avec activités touristiques et météo.",
+    "hypotheses": "La qualité de l'eau varie selon les saisons et l'affluence touristique. Les capteurs connectés permettent une surveillance en temps réel plus efficace que les prélèvements traditionnels.",
+    "conclusions": "Détection précoce de 4 épisodes d'eutrophisation estivale, avec amélioration de 40% du temps de réaction des autorités environnementales.",
+    "participants": [
+      {
+        "name": "Léa Müller",
+        "age": 16
+      },
+      {
+        "name": "Karim Hadani",
+        "age": 17
+      },
+      {
+        "name": "Céline Dubois",
+        "age": 16
+      },
+      {
+        "name": "Yassine Boukhris",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-04-08",
+    "end_date": "2024-06-30",
+    "status": "completed",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-052-zurich-bike-sensors",
+    "title": "Sensoren für Fahrradverkehr in der Stadt",
+    "protocol_id": "c4d0e3f6a9b2c5d8e1f4a7b0c3d6e9f2",
+    "protocol_name": "Bicycle traffic monitoring with IoT counting sensors",
+    "school": "Kantonsschule Zürich Nord",
+    "city": "Zürich",
+    "location": {
+      "latitude": 47.3769,
+      "longitude": 8.5417
+    },
+    "description": "Überwachung des Fahrradverkehrs in Zürich mit IoT-Zählsensoren zur Förderung nachhaltiger Mobilität",
+    "methodology": "Installation von 25 Infrarot-Zählsensoren an Fahrradwegen, Echtzeitanalyse der Fahrradströme, Korrelation mit Wetter, Veranstaltungen und öffentlichen Verkehrsmitteln.",
+    "hypotheses": "Fahrradverkehr folgt vorhersagbaren Mustern und wird stark von Wetter und ÖV-Störungen beeinflusst. Datenbasierte Infrastrukturplanung verbessert die Fahrradfreundlichkeit.",
+    "conclusions": "Identifikation von 6 Engpässen im Radwegenetz und erfolgreiche Optimierung der Ampelschaltungen für +22% Fahrradverkehrsfluss.",
+    "participants": [
+      {
+        "name": "Anna Weber",
+        "age": 16
+      },
+      {
+        "name": "Mehmet Özkan",
+        "age": 17
+      },
+      {
+        "name": "Luca Rossi",
+        "age": 16
+      },
+      {
+        "name": "Amira Kassimi",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-03-18",
+    "end_date": "2024-06-21",
+    "status": "completed",
+    "protocol_category": "mobility"
+  },
+  {
+    "id": "exp-053-amsterdam-flood-sensors",
+    "title": "Slimme sensoren voor wateroverlast",
+    "protocol_id": "d5e1f4a7b0c3d6e9f2a5b8c1d4e7f0a3",
+    "protocol_name": "Smart flood detection sensors for urban water management",
+    "school": "Montessori Lyceum Amsterdam",
+    "city": "Amsterdam",
+    "location": {
+      "latitude": 52.3676,
+      "longitude": 4.9041
+    },
+    "description": "Vroege detectie van wateroverlast in Amsterdam met slimme waterniveausensoren en regenmeters",
+    "methodology": "Plaatsing van ultrasonische waterniveausensoren in kritieke zones, geconnecteerde regenmeters, realtime waarschuwingssysteem via mobiele app, integratie met gemeentelijke noodprotocollen.",
+    "hypotheses": "Klimaatverandering verhoogt het risico op stedelijke wateroverlast. Vroege detectie met IoT-sensoren kan schade en overlast significant verminderen.",
+    "conclusions": "Succesvolle preventie van wateroverlast in 8 risicogebieden, met 60% reductie in meldingen van waterschade tijdens piekbuien.",
+    "participants": [
+      {
+        "name": "Emma van der Berg",
+        "age": 17
+      },
+      {
+        "name": "Omar El Mansouri",
+        "age": 16
+      },
+      {
+        "name": "Sophie Janssen",
+        "age": 17
+      },
+      {
+        "name": "Ahmed Bouali",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-02-22",
+    "end_date": "2024-06-14",
+    "status": "completed",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-054-vienna-heritage-sensors",
+    "title": "Smarte Sensoren für historisches Erbe",
+    "protocol_id": "e6f2a5b8c1d4e7f0a3b6c9d2e5f8a1b4",
+    "protocol_name": "Smart sensors for heritage building preservation",
+    "school": "Bundesgymnasium Wien 1",
+    "city": "Vienna",
+    "location": {
+      "latitude": 48.2082,
+      "longitude": 16.3738
+    },
+    "description": "Schutz historischer Gebäude in Wien durch IoT-Sensoren für Mikroklima, Vibrationen und Luftqualität",
+    "methodology": "Installation von Sensoren für Temperatur, Feuchtigkeit, CO2, Erschütterungen und Luftdruck in 12 UNESCO-Welterbe-Gebäuden, präventive Konservierung basierend auf Echtzeitdaten.",
+    "hypotheses": "Umweltstress beschleunigt den Verfall historischer Substanz. Kontinuierliche Überwachung ermöglicht rechtzeitige Schutzmaßnahmen und verlängert die Lebensdauer von Kulturdenkmälern.",
+    "conclusions": "Verhinderung von Feuchtigkeitsschäden in 5 historischen Gebäuden und Entwicklung optimaler Klimabedingungen für Kunstwerke und Fresken.",
+    "participants": [
+      {
+        "name": "Maria Huber",
+        "age": 16
+      },
+      {
+        "name": "Hassan Al-Rashid",
+        "age": 17
+      },
+      {
+        "name": "Klaus Fischer",
+        "age": 16
+      },
+      {
+        "name": "Fatima Özdemir",
+        "age": 17
+      }
+    ],
+    "start_date": "2024-01-29",
+    "end_date": "2024-05-24",
+    "status": "completed",
+    "protocol_category": "environmental"
+  },
+  {
+    "id": "exp-055-stockholm-smart-waste",
+    "title": "Smarta avfallssensorer för cirkulär ekonomi",
+    "protocol_id": "f7a3b6c9d2e5f8a1b4c7d0e3f6a9b2c5",
+    "protocol_name": "Smart waste sensors for circular economy optimization",
+    "school": "Södra Latin",
+    "city": "Stockholm",
+    "location": {
+      "latitude": 59.3293,
+      "longitude": 18.0686
+    },
+    "description": "Optimering av avfallshantering i Stockholm med smarta sensorer för att stödja cirkulär ekonomi",
+    "methodology": "Installation av fyllnadsnivåsensorer i 200 återvinningsbehållare, automatisk ruttoptimering, analys av återvinningsvanor per stadsdel, gamification via mobilapp.",
+    "hypotheses": "Smart avfallshantering ökar återvinningsgraden och minskar miljöpåverkan. Realtidsdata om fyllnadsnivåer optimerar insamlingsrutter och reducerar CO2-utsläpp.",
+    "conclusions": "Ökning av återvinningsgraden med 34% och minskning av insamlingsrutter med 28%, vilket resulterade i 180 ton mindre CO2-utsläpp per år.",
+    "participants": [
+      {
+        "name": "Astrid Lindberg",
+        "age": 17
+      },
+      {
+        "name": "Ahmed Youssef",
+        "age": 16
+      },
+      {
+        "name": "Erik Johansson",
+        "age": 17
+      },
+      {
+        "name": "Leila Benali",
+        "age": 16
+      }
+    ],
+    "start_date": "2024-03-11",
+    "end_date": "2024-06-26",
+    "status": "completed",
+    "protocol_category": "environmental"
+  }
+]

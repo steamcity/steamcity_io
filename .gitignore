@@ -51,9 +51,6 @@ jspm_packages/
 uploads/*
 !uploads/.gitkeep
 
-# Data files
-data/*
-!data/.gitkeep
 
 # OS generated files
 .DS_Store

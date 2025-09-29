@@ -111,12 +111,34 @@ class SteamCityPlatform {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
-        // Simple authentication - you can expand this
-        if (username && password) {
+        // Clear any previous error messages
+        const errorElement = document.getElementById('login-error');
+        if (errorElement) {
+            errorElement.remove();
+        }
+
+        // Check credentials
+        const correctPassword = 'steamcity2024';
+
+        if (username && password === correctPassword) {
             localStorage.setItem('steamcity_authenticated', 'true');
             this.isAuthenticated = true;
             this.hideLoginModal();
             await this.showMainApp();
+        } else {
+            // Show error message
+            const loginForm = document.getElementById('login-form');
+            const errorDiv = document.createElement('div');
+            errorDiv.id = 'login-error';
+            errorDiv.style.color = '#ff4444';
+            errorDiv.style.textAlign = 'center';
+            errorDiv.style.marginTop = '10px';
+            errorDiv.style.fontSize = '14px';
+            errorDiv.textContent = 'Nom d\'utilisateur ou mot de passe incorrect';
+            loginForm.appendChild(errorDiv);
+
+            // Clear password field
+            document.getElementById('password').value = '';
         }
     }
 
