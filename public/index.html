@@ -132,6 +132,7 @@
             <nav class="main-nav">
                 <button id="map-tab" class="nav-button active">🗺️ Carte</button>
                 <button id="experiments-tab" class="nav-button">🔬 Expériences</button>
+                <button id="sensors-tab" class="nav-button">📡 Capteurs</button>
                 <button id="data-tab" class="nav-button">📊 Données</button>
             </nav>
             <button id="logout-btn" class="logout-btn">Déconnexion</button>
@@ -336,7 +337,14 @@
             <!-- Data View -->
             <div id="data-view" class="view">
                 <div class="data-filter-panel">
-                    <h2>Analyse des données</h2>
+                    <div class="view-header">
+                        <h2>📊 Analyse des données</h2>
+                        <div class="header-actions">
+                            <button id="view-experiment-details" class="view-details-btn" title="Voir les détails de l'expérience sélectionnée" disabled>
+                                🔍 Détails de l'expérience
+                            </button>
+                        </div>
+                    </div>
 
                     <!-- Search-like filter activation button -->
                     <div class="filter-search-box" id="data-filter-search-box">
@@ -351,92 +359,64 @@
                         </div>
                     </div>
 
-                    <!-- Basic filters (hidden by default) -->
-                    <div class="filter-section" id="data-basic-filters" style="display: none;">
-                        <div class="basic-data-filters">
+                    <!-- Additional filters container (initially hidden) -->
+                    <div id="data-additional-filters" class="additional-filters" style="display: none;">
+                        <div class="filters-row">
                             <div class="filter-group">
-                                <label for="experiment-select">Expérience :</label>
-                                <select id="experiment-select">
+                                <label for="experiment-select">🔬 Expérience</label>
+                                <select id="experiment-select" class="form-select">
                                     <option value="">Toutes les expériences</option>
                                 </select>
                             </div>
                             <div class="filter-group">
-                                <label for="sensor-type-select">Type de capteur :</label>
-                                <select id="sensor-type-select">
+                                <label for="sensor-type-select">📊 Type de capteur</label>
+                                <select id="sensor-type-select" class="form-select">
                                     <option value="">Tous les types</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label for="data-period-select">📅 Période</label>
+                                <select id="data-period-select" class="form-select">
+                                    <option value="all">Toutes les données</option>
+                                    <option value="24h">Dernières 24h</option>
+                                    <option value="7d">7 derniers jours</option>
+                                    <option value="30d">30 derniers jours</option>
+                                </select>
+                            </div>
+                            <button id="data-clear-filters" class="clear-filters-btn">🗑️ Effacer les filtres</button>
+                        </div>
+
+                        <!-- Advanced time filters (can be expanded later) -->
+                        <div class="filters-row" style="margin-top: 1rem;">
+                            <div class="filter-group">
+                                <label for="data-start-date">📅 Date début</label>
+                                <input type="date" id="data-start-date" class="form-select">
+                            </div>
+                            <div class="filter-group">
+                                <label for="data-end-date">📅 Date fin</label>
+                                <input type="date" id="data-end-date" class="form-select">
+                            </div>
+                            <div class="filter-group">
+                                <label for="data-min-quality">⭐ Qualité min.</label>
+                                <select id="data-min-quality" class="form-select">
+                                    <option value="">Toutes</option>
+                                    <option value="0.9">Excellente (90%+)</option>
+                                    <option value="0.8">Bonne (80%+)</option>
+                                    <option value="0.7">Correcte (70%+)</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label for="data-limit">📈 Limite</label>
+                                <select id="data-limit" class="form-select">
+                                    <option value="100">100 points</option>
+                                    <option value="500">500 points</option>
+                                    <option value="1000">1000 points</option>
+                                    <option value="">Toutes</option>
                                 </select>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Advanced filters (hidden by default) -->
-                    <div id="data-additional-filters" class="additional-filters" style="display: none;">
-                        <!-- Time period filters -->
-                        <div class="filter-section collapsible">
-                            <h4 class="filter-toggle" data-target="data-time-filters">
-                                <span class="toggle-icon">▶</span> Période temporelle
-                            </h4>
-                            <div id="data-time-filters" class="filter-content" style="display: none;">
-                                <div class="filters-row">
-                                    <div class="filter-group">
-                                        <label for="data-period-select">Période :</label>
-                                        <select id="data-period-select">
-                                            <option value="all">Toutes les données</option>
-                                            <option value="24h">Dernières 24h</option>
-                                            <option value="7d">7 derniers jours</option>
-                                            <option value="30d">30 derniers jours</option>
-                                        </select>
-                                    </div>
-                                    <div class="filter-group">
-                                        <label for="data-start-date">Date début :</label>
-                                        <input type="date" id="data-start-date">
-                                    </div>
-                                    <div class="filter-group">
-                                        <label for="data-end-date">Date fin :</label>
-                                        <input type="date" id="data-end-date">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Quality filters -->
-                        <div class="filter-section collapsible">
-                            <h4 class="filter-toggle" data-target="data-quality-filters">
-                                <span class="toggle-icon">▶</span> Qualité des données
-                            </h4>
-                            <div id="data-quality-filters" class="filter-content" style="display: none;">
-                                <div class="filters-row">
-                                    <div class="filter-group">
-                                        <label for="data-min-quality">Qualité minimale :</label>
-                                        <select id="data-min-quality">
-                                            <option value="">Toutes qualités</option>
-                                            <option value="0.9">Excellente (> 90%)</option>
-                                            <option value="0.8">Bonne (> 80%)</option>
-                                            <option value="0.7">Correcte (> 70%)</option>
-                                        </select>
-                                    </div>
-                                    <div class="filter-group">
-                                        <label for="data-limit">Nombre max de points :</label>
-                                        <select id="data-limit">
-                                            <option value="1000">1000 points</option>
-                                            <option value="100">100 points</option>
-                                            <option value="500">500 points</option>
-                                            <option value="5000">5000 points</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Action buttons -->
-                        <div class="filter-section">
-                            <div class="filters-row">
-                                <button id="data-clear-filters-btn" class="clear-filters-btn">Effacer les filtres</button>
-                                <button id="data-apply-filters-btn" class="apply-filters-btn">Appliquer les filtres</button>
-                            </div>
-                        </div>
                     </div>
-                </div>
 
                 <div id="chart-container">
                     <canvas id="dataChart"></canvas>
@@ -480,6 +460,80 @@
                                     <div class="stat-label">Types de capteurs</div>
                                     <div class="stat-value" id="stat-sensor-types">-</div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sensors View -->
+            <div id="sensors-view" class="view">
+                <div class="sensors-filter-panel">
+                        <h2>Gestion des capteurs</h2>
+                 
+
+                    <!-- Search-like filter activation button -->
+                    <div class="filter-search-box" id="sensors-filter-search-box">
+                        <div class="search-input-container">
+                            <span class="search-icon">🔍</span>
+                            <input type="text"
+                                   id="sensors-filter-input"
+                                   class="search-input"
+                                   placeholder="Rechercher ou filtrer les capteurs..."
+                                   readonly>
+                            <span class="filter-count" id="sensors-filter-count" style="display: none;">0 filtres actifs</span>
+                        </div>
+                    </div>
+
+                    <!-- Additional filters container (initially hidden) -->
+                    <div id="sensors-additional-filters" class="additional-filters" style="display: none;">
+                        <div class="filters-row">
+                            <div class="filter-group">
+                                <label for="sensors-experiment-filter">🔬 Expérience</label>
+                                <select id="sensors-experiment-filter" class="form-select">
+                                    <option value="">Toutes les expériences</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label for="sensors-status-filter">📊 Statut</label>
+                                <select id="sensors-status-filter" class="form-select">
+                                    <option value="">Tous les statuts</option>
+                                    <option value="active">Actif</option>
+                                    <option value="maintenance">Maintenance</option>
+                                    <option value="offline">Hors ligne</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label for="sensors-type-filter">🔧 Type de capteur</label>
+                                <select id="sensors-type-filter" class="form-select">
+                                    <option value="">Tous les types</option>
+                                </select>
+                            </div>
+                            <button id="sensors-clear-filters" class="clear-filters-btn">🗑️ Effacer les filtres</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sensors grid container -->
+                <div id="sensors-container" class="sensors-grid-container">
+                    <div class="loading-message">
+                        Chargement des capteurs...
+                    </div>
+                </div>
+
+                <!-- Sensor detail modal -->
+                <div id="sensor-detail-modal" class="sensor-modal" style="display: none;">
+                    <div class="sensor-modal-content">
+                        <div class="sensor-modal-header">
+                            <h3 id="sensor-modal-title">Détails du capteur</h3>
+                            <button class="sensor-modal-close">&times;</button>
+                        </div>
+                        <div class="sensor-modal-body">
+                            <div id="sensor-details-content">
+                                <!-- Sensor details will be populated here -->
+                            </div>
+                            <div id="sensor-chart-container">
+                                <canvas id="sensor-detail-chart"></canvas>
                             </div>
                         </div>
                     </div>

@@ -573,14 +573,15 @@ body {
     display: block;
 }
 
+
 /* Map View */
 #map-view {
-    height: calc(100vh - 140px);
     overflow: hidden;
 }
 
 #map-view.active {
     display: flex;
+    height: calc(100vh - 140px);
 }
 
 .map-controls {
@@ -772,8 +773,6 @@ body {
 /* Experiment Detail View */
 #experiment-detail-view {
     padding: 2rem;
-    height: calc(100vh - 80px);
-    overflow-y: auto;
 }
 
 .detail-header {
@@ -1129,29 +1128,20 @@ body {
 /* Experiments View */
 #experiments-view {
     padding: 2rem;
-    height: calc(100vh - 80px);
-    overflow-y: auto;
+    background: transparent;
 }
 
 .view-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
-    padding: 1.5rem 2rem;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    margin: 1rem 0 2rem 0;
-    color: #333;
+    margin-bottom: 1.5rem;
+    color: white;
 }
 
 .view-header h2 {
-    color: #333;
-    text-shadow: none;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     margin: 0;
 }
 
@@ -1233,34 +1223,41 @@ body {
 }
 
 .sensor-filter-btn {
-    background: rgba(74, 144, 226, 0.1);
-    color: var(--primary-color);
-    border: 1px solid rgba(74, 144, 226, 0.2);
-    padding: 0.6rem 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: var(--transition);
-    font-family: inherit;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: calc(var(--border-radius) / 2);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    color: #333;
+    font-family: inherit;
 }
 
 .sensor-filter-btn:hover {
-    background: rgba(74, 144, 226, 0.2);
-    border-color: rgba(74, 144, 226, 0.4);
+    background: #f8f9fa;
+    transform: translateY(-1px);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .sensor-filter-btn[data-active="true"] {
-    background: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    background: rgba(102, 126, 234, 0.1);
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+    color: #333;
 }
 
 .sensor-filter-btn[data-active="true"]:hover {
-    background: #3a7bc8;
-    border-color: #3a7bc8;
+    background: rgba(102, 126, 234, 0.15);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4);
 }
 
 /* Data View Filters */
@@ -1268,6 +1265,7 @@ body {
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
+    flex-shrink: 0;
     border-radius: var(--border-radius);
     border: 1px solid var(--glass-border);
     padding: 2rem;
@@ -1340,7 +1338,10 @@ body {
     padding: 2rem;
     margin: 2rem 2rem 1rem 2rem;
     box-shadow: var(--glass-shadow);
+    flex: 0 0 auto;
+    max-height: none;
 }
+
 
 .stats-panel h3 {
     color: #2c3e50;
@@ -1856,11 +1857,407 @@ body {
     );
 }
 
+/* Sensors View */
+#sensors-view {
+    padding: 2rem;
+    background: transparent;
+}
+
+.sensors-filter-panel {
+    padding: 1.5rem 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 1rem 0 2rem 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+/* Remove duplicate - now using .view-header */
+
+/* Loading message */
+.loading-message {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    color: #666;
+    margin-top: 2rem;
+}
+
+.loading-message::before {
+    content: '⏳';
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.sensors-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.sensor-device-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    cursor: pointer;
+    position: relative;
+    border-left: 4px solid var(--primary-color);
+}
+
+.sensor-device-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.sensor-device-card.active {
+    border-left-color: #28a745;
+}
+
+.sensor-device-card.maintenance {
+    border-left-color: #ffc107;
+}
+
+.sensor-device-card.offline {
+    border-left-color: #dc3545;
+}
+
+.sensor-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.sensor-card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 0.5rem 0;
+}
+
+.sensor-card-type {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+}
+
+.sensor-card-status {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    white-space: nowrap;
+}
+
+.sensor-card-status.active {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+    border: 1px solid rgba(40, 167, 69, 0.3);
+}
+
+.sensor-card-status.maintenance {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.sensor-card-status.offline {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    border: 1px solid rgba(220, 53, 69, 0.3);
+}
+
+.sensor-card-body {
+    margin-bottom: 1rem;
+}
+
+.sensor-card-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.sensor-card-info strong {
+    color: #333;
+}
+
+.sensor-current-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.sensor-card-location {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.sensor-card-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.sensor-action-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--primary-color);
+    background: var(--primary-color);
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: var(--transition);
+    font-family: inherit;
+    flex: 1;
+    text-align: center;
+}
+
+.sensor-action-btn:hover {
+    background: #3a7bc8;
+    border-color: #3a7bc8;
+    transform: translateY(-1px);
+}
+
+.sensor-action-btn.secondary {
+    background: white;
+    color: var(--primary-color);
+    border-color: rgba(102, 126, 234, 0.4);
+}
+
+.sensor-action-btn.secondary:hover {
+    background: rgba(102, 126, 234, 0.1);
+    border-color: var(--primary-color);
+}
+
+/* Sensor Detail Modal */
+.sensor-detail-modal {
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.sensor-modal-content {
+    background: white;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.sensor-modal-header {
+    padding: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.sensor-modal-title {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.sensor-modal-subtitle {
+    margin: 0;
+    font-size: 1rem;
+    color: #666;
+    font-weight: 400;
+}
+
+.sensor-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #999;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.sensor-modal-close:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+.sensor-modal-body {
+    padding: 2rem;
+}
+
+.sensor-modal-section {
+    margin-bottom: 2rem;
+}
+
+.sensor-modal-section:last-child {
+    margin-bottom: 0;
+}
+
+.sensor-modal-section h4 {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+}
+
+.sensor-specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.sensor-spec-item {
+    background: rgba(248, 249, 250, 0.8);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-color);
+}
+
+.sensor-spec-label {
+    font-size: 0.85rem;
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sensor-spec-value {
+    font-size: 1rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.sensor-chart-container {
+    height: 300px;
+    background: rgba(248, 249, 250, 0.5);
+    border-radius: 8px;
+    padding: 1rem;
+    position: relative;
+}
+
+/* No data message */
+.no-sensors-message {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    color: #666;
+    margin-top: 2rem;
+}
+
+.no-sensors-message h3 {
+    margin-bottom: 1rem;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.no-sensors-message p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Responsive design for sensors view */
+@media (max-width: 768px) {
+    .sensors-filter-panel {
+        padding: 1rem;
+        margin: 0.5rem 0 1.5rem 0;
+    }
+
+    .filters-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .filter-group {
+        width: 100%;
+    }
+
+    .filter-group select {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .sensors-grid-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .sensor-modal-content {
+        width: 95%;
+        margin: 1rem;
+    }
+
+    .sensor-modal-header, .sensor-modal-body {
+        padding: 1.5rem;
+    }
+
+    .sensor-specs-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Data View */
 #data-view {
     padding: 2rem;
-    height: calc(100vh - 80px);
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+}
+
+/* Force hide data view elements when not active */
+#data-view:not(.active) {
+    display: none !important;
+}
+
+#data-view:not(.active) * {
+    display: none !important;
+    visibility: hidden !important;
 }
 
 .chart-controls {
@@ -1903,8 +2300,10 @@ body {
     padding: 2rem;
     margin: 1rem 2rem;
     color: #333;
-    height: 70vh;
+    flex: 0 0 auto;
+    height: 500px;
 }
+
 
 #dataChart {
     width: 100% !important;
@@ -2094,4 +2493,56 @@ body {
 .loading-content p {
     opacity: 0.8;
     font-size: 1rem;
+}
+
+/* Custom Chart Legend Styling */
+.custom-chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.custom-legend-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: calc(var(--border-radius) / 2);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0.25rem;
+    user-select: none;
+}
+
+/* Data view header */
+
+.view-details-btn {
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.view-details-btn:hover:not(:disabled) {
+    background: var(--secondary-color);
+    transform: translateY(-1px);
+}
+
+.view-details-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    opacity: 0.6;
 }
