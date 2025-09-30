@@ -3693,9 +3693,14 @@ class SteamCityPlatform {
     }
 }
 
-// Initialize the platform
-const platform = new SteamCityPlatform();
+// Expose the class globally for patching by main.js
+window.SteamCityPlatform = SteamCityPlatform;
 
-// Make it globally available for inline event handlers
-window.platform = platform;
-window.steamcity = platform;
+// Initialize the platform ONLY if not being patched
+if (!window.__STEAMCITY_PATCHING_MODE__) {
+    const platform = new SteamCityPlatform();
+
+    // Make it globally available for inline event handlers
+    window.platform = platform;
+    window.steamcity = platform;
+}
