@@ -28,6 +28,9 @@ coverage/
 # nyc test coverage
 .nyc_output
 
+# Vitest test files
+.last-run.json
+
 # Dependency directories
 node_modules/
 jspm_packages/
