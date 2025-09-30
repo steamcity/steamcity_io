@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Modules - SteamCity</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-card {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .success { color: #27ae60; }
+        .error { color: #e74c3c; }
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test de Chargement des Modules ES6</h1>
+
+    <div class="test-card">
+        <h2>Étape 1 : Import AuthManager</h2>
+        <div id="auth-status">⏳ Chargement...</div>
+    </div>
+
+    <div class="test-card">
+        <h2>Étape 2 : Import ApiService</h2>
+        <div id="api-status">⏳ Chargement...</div>
+    </div>
+
+    <div class="test-card">
+        <h2>Étape 3 : Instanciation</h2>
+        <div id="instance-status">⏳ En attente...</div>
+    </div>
+
+    <div class="test-card">
+        <h2>Étape 4 : Test API</h2>
+        <div id="test-status">⏳ En attente...</div>
+        <pre id="test-result"></pre>
+    </div>
+
+    <script type="module">
+        console.log('🔍 Début des tests de chargement des modules')
+
+        // Test 1 : AuthManager
+        try {
+            const { AuthManager } = await import('./js/auth-manager.js')
+            document.getElementById('auth-status').innerHTML = '✅ <span class="success">AuthManager importé avec succès</span>'
+            console.log('✅ AuthManager:', AuthManager)
+            window.AuthManagerClass = AuthManager
+        } catch (error) {
+            document.getElementById('auth-status').innerHTML = `❌ <span class="error">Erreur: ${error.message}</span>`
+            console.error('❌ Erreur AuthManager:', error)
+        }
+
+        // Test 2 : ApiService
+        try {
+            const { ApiService } = await import('./js/api-service.js')
+            document.getElementById('api-status').innerHTML = '✅ <span class="success">ApiService importé avec succès</span>'
+            console.log('✅ ApiService:', ApiService)
+            window.ApiServiceClass = ApiService
+        } catch (error) {
+            document.getElementById('api-status').innerHTML = `❌ <span class="error">Erreur: ${error.message}</span>`
+            console.error('❌ Erreur ApiService:', error)
+        }
+
+        // Test 3 : Instanciation
+        try {
+            if (window.ApiServiceClass) {
+                const apiService = new window.ApiServiceClass('/api')
+                window.apiService = apiService
+
+                const methods = [
+                    'fetchExperiments',
+                    'fetchExperimentById',
+                    'fetchSensors',
+                    'fetchSensorDevices',
+                    'fetchSensorById',
+                    'fetchSensorTypes',
+                    'fetchMeasurements',
+                    'fetchProtocols',
+                    'uploadCSV',
+                    'healthCheck'
+                ]
+
+                const availableMethods = methods.filter(m => typeof apiService[m] === 'function')
+
+                document.getElementById('instance-status').innerHTML = `✅ <span class="success">ApiService instancié avec ${availableMethods.length}/10 méthodes</span>`
+                console.log('✅ ApiService instance:', apiService)
+                console.log('📦 Méthodes disponibles:', availableMethods)
+            }
+        } catch (error) {
+            document.getElementById('instance-status').innerHTML = `❌ <span class="error">Erreur: ${error.message}</span>`
+            console.error('❌ Erreur instanciation:', error)
+        }
+
+        // Test 4 : Appel API réel
+        try {
+            if (window.apiService) {
+                document.getElementById('test-status').innerHTML = '⏳ Test de healthCheck()...'
+
+                const result = await window.apiService.healthCheck()
+
+                document.getElementById('test-status').innerHTML = '✅ <span class="success">API fonctionne !</span>'
+                document.getElementById('test-result').textContent = JSON.stringify(result, null, 2)
+                console.log('✅ Health check:', result)
+
+                // Test fetch experiments
+                console.log('⏳ Test fetchExperiments()...')
+                const experiments = await window.apiService.fetchExperiments()
+                console.log('✅ Experiments:', experiments.length, 'expériences chargées')
+            }
+        } catch (error) {
+            document.getElementById('test-status').innerHTML = `❌ <span class="error">Erreur API: ${error.message}</span>`
+            document.getElementById('test-result').textContent = error.stack
+            console.error('❌ Erreur test API:', error)
+        }
+
+        console.log('✅ Tests terminés - vérifiez window.apiService dans la console')
+    </script>
+</body>
+</html>

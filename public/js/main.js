@@ -1,5 +1,5 @@
 /**
- * Point d'entrée hybride - utilise AuthManager + ApiService + MapManager + DataVisualizationManager + ExperimentsManager + script.js original
+ * Point d'entrée hybride - utilise AuthManager + ApiService + MapManager + DataVisualizationManager + ExperimentsManager + SensorsManager + script.js original
  * Cette approche permet de tester l'intégration en toute sécurité
  */
 import { AuthManager } from './auth-manager.js'
@@ -7,6 +7,7 @@ import { ApiService } from './api-service.js'
 import { MapManager } from './map-manager.js'
 import { DataVisualizationManager } from './data-visualization-manager.js'
 import { ExperimentsManager } from './experiments-manager.js'
+import { SensorsManager } from './sensors-manager.js'
 
 // Variables globales pour l'intégration
 window.authManager = null
@@ -14,6 +15,7 @@ window.apiService = null
 window.mapManager = null
 window.dataVizManager = null
 window.experimentsManager = null
+window.sensorsManager = null
 window.originalSteamCity = null
 
 // Activer le mode patching pour empêcher script.js d'instancier automatiquement
@@ -56,6 +58,17 @@ function patchSteamCityWithAuthManager() {
                         onExperimentClick: (id) => this.showExperimentDetail(id),
                         apiService: this.apiService
                     })
+                    this.sensorsManager = new SensorsManager({
+                        apiService: this.apiService,
+                        dataVizManager: this.dataVizManager,
+                        protocolColors: this.protocolColors,
+                        getProtocolLabel: (p) => this.getProtocolLabel(p),
+                        experiments: this.experiments,
+                        updateUrl: (params) => this.updateUrl(params),
+                        showView: (view) => this.showView(view),
+                        showExperimentDetail: (id) => this.showExperimentDetail(id),
+                        urlParams: this.urlParams
+                    })
 
                     // Override des méthodes d'authentification
                     this.overrideAuthMethods()
@@ -72,7 +85,10 @@ function patchSteamCityWithAuthManager() {
                     // Override des méthodes d'expériences
                     this.overrideExperimentsMethods()
 
-                    console.log('✅ AuthManager, ApiService, MapManager, DataVisualizationManager et ExperimentsManager intégrés avec succès')
+                    // Override des méthodes de capteurs
+                    this.overrideSensorsMethods()
+
+                    console.log('✅ AuthManager, ApiService, MapManager, DataVisualizationManager, ExperimentsManager et SensorsManager intégrés avec succès')
 
                     // Maintenant appeler init() avec tous les managers disponibles
                     this.init()
@@ -344,6 +360,47 @@ function patchSteamCityWithAuthManager() {
                     console.log('✅ Méthodes d\'expériences override pour utiliser ExperimentsManager')
                 }
 
+                overrideSensorsMethods() {
+                    // Override loadSensorsView
+                    this.loadSensorsView = async () => {
+                        this.sensorsManager.experiments = this.experiments
+                        this.sensorsManager.urlParams = this.urlParams
+                        await this.sensorsManager.loadSensorsView()
+                    }
+
+                    // Override applySensorsFilters
+                    this.applySensorsFilters = () => {
+                        this.sensorsManager.experiments = this.experiments
+                        this.sensorsManager.urlParams = this.urlParams
+                        this.sensorsManager.applySensorsFilters()
+                    }
+
+                    // Override displaySensors
+                    this.displaySensors = (sensors) => {
+                        this.sensorsManager.experiments = this.experiments
+                        this.sensorsManager.displaySensors(sensors)
+                    }
+
+                    // Override showSensorDetails
+                    this.showSensorDetails = async (sensorId, updateUrl = true) => {
+                        this.sensorsManager.experiments = this.experiments
+                        this.sensorsManager.urlParams = this.urlParams
+                        await this.sensorsManager.showSensorDetails(sensorId, updateUrl)
+                    }
+
+                    // Override loadSensorChart
+                    this.loadSensorChart = async (sensorId, period = '24h') => {
+                        await this.sensorsManager.loadSensorChart(sensorId, period)
+                    }
+
+                    // Override getSensorById
+                    this.getSensorById = (sensorId) => {
+                        return this.sensorsManager.getSensorById(sensorId)
+                    }
+
+                    console.log('✅ Méthodes de capteurs override pour utiliser SensorsManager')
+                }
+
                 // Override bindEvents pour ne pas re-binder les événements auth
                 bindEvents() {
                     // Appeler la méthode parent mais sans les événements auth
@@ -398,6 +455,7 @@ function patchSteamCityWithAuthManager() {
             window.mapManager = window.steamcity.mapManager
             window.dataVizManager = window.steamcity.dataVizManager
             window.experimentsManager = window.steamcity.experimentsManager
+            window.sensorsManager = window.steamcity.sensorsManager
 
             console.log('🚀 Application SteamCity démarrée avec tous les managers')
             console.log('📦 Modules chargés:', {
@@ -406,6 +464,7 @@ function patchSteamCityWithAuthManager() {
                 mapManager: !!window.mapManager,
                 dataVizManager: !!window.dataVizManager,
                 experimentsManager: !!window.experimentsManager,
+                sensorsManager: !!window.sensorsManager,
                 steamcity: !!window.steamcity
             })
 
