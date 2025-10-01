@@ -502,24 +502,46 @@ export class DataVisualizationManager {
      * @returns {Object} Statistiques globales
      */
     calculateGlobalStats(measurements, sensorTypeCount) {
+        const qualities = measurements
+            .map(m => m.quality?.score || m.quality || 1)
+            .filter(q => !isNaN(q))
+
+        const totalPoints = measurements.length
+        const avgQuality = qualities.length > 0
+            ? qualities.reduce((sum, q) => sum + q, 0) / qualities.length
+            : null
+        const timeRange = this._calculateTimeRange(measurements)
+
         return {
-            totalMeasurements: measurements.length,
+            totalMeasurements: totalPoints,
             sensorTypes: sensorTypeCount,
-            dateRange: this._calculateDateRange(measurements)
+            avgQuality: avgQuality,
+            timeRange: timeRange
         }
     }
 
     /**
-     * Calcule la plage de dates des mesures
+     * Calcule la durée couverte par les mesures (format: "2j 5h")
      * @private
      */
-    _calculateDateRange(measurements) {
-        if (measurements.length === 0) return { start: null, end: null }
+    _calculateTimeRange(measurements) {
+        if (measurements.length === 0) return 'N/A'
 
-        const timestamps = measurements.map(m => new Date(m.timestamp))
-        return {
-            start: new Date(Math.min(...timestamps)),
-            end: new Date(Math.max(...timestamps))
+        const timestamps = measurements.map(m => new Date(m.timestamp)).sort((a, b) => a - b)
+        const oldest = timestamps[0]
+        const newest = timestamps[timestamps.length - 1]
+
+        const diffMs = newest - oldest
+        const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
+        const diffHours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+
+        if (diffDays > 0) {
+            return `${diffDays}j ${diffHours}h`
+        } else if (diffHours > 0) {
+            return `${diffHours}h`
+        } else {
+            const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60))
+            return `${diffMinutes}min`
         }
     }
 
@@ -528,27 +550,22 @@ export class DataVisualizationManager {
      * @private
      */
     _displayGlobalStats(stats) {
-        const globalStatsContainer = document.getElementById('global-stats')
-        if (!globalStatsContainer) return
+        // Update individual stat elements
+        this._updateStatElement('stat-total-points', stats.totalMeasurements.toLocaleString())
+        this._updateStatElement('stat-time-range', stats.timeRange)
+        this._updateStatElement('stat-avg-quality', stats.avgQuality ? `${(stats.avgQuality * 100).toFixed(1)}%` : 'N/A')
+        this._updateStatElement('stat-sensor-types', stats.sensorTypes.toString())
+    }
 
-        const dateRangeText = stats.dateRange.start && stats.dateRange.end
-            ? `${stats.dateRange.start.toLocaleDateString()} - ${stats.dateRange.end.toLocaleDateString()}`
-            : 'Non disponible'
-
-        globalStatsContainer.innerHTML = `
-            <div class="stat-item">
-                <span class="stat-label">Total mesures</span>
-                <span class="stat-value">${stats.totalMeasurements}</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-label">Types de capteurs</span>
-                <span class="stat-value">${stats.sensorTypes}</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-label">Période</span>
-                <span class="stat-value">${dateRangeText}</span>
-            </div>
-        `
+    /**
+     * Met à jour un élément de statistique
+     * @private
+     */
+    _updateStatElement(elementId, value) {
+        const element = document.getElementById(elementId)
+        if (element) {
+            element.textContent = value
+        }
     }
 
     /**
@@ -643,5 +660,148 @@ export class DataVisualizationManager {
             this.chart.destroy()
             this.chart = null
         }
+    }
+
+    /**
+     * Crée une légende personnalisée pour le graphique
+     * @param {Chart} chart - Instance Chart.js
+     * @param {string} containerId - ID du conteneur parent
+     */
+    createCustomLegend(chart, containerId) {
+        const container = document.getElementById(containerId)
+        if (!container) {
+            console.error('Container not found:', containerId)
+            return
+        }
+
+        // Remove existing legend
+        const existingLegend = container.querySelector('.custom-chart-legend')
+        if (existingLegend) {
+            existingLegend.remove()
+        }
+
+        // Create legend container
+        const legendContainer = document.createElement('div')
+        legendContainer.className = 'custom-chart-legend'
+        legendContainer.style.cssText = `
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            margin-top: 0.5rem;
+        `
+
+        // Create legend items
+        chart.data.datasets.forEach((dataset, index) => {
+            const legendItem = document.createElement('div')
+            legendItem.className = 'custom-legend-item'
+            legendItem.style.cssText = `
+                display: flex;
+                align-items: center;
+                padding: 0.5rem 1rem;
+                border-radius: calc(var(--border-radius) / 2);
+                background: rgba(255, 255, 255, 0.9);
+                backdrop-filter: var(--glass-blur);
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                cursor: pointer;
+                transition: var(--transition);
+                font-size: 0.9rem;
+                font-weight: 500;
+                margin: 0.25rem;
+                user-select: none;
+            `
+
+            // Color indicator
+            const colorBox = document.createElement('span')
+            colorBox.style.cssText = `
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                background-color: ${dataset.borderColor};
+                margin-right: 0.5rem;
+                flex-shrink: 0;
+            `
+
+            // Label text
+            const labelText = document.createElement('span')
+            labelText.textContent = dataset.label
+
+            legendItem.appendChild(colorBox)
+            legendItem.appendChild(labelText)
+
+            // Click handler
+            legendItem.addEventListener('click', () => {
+                const meta = chart.getDatasetMeta(index)
+                meta.hidden = meta.hidden === null ? !chart.data.datasets[index].hidden : !meta.hidden
+                chart.update()
+                this.updateCustomLegendStyles(chart, legendContainer)
+            })
+
+            // Hover effects
+            legendItem.addEventListener('mouseenter', () => {
+                if (!chart.getDatasetMeta(index).hidden) {
+                    legendItem.style.background = '#f8f9fa'
+                    legendItem.style.transform = 'translateY(-1px)'
+                    legendItem.style.border = '1px solid rgba(102, 126, 234, 0.3)'
+                    legendItem.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)'
+                }
+            })
+
+            legendItem.addEventListener('mouseleave', () => {
+                if (!chart.getDatasetMeta(index).hidden) {
+                    legendItem.style.background = 'rgba(255, 255, 255, 0.9)'
+                    legendItem.style.transform = 'none'
+                    legendItem.style.border = '1px solid rgba(0, 0, 0, 0.1)'
+                    legendItem.style.boxShadow = 'none'
+                }
+            })
+
+            legendContainer.appendChild(legendItem)
+        })
+
+        // Insert legend at the beginning of the container
+        container.insertBefore(legendContainer, container.firstChild)
+
+        // Wrap canvas in a fixed-height container if not already wrapped
+        const canvas = container.querySelector('canvas')
+        if (canvas && !canvas.parentElement.classList.contains('chart-canvas-wrapper')) {
+            const canvasWrapper = document.createElement('div')
+            canvasWrapper.className = 'chart-canvas-wrapper'
+            canvasWrapper.style.cssText = `
+                position: relative;
+                height: 400px;
+                width: 100%;
+            `
+            canvas.parentElement.insertBefore(canvasWrapper, canvas)
+            canvasWrapper.appendChild(canvas)
+        }
+
+        // Initial update of legend styles
+        this.updateCustomLegendStyles(chart, legendContainer)
+    }
+
+    /**
+     * Met à jour les styles de la légende personnalisée
+     * @param {Chart} chart - Instance Chart.js
+     * @param {HTMLElement} legendContainer - Conteneur de la légende
+     */
+    updateCustomLegendStyles(chart, legendContainer) {
+        const legendItems = legendContainer.querySelectorAll('.custom-legend-item')
+        legendItems.forEach((item, index) => {
+            const meta = chart.getDatasetMeta(index)
+            const isHidden = meta && meta.hidden
+
+            if (isHidden) {
+                item.style.opacity = '0.4'
+                item.style.background = 'rgba(255, 255, 255, 0.5)'
+                item.style.transform = 'none'
+                item.style.boxShadow = 'none'
+            } else {
+                item.style.opacity = '1'
+                item.style.background = 'rgba(255, 255, 255, 0.9)'
+            }
+        })
     }
 }

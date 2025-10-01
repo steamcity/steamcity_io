@@ -2616,9 +2616,7 @@ body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     color: #333;
     flex: 0 0 auto;
-    height: 500px;
 }
-
 
 #dataChart {
     width: 100% !important;

@@ -249,6 +249,55 @@ function patchSteamCityWithAuthManager() {
                         await this.dataVizManager.createExperimentChart(experimentId, container, period)
                     }
 
+                    // Override loadExperimentChart (for data view)
+                    this.loadExperimentChart = async (experimentId) => {
+                        if (!experimentId) return
+
+                        try {
+                            // Get measurements for this experiment
+                            const measurementsData = await this.apiService.fetchMeasurements({
+                                experimentId,
+                                period: 'all',
+                                limit: 1000
+                            })
+
+                            if (!measurementsData || measurementsData.length === 0) {
+                                const chartContainer = document.getElementById('main-chart')
+                                if (chartContainer) {
+                                    chartContainer.innerHTML = '<p>Aucune donnée de mesure disponible pour cette expérience</p>'
+                                }
+                                return
+                            }
+
+                            // Get sensor types
+                            const sensorTypesData = await this.apiService.fetchSensorTypes()
+                            const sensorTypes = {}
+                            sensorTypesData.forEach(type => {
+                                sensorTypes[type.id] = type
+                            })
+
+                            // Create chart with all measurements
+                            this.createMainChart(measurementsData, sensorTypes)
+
+                            // Create custom legend after a small delay to ensure chart is ready
+                            setTimeout(() => {
+                                if (this.chart && this.chart.data.datasets.length > 0) {
+                                    this.dataVizManager.createCustomLegend(this.chart, 'chart-container')
+                                }
+                            }, 100)
+
+                            // Calculate and display statistics
+                            await this.calculateAndDisplayStats(measurementsData)
+
+                        } catch (error) {
+                            console.error('Error loading experiment chart:', error)
+                            const chartContainer = document.getElementById('main-chart')
+                            if (chartContainer) {
+                                chartContainer.innerHTML = '<p>Erreur lors du chargement des données</p>'
+                            }
+                        }
+                    }
+
                     // Override createMainChart
                     this.createMainChart = (measurements, sensorTypesMap) => {
                         this.chart = this.dataVizManager.createMainChart(measurements, sensorTypesMap)
