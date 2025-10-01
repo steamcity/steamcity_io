@@ -250,12 +250,35 @@ export class ExperimentsManager {
             return
         }
 
+        // Clear previous content
+        if (chartsContainer) {
+            chartsContainer.innerHTML = ''
+        }
+        if (sensorsContainer) {
+            sensorsContainer.innerHTML = ''
+        }
+
         // Get cluster color
         const clusterColor = this.protocolColors[experiment.protocol] || this.protocolColors.other
 
         // Update page title
         if (titleElement) {
             titleElement.textContent = experiment.title
+        }
+
+        // Setup back button
+        const backButton = document.getElementById('back-to-map')
+        if (backButton) {
+            // Remove existing listener if any
+            const newBackButton = backButton.cloneNode(true)
+            backButton.parentNode.replaceChild(newBackButton, backButton)
+
+            // Add new listener to navigate back to experiments list
+            newBackButton.addEventListener('click', () => {
+                if (options.onBackToList) {
+                    options.onBackToList()
+                }
+            })
         }
 
         // Apply cluster color to sections
@@ -335,10 +358,6 @@ export class ExperimentsManager {
                 })
             }
 
-            if (sensorsContainer) {
-                sensorsContainer.innerHTML = ''
-            }
-
             if (sensorsContainer && sensorDevices && sensorDevices.length > 0) {
                 // Get latest measurements for each sensor (limit to first 6)
                 for (const device of sensorDevices.slice(0, 6)) {
@@ -389,12 +408,27 @@ export class ExperimentsManager {
                     }
                 }
 
+                // Show charts section when there are sensors
+                const chartsSection = document.querySelector('#experiment-detail-view .charts-section')
+                if (chartsSection) {
+                    chartsSection.style.display = 'block'
+                }
+
                 // Create charts with measurement data
                 if (options.onChartCreate && chartsContainer) {
                     await options.onChartCreate(experiment.id, chartsContainer)
                 }
-            } else if (sensorsContainer) {
-                sensorsContainer.innerHTML = '<p>Aucun capteur configuré pour cette expérience</p>'
+            } else {
+                // No sensors - hide charts section
+                if (sensorsContainer) {
+                    sensorsContainer.innerHTML = '<p>Aucun capteur configuré pour cette expérience</p>'
+                }
+
+                // Hide the entire charts section when no sensors
+                const chartsSection = document.querySelector('#experiment-detail-view .charts-section')
+                if (chartsSection) {
+                    chartsSection.style.display = 'none'
+                }
             }
         } catch (error) {
             console.error('Error loading experiment sensors:', error)

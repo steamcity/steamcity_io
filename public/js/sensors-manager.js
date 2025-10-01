@@ -25,6 +25,7 @@ export class SensorsManager {
         this.updateUrl = config.updateUrl;
         this.showView = config.showView;
         this.showExperimentDetail = config.showExperimentDetail;
+        this.navigateToDataView = config.navigateToDataView;
         this.urlParams = config.urlParams || {};
 
         // State
@@ -1103,12 +1104,15 @@ export class SensorsManager {
      * @param {string} experimentId - Experiment ID
      */
     openSensorInDataView(experimentId) {
-        // Store the experiment ID for when we switch to data view
-        this.selectedExperimentForData = experimentId;
-
-        // Switch to data view with URL update disabled, then update URL manually with experiment ID
-        this.showView('data', false);
-        this.updateUrl('data', experimentId, {}); // Empty query params when coming from sensor detail
+        // Navigate to data view with experiment ID using RouterManager
+        if (this.navigateToDataView) {
+            this.navigateToDataView(experimentId);
+        } else {
+            // Fallback to old method if navigateToDataView is not available
+            this.selectedExperimentForData = experimentId;
+            this.showView('data', false);
+            this.updateUrl('data', experimentId, {}); // Empty query params when coming from sensor detail
+        }
     }
 
     /**

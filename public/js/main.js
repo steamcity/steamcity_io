@@ -1,5 +1,5 @@
 /**
- * Point d'entrée hybride - utilise AuthManager + ApiService + MapManager + DataVisualizationManager + ExperimentsManager + SensorsManager + script.js original
+ * Point d'entrée hybride - utilise AuthManager + ApiService + MapManager + DataVisualizationManager + ExperimentsManager + SensorsManager + RouterManager + script.js original
  * Cette approche permet de tester l'intégration en toute sécurité
  */
 import { AuthManager } from './auth-manager.js'
@@ -8,6 +8,7 @@ import { MapManager } from './map-manager.js'
 import { DataVisualizationManager } from './data-visualization-manager.js'
 import { ExperimentsManager } from './experiments-manager.js'
 import { SensorsManager } from './sensors-manager.js'
+import { RouterManager } from './router-manager.js'
 
 // Variables globales pour l'intégration
 window.authManager = null
@@ -64,10 +65,30 @@ function patchSteamCityWithAuthManager() {
                         protocolColors: this.protocolColors,
                         getProtocolLabel: (p) => this.getProtocolLabel(p),
                         experiments: this.experiments,
-                        updateUrl: (params) => this.updateUrl(params),
+                        updateUrl: (view, id, queryParams) => this.updateUrl(view, id, queryParams),
                         showView: (view) => this.showView(view),
                         showExperimentDetail: (id) => this.showExperimentDetail(id),
+                        navigateToDataView: (experimentId) => this.routerManager.navigate('data', experimentId),
                         urlParams: this.urlParams
+                    })
+                    this.routerManager = new RouterManager({
+                        onViewChange: (viewName, updateUrl) => {
+                            this.updateActiveNavButton(viewName)
+                            this.showView(viewName, updateUrl)
+                        },
+                        onExperimentDetail: (experimentId, updateUrl) => {
+                            this.updateActiveNavButton('experiments')
+                            this.showExperimentDetail(experimentId, updateUrl)
+                        },
+                        onSensorDetail: (sensorId, updateUrl) => {
+                            this.updateActiveNavButton('sensors')
+                            this.showSensorDetails(sensorId, updateUrl)
+                        },
+                        onDataView: (experimentId, updateUrl) => {
+                            this.updateActiveNavButton('data')
+                            this.selectedExperimentForData = experimentId
+                            this.showView('data', updateUrl)
+                        }
                     })
 
                     // Override des méthodes d'authentification
@@ -88,10 +109,34 @@ function patchSteamCityWithAuthManager() {
                     // Override des méthodes de capteurs
                     this.overrideSensorsMethods()
 
-                    console.log('✅ AuthManager, ApiService, MapManager, DataVisualizationManager, ExperimentsManager et SensorsManager intégrés avec succès')
+                    // Override des méthodes de routing
+                    this.overrideRoutingMethods()
+
+                    console.log('✅ AuthManager, ApiService, MapManager, DataVisualizationManager, ExperimentsManager, SensorsManager et RouterManager intégrés avec succès')
 
                     // Maintenant appeler init() avec tous les managers disponibles
                     this.init()
+                }
+
+                /**
+                 * Met à jour l'état actif des boutons de navigation
+                 * @param {string} viewName - Nom de la vue (map, experiments, sensors, data)
+                 */
+                updateActiveNavButton(viewName) {
+                    const buttons = {
+                        'map': document.getElementById('map-tab'),
+                        'experiments': document.getElementById('experiments-tab'),
+                        'sensors': document.getElementById('sensors-tab'),
+                        'data': document.getElementById('data-tab')
+                    }
+
+                    // Retirer la classe active de tous les boutons
+                    Object.values(buttons).forEach(btn => btn?.classList.remove('active'))
+
+                    // Ajouter la classe active au bouton correspondant
+                    if (buttons[viewName]) {
+                        buttons[viewName].classList.add('active')
+                    }
                 }
 
                 overrideAuthMethods() {
@@ -402,8 +447,32 @@ function patchSteamCityWithAuthManager() {
                             },
                             onSensorClick: (sensorId) => {
                                 this.showSensorDetails(sensorId)
+                            },
+                            onBackToList: () => {
+                                // Navigate back to experiments list
+                                this.routerManager.navigate('experiments')
                             }
                         })
+                    }
+
+                    // Override showExperimentDetail
+                    this.showExperimentDetail = async (experimentId, updateUrl = true) => {
+                        if (updateUrl) {
+                            // Navigate via RouterManager pour mettre à jour l'URL
+                            this.routerManager.navigate('experiments', experimentId)
+                        } else {
+                            // Afficher directement sans mettre à jour l'URL
+                            const experiment = this.experiments.find(e => e.id === experimentId)
+                            if (experiment) {
+                                // Afficher la vue détail (pas la vue liste)
+                                document.querySelectorAll('.view').forEach(v => v.classList.remove('active'))
+                                const detailView = document.getElementById('experiment-detail-view')
+                                if (detailView) {
+                                    detailView.classList.add('active')
+                                }
+                                await this.loadExperimentDetails(experiment)
+                            }
+                        }
                     }
 
                     console.log('✅ Méthodes d\'expériences override pour utiliser ExperimentsManager')
@@ -432,9 +501,15 @@ function patchSteamCityWithAuthManager() {
 
                     // Override showSensorDetails
                     this.showSensorDetails = async (sensorId, updateUrl = true) => {
-                        this.sensorsManager.experiments = this.experiments
-                        this.sensorsManager.urlParams = this.urlParams
-                        await this.sensorsManager.showSensorDetails(sensorId, updateUrl)
+                        if (updateUrl) {
+                            // Navigate via RouterManager pour mettre à jour l'URL
+                            this.routerManager.navigate('sensors', sensorId)
+                        } else {
+                            // Afficher directement sans mettre à jour l'URL
+                            this.sensorsManager.experiments = this.experiments
+                            this.sensorsManager.urlParams = this.urlParams
+                            await this.sensorsManager.showSensorDetails(sensorId, updateUrl)
+                        }
                     }
 
                     // Override loadSensorChart
@@ -448,6 +523,27 @@ function patchSteamCityWithAuthManager() {
                     }
 
                     console.log('✅ Méthodes de capteurs override pour utiliser SensorsManager')
+                }
+
+                overrideRoutingMethods() {
+                    // Override updateUrl
+                    this.updateUrl = (view, id = null, queryParams = null) => {
+                        this.routerManager.updateUrl(view, id, queryParams)
+                    }
+
+                    // Override handleRoute
+                    this.handleRoute = (updateUrl = true) => {
+                        // Store current URL params before handling route
+                        this.urlParams = this.routerManager.getUrlParams()
+                        this.routerManager.handleRoute(updateUrl)
+                    }
+
+                    // Override parseUrlParams
+                    this.parseUrlParams = (hash) => {
+                        return this.routerManager.parseUrlParams(hash)
+                    }
+
+                    console.log('✅ Méthodes de routing override pour utiliser RouterManager')
                 }
 
                 // Override bindEvents pour ne pas re-binder les événements auth
@@ -469,11 +565,10 @@ function patchSteamCityWithAuthManager() {
                     // Protocol filters
                     document.getElementById('protocol-filter')?.addEventListener('change', (e) => this.filterByProtocol(e.target.value))
 
-                    // Window events
-                    window.addEventListener('hashchange', () => this.handleRoute(false))
-                    window.addEventListener('popstate', () => this.handleRoute(false))
+                    // RouterManager gère maintenant hashchange et popstate
+                    // Plus besoin d'event listeners manuels ici
 
-                    console.log('✅ Événements bindés (auth délégué à AuthManager)')
+                    console.log('✅ Événements bindés (auth et routing délégués aux managers)')
                 }
 
                 // Override init pour utiliser AuthManager
@@ -488,6 +583,7 @@ function patchSteamCityWithAuthManager() {
                     this.isAuthenticated = this.authManager.getAuthState()
 
                     this.bindEvents()
+                    this.routerManager.init()
                     await this.showHomepage()
                 }
             }
