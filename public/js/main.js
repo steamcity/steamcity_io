@@ -562,6 +562,9 @@ function patchSteamCityWithAuthManager() {
                     dataTab?.addEventListener('click', () => this.showView('data'))
                     sensorsTab?.addEventListener('click', () => this.showView('sensors'))
 
+                    // Center map button
+                    document.getElementById('center-map-btn')?.addEventListener('click', () => this.mapManager.centerOnVisibleMarkers())
+
                     // Protocol filters
                     document.getElementById('protocol-filter')?.addEventListener('change', (e) => this.filterByProtocol(e.target.value))
 
