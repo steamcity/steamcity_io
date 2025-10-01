@@ -45,7 +45,14 @@ export class RouterManager {
         window.addEventListener('popstate', this.handlePopState)
 
         // Handle initial route
-        this.handleRoute(false)
+        const hash = window.location.hash
+        if (!hash || hash === '#' || hash === '#/') {
+            // No hash or empty hash, navigate to default route
+            this.navigate('map')
+        } else {
+            // Handle existing hash
+            this.handleRoute(false)
+        }
     }
 
     /**

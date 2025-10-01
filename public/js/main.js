@@ -629,6 +629,8 @@ function patchSteamCityWithAuthManager() {
             window.dataVizManager = window.steamcity.dataVizManager
             window.experimentsManager = window.steamcity.experimentsManager
             window.sensorsManager = window.steamcity.sensorsManager
+            window.viewManager = window.steamcity.viewManager
+            window.routerManager = window.steamcity.routerManager
 
             console.log('🚀 Application SteamCity démarrée avec tous les managers')
             console.log('📦 Modules chargés:', {
@@ -638,6 +640,8 @@ function patchSteamCityWithAuthManager() {
                 dataVizManager: !!window.dataVizManager,
                 experimentsManager: !!window.experimentsManager,
                 sensorsManager: !!window.sensorsManager,
+                viewManager: !!window.viewManager,
+                routerManager: !!window.routerManager,
                 steamcity: !!window.steamcity
             })
 
