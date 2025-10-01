@@ -9,6 +9,7 @@ import { DataVisualizationManager } from './data-visualization-manager.js'
 import { ExperimentsManager } from './experiments-manager.js'
 import { SensorsManager } from './sensors-manager.js'
 import { RouterManager } from './router-manager.js'
+import { ViewManager } from './view-manager.js'
 
 // Variables globales pour l'intégration
 window.authManager = null
@@ -59,6 +60,41 @@ function patchSteamCityWithAuthManager() {
                         onExperimentClick: (id) => this.showExperimentDetail(id),
                         apiService: this.apiService
                     })
+                    // Create ViewManager to coordinate view switching
+                    this.viewManager = new ViewManager({
+                        mapManager: this.mapManager,
+                        experimentsManager: this.experimentsManager,
+                        sensorsManager: null, // Will be set after SensorsManager creation
+                        dataVisualizationManager: this.dataVizManager,
+                        onViewChange: (viewName, updateUrl) => {
+                            // ViewManager handles the display, we just need to update URL if needed
+                            if (updateUrl) {
+                                this.updateUrl(viewName)
+                            }
+                        },
+                        onInitializeMap: async () => {
+                            if (!this.map) {
+                                await this.initializeMap()
+                            } else {
+                                // Refresh map if it already exists
+                                setTimeout(() => {
+                                    this.map.invalidateSize()
+                                    this.mapManager.centerOnVisibleMarkers()
+                                }, 50)
+                            }
+                        },
+                        onInitializeExperiments: async () => {
+                            await this.loadExperimentsList()
+                        },
+                        onInitializeSensors: async () => {
+                            await this.loadSensorsView()
+                        },
+                        onInitializeData: async (experimentId) => {
+                            await this.loadChartData(experimentId)
+                            this.bindDataFilterEvents()
+                        }
+                    })
+
                     this.sensorsManager = new SensorsManager({
                         apiService: this.apiService,
                         dataVizManager: this.dataVizManager,
@@ -66,28 +102,28 @@ function patchSteamCityWithAuthManager() {
                         getProtocolLabel: (p) => this.getProtocolLabel(p),
                         experiments: this.experiments,
                         updateUrl: (view, id, queryParams) => this.updateUrl(view, id, queryParams),
-                        showView: (view) => this.showView(view),
+                        showView: (view) => this.viewManager.showView(view, { updateUrl: false }),
                         showExperimentDetail: (id) => this.showExperimentDetail(id),
                         navigateToDataView: (experimentId) => this.routerManager.navigate('data', experimentId),
                         urlParams: this.urlParams
                     })
+
+                    // Update ViewManager with SensorsManager after creation
+                    this.viewManager.sensorsManager = this.sensorsManager
+
                     this.routerManager = new RouterManager({
                         onViewChange: (viewName, updateUrl) => {
-                            this.updateActiveNavButton(viewName)
-                            this.showView(viewName, updateUrl)
+                            this.viewManager.showView(viewName, { updateUrl })
                         },
                         onExperimentDetail: (experimentId, updateUrl) => {
-                            this.updateActiveNavButton('experiments')
                             this.showExperimentDetail(experimentId, updateUrl)
                         },
                         onSensorDetail: (sensorId, updateUrl) => {
-                            this.updateActiveNavButton('sensors')
                             this.showSensorDetails(sensorId, updateUrl)
                         },
                         onDataView: (experimentId, updateUrl) => {
-                            this.updateActiveNavButton('data')
-                            this.selectedExperimentForData = experimentId
-                            this.showView('data', updateUrl)
+                            this.viewManager.setSelectedExperimentForData(experimentId)
+                            this.viewManager.showView('data', { updateUrl })
                         }
                     })
 
@@ -118,26 +154,7 @@ function patchSteamCityWithAuthManager() {
                     this.init()
                 }
 
-                /**
-                 * Met à jour l'état actif des boutons de navigation
-                 * @param {string} viewName - Nom de la vue (map, experiments, sensors, data)
-                 */
-                updateActiveNavButton(viewName) {
-                    const buttons = {
-                        'map': document.getElementById('map-tab'),
-                        'experiments': document.getElementById('experiments-tab'),
-                        'sensors': document.getElementById('sensors-tab'),
-                        'data': document.getElementById('data-tab')
-                    }
-
-                    // Retirer la classe active de tous les boutons
-                    Object.values(buttons).forEach(btn => btn?.classList.remove('active'))
-
-                    // Ajouter la classe active au bouton correspondant
-                    if (buttons[viewName]) {
-                        buttons[viewName].classList.add('active')
-                    }
-                }
+                // updateActiveNavButton is now handled by ViewManager
 
                 overrideAuthMethods() {
                     // Override checkAuthenticationState
@@ -461,16 +478,24 @@ function patchSteamCityWithAuthManager() {
                             // Navigate via RouterManager pour mettre à jour l'URL
                             this.routerManager.navigate('experiments', experimentId)
                         } else {
-                            // Afficher directement sans mettre à jour l'URL
+                            // Afficher directement sans mettre à jour l'URL via ViewManager
                             const experiment = this.experiments.find(e => e.id === experimentId)
                             if (experiment) {
-                                // Afficher la vue détail (pas la vue liste)
-                                document.querySelectorAll('.view').forEach(v => v.classList.remove('active'))
-                                const detailView = document.getElementById('experiment-detail-view')
-                                if (detailView) {
-                                    detailView.classList.add('active')
-                                }
-                                await this.loadExperimentDetails(experiment)
+                                await this.viewManager.showExperimentDetail(experimentId, experiment, {
+                                    onChartCreate: async (experimentId, container) => {
+                                        await this.createExperimentChart(experimentId, container)
+                                        this.setupTimeFilterControls(experimentId, container)
+                                    },
+                                    applyClusterColor: (color) => {
+                                        this.applyClusterColorToSections(color)
+                                    },
+                                    onSensorClick: (sensorId) => {
+                                        this.showSensorDetails(sensorId)
+                                    },
+                                    onBackToList: () => {
+                                        this.routerManager.navigate('experiments')
+                                    }
+                                })
                             }
                         }
                     }
@@ -505,10 +530,10 @@ function patchSteamCityWithAuthManager() {
                             // Navigate via RouterManager pour mettre à jour l'URL
                             this.routerManager.navigate('sensors', sensorId)
                         } else {
-                            // Afficher directement sans mettre à jour l'URL
+                            // Afficher directement sans mettre à jour l'URL via ViewManager
                             this.sensorsManager.experiments = this.experiments
                             this.sensorsManager.urlParams = this.urlParams
-                            await this.sensorsManager.showSensorDetails(sensorId, updateUrl)
+                            await this.viewManager.showSensorDetail(sensorId)
                         }
                     }
 
@@ -557,10 +582,10 @@ function patchSteamCityWithAuthManager() {
                     const dataTab = document.getElementById('data-tab')
                     const sensorsTab = document.getElementById('sensors-tab')
 
-                    mapTab?.addEventListener('click', () => this.showView('map'))
-                    experimentsTab?.addEventListener('click', () => this.showView('experiments'))
-                    dataTab?.addEventListener('click', () => this.showView('data'))
-                    sensorsTab?.addEventListener('click', () => this.showView('sensors'))
+                    mapTab?.addEventListener('click', () => this.viewManager.showView('map'))
+                    experimentsTab?.addEventListener('click', () => this.viewManager.showView('experiments'))
+                    dataTab?.addEventListener('click', () => this.viewManager.showView('data'))
+                    sensorsTab?.addEventListener('click', () => this.viewManager.showView('sensors'))
 
                     // Center map button
                     document.getElementById('center-map-btn')?.addEventListener('click', () => this.mapManager.centerOnVisibleMarkers())
