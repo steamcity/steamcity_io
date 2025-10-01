@@ -1632,7 +1632,13 @@ class SteamCityPlatform {
         const filterSearchBox = document.getElementById('experiments-filter-search-box');
 
         if (filterSearchBox) {
-            filterSearchBox.addEventListener('click', () => {
+            // Remove existing listeners by cloning the element
+            // This prevents double-binding when loadExperimentsList is called multiple times
+            const newFilterSearchBox = filterSearchBox.cloneNode(true);
+            filterSearchBox.parentNode.replaceChild(newFilterSearchBox, filterSearchBox);
+
+            // Add the event listener to the new element
+            newFilterSearchBox.addEventListener('click', () => {
                 const basicFilters = document.getElementById('experiments-basic-filters');
                 const additionalFilters = document.getElementById('additional-filters');
 
