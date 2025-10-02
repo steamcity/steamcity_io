@@ -309,9 +309,6 @@ export class App {
             await this.loadInitialData()
         }
 
-        console.log('🔍 loadMapMarkers: experiments count =', this.experiments.length)
-        console.log('🔍 loadMapMarkers: first experiment =', this.experiments[0])
-
         this.mapManager.addMarkers(this.experiments, {
             fitBounds: true,
             getProtocolLabel: (p) => getProtocolLabel(p)
@@ -1222,7 +1219,6 @@ export class App {
     setupTimeFilterControls(experimentId, chartsContainer) {
         setTimeout(() => {
             const timeFilterButtons = document.querySelectorAll('.time-filter-btn')
-            console.log('Setting up time filter controls, found buttons:', timeFilterButtons.length)
 
             // Get period from URL or use default
             const urlPeriod = this.urlParams?.period || '24h'
@@ -1233,7 +1229,6 @@ export class App {
 
                 // Create new handler
                 button.timeFilterHandler = async (e) => {
-                    console.log('Time filter clicked:', e.target.dataset.period)
 
                     // Remove active class from all buttons
                     timeFilterButtons.forEach(btn => btn.classList.remove('active'))
@@ -1318,13 +1313,6 @@ export class App {
         // Basic filters
         const experimentSelect = document.getElementById('experiment-select')
         const sensorTypeSelect = document.getElementById('sensor-type-select')
-
-        // Advanced filters
-        const periodSelect = document.getElementById('data-period-select')
-        const startDateInput = document.getElementById('data-start-date')
-        const endDateInput = document.getElementById('data-end-date')
-        const minQualitySelect = document.getElementById('data-min-quality')
-        const limitSelect = document.getElementById('data-limit')
 
         // Synchronize experiment selector with selectedExperimentForData
         if (experimentSelect && this.selectedExperimentForData) {
