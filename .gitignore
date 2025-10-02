@@ -30,6 +30,7 @@ coverage/
 
 # Vitest test files
 .last-run.json
+test-results/
 
 # Dependency directories
 node_modules/

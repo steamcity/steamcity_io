@@ -1,4 +1,4 @@
-const { DETAILED_PROTOCOLS } = require('../data/steamcity-protocols')
+const { DETAILED_PROTOCOLS } = require('../../data/steamcity-protocols')
 
 // Définition des pays avec leurs langues, écoles et noms d'étudiants
 const COUNTRIES_DATA = {
