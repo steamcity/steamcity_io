@@ -85,10 +85,12 @@ export class App {
             },
             onInitializeSensors: async () => {
                 await this.loadSensorsView()
+                this.bindToggleEvents()
             },
             onInitializeData: async (experimentId) => {
                 await this.loadChartData(experimentId)
                 this.bindDataFilterEvents()
+                this.bindToggleEvents()
             }
         })
 
@@ -184,8 +186,15 @@ export class App {
      * Affiche la page d'accueil
      */
     async showHomepage() {
+        const loadingScreen = document.getElementById('loading-screen')
         const homepage = document.getElementById('homepage')
         const mainApp = document.getElementById('main-app')
+
+        // Always hide loading screen first
+        if (loadingScreen) {
+            loadingScreen.classList.remove('active')
+            loadingScreen.style.display = 'none'
+        }
 
         if (!this.isAuthenticated) {
             homepage.classList.remove('hidden')
@@ -199,8 +208,15 @@ export class App {
      * Affiche l'application principale après authentification
      */
     async showMainApp() {
+        const loadingScreen = document.getElementById('loading-screen')
         const homepage = document.getElementById('homepage')
         const mainApp = document.getElementById('main-app')
+
+        // Hide loading screen
+        if (loadingScreen) {
+            loadingScreen.classList.remove('active')
+            loadingScreen.style.display = 'none'
+        }
 
         homepage.classList.add('hidden')
         mainApp.classList.remove('hidden')
@@ -225,8 +241,28 @@ export class App {
         }
 
         try {
-            // Load experiments
-            this.experiments = await this.apiService.fetchExperiments()
+            // Load experiments (API returns array directly)
+            const experimentsData = await this.apiService.fetchExperiments()
+
+            // Transform experiments data to match expected format
+            this.experiments = (Array.isArray(experimentsData) ? experimentsData : []).map(exp => ({
+                id: exp.id,
+                title: exp.title,
+                protocol: exp.protocol_category,
+                protocol_name: exp.protocol_name,
+                school: exp.school,
+                city: exp.city,
+                description: exp.description,
+                methodology: exp.methodology,
+                hypotheses: exp.hypotheses,
+                conclusions: exp.conclusions,
+                date: exp.start_date,
+                status: exp.status,
+                location: {
+                    coordinates: [exp.location.longitude, exp.location.latitude]
+                }
+            }))
+
             console.log(`✅ ${this.experiments.length} expériences chargées`)
 
             // Load sensor types for later use
@@ -268,6 +304,9 @@ export class App {
         if (!this.experiments.length) {
             await this.loadInitialData()
         }
+
+        console.log('🔍 loadMapMarkers: experiments count =', this.experiments.length)
+        console.log('🔍 loadMapMarkers: first experiment =', this.experiments[0])
 
         this.mapManager.addMarkers(this.experiments, {
             fitBounds: true,
@@ -556,7 +595,7 @@ export class App {
             }, 100)
 
             // Calculate and display statistics
-            await this.calculateAndDisplayStats(measurementsData)
+            await this.dataVizManager.calculateAndDisplayStats(measurementsData)
 
         } catch (error) {
             console.error('Error loading experiment chart:', error)
@@ -592,6 +631,32 @@ export class App {
      * Charge les données du graphique
      */
     async loadChartData(experimentId) {
+        const experimentSelect = document.getElementById('experiment-select')
+        if (experimentSelect) {
+            // Get experiments that have sensor data
+            const experimentsWithSensors = await this.getExperimentsWithSensors()
+
+            // Filter experiments to only show those with sensors
+            const filteredExperiments = this.experiments.filter(exp =>
+                experimentsWithSensors.includes(exp.id)
+            )
+
+            // Populate experiment select with only experiments that have sensors
+            experimentSelect.innerHTML = '<option value="">Choisir une expérience</option>'
+            filteredExperiments.forEach(exp => {
+                const option = document.createElement('option')
+                option.value = exp.id
+                option.textContent = exp.title
+                experimentSelect.appendChild(option)
+            })
+
+            // If a specific experiment is preselected, select it
+            if (experimentId) {
+                experimentSelect.value = experimentId
+                await this.updateDataSensorTypes()
+            }
+        }
+
         await this.loadExperimentChart(experimentId)
     }
 
@@ -710,10 +775,9 @@ export class App {
         const clearFiltersBtn = document.getElementById('clear-filters-btn')
         const sensorFilterBtn = document.getElementById('sensor-filter-btn')
 
-        [countryFilter, cityFilter, schoolFilter, statusFilter, protocolFilter, startDateFilter, endDateFilter].forEach(filter => {
-            if (filter) {
-                filter.addEventListener('change', () => this.applyFilters())
-            }
+        const filters = [countryFilter, cityFilter, schoolFilter, statusFilter, protocolFilter, startDateFilter, endDateFilter]
+        filters.filter(f => f).forEach(filter => {
+            filter.addEventListener('change', () => this.applyFilters())
         })
 
         if (clearFiltersBtn) {
@@ -1241,6 +1305,12 @@ export class App {
      * Bind les événements des filtres de données
      */
     bindDataFilterEvents() {
+        // Prevent binding multiple times
+        if (this._dataFilterEventsBound) {
+            return
+        }
+        this._dataFilterEventsBound = true
+
         // Basic filters
         const experimentSelect = document.getElementById('experiment-select')
         const sensorTypeSelect = document.getElementById('sensor-type-select')
@@ -1269,8 +1339,8 @@ export class App {
 
         // Special handling for experiment select to update sensor types
         if (experimentSelect) {
-            experimentSelect.addEventListener('change', () => {
-                this.updateDataSensorTypes()
+            experimentSelect.addEventListener('change', async () => {
+                await this.updateDataSensorTypes()
                 this.applyDataFilters()
             })
         }
@@ -1299,7 +1369,337 @@ export class App {
             applyFiltersBtn.addEventListener('click', () => this.applyDataFilters())
         }
 
+        // Clear filters button
+        if (clearFiltersBtn) {
+            clearFiltersBtn.addEventListener('click', () => this.clearDataFilters())
+        }
+
+        // Filter search box click to expand filters
+        if (filterSearchBox) {
+            filterSearchBox.addEventListener('click', () => {
+                const additionalFilters = document.getElementById('data-additional-filters')
+                if (additionalFilters) {
+                    const isVisible = additionalFilters.style.display !== 'none'
+                    additionalFilters.style.display = isVisible ? 'none' : 'block'
+                    this.updateFilterSearchBox()
+                }
+            })
+        }
+
         console.log('✅ Data filter events bound')
+    }
+
+    /**
+     * Applique les filtres de données
+     */
+    applyDataFilters() {
+        const experimentId = document.getElementById('experiment-select')?.value
+        const sensorTypeId = document.getElementById('sensor-type-select')?.value
+        const period = document.getElementById('data-period-select')?.value || 'all'
+        const startDate = document.getElementById('data-start-date')?.value
+        const endDate = document.getElementById('data-end-date')?.value
+        const minQuality = document.getElementById('data-min-quality')?.value
+        const limit = document.getElementById('data-limit')?.value || ''
+
+        if (experimentId && experimentId !== this.selectedExperimentForData) {
+            this.selectedExperimentForData = experimentId
+        }
+
+        const queryParams = {}
+        if (sensorTypeId && sensorTypeId.trim() !== '') queryParams.sensor = sensorTypeId
+        if (period && period !== 'all') queryParams.period = period
+        if (startDate && startDate.trim() !== '') queryParams.start = startDate
+        if (endDate && endDate.trim() !== '') queryParams.end = endDate
+        if (minQuality && minQuality.trim() !== '') queryParams.quality = minQuality
+        if (limit && limit.trim() !== '') queryParams.limit = limit
+
+        this.routerManager.updateUrl('data', this.selectedExperimentForData, queryParams)
+        this.updateFilterSearchBox()
+        this.loadFilteredChartData(experimentId, sensorTypeId, period, startDate, endDate, minQuality, limit)
+    }
+
+    /**
+     * Applique les filtres de données tout en préservant l'URL
+     */
+    applyDataFiltersPreservingUrl() {
+        const experimentId = document.getElementById('experiment-select')?.value
+        const sensorTypeId = document.getElementById('sensor-type-select')?.value
+        const period = document.getElementById('data-period-select')?.value || 'all'
+        const startDate = document.getElementById('data-start-date')?.value
+        const endDate = document.getElementById('data-end-date')?.value
+        const minQuality = document.getElementById('data-min-quality')?.value
+        const limit = document.getElementById('data-limit')?.value || ''
+
+        if (experimentId && experimentId !== this.selectedExperimentForData) {
+            this.selectedExperimentForData = experimentId
+        }
+
+        this.updateFilterSearchBox()
+        this.loadFilteredChartData(experimentId, sensorTypeId, period, startDate, endDate, minQuality, limit)
+    }
+
+    /**
+     * Efface tous les filtres de données
+     */
+    clearDataFilters() {
+        // Clear basic filters
+        const experimentSelect = document.getElementById('experiment-select')
+        const sensorTypeSelect = document.getElementById('sensor-type-select')
+
+        // Reset experiment selector - keep first option
+        if (experimentSelect && experimentSelect.options.length > 0) {
+            experimentSelect.selectedIndex = 0
+        }
+
+        // Reset sensor type selector
+        if (sensorTypeSelect && sensorTypeSelect.options.length > 0) {
+            sensorTypeSelect.selectedIndex = 0
+        }
+
+        // Clear advanced filters
+        const periodSelect = document.getElementById('data-period-select')
+        if (periodSelect) periodSelect.value = 'all'
+
+        const startDateInput = document.getElementById('data-start-date')
+        if (startDateInput) startDateInput.value = ''
+
+        const endDateInput = document.getElementById('data-end-date')
+        if (endDateInput) endDateInput.value = ''
+
+        const minQualitySelect = document.getElementById('data-min-quality')
+        if (minQualitySelect) minQualitySelect.value = ''
+
+        const limitSelect = document.getElementById('data-limit')
+        if (limitSelect) limitSelect.value = ''
+
+        // Update and apply filters
+        this.applyDataFilters()
+    }
+
+    /**
+     * Met à jour les types de capteurs pour l'expérience sélectionnée
+     */
+    async updateDataSensorTypes() {
+        const experimentSelect = document.getElementById('experiment-select')
+        const sensorTypeSelect = document.getElementById('sensor-type-select')
+
+        if (!experimentSelect || !sensorTypeSelect) return
+
+        const selectedExperiment = experimentSelect.value
+
+        // Clear existing sensor type options (keep first "Tous les types" option)
+        while (sensorTypeSelect.children.length > 1) {
+            sensorTypeSelect.removeChild(sensorTypeSelect.lastChild)
+        }
+
+        if (!selectedExperiment) return
+
+        try {
+            // Fetch measurements for this experiment to get sensor types with data
+            const response = await fetch(`/api/sensors/measurements?experimentId=${selectedExperiment}`)
+            const data = await response.json()
+
+            if (data.success && data.data) {
+                // Get unique sensor types from measurements
+                const uniqueTypes = [...new Set(data.data.map(m =>
+                    m.sensor_type_id || m.sensorType
+                ).filter(Boolean))]
+
+                // Sort and populate dropdown with labels
+                uniqueTypes.sort().forEach(type => {
+                    const option = document.createElement('option')
+                    option.value = type
+
+                    // Find the sensor type object to get the label
+                    const sensorTypeObj = this.sensorTypes.find(st => st.id === type)
+                    option.textContent = sensorTypeObj ? `${sensorTypeObj.icon} ${sensorTypeObj.name}` : type
+
+                    sensorTypeSelect.appendChild(option)
+                })
+            }
+        } catch (error) {
+            console.error('Erreur lors de la récupération des types de capteurs:', error)
+        }
+    }
+
+    /**
+     * Met à jour le filtre de recherche pour les données
+     */
+    updateFilterSearchBox() {
+        const filterInput = document.getElementById('data-filter-input')
+        const filterCount = document.getElementById('data-filter-count')
+
+        if (!filterInput || !filterCount) return
+
+        // Count active filters
+        let activeFilters = 0
+        const filterDescriptions = []
+
+        // Check each filter
+        const experimentSelect = document.getElementById('experiment-select')
+        if (experimentSelect?.value && experimentSelect.value.trim() !== '') {
+            activeFilters++
+            const selectedOption = experimentSelect.options[experimentSelect.selectedIndex]
+            if (selectedOption) {
+                filterDescriptions.push(selectedOption.text)
+            }
+        }
+
+        const sensorTypeSelect = document.getElementById('sensor-type-select')
+        if (sensorTypeSelect?.value && sensorTypeSelect.value.trim() !== '') {
+            activeFilters++
+            filterDescriptions.push(sensorTypeSelect.value)
+        }
+
+        const periodSelect = document.getElementById('data-period-select')
+        if (periodSelect?.value && periodSelect.value !== 'all') {
+            activeFilters++
+            const selectedOption = periodSelect.options[periodSelect.selectedIndex]
+            filterDescriptions.push(selectedOption ? selectedOption.text : periodSelect.value)
+        }
+
+        const startDate = document.getElementById('data-start-date')?.value
+        if (startDate && startDate.trim() !== '') {
+            activeFilters++
+            filterDescriptions.push(`Début: ${startDate}`)
+        }
+
+        const endDate = document.getElementById('data-end-date')?.value
+        if (endDate && endDate.trim() !== '') {
+            activeFilters++
+            filterDescriptions.push(`Fin: ${endDate}`)
+        }
+
+        const minQuality = document.getElementById('data-min-quality')?.value
+        if (minQuality && minQuality.trim() !== '') {
+            activeFilters++
+            filterDescriptions.push(`Qualité: ${minQuality}`)
+        }
+
+        const limit = document.getElementById('data-limit')?.value
+        if (limit && limit.trim() !== '') {
+            activeFilters++
+            filterDescriptions.push(`Limite: ${limit}`)
+        }
+
+        // Update display
+        if (activeFilters > 0) {
+            filterCount.style.display = 'block'
+            filterCount.textContent = `${activeFilters} filtre${activeFilters > 1 ? 's' : ''} actif${activeFilters > 1 ? 's' : ''}`
+            filterInput.placeholder = filterDescriptions.join(' • ')
+        } else {
+            filterCount.style.display = 'none'
+            filterInput.placeholder = 'Cliquez pour filtrer les données...'
+        }
+    }
+
+    /**
+     * Charge les données filtrées et affiche le graphique
+     */
+    async loadFilteredChartData(experimentId, sensorTypeId, period, startDate, endDate, minQuality, limit) {
+        const chartContainer = document.getElementById('chart-container')
+        if (!chartContainer) return
+
+        try {
+            // Build API URL with filters
+            let apiUrl = `/api/sensors/measurements?`
+            const params = new URLSearchParams()
+
+            if (experimentId) params.append('experimentId', experimentId)
+            if (period && period !== 'all') params.append('period', period)
+            if (startDate) params.append('startDate', startDate)
+            if (endDate) params.append('endDate', endDate)
+            if (minQuality) params.append('minQuality', minQuality)
+            if (limit) params.append('limit', limit)
+
+            apiUrl += params.toString()
+
+            // Fetch measurements
+            const measurementsResponse = await fetch(apiUrl)
+            const measurementsData = await measurementsResponse.json()
+
+            if (!measurementsData.success) {
+                throw new Error(measurementsData.message || 'Erreur lors de la récupération des données')
+            }
+
+            // Filter by sensor type if specified
+            let filteredMeasurements = measurementsData.data || []
+            if (sensorTypeId && sensorTypeId.trim() !== '') {
+                filteredMeasurements = filteredMeasurements.filter(m =>
+                    (m.sensor_type_id || m.sensorType) === sensorTypeId
+                )
+            }
+
+            // Create sensor types map for the chart (id -> {id, name, icon, unit})
+            const sensorTypesMap = {}
+            this.sensorTypes.forEach(st => {
+                sensorTypesMap[st.id] = {
+                    name: st.name,
+                    icon: st.icon,
+                    unit: st.unit
+                }
+            })
+
+            // Create the chart
+            if (filteredMeasurements.length > 0) {
+                // Ensure canvas exists
+                let canvas = document.getElementById('dataChart')
+                if (!canvas) {
+                    chartContainer.innerHTML = '<canvas id="dataChart"></canvas>'
+                    canvas = document.getElementById('dataChart')
+                }
+
+                this.dataVizManager.createMainChart(filteredMeasurements, sensorTypesMap)
+                await this.dataVizManager.calculateAndDisplayStats(filteredMeasurements)
+            } else {
+                chartContainer.innerHTML = '<div class="no-data">Aucune donnée disponible pour les filtres sélectionnés</div>'
+            }
+
+        } catch (error) {
+            console.error('Erreur lors du chargement des données:', error)
+            chartContainer.innerHTML = `<div class="error">Erreur: ${error.message}</div>`
+        }
+    }
+
+    /**
+     * Calcule et affiche les statistiques des mesures
+     */
+    calculateAndDisplayStats(measurements) {
+        const statsContainer = document.getElementById('data-stats')
+        if (!statsContainer || !measurements || measurements.length === 0) return
+
+        const totalMeasurements = measurements.length
+        const uniqueSensors = new Set(measurements.map(m => m.sensor_id || m.sensorId)).size
+        const uniqueTypes = new Set(measurements.map(m => m.sensor_type_id || m.sensorType)).size
+
+        // Calculate date range
+        const timestamps = measurements.map(m => new Date(m.timestamp || m.date)).filter(d => !isNaN(d))
+        const minDate = timestamps.length > 0 ? new Date(Math.min(...timestamps)) : null
+        const maxDate = timestamps.length > 0 ? new Date(Math.max(...timestamps)) : null
+
+        let dateRangeText = 'N/A'
+        if (minDate && maxDate) {
+            dateRangeText = `${minDate.toLocaleDateString()} - ${maxDate.toLocaleDateString()}`
+        }
+
+        statsContainer.innerHTML = `
+            <div class="stat-item">
+                <span class="stat-label">Mesures:</span>
+                <span class="stat-value">${totalMeasurements.toLocaleString()}</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Capteurs:</span>
+                <span class="stat-value">${uniqueSensors}</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Types:</span>
+                <span class="stat-value">${uniqueTypes}</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Période:</span>
+                <span class="stat-value">${dateRangeText}</span>
+            </div>
+        `
     }
 
     // ============================================

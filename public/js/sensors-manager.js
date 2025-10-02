@@ -142,6 +142,12 @@ export class SensorsManager {
      * Bind event listeners to sensor filter controls
      */
     bindSensorsFilterEvents() {
+        // Prevent binding multiple times
+        if (this._sensorsEventsBound) {
+            return;
+        }
+        this._sensorsEventsBound = true;
+
         // Filter elements
         const experimentFilter = document.getElementById('sensors-experiment-filter');
         const statusFilter = document.getElementById('sensors-status-filter');
