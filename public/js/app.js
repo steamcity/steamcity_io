@@ -114,15 +114,19 @@ export class App {
         // RouterManager
         this.routerManager = new RouterManager({
             onViewChange: (viewName, updateUrl) => {
+                this.urlParams = this.routerManager.getUrlParams()
                 this.viewManager.showView(viewName, { updateUrl })
             },
             onExperimentDetail: (experimentId, updateUrl) => {
+                this.urlParams = this.routerManager.getUrlParams()
                 this.showExperimentDetail(experimentId, updateUrl)
             },
             onSensorDetail: (sensorId, updateUrl) => {
+                this.urlParams = this.routerManager.getUrlParams()
                 this.showSensorDetails(sensorId, updateUrl)
             },
             onDataView: (experimentId, updateUrl) => {
+                this.urlParams = this.routerManager.getUrlParams()
                 this.viewManager.setSelectedExperimentForData(experimentId)
                 this.viewManager.showView('data', { updateUrl })
             }

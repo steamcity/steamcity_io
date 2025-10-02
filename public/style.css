@@ -945,7 +945,7 @@ body {
     border-radius: 0 0 10px 10px;
     padding: 1rem 1.5rem 1.5rem 1.5rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    min-height: 400px;
+    min-height: 600px;
     position: relative;
 }
 
@@ -2669,7 +2669,7 @@ body {
 
 /* Chart container for experiment detail */
 #experiment-mini-chart {
-    height: 300px !important;
+    height: 500px !important;
 }
 
 /* Additional experiment detail styles */
