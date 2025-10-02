@@ -21,8 +21,12 @@ export class DataVisualizationManager {
     constructor(config = {}) {
         this.apiService = config.apiService || null
         this.chartColors = config.chartColors || [
-            '#667eea', '#27ae60', '#f39c12',
-            '#e74c3c', '#9b59b6', '#34495e'
+            '#667eea',
+            '#27ae60',
+            '#f39c12',
+            '#e74c3c',
+            '#9b59b6',
+            '#34495e'
         ]
 
         // Instance de graphique Chart.js actuelle
@@ -88,31 +92,32 @@ export class DataVisualizationManager {
             })
 
             // Create datasets (limit to 3 types for readability)
-            const datasets = Object.keys(groupedData).slice(0, 3).map((typeId, index) => {
-                const sensorType = sensorTypesMap[typeId]
-                const typeMeasurements = groupedData[typeId].sort(
-                    (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
-                )
+            const datasets = Object.keys(groupedData)
+                .slice(0, 3)
+                .map((typeId, index) => {
+                    const sensorType = sensorTypesMap[typeId]
+                    const typeMeasurements = groupedData[typeId].sort(
+                        (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
+                    )
 
-                return {
-                    label: sensorType ? `${sensorType.icon} ${sensorType.name}` : typeId,
-                    data: typeMeasurements.map(m => ({
-                        x: new Date(m.timestamp),
-                        y: parseFloat(m.value)
-                    })),
-                    borderColor: this.chartColors[index],
-                    backgroundColor: this.chartColors[index] + '20',
-                    fill: false,
-                    tension: 0.4
-                }
-            })
+                    return {
+                        label: sensorType ? `${sensorType.icon} ${sensorType.name}` : typeId,
+                        data: typeMeasurements.map(m => ({
+                            x: new Date(m.timestamp),
+                            y: parseFloat(m.value)
+                        })),
+                        borderColor: this.chartColors[index],
+                        backgroundColor: this.chartColors[index] + '20',
+                        fill: false,
+                        tension: 0.4
+                    }
+                })
 
             new Chart(canvas, {
                 type: 'line',
                 data: { datasets },
                 options: this._getExperimentChartOptions(period, measurements.length)
             })
-
         } catch (error) {
             console.error('Error creating experiment chart:', error)
             container.innerHTML = '<p>Erreur lors du chargement des graphiques</p>'
@@ -137,9 +142,9 @@ export class DataVisualizationManager {
                     time: {
                         unit: this.getTimeUnit(period),
                         displayFormats: {
-                            'minute': 'HH:mm',
-                            'hour': 'HH:mm',
-                            'day': 'dd/MM'
+                            minute: 'HH:mm',
+                            hour: 'HH:mm',
+                            day: 'dd/MM'
                         }
                     },
                     title: {
@@ -507,9 +512,10 @@ export class DataVisualizationManager {
             .filter(q => !isNaN(q))
 
         const totalPoints = measurements.length
-        const avgQuality = qualities.length > 0
-            ? qualities.reduce((sum, q) => sum + q, 0) / qualities.length
-            : null
+        const avgQuality =
+            qualities.length > 0
+                ? qualities.reduce((sum, q) => sum + q, 0) / qualities.length
+                : null
         const timeRange = this._calculateTimeRange(measurements)
 
         return {
@@ -553,7 +559,10 @@ export class DataVisualizationManager {
         // Update individual stat elements
         this._updateStatElement('stat-total-points', stats.totalMeasurements.toLocaleString())
         this._updateStatElement('stat-time-range', stats.timeRange)
-        this._updateStatElement('stat-avg-quality', stats.avgQuality ? `${(stats.avgQuality * 100).toFixed(1)}%` : 'N/A')
+        this._updateStatElement(
+            'stat-avg-quality',
+            stats.avgQuality ? `${(stats.avgQuality * 100).toFixed(1)}%` : 'N/A'
+        )
         this._updateStatElement('stat-sensor-types', stats.sensorTypes.toString())
     }
 
@@ -595,7 +604,7 @@ export class DataVisualizationManager {
             '24h': 'hour',
             '7d': 'day',
             '30d': 'day',
-            'all': 'day'
+            all: 'day'
         }
         return units[period] || 'day'
     }
@@ -610,7 +619,7 @@ export class DataVisualizationManager {
             '24h': 'Dernières 24h',
             '7d': '7 derniers jours',
             '30d': '30 derniers jours',
-            'all': 'Toute la période'
+            all: 'Toute la période'
         }
         return labels[period] || period
     }
@@ -622,7 +631,8 @@ export class DataVisualizationManager {
         // Clear the chart
         const chartContainer = document.getElementById('main-chart')
         if (chartContainer) {
-            chartContainer.innerHTML = '<p style="text-align: center; margin-top: 2rem; color: #666;">Sélectionnez une expérience pour voir les données</p>'
+            chartContainer.innerHTML =
+                '<p style="text-align: center; margin-top: 2rem; color: #666;">Sélectionnez une expérience pour voir les données</p>'
         }
 
         // Clear the statistics panel
@@ -734,7 +744,8 @@ export class DataVisualizationManager {
             // Click handler
             legendItem.addEventListener('click', () => {
                 const meta = chart.getDatasetMeta(index)
-                meta.hidden = meta.hidden === null ? !chart.data.datasets[index].hidden : !meta.hidden
+                meta.hidden =
+                    meta.hidden === null ? !chart.data.datasets[index].hidden : !meta.hidden
                 chart.update()
                 this.updateCustomLegendStyles(chart, legendContainer)
             })

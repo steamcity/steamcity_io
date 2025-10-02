@@ -6,9 +6,9 @@
 import { App } from './app.js'
 
 // Initialisation de l'application avec IIFE pour gérer l'asynchrone
-(async () => {
+;(async () => {
     try {
-        console.log('🚀 Démarrage de l\'application SteamCity...')
+        console.log("🚀 Démarrage de l'application SteamCity...")
 
         // Créer l'instance de l'application
         window.steamcity = new App()
@@ -27,9 +27,8 @@ import { App } from './app.js'
         window.routerManager = window.steamcity.routerManager
 
         console.log('✅ Application SteamCity initialisée avec succès')
-
     } catch (error) {
-        console.error('❌ Erreur lors de l\'initialisation de l\'application:', error)
+        console.error("❌ Erreur lors de l'initialisation de l'application:", error)
         console.error('Stack trace:', error.stack)
 
         // Afficher un message d'erreur à l'utilisateur

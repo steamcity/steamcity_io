@@ -7,7 +7,7 @@ global.Chart = vi.fn((canvas, config) => ({
     options: config.options,
     destroy: vi.fn(),
     update: vi.fn(),
-    getDatasetMeta: vi.fn((index) => ({ hidden: false }))
+    getDatasetMeta: vi.fn(index => ({ hidden: false }))
 }))
 
 describe('DataVisualizationManager', () => {
@@ -71,8 +71,8 @@ describe('DataVisualizationManager', () => {
             ]
 
             const sensorTypesMap = {
-                'type1': { id: 'type1', name: 'Temperature', icon: '🌡️' },
-                'type2': { id: 'type2', name: 'Humidity', icon: '💧' }
+                type1: { id: 'type1', name: 'Temperature', icon: '🌡️' },
+                type2: { id: 'type2', name: 'Humidity', icon: '💧' }
             }
 
             const chart = manager.createMainChart(measurements, sensorTypesMap)
@@ -93,7 +93,7 @@ describe('DataVisualizationManager', () => {
                 { sensor_type_id: 'type1', timestamp: '2024-01-01T10:00:00Z', value: '25.5' }
             ]
             const sensorTypesMap = {
-                'type1': { id: 'type1', name: 'Temperature', icon: '🌡️' }
+                type1: { id: 'type1', name: 'Temperature', icon: '🌡️' }
             }
 
             // Create first chart
@@ -110,7 +110,10 @@ describe('DataVisualizationManager', () => {
             document.body.innerHTML = '' // Remove canvas
             const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
 
-            const chart = manager.createMainChart([{ sensor_type_id: 'type1', timestamp: '2024-01-01T10:00:00Z', value: '25' }], {})
+            const chart = manager.createMainChart(
+                [{ sensor_type_id: 'type1', timestamp: '2024-01-01T10:00:00Z', value: '25' }],
+                {}
+            )
 
             expect(consoleSpy).toHaveBeenCalledWith('Canvas #dataChart not found')
             expect(chart).toBeNull()
@@ -291,9 +294,9 @@ describe('DataVisualizationManager', () => {
             manager.createCustomLegend(mockChart, 'chart-container')
 
             const container = document.getElementById('chart-container')
-            const legend = container.querySelector('.custom-legend')
+            const legend = container.querySelector('.custom-chart-legend')
             expect(legend).not.toBeNull()
-            expect(legend.children.length).toBe(2)
+            expect(legend.querySelectorAll('.custom-legend-item').length).toBe(2)
         })
 
         it('should handle missing container', () => {
@@ -312,10 +315,10 @@ describe('DataVisualizationManager', () => {
             }
 
             manager.createCustomLegend(mockChart, 'chart-container')
-            const firstLegend = document.querySelector('.custom-legend')
+            const firstLegend = document.querySelector('.custom-chart-legend')
 
             manager.createCustomLegend(mockChart, 'chart-container')
-            const legends = document.querySelectorAll('.custom-legend')
+            const legends = document.querySelectorAll('.custom-chart-legend')
 
             expect(legends.length).toBe(1)
         })
@@ -324,16 +327,26 @@ describe('DataVisualizationManager', () => {
     describe('calculateGlobalStats()', () => {
         it('should calculate global statistics', () => {
             const measurements = [
-                { timestamp: '2024-01-01T10:00:00Z', sensor_type_id: 'type1', value: '25' },
-                { timestamp: '2024-01-02T10:00:00Z', sensor_type_id: 'type2', value: '30' }
+                {
+                    timestamp: '2024-01-01T10:00:00Z',
+                    sensor_type_id: 'type1',
+                    value: '25',
+                    quality: 0.9
+                },
+                {
+                    timestamp: '2024-01-02T10:00:00Z',
+                    sensor_type_id: 'type2',
+                    value: '30',
+                    quality: 0.8
+                }
             ]
 
             const stats = manager.calculateGlobalStats(measurements, 2)
 
             expect(stats.totalMeasurements).toBe(2)
             expect(stats.sensorTypes).toBe(2)
-            expect(stats.dateRange.start).toBeInstanceOf(Date)
-            expect(stats.dateRange.end).toBeInstanceOf(Date)
+            expect(stats.avgQuality).toBeCloseTo(0.85)
+            expect(stats.timeRange).toBe('1j 0h')
         })
 
         it('should handle empty measurements', () => {
@@ -341,8 +354,8 @@ describe('DataVisualizationManager', () => {
 
             expect(stats.totalMeasurements).toBe(0)
             expect(stats.sensorTypes).toBe(0)
-            expect(stats.dateRange.start).toBeNull()
-            expect(stats.dateRange.end).toBeNull()
+            expect(stats.avgQuality).toBeNull()
+            expect(stats.timeRange).toBe('N/A')
         })
     })
 

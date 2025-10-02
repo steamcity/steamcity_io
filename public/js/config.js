@@ -24,7 +24,7 @@ export const protocolColors = {
  */
 const protocolLabels = {
     environmental: 'Qualité environnementale, climat et bien-être',
-    energy: 'Économies d\'énergie',
+    energy: "Économies d'énergie",
     mobility: 'Mobilité',
     governance: 'Gouvernance et citoyenneté',
     technology: 'IA et technologies'

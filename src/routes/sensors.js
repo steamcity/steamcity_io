@@ -1,5 +1,5 @@
-const express = require("express");
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 const {
     getSensorData,
     getUniqueSensors,
@@ -9,19 +9,19 @@ const {
     getSensorDevice,
     getSensorTypes,
     getSensorMeasurements
-} = require("../controllers/sensorController");
-const upload = require("../utils/upload");
+} = require('../controllers/sensorController')
+const upload = require('../utils/upload')
 
 // Legacy routes (keep for compatibility)
-router.get("/", getSensorData);
-router.get("/unique", getUniqueSensors);
-router.post("/", addSensorData);
-router.post("/upload-csv", upload.single("csvFile"), uploadCSV);
+router.get('/', getSensorData)
+router.get('/unique', getUniqueSensors)
+router.post('/', addSensorData)
+router.post('/upload-csv', upload.single('csvFile'), uploadCSV)
 
 // New modern sensor API routes
-router.get("/devices", getSensorDevices);
-router.get("/devices/:id", getSensorDevice);
-router.get("/types", getSensorTypes);
-router.get("/measurements", getSensorMeasurements);
+router.get('/devices', getSensorDevices)
+router.get('/devices/:id', getSensorDevice)
+router.get('/types', getSensorTypes)
+router.get('/measurements', getSensorMeasurements)
 
-module.exports = router;
+module.exports = router

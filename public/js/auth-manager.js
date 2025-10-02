@@ -42,7 +42,7 @@ export class AuthManager {
         // Fermeture de la modale en cliquant à l'extérieur
         const loginModal = document.getElementById('login-modal')
         if (loginModal) {
-            loginModal.addEventListener('click', (e) => {
+            loginModal.addEventListener('click', e => {
                 if (e.target === loginModal) this.hideLoginModal()
             })
         }
@@ -50,7 +50,7 @@ export class AuthManager {
         // Formulaire de login
         const loginForm = document.getElementById('login-form')
         if (loginForm) {
-            loginForm.addEventListener('submit', (e) => this.handleLogin(e))
+            loginForm.addEventListener('submit', e => this.handleLogin(e))
         }
 
         // Bouton de déconnexion
@@ -91,7 +91,6 @@ export class AuthManager {
 
         const username = document.getElementById('username')?.value
         const password = document.getElementById('password')?.value
-        const loginForm = document.getElementById('login-form')
 
         // Nettoyer les erreurs précédentes
         this.clearLoginErrors()
@@ -108,7 +107,7 @@ export class AuthManager {
             return true
         } else {
             // Connexion échouée
-            this.showLoginError('Nom d\'utilisateur ou mot de passe incorrect')
+            this.showLoginError("Nom d'utilisateur ou mot de passe incorrect")
             return false
         }
     }

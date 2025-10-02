@@ -118,12 +118,12 @@ export class ApiService {
      */
     async fetchMeasurements(params = {}) {
         // Nettoyer les paramètres undefined
-        const cleanParams = Object.fromEntries(
-            Object.entries(params).filter(([_, v]) => v != null)
-        )
+        const cleanParams = Object.fromEntries(Object.entries(params).filter(([_, v]) => v != null))
 
         const queryString = new URLSearchParams(cleanParams).toString()
-        const endpoint = queryString ? `/sensors/measurements?${queryString}` : '/sensors/measurements'
+        const endpoint = queryString
+            ? `/sensors/measurements?${queryString}`
+            : '/sensors/measurements'
         return this._fetch(endpoint)
     }
 
@@ -172,9 +172,7 @@ export class ApiService {
      * @returns {string} - URL complète avec paramètres
      */
     buildUrl(endpoint, params = {}) {
-        const cleanParams = Object.fromEntries(
-            Object.entries(params).filter(([_, v]) => v != null)
-        )
+        const cleanParams = Object.fromEntries(Object.entries(params).filter(([_, v]) => v != null))
         const queryString = new URLSearchParams(cleanParams).toString()
         return queryString ? `${endpoint}?${queryString}` : endpoint
     }

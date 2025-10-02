@@ -38,7 +38,7 @@ describe('ExperimentsManager', () => {
             other: '#95a5a6'
         }
 
-        mockGetProtocolLabel = vi.fn((protocol) => {
+        mockGetProtocolLabel = vi.fn(protocol => {
             const labels = {
                 environmental: 'Environnement',
                 energy: 'Énergie'
@@ -46,7 +46,7 @@ describe('ExperimentsManager', () => {
             return labels[protocol] || protocol
         })
 
-        mockGetProtocolIcon = vi.fn((protocol) => {
+        mockGetProtocolIcon = vi.fn(protocol => {
             const icons = {
                 environmental: '🌱',
                 energy: '⚡'
@@ -217,7 +217,11 @@ describe('ExperimentsManager', () => {
         it('should load experiments list successfully', async () => {
             const mockContainer = { innerHTML: '', appendChild: vi.fn() }
             document.getElementById = vi.fn(() => mockContainer)
-            document.createElement = vi.fn(() => ({ className: '', innerHTML: '', addEventListener: vi.fn() }))
+            document.createElement = vi.fn(() => ({
+                className: '',
+                innerHTML: '',
+                addEventListener: vi.fn()
+            }))
 
             mockApiService.fetchMeasurements.mockResolvedValue([])
             experimentsManager.createExperimentsLegend = vi.fn()
@@ -231,7 +235,11 @@ describe('ExperimentsManager', () => {
         it('should skip legend creation when withLegend is false', async () => {
             const mockContainer = { innerHTML: '', appendChild: vi.fn() }
             document.getElementById = vi.fn(() => mockContainer)
-            document.createElement = vi.fn(() => ({ className: '', innerHTML: '', addEventListener: vi.fn() }))
+            document.createElement = vi.fn(() => ({
+                className: '',
+                innerHTML: '',
+                addEventListener: vi.fn()
+            }))
 
             mockApiService.fetchMeasurements.mockResolvedValue([])
             experimentsManager.createExperimentsLegend = vi.fn()
@@ -244,7 +252,11 @@ describe('ExperimentsManager', () => {
         it('should skip sensor checking when checkSensors is false', async () => {
             const mockContainer = { innerHTML: '', appendChild: vi.fn() }
             document.getElementById = vi.fn(() => mockContainer)
-            document.createElement = vi.fn(() => ({ className: '', innerHTML: '', addEventListener: vi.fn() }))
+            document.createElement = vi.fn(() => ({
+                className: '',
+                innerHTML: '',
+                addEventListener: vi.fn()
+            }))
 
             experimentsManager.getExperimentsWithSensors = vi.fn()
 
@@ -258,7 +270,11 @@ describe('ExperimentsManager', () => {
         it('should filter experiments by protocol', async () => {
             const mockContainer = { innerHTML: '', appendChild: vi.fn() }
             document.getElementById = vi.fn(() => mockContainer)
-            document.createElement = vi.fn(() => ({ className: '', innerHTML: '', addEventListener: vi.fn() }))
+            document.createElement = vi.fn(() => ({
+                className: '',
+                innerHTML: '',
+                addEventListener: vi.fn()
+            }))
 
             mockApiService.fetchMeasurements.mockResolvedValue([])
 
@@ -270,7 +286,11 @@ describe('ExperimentsManager', () => {
         it('should show all experiments when protocol is null', async () => {
             const mockContainer = { innerHTML: '', appendChild: vi.fn() }
             document.getElementById = vi.fn(() => mockContainer)
-            document.createElement = vi.fn(() => ({ className: '', innerHTML: '', addEventListener: vi.fn() }))
+            document.createElement = vi.fn(() => ({
+                className: '',
+                innerHTML: '',
+                addEventListener: vi.fn()
+            }))
 
             mockApiService.fetchMeasurements.mockResolvedValue([])
 
@@ -321,7 +341,9 @@ describe('ExperimentsManager', () => {
 
             experimentsManager.createExperimentsLegend()
 
-            expect(consoleWarnSpy).toHaveBeenCalledWith('Legend container #experiments-legend not found')
+            expect(consoleWarnSpy).toHaveBeenCalledWith(
+                'Legend container #experiments-legend not found'
+            )
             consoleWarnSpy.mockRestore()
         })
     })
@@ -386,7 +408,7 @@ describe('ExperimentsManager', () => {
                 conclusions: { innerHTML: '' }
             }
 
-            document.getElementById = vi.fn((id) => {
+            document.getElementById = vi.fn(id => {
                 const map = {
                     'experiment-detail-title': mockElements.title,
                     'experiment-info': mockElements.info,
@@ -421,7 +443,29 @@ describe('ExperimentsManager', () => {
             const mockApplyColor = vi.fn()
             const mockExperiment = mockExperiments[0]
 
-            document.getElementById = vi.fn(() => ({ textContent: '', innerHTML: '' }))
+            // Mock DOM elements with cloneNode method
+            const createMockButton = () => {
+                const btn = {
+                    textContent: '',
+                    innerHTML: '',
+                    addEventListener: vi.fn(),
+                    cloneNode: null,
+                    parentNode: null
+                }
+                btn.cloneNode = vi.fn(() => createMockButton())
+                return btn
+            }
+
+            const mockBackButton = createMockButton()
+            mockBackButton.parentNode = {
+                replaceChild: vi.fn()
+            }
+
+            document.getElementById = vi.fn(id => {
+                if (id === 'back-to-map') return mockBackButton
+                return { textContent: '', innerHTML: '' }
+            })
+
             mockApiService.fetchSensorDevices.mockResolvedValue([])
             mockApiService.fetchSensorTypes.mockResolvedValue([])
 

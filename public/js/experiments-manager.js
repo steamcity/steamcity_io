@@ -25,8 +25,8 @@ export class ExperimentsManager {
     constructor(config = {}) {
         this.experiments = config.experiments || []
         this.protocolColors = config.protocolColors || {}
-        this.getProtocolLabel = config.getProtocolLabel || ((p) => p)
-        this.getProtocolIcon = config.getProtocolIcon || ((p) => '')
+        this.getProtocolLabel = config.getProtocolLabel || (p => p)
+        this.getProtocolIcon = config.getProtocolIcon || (_p => '')
         this.onExperimentClick = config.onExperimentClick || (() => {})
         this.apiService = config.apiService || null
 
@@ -57,9 +57,7 @@ export class ExperimentsManager {
         container.innerHTML = ''
 
         // Check which experiments have sensor data
-        const experimentsWithSensors = checkSensors
-            ? await this.getExperimentsWithSensors()
-            : []
+        const experimentsWithSensors = checkSensors ? await this.getExperimentsWithSensors() : []
 
         this.experiments.forEach(experiment => {
             const card = this.createExperimentCard(experiment, experimentsWithSensors)
@@ -175,12 +173,16 @@ export class ExperimentsManager {
                 <div class="legend-color all-colors"></div>
                 <span>Tous les clusters</span>
             </div>
-            ${protocols.map(protocol => `
+            ${protocols
+                .map(
+                    protocol => `
                 <div class="legend-item clickable ${this.activeExperimentFilter === protocol.key ? 'active' : ''}" data-protocol="${protocol.key}">
                     <div class="legend-color" style="background-color: ${this.protocolColors[protocol.key]}"></div>
                     <span>${protocol.label}</span>
                 </div>
-            `).join('')}
+            `
+                )
+                .join('')}
         `
 
         legend.innerHTML = legendHTML
@@ -221,8 +223,9 @@ export class ExperimentsManager {
         // Update active states
         legend.querySelectorAll('.legend-item.clickable').forEach(item => {
             const protocolKey = item.getAttribute('data-protocol')
-            const isActive = (protocolKey === '' && this.activeExperimentFilter === null) ||
-                           (protocolKey === this.activeExperimentFilter)
+            const isActive =
+                (protocolKey === '' && this.activeExperimentFilter === null) ||
+                protocolKey === this.activeExperimentFilter
 
             item.classList.toggle('active', isActive)
         })
@@ -310,17 +313,20 @@ export class ExperimentsManager {
 
         // Load methodology
         if (methodologyContainer) {
-            methodologyContainer.innerHTML = experiment.methodology || 'Aucune méthodologie spécifiée pour cette expérience.'
+            methodologyContainer.innerHTML =
+                experiment.methodology || 'Aucune méthodologie spécifiée pour cette expérience.'
         }
 
         // Load hypotheses
         if (hypothesesContainer) {
-            hypothesesContainer.innerHTML = experiment.hypotheses || 'Aucune hypothèse spécifiée pour cette expérience.'
+            hypothesesContainer.innerHTML =
+                experiment.hypotheses || 'Aucune hypothèse spécifiée pour cette expérience.'
         }
 
         // Load conclusions
         if (conclusionsContainer) {
-            conclusionsContainer.innerHTML = experiment.conclusions || 'Aucune conclusion disponible pour cette expérience.'
+            conclusionsContainer.innerHTML =
+                experiment.conclusions || 'Aucune conclusion disponible pour cette expérience.'
         }
 
         // Load sensors data
@@ -368,28 +374,41 @@ export class ExperimentsManager {
                         })
 
                         const sensorType = sensorTypes[device.sensor_type_id]
-                        const latestMeasurement = measurements && measurements.length > 0 ? measurements[0] : null
+                        const latestMeasurement =
+                            measurements && measurements.length > 0 ? measurements[0] : null
 
                         const sensorCard = document.createElement('div')
                         sensorCard.className = 'sensor-card clickable'
 
-                        const status = device.status === 'online' ? 'en ligne' : device.status === 'offline' ? 'hors ligne' : device.status
-                        const statusClass = device.status === 'online' ? 'status-online' : device.status === 'offline' ? 'status-offline' : 'status-warning'
+                        const status =
+                            device.status === 'online'
+                                ? 'en ligne'
+                                : device.status === 'offline'
+                                  ? 'hors ligne'
+                                  : device.status
+                        const statusClass =
+                            device.status === 'online'
+                                ? 'status-online'
+                                : device.status === 'offline'
+                                  ? 'status-offline'
+                                  : 'status-warning'
 
                         sensorCard.innerHTML = `
                             <h4>${sensorType ? sensorType.icon + ' ' + sensorType.name : device.name}</h4>
                             <div class="sensor-value">
-                                ${latestMeasurement ?
-                                    `${latestMeasurement.value} <span class="sensor-unit">${sensorType?.unit_symbol || ''}</span>` :
-                                    'Aucune donnée'
+                                ${
+                                    latestMeasurement
+                                        ? `${latestMeasurement.value} <span class="sensor-unit">${sensorType?.unit_symbol || ''}</span>`
+                                        : 'Aucune donnée'
                                 }
                             </div>
                             <div class="sensor-metadata">
                                 <div class="sensor-status ${statusClass}">• ${status}</div>
                                 <div class="sensor-battery">🔋 ${device.metadata?.battery_level || 'N/A'}%</div>
-                                <small>Maj: ${latestMeasurement ?
-                                    new Date(latestMeasurement.timestamp).toLocaleString() :
-                                    'N/A'
+                                <small>Maj: ${
+                                    latestMeasurement
+                                        ? new Date(latestMeasurement.timestamp).toLocaleString()
+                                        : 'N/A'
                                 }</small>
                             </div>
                             <div class="click-hint">🔍 Cliquez pour voir les détails</div>
@@ -409,7 +428,9 @@ export class ExperimentsManager {
                 }
 
                 // Show charts section when there are sensors
-                const chartsSection = document.querySelector('#experiment-detail-view .charts-section')
+                const chartsSection = document.querySelector(
+                    '#experiment-detail-view .charts-section'
+                )
                 if (chartsSection) {
                     chartsSection.style.display = 'block'
                 }
@@ -421,11 +442,14 @@ export class ExperimentsManager {
             } else {
                 // No sensors - hide charts section
                 if (sensorsContainer) {
-                    sensorsContainer.innerHTML = '<p>Aucun capteur configuré pour cette expérience</p>'
+                    sensorsContainer.innerHTML =
+                        '<p>Aucun capteur configuré pour cette expérience</p>'
                 }
 
                 // Hide the entire charts section when no sensors
-                const chartsSection = document.querySelector('#experiment-detail-view .charts-section')
+                const chartsSection = document.querySelector(
+                    '#experiment-detail-view .charts-section'
+                )
                 if (chartsSection) {
                     chartsSection.style.display = 'none'
                 }

@@ -74,13 +74,16 @@ export class MapManager {
             return
         }
 
-        const { fitBounds = true, getProtocolLabel = (p) => p } = options
+        const { fitBounds = true, getProtocolLabel = p => p } = options
         const bounds = []
 
         experiments.forEach(experiment => {
             if (experiment.location && experiment.location.coordinates) {
                 const [lng, lat] = experiment.location.coordinates
-                const color = this.protocolColors[experiment.protocol] || this.protocolColors.other || '#95a5a6'
+                const color =
+                    this.protocolColors[experiment.protocol] ||
+                    this.protocolColors.other ||
+                    '#95a5a6'
 
                 const marker = L.circleMarker([lat, lng], {
                     radius: 8,
@@ -212,7 +215,7 @@ export class MapManager {
      * @param {Object} protocols - Mapping des protocoles {key, label}
      * @param {Function} getProtocolLabel - Fonction pour obtenir le label d'un protocole
      */
-    createLegend(protocols, getProtocolLabel) {
+    createLegend(protocols, _getProtocolLabel) {
         const legend = document.getElementById(this.legendId)
         if (!legend) {
             console.warn(`Legend container #${this.legendId} not found`)
@@ -225,12 +228,16 @@ export class MapManager {
                 <div class="legend-color all-colors"></div>
                 <span>Tous les clusters</span>
             </div>
-            ${protocols.map(protocol => `
+            ${protocols
+                .map(
+                    protocol => `
                 <div class="legend-item clickable ${this.activeProtocolFilter === protocol.key ? 'active' : ''}" data-protocol="${protocol.key}">
                     <div class="legend-color" style="background-color: ${this.protocolColors[protocol.key]}"></div>
                     <span>${protocol.label}</span>
                 </div>
-            `).join('')}
+            `
+                )
+                .join('')}
         `
 
         legend.innerHTML = legendHTML
@@ -248,8 +255,9 @@ export class MapManager {
         // Update active states
         legend.querySelectorAll('.legend-item.clickable').forEach(item => {
             const protocolKey = item.getAttribute('data-protocol')
-            const isActive = (protocolKey === '' && this.activeProtocolFilter === null) ||
-                           (protocolKey === this.activeProtocolFilter)
+            const isActive =
+                (protocolKey === '' && this.activeProtocolFilter === null) ||
+                protocolKey === this.activeProtocolFilter
 
             if (isActive) {
                 item.classList.add('active')
@@ -268,7 +276,7 @@ export class MapManager {
         if (!legend) return
 
         legend.querySelectorAll('.legend-item.clickable').forEach(item => {
-            item.addEventListener('click', (e) => {
+            item.addEventListener('click', e => {
                 const protocolKey = e.currentTarget.getAttribute('data-protocol')
                 if (onLegendClick) {
                     onLegendClick(protocolKey || null)

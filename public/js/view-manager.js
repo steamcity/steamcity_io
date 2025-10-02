@@ -92,10 +92,10 @@ export class ViewManager {
      */
     updateActiveNavButton(viewName) {
         const buttons = {
-            'map': document.getElementById('map-tab'),
-            'experiments': document.getElementById('experiments-tab'),
-            'sensors': document.getElementById('sensors-tab'),
-            'data': document.getElementById('data-tab')
+            map: document.getElementById('map-tab'),
+            experiments: document.getElementById('experiments-tab'),
+            sensors: document.getElementById('sensors-tab'),
+            data: document.getElementById('data-tab')
         }
 
         // Remove active class from all buttons
@@ -267,7 +267,7 @@ export class ViewManager {
      * @param {Object} options - Options d'affichage
      * @returns {Promise<void>}
      */
-    async showSensorDetail(sensorId, options = {}) {
+    async showSensorDetail(sensorId, _options = {}) {
         console.log('ViewManager: Showing sensor detail:', sensorId)
 
         // Update navigation button to sensors

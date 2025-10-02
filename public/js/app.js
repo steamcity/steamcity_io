@@ -52,9 +52,9 @@ export class App {
         this.experimentsManager = new ExperimentsManager({
             experiments: this.experiments,
             protocolColors: this.protocolColors,
-            getProtocolLabel: (p) => getProtocolLabel(p),
-            getProtocolIcon: (p) => getProtocolIcon(p),
-            onExperimentClick: (id) => this.showExperimentDetail(id),
+            getProtocolLabel: p => getProtocolLabel(p),
+            getProtocolIcon: p => getProtocolIcon(p),
+            onExperimentClick: id => this.showExperimentDetail(id),
             apiService: this.apiService
         })
 
@@ -87,7 +87,7 @@ export class App {
                 await this.loadSensorsView()
                 this.bindToggleEvents()
             },
-            onInitializeData: async (experimentId) => {
+            onInitializeData: async experimentId => {
                 await this.loadChartData(experimentId)
                 this.bindDataFilterEvents()
                 this.bindToggleEvents()
@@ -99,12 +99,12 @@ export class App {
             apiService: this.apiService,
             dataVizManager: this.dataVizManager,
             protocolColors: this.protocolColors,
-            getProtocolLabel: (p) => getProtocolLabel(p),
+            getProtocolLabel: p => getProtocolLabel(p),
             experiments: this.experiments,
             updateUrl: (view, id, queryParams) => this.updateUrl(view, id, queryParams),
-            showView: (view) => this.viewManager.showView(view, { updateUrl: false }),
-            showExperimentDetail: (id) => this.showExperimentDetail(id),
-            navigateToDataView: (experimentId) => this.routerManager.navigate('data', experimentId),
+            showView: view => this.viewManager.showView(view, { updateUrl: false }),
+            showExperimentDetail: id => this.showExperimentDetail(id),
+            navigateToDataView: experimentId => this.routerManager.navigate('data', experimentId),
             urlParams: this.urlParams
         })
 
@@ -178,10 +178,14 @@ export class App {
         sensorsTab?.addEventListener('click', () => this.viewManager.showView('sensors'))
 
         // Center map button
-        document.getElementById('center-map-btn')?.addEventListener('click', () => this.mapManager.centerOnVisibleMarkers())
+        document
+            .getElementById('center-map-btn')
+            ?.addEventListener('click', () => this.mapManager.centerOnVisibleMarkers())
 
         // Protocol filters
-        document.getElementById('protocol-filter')?.addEventListener('change', (e) => this.filterByProtocol(e.target.value))
+        document
+            .getElementById('protocol-filter')
+            ?.addEventListener('change', e => this.filterByProtocol(e.target.value))
 
         console.log('✅ Événements bindés')
     }
@@ -297,7 +301,7 @@ export class App {
 
             console.log('✅ Carte initialisée')
         } catch (error) {
-            console.error('❌ Erreur lors de l\'initialisation de la carte:', error)
+            console.error("❌ Erreur lors de l'initialisation de la carte:", error)
         }
     }
 
@@ -311,7 +315,7 @@ export class App {
 
         this.mapManager.addMarkers(this.experiments, {
             fitBounds: true,
-            getProtocolLabel: (p) => getProtocolLabel(p)
+            getProtocolLabel: p => getProtocolLabel(p)
         })
         this.markers = this.mapManager.getMarkers()
     }
@@ -328,8 +332,8 @@ export class App {
             { key: 'technology', label: `💻 ${getProtocolLabel('technology')}` }
         ]
 
-        this.mapManager.createLegend(protocols, (p) => getProtocolLabel(p))
-        this.mapManager.bindLegendEvents((protocolKey) => {
+        this.mapManager.createLegend(protocols, p => getProtocolLabel(p))
+        this.mapManager.bindLegendEvents(protocolKey => {
             this.filterByLegend(protocolKey)
         })
     }
@@ -338,11 +342,9 @@ export class App {
      * Filtre les expériences par protocole
      */
     filterByProtocol(protocol) {
-        this.mapManager.filterByProtocol(
-            protocol || null,
-            this.experiments,
-            { getProtocolLabel: (p) => getProtocolLabel(p) }
-        )
+        this.mapManager.filterByProtocol(protocol || null, this.experiments, {
+            getProtocolLabel: p => getProtocolLabel(p)
+        })
         this.markers = this.mapManager.getMarkers()
     }
 
@@ -351,11 +353,9 @@ export class App {
      */
     filterByLegend(protocolKey) {
         this.activeProtocolFilter = protocolKey
-        this.mapManager.filterByProtocol(
-            protocolKey,
-            this.experiments,
-            { getProtocolLabel: (p) => getProtocolLabel(p) }
-        )
+        this.mapManager.filterByProtocol(protocolKey, this.experiments, {
+            getProtocolLabel: p => getProtocolLabel(p)
+        })
         this.markers = this.mapManager.getMarkers()
 
         // Update dropdown filter to match
@@ -472,10 +472,10 @@ export class App {
                         await this.createExperimentChart(experimentId, container)
                         this.setupTimeFilterControls(experimentId, container)
                     },
-                    applyClusterColor: (color) => {
+                    applyClusterColor: color => {
                         this.applyClusterColorToSections(color)
                     },
-                    onSensorClick: (sensorId) => {
+                    onSensorClick: sensorId => {
                         this.showSensorDetails(sensorId)
                     },
                     onBackToList: () => {
@@ -573,7 +573,8 @@ export class App {
             if (!measurementsData || measurementsData.length === 0) {
                 const chartContainer = document.getElementById('main-chart')
                 if (chartContainer) {
-                    chartContainer.innerHTML = '<p>Aucune donnée de mesure disponible pour cette expérience</p>'
+                    chartContainer.innerHTML =
+                        '<p>Aucune donnée de mesure disponible pour cette expérience</p>'
                 }
                 return
             }
@@ -597,7 +598,6 @@ export class App {
 
             // Calculate and display statistics
             await this.dataVizManager.calculateAndDisplayStats(measurementsData)
-
         } catch (error) {
             console.error('Error loading experiment chart:', error)
             const chartContainer = document.getElementById('main-chart')
@@ -695,11 +695,17 @@ export class App {
      * Remplit les dropdowns de filtres avec les données des expériences
      */
     populateFilterDropdowns() {
-        const countries = [...new Set(this.experiments.map(exp => this.getCountryFromCity(exp.city)))].sort()
+        const countries = [
+            ...new Set(this.experiments.map(exp => this.getCountryFromCity(exp.city)))
+        ].sort()
         const cities = [...new Set(this.experiments.map(exp => exp.city))].sort()
         const schools = [...new Set(this.experiments.map(exp => exp.school))].sort()
-        const statuses = [...new Set(this.experiments.map(exp => exp.status))].filter(status => status).sort()
-        const protocols = [...new Set(this.experiments.map(exp => exp.protocol_name))].filter(protocol => protocol).sort()
+        const statuses = [...new Set(this.experiments.map(exp => exp.status))]
+            .filter(status => status)
+            .sort()
+        const protocols = [...new Set(this.experiments.map(exp => exp.protocol_name))]
+            .filter(protocol => protocol)
+            .sort()
 
         // Populate country filter
         const countryFilter = document.getElementById('country-filter')
@@ -776,10 +782,20 @@ export class App {
         const clearFiltersBtn = document.getElementById('clear-filters-btn')
         const sensorFilterBtn = document.getElementById('sensor-filter-btn')
 
-        const filters = [countryFilter, cityFilter, schoolFilter, statusFilter, protocolFilter, startDateFilter, endDateFilter]
-        filters.filter(f => f).forEach(filter => {
-            filter.addEventListener('change', () => this.applyFilters())
-        })
+        const filters = [
+            countryFilter,
+            cityFilter,
+            schoolFilter,
+            statusFilter,
+            protocolFilter,
+            startDateFilter,
+            endDateFilter
+        ]
+        filters
+            .filter(f => f)
+            .forEach(filter => {
+                filter.addEventListener('change', () => this.applyFilters())
+            })
 
         if (clearFiltersBtn) {
             clearFiltersBtn.addEventListener('click', () => this.clearAllFilters())
@@ -846,12 +862,12 @@ export class App {
 
         // Map URL parameters to filter elements
         const paramMap = {
-            'country': 'country-filter',
-            'city': 'city-filter',
-            'school': 'school-filter',
-            'status': 'status-filter',
-            'protocol': 'experiment-protocol-filter',
-            'sensors': 'sensor-filter-btn'
+            country: 'country-filter',
+            city: 'city-filter',
+            school: 'school-filter',
+            status: 'status-filter',
+            protocol: 'experiment-protocol-filter',
+            sensors: 'sensor-filter-btn'
         }
 
         // Apply each parameter
@@ -913,8 +929,8 @@ export class App {
 
         // Apply country filter
         if (selectedCountry) {
-            filteredExperiments = filteredExperiments.filter(exp =>
-                this.getCountryFromCity(exp.city) === selectedCountry
+            filteredExperiments = filteredExperiments.filter(
+                exp => this.getCountryFromCity(exp.city) === selectedCountry
             )
         }
 
@@ -935,30 +951,35 @@ export class App {
 
         // Apply protocol name filter
         if (selectedProtocolName) {
-            filteredExperiments = filteredExperiments.filter(exp => exp.protocol_name === selectedProtocolName)
+            filteredExperiments = filteredExperiments.filter(
+                exp => exp.protocol_name === selectedProtocolName
+            )
         }
 
         // Apply protocol category filter (from legend)
         if (selectedProtocolCategory) {
-            filteredExperiments = filteredExperiments.filter(exp => exp.protocol === selectedProtocolCategory)
+            filteredExperiments = filteredExperiments.filter(
+                exp => exp.protocol === selectedProtocolCategory
+            )
         }
 
         // Apply date filters
         if (selectedStartDate) {
-            filteredExperiments = filteredExperiments.filter(exp =>
-                new Date(exp.start_date) >= new Date(selectedStartDate)
+            filteredExperiments = filteredExperiments.filter(
+                exp => new Date(exp.start_date) >= new Date(selectedStartDate)
             )
         }
 
         if (selectedEndDate) {
-            filteredExperiments = filteredExperiments.filter(exp =>
-                new Date(exp.end_date) <= new Date(selectedEndDate)
+            filteredExperiments = filteredExperiments.filter(
+                exp => new Date(exp.end_date) <= new Date(selectedEndDate)
             )
         }
 
         // Apply sensor filter
         const sensorFilterBtn = document.getElementById('sensor-filter-btn')
-        const sensorFilterActive = sensorFilterBtn && sensorFilterBtn.getAttribute('data-active') === 'true'
+        const sensorFilterActive =
+            sensorFilterBtn && sensorFilterBtn.getAttribute('data-active') === 'true'
 
         if (sensorFilterActive) {
             this.displayFilteredExperiments(filteredExperiments, true)
@@ -975,10 +996,12 @@ export class App {
         if (selectedCity && selectedCity.trim() !== '') queryParams.city = selectedCity
         if (selectedSchool && selectedSchool.trim() !== '') queryParams.school = selectedSchool
         if (selectedStatus && selectedStatus.trim() !== '') queryParams.status = selectedStatus
-        if (selectedProtocolName && selectedProtocolName.trim() !== '') queryParams.protocol = selectedProtocolName
+        if (selectedProtocolName && selectedProtocolName.trim() !== '')
+            queryParams.protocol = selectedProtocolName
         if (selectedStartDate) queryParams.start = selectedStartDate
         if (selectedEndDate) queryParams.end = selectedEndDate
-        if (selectedProtocolCategory && selectedProtocolCategory.trim() !== '') queryParams.cluster = selectedProtocolCategory
+        if (selectedProtocolCategory && selectedProtocolCategory.trim() !== '')
+            queryParams.cluster = selectedProtocolCategory
         if (sensorFilterActive) queryParams.sensors = 'true'
 
         // Update URL with current filters
@@ -1007,7 +1030,9 @@ export class App {
             const hasSensors = experimentsWithSensors.includes(experiment.id)
             card.className = `experiment-card ${experiment.protocol} ${hasSensors ? 'has-sensors' : ''}`
 
-            const sensorIndicator = hasSensors ? '<span class="sensor-indicator" title="Données de capteurs disponibles">📊</span>' : ''
+            const sensorIndicator = hasSensors
+                ? '<span class="sensor-indicator" title="Données de capteurs disponibles">📊</span>'
+                : ''
 
             card.innerHTML = `
                 <h3>${experiment.title} ${sensorIndicator}</h3>
@@ -1027,9 +1052,10 @@ export class App {
         if (header) {
             const total = this.experiments.length
             const filtered = experiments.length
-            header.textContent = filtered === total ?
-                `Toutes les expériences (${total})` :
-                `Expériences filtrées (${filtered}/${total})`
+            header.textContent =
+                filtered === total
+                    ? `Toutes les expériences (${total})`
+                    : `Expériences filtrées (${filtered}/${total})`
         }
     }
 
@@ -1048,9 +1074,14 @@ export class App {
 
         // Check cluster filters
         const activeClusters = this.getActiveClusters()
-        if (activeClusters.length > 0 && activeClusters.length < Object.keys(this.protocolColors).length - 1) {
+        if (
+            activeClusters.length > 0 &&
+            activeClusters.length < Object.keys(this.protocolColors).length - 1
+        ) {
             activeFilters++
-            filterDescriptions.push(`${activeClusters.length} cluster${activeClusters.length > 1 ? 's' : ''}`)
+            filterDescriptions.push(
+                `${activeClusters.length} cluster${activeClusters.length > 1 ? 's' : ''}`
+            )
         }
 
         // Check sensor filter
@@ -1105,7 +1136,9 @@ export class App {
         if (activeFilters > 0) {
             filterCount.style.display = 'block'
             filterCount.textContent = `${activeFilters} filtre${activeFilters > 1 ? 's' : ''} actif${activeFilters > 1 ? 's' : ''}`
-            filterInput.placeholder = filterDescriptions.slice(0, 2).join(', ') + (filterDescriptions.length > 2 ? '...' : '')
+            filterInput.placeholder =
+                filterDescriptions.slice(0, 2).join(', ') +
+                (filterDescriptions.length > 2 ? '...' : '')
         } else {
             filterCount.style.display = 'none'
             filterInput.placeholder = 'Rechercher ou filtrer les expériences...'
@@ -1141,11 +1174,20 @@ export class App {
         const statusFilter = document.getElementById('status-filter')
         const protocolFilter = document.getElementById('experiment-protocol-filter')
         const startDateFilter = document.getElementById('start-date-filter')
-        const endDateFilter = document.getElementById('end-date-filter')
+        const endDateFilter = document
+            .getElementById('end-date-filter')
 
-        [countryFilter, cityFilter, schoolFilter, statusFilter, protocolFilter, startDateFilter, endDateFilter].forEach(filter => {
-            if (filter) filter.value = ''
-        })
+            [
+                (countryFilter,
+                cityFilter,
+                schoolFilter,
+                statusFilter,
+                protocolFilter,
+                startDateFilter,
+                endDateFilter)
+            ].forEach(filter => {
+                if (filter) filter.value = ''
+            })
 
         // Reset sensor filter
         const sensorFilterBtn = document.getElementById('sensor-filter-btn')
@@ -1177,22 +1219,22 @@ export class App {
     getCountryFromCity(city) {
         const cityToCountry = {
             'Aix-en-Provence': 'France',
-            'Marseille': 'France',
-            'Lyon': 'France',
-            'Paris': 'France',
-            'Nice': 'France',
-            'Toulouse': 'France',
-            'Bordeaux': 'France',
-            'Brussels': 'Belgique',
-            'Bruxelles': 'Belgique',
-            'Antwerp': 'Belgique',
-            'Anvers': 'Belgique',
-            'Sofia': 'Bulgarie',
-            'Plovdiv': 'Bulgarie',
-            'Rome': 'Italie',
-            'Milan': 'Italie',
-            'Naples': 'Italie',
-            'Florence': 'Italie'
+            Marseille: 'France',
+            Lyon: 'France',
+            Paris: 'France',
+            Nice: 'France',
+            Toulouse: 'France',
+            Bordeaux: 'France',
+            Brussels: 'Belgique',
+            Bruxelles: 'Belgique',
+            Antwerp: 'Belgique',
+            Anvers: 'Belgique',
+            Sofia: 'Bulgarie',
+            Plovdiv: 'Bulgarie',
+            Rome: 'Italie',
+            Milan: 'Italie',
+            Naples: 'Italie',
+            Florence: 'Italie'
         }
         return cityToCountry[city] || 'Autre'
     }
@@ -1202,13 +1244,13 @@ export class App {
      */
     getStatusLabel(status) {
         const statusLabels = {
-            'active': 'Actif',
-            'planned': 'Planifié',
-            'ongoing': 'En cours',
-            'finished': 'Terminé',
-            'archived': 'Archivée',
-            'pending': 'En attente',
-            'cancelled': 'Annulé'
+            active: 'Actif',
+            planned: 'Planifié',
+            ongoing: 'En cours',
+            finished: 'Terminé',
+            archived: 'Archivée',
+            pending: 'En attente',
+            cancelled: 'Annulé'
         }
         return statusLabels[status] || status
     }
@@ -1228,8 +1270,7 @@ export class App {
                 button.removeEventListener('click', button.timeFilterHandler)
 
                 // Create new handler
-                button.timeFilterHandler = async (e) => {
-
+                button.timeFilterHandler = async e => {
                     // Remove active class from all buttons
                     timeFilterButtons.forEach(btn => btn.classList.remove('active'))
 
@@ -1254,7 +1295,9 @@ export class App {
             })
 
             // Set active button based on URL parameter
-            const activeButton = document.querySelector(`.time-filter-btn[data-period="${urlPeriod}"]`)
+            const activeButton = document.querySelector(
+                `.time-filter-btn[data-period="${urlPeriod}"]`
+            )
             if (activeButton) {
                 timeFilterButtons.forEach(btn => btn.classList.remove('active'))
                 activeButton.classList.add('active')
@@ -1407,7 +1450,15 @@ export class App {
 
         this.routerManager.updateUrl('data', this.selectedExperimentForData, queryParams)
         this.updateFilterSearchBox()
-        this.loadFilteredChartData(experimentId, sensorTypeId, period, startDate, endDate, minQuality, limit)
+        this.loadFilteredChartData(
+            experimentId,
+            sensorTypeId,
+            period,
+            startDate,
+            endDate,
+            minQuality,
+            limit
+        )
     }
 
     /**
@@ -1427,7 +1478,15 @@ export class App {
         }
 
         this.updateFilterSearchBox()
-        this.loadFilteredChartData(experimentId, sensorTypeId, period, startDate, endDate, minQuality, limit)
+        this.loadFilteredChartData(
+            experimentId,
+            sensorTypeId,
+            period,
+            startDate,
+            endDate,
+            minQuality,
+            limit
+        )
     }
 
     /**
@@ -1488,14 +1547,16 @@ export class App {
 
         try {
             // Fetch measurements for this experiment to get sensor types with data
-            const response = await fetch(`/api/sensors/measurements?experimentId=${selectedExperiment}`)
+            const response = await fetch(
+                `/api/sensors/measurements?experimentId=${selectedExperiment}`
+            )
             const data = await response.json()
 
             if (data.success && data.data) {
                 // Get unique sensor types from measurements
-                const uniqueTypes = [...new Set(data.data.map(m =>
-                    m.sensor_type_id || m.sensorType
-                ).filter(Boolean))]
+                const uniqueTypes = [
+                    ...new Set(data.data.map(m => m.sensor_type_id || m.sensorType).filter(Boolean))
+                ]
 
                 // Sort and populate dropdown with labels
                 uniqueTypes.sort().forEach(type => {
@@ -1504,7 +1565,9 @@ export class App {
 
                     // Find the sensor type object to get the label
                     const sensorTypeObj = this.sensorTypes.find(st => st.id === type)
-                    option.textContent = sensorTypeObj ? `${sensorTypeObj.icon} ${sensorTypeObj.name}` : type
+                    option.textContent = sensorTypeObj
+                        ? `${sensorTypeObj.icon} ${sensorTypeObj.name}`
+                        : type
 
                     sensorTypeSelect.appendChild(option)
                 })
@@ -1588,7 +1651,15 @@ export class App {
     /**
      * Charge les données filtrées et affiche le graphique
      */
-    async loadFilteredChartData(experimentId, sensorTypeId, period, startDate, endDate, minQuality, limit) {
+    async loadFilteredChartData(
+        experimentId,
+        sensorTypeId,
+        period,
+        startDate,
+        endDate,
+        minQuality,
+        limit
+    ) {
         const chartContainer = document.getElementById('chart-container')
         if (!chartContainer) return
 
@@ -1611,14 +1682,16 @@ export class App {
             const measurementsData = await measurementsResponse.json()
 
             if (!measurementsData.success) {
-                throw new Error(measurementsData.message || 'Erreur lors de la récupération des données')
+                throw new Error(
+                    measurementsData.message || 'Erreur lors de la récupération des données'
+                )
             }
 
             // Filter by sensor type if specified
             let filteredMeasurements = measurementsData.data || []
             if (sensorTypeId && sensorTypeId.trim() !== '') {
-                filteredMeasurements = filteredMeasurements.filter(m =>
-                    (m.sensor_type_id || m.sensorType) === sensorTypeId
+                filteredMeasurements = filteredMeasurements.filter(
+                    m => (m.sensor_type_id || m.sensorType) === sensorTypeId
                 )
             }
 
@@ -1644,9 +1717,9 @@ export class App {
                 this.dataVizManager.createMainChart(filteredMeasurements, sensorTypesMap)
                 await this.dataVizManager.calculateAndDisplayStats(filteredMeasurements)
             } else {
-                chartContainer.innerHTML = '<div class="no-data">Aucune donnée disponible pour les filtres sélectionnés</div>'
+                chartContainer.innerHTML =
+                    '<div class="no-data">Aucune donnée disponible pour les filtres sélectionnés</div>'
             }
-
         } catch (error) {
             console.error('Erreur lors du chargement des données:', error)
             chartContainer.innerHTML = `<div class="error">Erreur: ${error.message}</div>`
@@ -1665,7 +1738,9 @@ export class App {
         const uniqueTypes = new Set(measurements.map(m => m.sensor_type_id || m.sensorType)).size
 
         // Calculate date range
-        const timestamps = measurements.map(m => new Date(m.timestamp || m.date)).filter(d => !isNaN(d))
+        const timestamps = measurements
+            .map(m => new Date(m.timestamp || m.date))
+            .filter(d => !isNaN(d))
         const minDate = timestamps.length > 0 ? new Date(Math.min(...timestamps)) : null
         const maxDate = timestamps.length > 0 ? new Date(Math.max(...timestamps)) : null
 
